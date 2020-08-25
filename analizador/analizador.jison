@@ -71,12 +71,15 @@
 "number"                        %{ console.log("tipo de dato:"+yytext);  return 'tk_number'; %}
 "boolean"                       %{ console.log("tipo de dato:"+yytext);  return 'tk_boolean'; %}
 "void"                          %{ console.log("tipo de dato:"+yytext);  return 'tk_void'; %}
+"type"                          %{ console.log("tipo de dato:"+yytext);  return 'tk_type'; %}
+
 
 "true"                          %{ console.log("boolean:"+yytext);  return 'tk_t_boolean'; %}
 "false"                         %{ console.log("boolean:"+yytext);  return 'tk_t_boolean'; %}
 
 [0-9]+"."[0-9]+                 %{ console.log("numero decimal:"+yytext);  return 'tk_t_decimal'; %}
 [0-9]+                          %{ console.log("numero entero:"+yytext);  return 'tk_t_entero'; %}
+[[a-zA-ZñÑáéíóúÁÉÍÓÚ]["_"0-9a-zA-ZñÑáéíóúÁÉÍÓÚ]*|["_"]+[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ]["_"0-9a-zA-ZñÑáéíóúÁÉÍÓÚ]*] %{  console.log("id:"+yytext); return 'tk_id'; %}
 
 [ \t\r\n\f] 										%{ /*se ignoran*/ %}
 
