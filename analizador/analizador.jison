@@ -73,9 +73,27 @@
 "void"                          %{ console.log("tipo de dato:"+yytext);  return 'tk_void'; %}
 "type"                          %{ console.log("tipo de dato:"+yytext);  return 'tk_type'; %}
 
+"Array"                         %{ console.log("inicio array:"+yytext);  return 'tk_array'; %}
+"Push"                          %{ console.log("accion array:"+yytext);  return 'tk_push'; %}
+"Pop"                           %{ console.log("accion array:"+yytext);  return 'tk_pop'; %}
+"Lenght"                        %{ console.log("accion array:"+yytext);  return 'tk_lenght'; %}
+
+"let"                           %{ console.log("declaracion:"+yytext);  return 'tk_let'; %}
+"const"                         %{ console.log("declaracion:"+yytext);  return 'tk_const'; %}
 
 "true"                          %{ console.log("boolean:"+yytext);  return 'tk_t_boolean'; %}
 "false"                         %{ console.log("boolean:"+yytext);  return 'tk_t_boolean'; %}
+
+"["                             %{ console.log("simbolo:"+yytext); return 'tk_llaveca'; %}
+"]"                             %{ console.log("simbolo:"+yytext); return 'tk_llavecc'; %}
+":"                             %{ console.log("simbolo:"+yytext); return 'tk_dospuntos'; %}
+"="                             %{ console.log("simbolo:"+yytext); return 'tk_igual'; %}
+";"                             %{ console.log("simbolo:"+yytext); return 'tk_puntoycoma'; %}
+"{"                             %{ console.log("simbolo:"+yytext); return 'tk_llavea'; %}
+"}"                             %{ console.log("simbolo:"+yytext); return 'tk_llavec'; %}
+","                             %{ console.log("simbolo:"+yytext); return 'tk_coma'; %}
+"<"                             %{ console.log("simbolo:"+yytext); return 'tk_menor'; %}
+">"                             %{ console.log("simbolo:"+yytext); return 'tk_mayor'; %}
 
 [0-9]+"."[0-9]+                 %{ console.log("numero decimal:"+yytext);  return 'tk_t_decimal'; %}
 [0-9]+                          %{ console.log("numero entero:"+yytext);  return 'tk_t_entero'; %}
@@ -101,5 +119,62 @@
 S: I EOF 
 	|EOF;
 
-I: I tk_entero
-  |tk_entero;
+I: I DECLARACION
+  |I ASIGNACION
+  |DECLARACION
+  |ASIGNACION;
+
+DECLARACION: tk_let tk_id tk_dospuntos TIPOV2 tk_igual VALOR tk_puntoycoma
+          | tk_const tk_id tk_dospuntos TIPOV2 tk_igual VALOR tk_puntoycoma
+          | tk_let tk_id tk_igual VALOR tk_puntoycoma
+          | tk_const tk_id tk_igual VALOR tk_puntoycoma
+          | tk_let tk_id tk_dospuntos TIPOV2 tk_puntoycoma
+          | tk_let tk_id tk_puntoycoma
+          | TYPES;
+
+TIPOV: tk_string
+      |tk_number
+      |tk_boolean
+      |tk_void
+      |tk_id;
+
+TIPOV2:TIPOV
+      |ARRAY;
+
+VALOR: tk_t_string
+      |tk_t_entero
+      |tk_t_decimal
+      |tk_t_boolean
+      |tk_id
+      |ASIGTYPE
+      |VARRAY;
+
+TYPES: tk_type tk_id tk_llavea LTYPE tk_llavec tk_puntoycoma;
+
+LTYPE: LTYPE TIPOV2 tk_dospuntos tk_id tk_puntoycoma
+      | TIPOV2 tk_dospuntos tk_id tk_puntoycoma;
+
+ASIGTYPE: tk_llavea LASIGTYPE tk_llavec;
+
+LASIGTYPE: LASIGTYPE tk_id tk_dospuntos VALOR tk_puntoycoma
+          | tk_id tk_dospuntos VALOR tk_puntoycoma;
+
+ARRAY: tk_string tk_llaveca tk_llavecc
+     | tk_number tk_llaveca tk_llavecc
+     | tk_boolean tk_llaveca tk_llavecc
+     | tk_void tk_llavecc tk_llavecc
+     | tk_id tk_llavecc tk_llavecc
+     | tk_array tk_menor TIPOV tk_mayor;
+
+VARRAY: tk_llaveca LVALARRAY tk_llavecc;
+
+LVALARRAY: LVALARRAY tk_coma VALOR
+        | VALOR;
+
+ASIGNACION: tk_id tk_igual VALOR tk_puntoycoma;
+
+A:A + A
+ |A - A
+ |A * A
+ |A / A
+ |!A;
