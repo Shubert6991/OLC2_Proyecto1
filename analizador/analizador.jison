@@ -84,6 +84,31 @@
 "true"                          %{ console.log("boolean:"+yytext);  return 'tk_t_boolean'; %}
 "false"                         %{ console.log("boolean:"+yytext);  return 'tk_t_boolean'; %}
 
+"if"                            %{ console.log("sentencias:"+yytext);  return 'tk_if'; %}
+"else"                          %{ console.log("sentencias:"+yytext);  return 'tk_else'; %}
+
+"**"                            %{ console.log("arimetica:"+yytext); return 'tk_exp'; %}
+"++"                            %{ console.log("arimetica:"+yytext); return 'tk_inc'; %}
+"--"                            %{ console.log("arimetica:"+yytext); return 'tk_dec'; %}
+"+"                             %{ console.log("arimetica:"+yytext); return 'tk_suma'; %}
+"-"                             %{ console.log("arimetica:"+yytext); return 'tk_resta'; %}
+"*"                             %{ console.log("arimetica:"+yytext); return 'tk_mult'; %}
+"/"                             %{ console.log("arimetica:"+yytext); return 'tk_div'; %}
+"%"                             %{ console.log("arimetica:"+yytext); return 'tk_mod'; %}
+
+">="                            %{ console.log("relacional:"+yytext); return 'tk_mayorigual'; %}
+"<="                            %{ console.log("relacional:"+yytext); return 'tk_menorigual'; %}
+"=="                            %{ console.log("relacional:"+yytext); return 'tk_igualdad'; %}
+"!="                            %{ console.log("relacional:"+yytext); return 'tk_diferente'; %}
+">"                             %{ console.log("relacional:"+yytext); return 'tk_mayor'; %}
+"<"                             %{ console.log("relacional:"+yytext); return 'tk_menor'; %}
+
+"&&"                            %{ console.log("Logica:"+yytext); return 'tk_and'; %}
+"||"                            %{ console.log("Logica:"+yytext); return 'tk_or'; %}
+"!"                             %{ console.log("Logica:"+yytext); return 'tk_not'; %}
+
+"?"                             %{ console.log("ternario:"+yytext); return 'tk_ternario'; %}
+
 "["                             %{ console.log("simbolo:"+yytext); return 'tk_llaveca'; %}
 "]"                             %{ console.log("simbolo:"+yytext); return 'tk_llavecc'; %}
 ":"                             %{ console.log("simbolo:"+yytext); return 'tk_dospuntos'; %}
@@ -92,8 +117,8 @@
 "{"                             %{ console.log("simbolo:"+yytext); return 'tk_llavea'; %}
 "}"                             %{ console.log("simbolo:"+yytext); return 'tk_llavec'; %}
 ","                             %{ console.log("simbolo:"+yytext); return 'tk_coma'; %}
-"<"                             %{ console.log("simbolo:"+yytext); return 'tk_menor'; %}
-">"                             %{ console.log("simbolo:"+yytext); return 'tk_mayor'; %}
+"("                             %{ console.log("simbolo:"+yytext); return 'tk_pabierto'; %}
+")"                             %{ console.log("simbolo:"+yytext); return 'tk_pcerrado'; %}
 
 [0-9]+"."[0-9]+                 %{ console.log("numero decimal:"+yytext);  return 'tk_t_decimal'; %}
 [0-9]+                          %{ console.log("numero entero:"+yytext);  return 'tk_t_entero'; %}
@@ -110,19 +135,30 @@
 /*-------------------------SINTACTICO------------------------------*/
 
 /*-----ASOCIACION Y PRECEDENCIA-----*/
-
+%left tk_or
+%left tk_and
+%left tk_igualdad tk_diferente
+%left tk_menorigual tk_mayorigual tk_mayor tk_menor
+%left tk_suma tk_resta 
+%right tk_inc tk_dec
+%left tk_mult tk_div tk_mod
+%left tk_exp
+%right tk_not
+%left tk_pabierto tk_pcerrado
 /*----------ESTADO INICIAL----------*/
 %start S
 %% 
 
 /*-------------GRAMATICA------------*/
 S: I EOF 
-	|EOF;
+  |EOF;
 
 I: I DECLARACION
   |I ASIGNACION
+  |I IF
   |DECLARACION
-  |ASIGNACION;
+  |ASIGNACION
+  |IF;
 
 DECLARACION: tk_let tk_id tk_dospuntos TIPOV2 tk_igual VALOR tk_puntoycoma
           | tk_const tk_id tk_dospuntos TIPOV2 tk_igual VALOR tk_puntoycoma
@@ -141,13 +177,9 @@ TIPOV: tk_string
 TIPOV2:TIPOV
       |ARRAY;
 
-VALOR: tk_t_string
-      |tk_t_entero
-      |tk_t_decimal
-      |tk_t_boolean
-      |tk_id
-      |ASIGTYPE
-      |VARRAY;
+VALOR: ASIGTYPE
+      |VARRAY
+      |T;
 
 TYPES: tk_type tk_id tk_llavea LTYPE tk_llavec tk_puntoycoma;
 
@@ -173,8 +205,46 @@ LVALARRAY: LVALARRAY tk_coma VALOR
 
 ASIGNACION: tk_id tk_igual VALOR tk_puntoycoma;
 
-A:A + A
- |A - A
- |A * A
- |A / A
- |!A;
+T: L tk_ternario L tk_dospuntos L
+  |L;
+
+L: L tk_and L
+  |L tk_or L
+  |tk_not L
+  |tk_t_boolean
+  |R;
+
+R: A tk_mayor A
+  |A tk_menor A
+  |A tk_mayorigual A
+  |A tk_menorigual A
+  |A tk_igualdad A 
+  |A tk_diferente A
+  |A;
+
+A:A tk_suma A
+ |A tk_resta A
+ |A tk_mult A
+ |A tk_div A
+ |A tk_exp A
+ |A tk_mod A
+ |A tk_inc
+ |A tk_dec
+ |tk_pabierto A tk_pcerrado
+ |tk_resta A
+ |tk_t_string
+ |tk_t_entero
+ |tk_t_decimal
+ |tk_id;
+
+IF: tk_if tk_pabierto L tk_pcerrado BSENTENCIAS;
+
+BSENTENCIAS: tk_llavea SENTENCIAS tk_llavec
+            |tk_llavea tk_llavec;
+
+SENTENCIAS: SENTENCIAS DECLARACION
+          | SENTENCIAS ASIGNACION
+          | SENTENCIAS IF
+          | DECLARACION
+          | ASIGNACION
+          | IF;
