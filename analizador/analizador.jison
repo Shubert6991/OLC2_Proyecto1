@@ -86,6 +86,11 @@
 
 "if"                            %{ console.log("sentencias:"+yytext);  return 'tk_if'; %}
 "else"                          %{ console.log("sentencias:"+yytext);  return 'tk_else'; %}
+"switch"                        %{ console.log("sentencias:"+yytext);  return 'tk_switch'; %}
+"case"                          %{ console.log("sentencias:"+yytext);  return 'tk_case'; %}
+"default"                       %{ console.log("sentencias:"+yytext);  return 'tk_default'; %}
+"while"                         %{ console.log("sentencias:"+yytext);  return 'tk_while'; %}
+"do"                            %{ console.log("sentencias:"+yytext);  return 'tk_do'; %}
 
 "**"                            %{ console.log("arimetica:"+yytext); return 'tk_exp'; %}
 "++"                            %{ console.log("arimetica:"+yytext); return 'tk_inc'; %}
@@ -156,9 +161,15 @@ S: I EOF
 I: I DECLARACION
   |I ASIGNACION
   |I IF
+  |I SWITCH
+  |I WHILE
+  |I DOWHILE
   |DECLARACION
   |ASIGNACION
-  |IF;
+  |IF
+  |SWITCH
+  |WHILE
+  |DOWHILE;
 
 DECLARACION: tk_let tk_id tk_dospuntos TIPOV2 tk_igual VALOR tk_puntoycoma
           | tk_const tk_id tk_dospuntos TIPOV2 tk_igual VALOR tk_puntoycoma
@@ -203,7 +214,9 @@ VARRAY: tk_llaveca LVALARRAY tk_llavecc;
 LVALARRAY: LVALARRAY tk_coma VALOR
         | VALOR;
 
-ASIGNACION: tk_id tk_igual VALOR tk_puntoycoma;
+ASIGNACION: tk_id tk_igual VALOR tk_puntoycoma
+          | tk_id tk_inc tk_puntoycoma
+          | tk_id tk_dec tk_puntoycoma;
 
 T: L tk_ternario L tk_dospuntos L
   |L;
@@ -237,14 +250,45 @@ A:A tk_suma A
  |tk_t_decimal
  |tk_id;
 
-IF: tk_if tk_pabierto L tk_pcerrado BSENTENCIAS;
-
 BSENTENCIAS: tk_llavea SENTENCIAS tk_llavec
             |tk_llavea tk_llavec;
 
 SENTENCIAS: SENTENCIAS DECLARACION
           | SENTENCIAS ASIGNACION
           | SENTENCIAS IF
+          | SENTENCIAS SWITCH
+          | SENTENCIAS WHILE
+          | SENTENCIAS DOWHILE
           | DECLARACION
           | ASIGNACION
-          | IF;
+          | IF
+          | SWITCH
+          | WHILE
+          | DOWHILE;
+
+IF: tk_if tk_pabierto L tk_pcerrado BSENTENCIAS ELSE
+  | tk_if tk_pabierto L tk_pcerrado BSENTENCIAS;
+
+ELSE: tk_else BSENTENCIAS
+    | tk_else IF;
+
+SWITCH: tk_switch tk_pabierto L tk_pcerrado BSWITCH;
+
+BSWITCH: tk_llavea CASE DEFAULT tk_llavec
+      |tk_llavea CASE tk_llavec
+      |tk_llavea tk_llavec;
+
+CASE: CASE tk_case L tk_dospuntos SENTENCIAS
+    | CASE tk_case L tk_dospuntos BSENTENCIAS
+    | CASE tk_case L tk_dospuntos
+    | tk_case L tk_dospuntos SENTENCIAS
+    | tk_case L tk_dospuntos BSENTENCIAS
+    | tk_case L tk_dospuntos;
+
+DEFAULT: tk_default tk_dospuntos SENTENCIAS
+        |tk_default tk_dospuntos BSENTENCIAS
+        |tk_default tk_dospuntos;
+
+WHILE: tk_while tk_pabierto L tk_pcerrado BSENTENCIAS;
+
+DOWHILE: tk_do BSENTENCIAS tk_while tk_pabierto L tk_pcerrado;

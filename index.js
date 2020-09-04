@@ -3,7 +3,7 @@ const analizarTexto = () => {
   let texto = document.getElementById("textInput").value
   try {
     let result = analizador.parse(texto)
-    console.log(analizador.parse(texto));
+    console.log(result);
   } catch (error) {
     console.log(error);
   }
