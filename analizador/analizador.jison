@@ -91,6 +91,9 @@
 "default"                       %{ console.log("sentencias:"+yytext);  return 'tk_default'; %}
 "while"                         %{ console.log("sentencias:"+yytext);  return 'tk_while'; %}
 "do"                            %{ console.log("sentencias:"+yytext);  return 'tk_do'; %}
+"for"                           %{ console.log("sentencias:"+yytext);  return 'tk_for'; %}
+"in"                            %{ console.log("sentencias:"+yytext);  return 'tk_in'; %}
+"of"                            %{ console.log("sentencias:"+yytext);  return 'tk_of'; %}
 
 "**"                            %{ console.log("arimetica:"+yytext); return 'tk_exp'; %}
 "++"                            %{ console.log("arimetica:"+yytext); return 'tk_inc'; %}
@@ -164,12 +167,14 @@ I: I DECLARACION
   |I SWITCH
   |I WHILE
   |I DOWHILE
+  |I FOR
   |DECLARACION
   |ASIGNACION
   |IF
   |SWITCH
   |WHILE
-  |DOWHILE;
+  |DOWHILE
+  |FOR;
 
 DECLARACION: tk_let tk_id tk_dospuntos TIPOV2 tk_igual VALOR tk_puntoycoma
           | tk_const tk_id tk_dospuntos TIPOV2 tk_igual VALOR tk_puntoycoma
@@ -259,12 +264,14 @@ SENTENCIAS: SENTENCIAS DECLARACION
           | SENTENCIAS SWITCH
           | SENTENCIAS WHILE
           | SENTENCIAS DOWHILE
+          | SENTENCIAS FOR
           | DECLARACION
           | ASIGNACION
           | IF
           | SWITCH
           | WHILE
-          | DOWHILE;
+          | DOWHILE
+          | FOR;
 
 IF: tk_if tk_pabierto L tk_pcerrado BSENTENCIAS ELSE
   | tk_if tk_pabierto L tk_pcerrado BSENTENCIAS;
@@ -292,3 +299,10 @@ DEFAULT: tk_default tk_dospuntos SENTENCIAS
 WHILE: tk_while tk_pabierto L tk_pcerrado BSENTENCIAS;
 
 DOWHILE: tk_do BSENTENCIAS tk_while tk_pabierto L tk_pcerrado;
+
+FOR: tk_for tk_pabierto DECLARACION L tk_puntoycoma L tk_pcerrado BSENTENCIAS
+  | tk_for tk_pabierto ASIGNACION L tk_puntoycoma L tk_pcerrado BSENTENCIAS
+  | tk_for tk_pabierto tk_id tk_in tk_id tk_pcerrado BSENTENCIAS
+  | tk_for tk_pabierto tk_let tk_id tk_in tk_id tk_pcerrado BSENTENCIAS
+  | tk for tk_pabierto tk_id tk_of tk_id tk_pcerrado BSENTENCIAS
+  | tk_for tk_pabierto tk_let tk_id tk_of tk_id tk_pcerrado BSENTENCIAS; 
