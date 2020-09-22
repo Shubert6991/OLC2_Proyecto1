@@ -99,6 +99,8 @@
 "continue"                      %{ console.log("transferencia:"+yytext);  return 'tk_continue'; %}
 "return"                        %{ console.log("transferencia:"+yytext);  return 'tk_return'; %}
 
+"function"                      %{ console.log("funcion:"+yytext);  return 'tk_fn'; %}
+
 "**"                            %{ console.log("arimetica:"+yytext); return 'tk_exp'; %}
 "++"                            %{ console.log("arimetica:"+yytext); return 'tk_inc'; %}
 "--"                            %{ console.log("arimetica:"+yytext); return 'tk_dec'; %}
@@ -186,7 +188,9 @@ DECLARACION: tk_let tk_id tk_dospuntos TIPOV2 tk_igual VALOR tk_puntoycoma
           | tk_const tk_id tk_igual VALOR tk_puntoycoma
           | tk_let tk_id tk_dospuntos TIPOV2 tk_puntoycoma
           | tk_let tk_id tk_puntoycoma
-          | TYPES;
+          | TYPES
+          | DECFUNCION
+          | error;
 
 TIPOV: tk_string
       |tk_number
@@ -200,17 +204,20 @@ TIPOV2:TIPOV
 VALOR: ASIGTYPE
       |VARRAY
       |T
-      |VALARRAY;
+      |VALARRAY
+      |VALFUNCION;
 
 TYPES: tk_type tk_id tk_llavea LTYPE tk_llavec tk_puntoycoma;
 
 LTYPE: LTYPE TIPOV2 tk_dospuntos tk_id tk_puntoycoma
-      | TIPOV2 tk_dospuntos tk_id tk_puntoycoma;
+      | TIPOV2 tk_dospuntos tk_id tk_puntoycoma
+      | error;
 
 ASIGTYPE: tk_llavea LASIGTYPE tk_llavec;
 
 LASIGTYPE: LASIGTYPE tk_id tk_dospuntos VALOR tk_puntoycoma
-          | tk_id tk_dospuntos VALOR tk_puntoycoma;
+          | tk_id tk_dospuntos VALOR tk_puntoycoma
+          | error;
 
 ARRAY: tk_string tk_llaveca tk_llavecc
      | tk_number tk_llaveca tk_llavecc
@@ -320,3 +327,15 @@ ST: tk_break tk_puntoycoma
   | tk_return tk_puntoycoma
   | tk_return VALOR tk_puntoycoma
   | tk_return ASIGNACION;
+
+DECFUNCION: tk_fn tk_id tk_pabierto tk_pcerrado tk_dospuntos TIPOV2 BSENTENCIAS
+          | tk_fn tk_id tk_pabierto PARFUNC tk_pcerrado tk_dospuntos TIPOV2 BSENTENCIAS;
+
+VALFUNCION: tk_id tk_pabierto tk_pcerrado 
+          | tk_id tk_pabierto LPAR tk_pcerrado;
+
+PARFUNC: PARFUNC tk_coma tk_id tk_dospuntos TIPOV2
+        | tk_id tk_dospuntos TIPOV2;
+        
+LPAR: LPAR tk_coma VALOR
+    | VALOR;
