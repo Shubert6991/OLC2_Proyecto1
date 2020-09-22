@@ -210,14 +210,12 @@ VALOR: ASIGTYPE
 TYPES: tk_type tk_id tk_llavea LTYPE tk_llavec tk_puntoycoma;
 
 LTYPE: LTYPE TIPOV2 tk_dospuntos tk_id tk_puntoycoma
-      | TIPOV2 tk_dospuntos tk_id tk_puntoycoma
-      | error;
+      | TIPOV2 tk_dospuntos tk_id tk_puntoycoma;
 
 ASIGTYPE: tk_llavea LASIGTYPE tk_llavec;
 
 LASIGTYPE: LASIGTYPE tk_id tk_dospuntos VALOR tk_puntoycoma
-          | tk_id tk_dospuntos VALOR tk_puntoycoma
-          | error;
+          | tk_id tk_dospuntos VALOR tk_puntoycoma;
 
 ARRAY: tk_string tk_llaveca tk_llavecc
      | tk_number tk_llaveca tk_llavecc
