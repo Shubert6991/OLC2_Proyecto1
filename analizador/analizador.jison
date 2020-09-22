@@ -95,6 +95,10 @@
 "in"                            %{ console.log("sentencias:"+yytext);  return 'tk_in'; %}
 "of"                            %{ console.log("sentencias:"+yytext);  return 'tk_of'; %}
 
+"break"                         %{ console.log("transferencia:"+yytext);  return 'tk_break'; %}
+"continue"                      %{ console.log("transferencia:"+yytext);  return 'tk_continue'; %}
+"return"                        %{ console.log("transferencia:"+yytext);  return 'tk_return'; %}
+
 "**"                            %{ console.log("arimetica:"+yytext); return 'tk_exp'; %}
 "++"                            %{ console.log("arimetica:"+yytext); return 'tk_inc'; %}
 "--"                            %{ console.log("arimetica:"+yytext); return 'tk_dec'; %}
@@ -195,7 +199,8 @@ TIPOV2:TIPOV
 
 VALOR: ASIGTYPE
       |VARRAY
-      |T;
+      |T
+      |VALARRAY;
 
 TYPES: tk_type tk_id tk_llavea LTYPE tk_llavec tk_puntoycoma;
 
@@ -219,9 +224,12 @@ VARRAY: tk_llaveca LVALARRAY tk_llavecc;
 LVALARRAY: LVALARRAY tk_coma VALOR
         | VALOR;
 
+VALARRAY: tk_id tk_llaveca tk_t_entero tk_llavecc;
+
 ASIGNACION: tk_id tk_igual VALOR tk_puntoycoma
           | tk_id tk_inc tk_puntoycoma
-          | tk_id tk_dec tk_puntoycoma;
+          | tk_id tk_dec tk_puntoycoma
+          | VALARRAY tk_igual VALOR tk_puntoycoma;
 
 T: L tk_ternario L tk_dospuntos L
   |L;
@@ -246,8 +254,6 @@ A:A tk_suma A
  |A tk_div A
  |A tk_exp A
  |A tk_mod A
- |A tk_inc
- |A tk_dec
  |tk_pabierto A tk_pcerrado
  |tk_resta A
  |tk_t_string
@@ -265,13 +271,15 @@ SENTENCIAS: SENTENCIAS DECLARACION
           | SENTENCIAS WHILE
           | SENTENCIAS DOWHILE
           | SENTENCIAS FOR
+          | SENTENCIAS ST
           | DECLARACION
           | ASIGNACION
           | IF
           | SWITCH
           | WHILE
           | DOWHILE
-          | FOR;
+          | FOR
+          | ST;
 
 IF: tk_if tk_pabierto L tk_pcerrado BSENTENCIAS ELSE
   | tk_if tk_pabierto L tk_pcerrado BSENTENCIAS;
@@ -306,3 +314,9 @@ FOR: tk_for tk_pabierto DECLARACION L tk_puntoycoma L tk_pcerrado BSENTENCIAS
   | tk_for tk_pabierto tk_let tk_id tk_in tk_id tk_pcerrado BSENTENCIAS
   | tk for tk_pabierto tk_id tk_of tk_id tk_pcerrado BSENTENCIAS
   | tk_for tk_pabierto tk_let tk_id tk_of tk_id tk_pcerrado BSENTENCIAS; 
+
+ST: tk_break tk_puntoycoma
+  | tk_continue tk_puntoycoma
+  | tk_return tk_puntoycoma
+  | tk_return VALOR tk_puntoycoma
+  | tk_return ASIGNACION;
