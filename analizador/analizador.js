@@ -120,7 +120,6 @@ case 19:
           console.error("Error sintactico: "+yytext+" Desconocido Inicio");
           var error = new Error("Sintactico","Encontrado: "+yytext+" Se esperaba -> DECLARACION || ASIGNACION || IF || SWITCH || WHILE || DOWHILE || FOR || console.log || graficar_ts",+yylineno+1,_$[$0].last_column)
           errores.addError(error);
-          this.$.trad = $$[$0].trad;
         
 break;
 case 20:
@@ -233,46 +232,167 @@ case 27:
 break;
 case 28:
 
-
+                                                            var nodo = new Nodo("DECLARACION","LET");
+                                                            var id = new Nodo("ID",$$[$0-3]);
+                                                            var tipo = new Nodo("TIPO",$$[$0-1]);
+                                                            nodo.addHijo(id);
+                                                            nodo.addHijo(tipo);
+                                                            this.$ = nodo;
+                                                            this.$.trad = $$[$0-4]+" "+$$[$0-3]+$$[$0-2]+" "+$$[$0-1].trad+$$[$0]+"\n";
                                                           
 break;
 case 29:
 
                                                     console.error("Error Sintactico: "+yytext+ " falto punto y coma");
+                                                    var nodo = new Nodo("DECLARACION","LET");
+                                                    var id = new Nodo("ID",$$[$0-3]);
+                                                    var tipo = new Nodo("TIPO",$$[$0-1]);
+                                                    nodo.addHijo(id);
+                                                    nodo.addHijo(tipo);
+                                                    var error = new Error("Sintactico","Encontrado: "+yytext+" Se esperaba -> ;",+yylineno+1,_$[$0-4].last_column)
+                                                    errores.addError(error);
+                                                    this.$ = nodo;
+                                                    this.$.trad = $$[$0-4]+" "+$$[$0-3]+$$[$0-2]+" "+$$[$0-1].trad+";\n";
                                                   
 break;
-case 30: case 34: case 36:
+case 30:
 
-
+                                        var nodo = new Nodo("DECLARACION","LET");
+                                        var id = new Nodo("ID",$$[$0-1]);
+                                        nodo.addHijo(id);
+                                        this.$ = nodo;
+                                        this.$.trad = $$[$0-2]+" "+$$[$0-1]+$$[$0]+"\n";
                                       
 break;
-case 31: case 35: case 37:
+case 31:
 
                                 console.error("Error Sintactico: "+yytext+ " falto punto y coma");
+                                var nodo = new Nodo("DECLARACION","LET");
+                                var id = new Nodo("ID",$$[$0-1]);
+                                var error = new Error("Sintactico","Encontrado: "+yytext+" Se esperaba -> ;",+yylineno+1,_$[$0-2].last_column)
+                                errores.addError(error);
+                                this.$ = nodo;
+                                this.$.trad = $$[$0-2]+" "+$$[$0-1]+";\n"
                               
 break;
 case 32:
 
-
+                    this.$ = $$[$0];
+                    this.$.trad = $$[$0].trad;
                   
 break;
 case 33:
 
-
-                       
+                        this.$ = $$[$0];
+                        this.$.trad = $$[$0].trad;
+                      
 break;
-case 38: case 40:
+case 34:
 
+                                        var nodo = new Nodo("INCREMENTO","");
+                                        var id = new Nodo("ID",$$[$0-2]);
+                                        nodo.addError(id);
+                                        this.$ = nodo;
+                                        this.$.trad = $$[$0-2]+$$[$0-1]+$$[$0]+"\n";
+                                      
+break;
+case 35:
 
+                                console.error("Error Sintactico: "+yytext+ " falto punto y coma");
+                                var nodo = new Nodo("INCREMENTO","");
+                                var id = new Nodo("ID",$$[$0-2]);
+                                nodo.addError(id);
+                                var error = new Error("Sintactico","Encontrado: "+yytext+" Se esperaba -> ;",+yylineno+1,_$[$0-2].last_column)
+                                errores.addError(error);
+                                this.$ = nodo;
+                                this.$.trad = $$[$0-2]+$$[$0-1]+";\n";
+                              
+break;
+case 36:
+
+                                        var nodo = new Nodo("DECREMENTO","");
+                                        var id = new Nodo("ID",$$[$0-2]);
+                                        nodo.addHijo(id);
+                                        this.$ = nodo;
+                                        this.$.trad = $$[$0-2]+$$[$0-1]+$$[$0]+"\n";
+                                      
+break;
+case 37:
+
+                                console.error("Error Sintactico: "+yytext+ " falto punto y coma");
+                                var nodo = new Nodo("DECREMENTO","");
+                                var id = new Nodo("ID",$$[$0-2]);
+                                nodo.addHijo(id);
+                                var error = new Error("Sintactico","Encontrado: "+yytext+" Se esperaba -> ;",+yylineno+1,_$[$0-2].last_column)
+                                errores.addError(error);
+                                this.$ = nodo;
+                                this.$.trad = $$[$0-2]+$$[$0-1]+";\n";
+                              
+break;
+case 38:
+
+                          console.error("Error Sintactico: "+yytext+" error de declaracion");
+                          var error = new Error("Sintactico","Encontrado: "+yytext+" Se esperaba -> declaracion con let",+yylineno+1,_$[$0-1].last_column);
+                          errores.addError(error);
                         
 break;
 case 39:
 
-
+                            console.error("Error Sintactico: "+yytext+" error de declaracion");
+                            var error = new Error("Sintactico","Encontrado: "+yytext+" Se esperaba -> declaracion con const",+yylineno+1,_$[$0-1].last_column);
+                            errores.addError(error);
                           
 break;
+case 40:
+
+                          console.error("Error Sintactico: "+yytext+" error de declaracion");
+                          var error = new Error("Sintactico","Encontrado: "+yytext+" Se esperaba -> incremento o decremento",+yylineno+1,_$[$0-1].last_column);
+                          errores.addError(error);
+                        
+break;
+case 41:
+
+                  this.$ = $$[$0];
+                  this.$.trad = yytext;
+                
+break;
+case 42: case 43:
+
+                    this.$=$$[$0];
+                    this.$.trad=$$[$0];
+                  
+break;
+case 44:
+
+                this.$=$$[$0];
+                this.$.trad=$$[$0];
+              
+break;
+case 45:
+
+              this.$=$$[$0];
+              this.$.trad=$$[$0];
+            
+break;
 case 46:
-console.error("Error sintactico: "+$$[$0]+" error tipo")
+
+              console.error("Error sintactico: "+$$[$0]+" error tipo");
+              var error = new Error("Sintactico","Encontrado: "+yytext+" Se esperaba -> un tipo de dato",+yylineno+1,_$[$0].last_column);
+              errores.addError(error);
+            
+break;
+case 47:
+ 
+              console.log($$[$0]);
+              this.$ = $$[$0]; 
+              this.$.trad = $$[$0].trad;
+            
+break;
+case 48:
+
+              this.$ = $$[$0];
+              this.$.trad = $$[$0].trad;
+            
 break;
 case 56:
 console.error("Error sintactico: "+$$[$0]+" error valor")

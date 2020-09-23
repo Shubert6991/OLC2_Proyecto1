@@ -217,7 +217,6 @@ I: I DECLARACION{
           console.error("Error sintactico: "+yytext+" Desconocido Inicio");
           var error = new Error("Sintactico","Encontrado: "+yytext+" Se esperaba -> DECLARACION || ASIGNACION || IF || SWITCH || WHILE || DOWHILE || FOR || console.log || graficar_ts",+yylineno+1,@1.last_column)
           errores.addError(error);
-          $$.trad = $1.trad;
         }; 
 
 DECLARACION: tk_let tk_id tk_dospuntos TIPOV2 tk_igual VALOR tk_puntoycoma{ 
@@ -313,54 +312,135 @@ DECLARACION: tk_let tk_id tk_dospuntos TIPOV2 tk_igual VALOR tk_puntoycoma{
                                                   $$.trad = $1+" "+$2+" "+$3+" "+$4.trad+";"+"\n";
                                                 }  
           | tk_let tk_id tk_dospuntos TIPOV2 tk_puntoycoma{
-
+                                                            var nodo = new Nodo("DECLARACION","LET");
+                                                            var id = new Nodo("ID",$2);
+                                                            var tipo = new Nodo("TIPO",$4);
+                                                            nodo.addHijo(id);
+                                                            nodo.addHijo(tipo);
+                                                            $$ = nodo;
+                                                            $$.trad = $1+" "+$2+$3+" "+$4.trad+$5+"\n";
                                                           }
           | tk_let tk_id tk_dospuntos TIPOV2 error{
                                                     console.error("Error Sintactico: "+yytext+ " falto punto y coma");
+                                                    var nodo = new Nodo("DECLARACION","LET");
+                                                    var id = new Nodo("ID",$2);
+                                                    var tipo = new Nodo("TIPO",$4);
+                                                    nodo.addHijo(id);
+                                                    nodo.addHijo(tipo);
+                                                    var error = new Error("Sintactico","Encontrado: "+yytext+" Se esperaba -> ;",+yylineno+1,@1.last_column)
+                                                    errores.addError(error);
+                                                    $$ = nodo;
+                                                    $$.trad = $1+" "+$2+$3+" "+$4.trad+";\n";
                                                   } 
           | tk_let tk_id tk_puntoycoma{
-
+                                        var nodo = new Nodo("DECLARACION","LET");
+                                        var id = new Nodo("ID",$2);
+                                        nodo.addHijo(id);
+                                        $$ = nodo;
+                                        $$.trad = $1+" "+$2+$3+"\n";
                                       }  
           | tk_let tk_id error{
                                 console.error("Error Sintactico: "+yytext+ " falto punto y coma");
+                                var nodo = new Nodo("DECLARACION","LET");
+                                var id = new Nodo("ID",$2);
+                                var error = new Error("Sintactico","Encontrado: "+yytext+" Se esperaba -> ;",+yylineno+1,@1.last_column)
+                                errores.addError(error);
+                                $$ = nodo;
+                                $$.trad = $1+" "+$2+";\n"
                               }  
           | TYPES {
-
+                    $$ = $1;
+                    $$.trad = $1.trad;
                   }
-          | DECFUNCION {
-
-                       }
+          | DECFUNCION{
+                        $$ = $1;
+                        $$.trad = $1.trad;
+                      }
           | tk_id tk_inc tk_puntoycoma{
-
+                                        var nodo = new Nodo("INCREMENTO","");
+                                        var id = new Nodo("ID",$1);
+                                        nodo.addError(id);
+                                        $$ = nodo;
+                                        $$.trad = $1+$2+$3+"\n";
                                       }
           | tk_id tk_inc error{
                                 console.error("Error Sintactico: "+yytext+ " falto punto y coma");
+                                var nodo = new Nodo("INCREMENTO","");
+                                var id = new Nodo("ID",$1);
+                                nodo.addError(id);
+                                var error = new Error("Sintactico","Encontrado: "+yytext+" Se esperaba -> ;",+yylineno+1,@1.last_column)
+                                errores.addError(error);
+                                $$ = nodo;
+                                $$.trad = $1+$2+";\n";
                               } 
           | tk_id tk_dec tk_puntoycoma{
-
+                                        var nodo = new Nodo("DECREMENTO","");
+                                        var id = new Nodo("ID",$1);
+                                        nodo.addHijo(id);
+                                        $$ = nodo;
+                                        $$.trad = $1+$2+$3+"\n";
                                       }
           | tk_id tk_dec error{
                                 console.error("Error Sintactico: "+yytext+ " falto punto y coma");
+                                var nodo = new Nodo("DECREMENTO","");
+                                var id = new Nodo("ID",$1);
+                                nodo.addHijo(id);
+                                var error = new Error("Sintactico","Encontrado: "+yytext+" Se esperaba -> ;",+yylineno+1,@1.last_column)
+                                errores.addError(error);
+                                $$ = nodo;
+                                $$.trad = $1+$2+";\n";
                               }
           | tk_let error{
-
+                          console.error("Error Sintactico: "+yytext+" error de declaracion");
+                          var error = new Error("Sintactico","Encontrado: "+yytext+" Se esperaba -> declaracion con let",+yylineno+1,@1.last_column);
+                          errores.addError(error);
                         }
           | tk_const error{
-
+                            console.error("Error Sintactico: "+yytext+" error de declaracion");
+                            var error = new Error("Sintactico","Encontrado: "+yytext+" Se esperaba -> declaracion con const",+yylineno+1,@1.last_column);
+                            errores.addError(error);
                           }
           | tk_id error {
-
+                          console.error("Error Sintactico: "+yytext+" error de declaracion");
+                          var error = new Error("Sintactico","Encontrado: "+yytext+" Se esperaba -> incremento o decremento",+yylineno+1,@1.last_column);
+                          errores.addError(error);
                         };
 
-TIPOV: tk_string
-      |tk_number
-      |tk_boolean
-      |tk_void
-      |tk_id
-      |error {console.error("Error sintactico: "+$1+" error tipo")};
+TIPOV: tk_string{
+                  $$ = $1;
+                  $$.trad = yytext;
+                }
+      |tk_number  {
+                    $$=$1;
+                    $$.trad=$1;
+                  }
+      |tk_boolean {
+                    $$=$1;
+                    $$.trad=$1;
+                  }
+      |tk_void{
+                $$=$1;
+                $$.trad=$1;
+              }
+      |tk_id{
+              $$=$1;
+              $$.trad=$1;
+            }
+      |error{
+              console.error("Error sintactico: "+$1+" error tipo");
+              var error = new Error("Sintactico","Encontrado: "+yytext+" Se esperaba -> un tipo de dato",+yylineno+1,@1.last_column);
+              errores.addError(error);
+            };
 
-TIPOV2:TIPOV
-      |ARRAY;
+TIPOV2:TIPOV{ 
+              console.log($1);
+              $$ = $1; 
+              $$.trad = $1.trad;
+            }
+      |ARRAY{
+              $$ = $1;
+              $$.trad = $1.trad;
+            };
 
 VALOR: ASIGTYPE
       |VARRAY
