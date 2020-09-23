@@ -100,6 +100,8 @@
 "return"                        %{ console.log("transferencia:"+yytext);  return 'tk_return'; %}
 
 "function"                      %{ console.log("funcion:"+yytext);  return 'tk_fn'; %}
+"console.log"                   %{ console.log("funcion:"+yytext);  return 'tk_console'; %}
+"graficar_ts"                   %{ console.log("funcion:"+yytext);  return 'tk_graficar'; %}
 
 "**"                            %{ console.log("arimetica:"+yytext); return 'tk_exp'; %}
 "++"                            %{ console.log("arimetica:"+yytext); return 'tk_inc'; %}
@@ -142,7 +144,7 @@
 
 <<EOF>>     										%{  return 'EOF';  %}
 
-.           										%{  console.log("error:"+yytext); %}
+.           										%{  console.error("Error Lexico:"+yytext); %}
 
 /lex
 
@@ -167,36 +169,49 @@
 S: I EOF 
   |EOF;
 
-I: I DECLARACION
+I: I DECLARACION 
   |I ASIGNACION
   |I IF
   |I SWITCH
   |I WHILE
   |I DOWHILE
   |I FOR
-  |DECLARACION
+  |I FESP
+  |DECLARACION 
   |ASIGNACION
   |IF
   |SWITCH
   |WHILE
   |DOWHILE
-  |FOR;
+  |FOR
+  |FESP
+  |error {console.error("Error sintactico: "+yytext+" Desconocido Inicio")}; 
 
-DECLARACION: tk_let tk_id tk_dospuntos TIPOV2 tk_igual VALOR tk_puntoycoma
-          | tk_const tk_id tk_dospuntos TIPOV2 tk_igual VALOR tk_puntoycoma
-          | tk_let tk_id tk_igual VALOR tk_puntoycoma
-          | tk_const tk_id tk_igual VALOR tk_puntoycoma
-          | tk_let tk_id tk_dospuntos TIPOV2 tk_puntoycoma
-          | tk_let tk_id tk_puntoycoma
-          | TYPES
+DECLARACION: tk_let tk_id tk_dospuntos TIPOV2 tk_igual VALOR tk_puntoycoma 
+          | tk_let tk_id tk_dospuntos TIPOV2 tk_igual VALOR error {console.error("Error Sintactico: "+yytext+ " falto punto y coma");}  
+          | tk_const tk_id tk_dospuntos TIPOV2 tk_igual VALOR tk_puntoycoma 
+          | tk_const tk_id tk_dospuntos TIPOV2 tk_igual VALOR error {console.error("Error Sintactico: "+yytext+ " falto punto y coma");}  
+          | tk_let tk_id tk_igual VALOR tk_puntoycoma 
+          | tk_let tk_id tk_igual VALOR error {console.error("Error Sintactico: "+yytext+ " falto punto y coma");} 
+          | tk_const tk_id tk_igual VALOR tk_puntoycoma 
+          | tk_const tk_id tk_igual VALOR error {console.error("Error Sintactico: "+yytext+ " falto punto y coma");} 
+          | tk_let tk_id tk_dospuntos TIPOV2 tk_puntoycoma 
+          | tk_let tk_id tk_dospuntos TIPOV2 error {console.error("Error Sintactico: "+yytext+ " falto punto y coma");} 
+          | tk_let tk_id tk_puntoycoma  
+          | tk_let tk_id error {console.error("Error Sintactico: "+yytext+ " falto punto y coma");}  
+          | TYPES 
           | DECFUNCION
-          | error;
+          | tk_id tk_inc tk_puntoycoma
+          | tk_id tk_inc error {console.error("Error Sintactico: "+yytext+ " falto punto y coma");} 
+          | tk_id tk_dec tk_puntoycoma
+          | tk_id tk_dec error {console.error("Error Sintactico: "+yytext+ " falto punto y coma");} ;
 
 TIPOV: tk_string
       |tk_number
       |tk_boolean
       |tk_void
-      |tk_id;
+      |tk_id
+      |error {console.error("Error sintactico: "+$1+" error tipo")};
 
 TIPOV2:TIPOV
       |ARRAY;
@@ -205,9 +220,13 @@ VALOR: ASIGTYPE
       |VARRAY
       |T
       |VALARRAY
-      |VALFUNCION;
+      |VALFUNCION
+      |tk_id tk_inc
+      |tk_id tk_dec
+      |error {console.error("Error sintactico: "+$1+" error valor")};
 
-TYPES: tk_type tk_id tk_llavea LTYPE tk_llavec tk_puntoycoma;
+TYPES: tk_type tk_id tk_llavea LTYPE tk_llavec tk_puntoycoma
+     | tk_type tk_id tk_llavea LTYPE tk_llavec error {console.error("Error sintantico "+ $6+" error types")};
 
 LTYPE: LTYPE TIPOV2 tk_dospuntos tk_id tk_puntoycoma
       | TIPOV2 tk_dospuntos tk_id tk_puntoycoma;
@@ -232,9 +251,9 @@ LVALARRAY: LVALARRAY tk_coma VALOR
 VALARRAY: tk_id tk_llaveca tk_t_entero tk_llavecc;
 
 ASIGNACION: tk_id tk_igual VALOR tk_puntoycoma
-          | tk_id tk_inc tk_puntoycoma
-          | tk_id tk_dec tk_puntoycoma
-          | VALARRAY tk_igual VALOR tk_puntoycoma;
+          | tk_id tk_igual VALOR error {console.log("Error Sintactico "+$4+"Error falto punto y coma")}
+          | VALARRAY tk_igual VALOR tk_puntoycoma
+          | VALARRAY tk_igual VALOR error {console.log("Error Sintactico "+$4+"Error falto punto y coma")};
 
 T: L tk_ternario L tk_dospuntos L
   |L;
@@ -277,6 +296,7 @@ SENTENCIAS: SENTENCIAS DECLARACION
           | SENTENCIAS DOWHILE
           | SENTENCIAS FOR
           | SENTENCIAS ST
+          | SENTENCIAS FESP
           | DECLARACION
           | ASIGNACION
           | IF
@@ -284,19 +304,25 @@ SENTENCIAS: SENTENCIAS DECLARACION
           | WHILE
           | DOWHILE
           | FOR
-          | ST;
+          | ST
+          | FESP
+          | error  {console.error("Error sintactico: "+yytext+" Desconocido Sentencias")};
 
 IF: tk_if tk_pabierto L tk_pcerrado BSENTENCIAS ELSE
-  | tk_if tk_pabierto L tk_pcerrado BSENTENCIAS;
+  | tk_if tk_pabierto L tk_pcerrado BSENTENCIAS
+  | tk_if error BSENTENCIAS ELSE {console.error("Error Sintactico: "+$2+" Error parametros en if")}
+  | tk_if error BSENTENCIAS {console.error("Error Sintactico: "+$2+" Error parametros en if")};
 
 ELSE: tk_else BSENTENCIAS
     | tk_else IF;
 
-SWITCH: tk_switch tk_pabierto L tk_pcerrado BSWITCH;
+SWITCH: tk_switch tk_pabierto L tk_pcerrado BSWITCH
+      | tk_switch error BSWITCH { console.error("Error sintactico: "+$2+" Error parametros en switch") };
 
 BSWITCH: tk_llavea CASE DEFAULT tk_llavec
       |tk_llavea CASE tk_llavec
-      |tk_llavea tk_llavec;
+      |tk_llavea tk_llavec
+      |tk_llavea error tk_llavec { console.error("Error Sintactico: "+$2+" Error Cases en switch")};
 
 CASE: CASE tk_case L tk_dospuntos SENTENCIAS
     | CASE tk_case L tk_dospuntos BSENTENCIAS
@@ -309,25 +335,33 @@ DEFAULT: tk_default tk_dospuntos SENTENCIAS
         |tk_default tk_dospuntos BSENTENCIAS
         |tk_default tk_dospuntos;
 
-WHILE: tk_while tk_pabierto L tk_pcerrado BSENTENCIAS;
+WHILE: tk_while tk_pabierto L tk_pcerrado BSENTENCIAS
+      |tk_while error BSENTENCIAS {console.error("Error Sintactico: "+$2+" Error parametros while")};
 
-DOWHILE: tk_do BSENTENCIAS tk_while tk_pabierto L tk_pcerrado;
+DOWHILE: tk_do BSENTENCIAS tk_while tk_pabierto L tk_pcerrado
+       | tk_do BSENTENCIAS tk_while error {console.error("Error Sintactico: "+$2+" Error parametros doWhile")};
 
 FOR: tk_for tk_pabierto DECLARACION L tk_puntoycoma L tk_pcerrado BSENTENCIAS
   | tk_for tk_pabierto ASIGNACION L tk_puntoycoma L tk_pcerrado BSENTENCIAS
   | tk_for tk_pabierto tk_id tk_in tk_id tk_pcerrado BSENTENCIAS
   | tk_for tk_pabierto tk_let tk_id tk_in tk_id tk_pcerrado BSENTENCIAS
   | tk for tk_pabierto tk_id tk_of tk_id tk_pcerrado BSENTENCIAS
-  | tk_for tk_pabierto tk_let tk_id tk_of tk_id tk_pcerrado BSENTENCIAS; 
+  | tk_for tk_pabierto tk_let tk_id tk_of tk_id tk_pcerrado BSENTENCIAS
+  | tk_for error BSENTENCIAS {console.error("Error Sintactico: "+$2+" Error parametros for")}; 
 
 ST: tk_break tk_puntoycoma
+  | tk_break error {console.error("Error Sintactico: "+$2+" falta punto y coma")}
   | tk_continue tk_puntoycoma
+  | tk_continue error {console.error("Error Sintactico: "+$2+" falta punto y coma")}
   | tk_return tk_puntoycoma
+  | tk_return error {console.error("Error Sintactico: "+$2+" falta punto y coma")}
   | tk_return VALOR tk_puntoycoma
+  | tk_return VALOR error {console.error("Error Sintactico: "+$3+" falta punto y coma")}
   | tk_return ASIGNACION;
 
 DECFUNCION: tk_fn tk_id tk_pabierto tk_pcerrado tk_dospuntos TIPOV2 BSENTENCIAS
-          | tk_fn tk_id tk_pabierto PARFUNC tk_pcerrado tk_dospuntos TIPOV2 BSENTENCIAS;
+          | tk_fn tk_id tk_pabierto PARFUNC tk_pcerrado tk_dospuntos TIPOV2 BSENTENCIAS
+          | tk_fn error BSENTENCIAS{console.error("Error Sintactico: "+$2+" Error parametros funciones")};
 
 VALFUNCION: tk_id tk_pabierto tk_pcerrado 
           | tk_id tk_pabierto LPAR tk_pcerrado;
@@ -337,3 +371,8 @@ PARFUNC: PARFUNC tk_coma tk_id tk_dospuntos TIPOV2
         
 LPAR: LPAR tk_coma VALOR
     | VALOR;
+
+FESP: tk_console tk_pabierto VALOR tk_pcerrado tk_puntoycoma
+    | tk_console tk_pabierto VALOR tk_pcerrado error {console.error("Error Sintactico: "+$5+" falta punto y coma")}
+    | tk_graficar tk_pabierto tk_pcerrado tk_puntoycoma
+    | tk_graficar tk_pabierto tk_pcerrado error {console.error("Error Sintactico: "+$4+" falta punto y coma")};
