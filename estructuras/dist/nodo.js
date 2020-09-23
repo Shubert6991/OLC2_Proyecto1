@@ -1,6 +1,5 @@
 "use strict";
 exports.__esModule = true;
-exports.Nodo = void 0;
 var Nodo = /** @class */ (function () {
     function Nodo(tipo, nombre) {
         this.tipo = tipo;
@@ -22,9 +21,6 @@ var Nodo = /** @class */ (function () {
     Nodo.prototype.addHijo = function (nodo) {
         this.listaNodos.push(nodo);
     };
-    Nodo.prototype.graficar = function () {
-        console.log(this.tipo);
-    };
     return Nodo;
 }());
-exports.Nodo = Nodo;
+exports["default"] = Nodo;
