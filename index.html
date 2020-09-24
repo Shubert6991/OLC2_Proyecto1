@@ -6,7 +6,7 @@
   <title>Proyecto 1 -OLC2-</title>
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='libraries/Bootstrap/css/bootstrap.min.css'>
-  
+  <link rel='stylesheet' type='text/css' media='screen' href='index.css'>
 </head>
 <body>
   <nav class="navbar navbar-dark bg-dark">
@@ -17,7 +17,7 @@
 
   <div class="container">
     <!-- row for text editors -->
-    <div class="row">
+    <div class="row" id="home">
       <!-- col for entered text -->
       <div class="col">
         <div class="card">
@@ -35,7 +35,7 @@
         <div class="card">
           <div class="card-header bg-light">
             <h2 class="float-left">Result</h2>
-            <button type="button" class="btn btn-primary float-right" id="reportesBtn">Reportes</button>
+            <button type="button" class="btn btn-primary float-right" id="reportesBtn">Mostrar Reportes</button>
           </div>
           <div class="card-body">
             <textarea class="border border-primary" rows="20" readonly="true" style="width: 100%;" id="area_result"></textarea>
@@ -62,9 +62,22 @@
         </div>
       </div>
     </div>
+  
+  <!-- row for reports -->
+  <div class="row" id="rowReportes" style="display: none;">
+    <div class="col">
+      <div class="card">
+        <div class="card-header bg-light">
+          <h2 class="float-left">Reportes</h2>
+          <button type="button" class="btn btn-primary float-right" id="regresarBtn">Regresar</button>
+        </div>
+        <div class="card-body" id="reportes">
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div id="pruebas"></div>
+</div>
   <!-- librerias -->
   <script src='libraries/Jquery/jquery-3.5.1.min.js'></script>
   <script src='libraries/Bootstrap/js/bootstrap.min.js'></script>

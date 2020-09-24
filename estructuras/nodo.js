@@ -1,7 +1,7 @@
 class Nodo {
     constructor(tipo,nombre){
         this.tipo = tipo;
-        this.nodo = nombre;
+        this.nombre = nombre;
         this.listaNodos = new Array();
     }
     getTipo() {
