@@ -8,6 +8,7 @@ const analizarTexto = () => {
     //imprimir traduccion
     escribirTraduccion(result.traduccion);
     //reporte lista de errores
+    reportErrores(result.listaErrores);
     //reporte ast
     //ejecutar ast,pasar lista errores
   } catch (error) {
@@ -22,7 +23,25 @@ const escribirTraduccion = (texto) => {
 }
 
 //funcion para crear reporte de errores
+const reportErrores = (lista) => {
+  // lista.forEach(element => {
+  //   console.log(element)
+  // });
+  let viz = new Viz();
 
+  viz.renderSVGElement('digraph { a -> b }')
+  .then(function(element) {
+    console.log("diagrama");
+    document.getElementById("pruebas").appendChild(element);
+    // document.body.appendChild(element);
+  })
+  .catch(error => {
+    // Create a new Viz instance (@see Caveats page for more info)
+    viz = new Viz();
+    // Possibly display the error
+    console.error(error);
+  });
+}
 
 //funcion para boton reportes
 const descargarReportes = () => {

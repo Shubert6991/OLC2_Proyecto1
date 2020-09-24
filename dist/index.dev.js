@@ -11,7 +11,8 @@ var analizarTexto = function analizarTexto() {
     console.log(result); //imprimir traduccion
 
     escribirTraduccion(result.traduccion); //reporte lista de errores
-    //reporte ast
+
+    reportErrores(result.listaErrores); //reporte ast
     //ejecutar ast,pasar lista errores
   } catch (error) {
     console.log(error);
@@ -23,7 +24,23 @@ var escribirTraduccion = function escribirTraduccion(texto) {
   var area = document.getElementById("area_result");
   area.value = texto;
 }; //funcion para crear reporte de errores
-//funcion para boton reportes
+
+
+var reportErrores = function reportErrores(lista) {
+  // lista.forEach(element => {
+  //   console.log(element)
+  // });
+  var viz = new Viz();
+  viz.renderSVGElement('digraph { a -> b }').then(function (element) {
+    console.log("diagrama");
+    document.getElementById("pruebas").appendChild(element); // document.body.appendChild(element);
+  })["catch"](function (error) {
+    // Create a new Viz instance (@see Caveats page for more info)
+    viz = new Viz(); // Possibly display the error
+
+    console.error(error);
+  });
+}; //funcion para boton reportes
 
 
 var descargarReportes = function descargarReportes() {
