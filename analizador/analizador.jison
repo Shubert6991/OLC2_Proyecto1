@@ -217,6 +217,8 @@ I: I DECLARACION{
           console.error("Error sintactico: "+yytext+" Desconocido Inicio");
           var error = new Error("Sintactico","Encontrado: "+yytext+" Se esperaba -> DECLARACION || ASIGNACION || IF || SWITCH || WHILE || DOWHILE || FOR || console.log || graficar_ts",+yylineno+1,@1.last_column)
           errores.addError(error);
+          $$ = new Nodo("","")
+          $$.trad = "";
         }; 
 
 DECLARACION: tk_let tk_id tk_dospuntos TIPOV2 tk_igual VALOR tk_puntoycoma{ 
@@ -344,7 +346,7 @@ DECLARACION: tk_let tk_id tk_dospuntos TIPOV2 tk_igual VALOR tk_puntoycoma{
                         $$.trad = $1.trad;
                       }
           | tk_id tk_inc tk_puntoycoma{
-                                        var nodo = new Nodo("INCREMENTO","");
+                                        var nodo = new Nodo("INCREMENTO","INCREMENTO");
                                         var id = new Nodo("ID",$1);
                                         nodo.addError(id);
                                         $$ = nodo;
@@ -352,16 +354,16 @@ DECLARACION: tk_let tk_id tk_dospuntos TIPOV2 tk_igual VALOR tk_puntoycoma{
                                       }
           | tk_id tk_inc error{
                                 console.error("Error Sintactico: "+yytext+ " falto punto y coma");
-                                var nodo = new Nodo("INCREMENTO","");
-                                var id = new Nodo("ID",$1);
-                                nodo.addError(id);
                                 var error = new Error("Sintactico","Encontrado: "+yytext+" Se esperaba -> ;",+yylineno+1,@1.last_column)
                                 errores.addError(error);
+                                var nodo = new Nodo("INCREMENTO","INCREMENTO");
+                                var id = new Nodo("ID",$1);
+                                nodo.addError(id);
                                 $$ = nodo;
                                 $$.trad = $1+$2+";\n";
                               } 
           | tk_id tk_dec tk_puntoycoma{
-                                        var nodo = new Nodo("DECREMENTO","");
+                                        var nodo = new Nodo("DECREMENTO","DECREMENTO");
                                         var id = new Nodo("ID",$1);
                                         nodo.addHijo(id);
                                         $$ = nodo;
@@ -369,11 +371,11 @@ DECLARACION: tk_let tk_id tk_dospuntos TIPOV2 tk_igual VALOR tk_puntoycoma{
                                       }
           | tk_id tk_dec error{
                                 console.error("Error Sintactico: "+yytext+ " falto punto y coma");
-                                var nodo = new Nodo("DECREMENTO","");
-                                var id = new Nodo("ID",$1);
-                                nodo.addHijo(id);
                                 var error = new Error("Sintactico","Encontrado: "+yytext+" Se esperaba -> ;",+yylineno+1,@1.last_column)
                                 errores.addError(error);
+                                var nodo = new Nodo("DECREMENTO","DECREMENTO");
+                                var id = new Nodo("ID",$1);
+                                nodo.addHijo(id);
                                 $$ = nodo;
                                 $$.trad = $1+$2+";\n";
                               }
@@ -381,16 +383,24 @@ DECLARACION: tk_let tk_id tk_dospuntos TIPOV2 tk_igual VALOR tk_puntoycoma{
                           console.error("Error Sintactico: "+yytext+" error de declaracion");
                           var error = new Error("Sintactico","Encontrado: "+yytext+" Se esperaba -> declaracion con let",+yylineno+1,@1.last_column);
                           errores.addError(error);
+                          $$ = new Nodo("","")
+                          $$.trad = "";
                         }
           | tk_const error{
                             console.error("Error Sintactico: "+yytext+" error de declaracion");
                             var error = new Error("Sintactico","Encontrado: "+yytext+" Se esperaba -> declaracion con const",+yylineno+1,@1.last_column);
                             errores.addError(error);
+                            $$.trad = "";
+                            $$ = new Nodo("","")
+                            $$.trad = "";
                           }
           | tk_id error {
                           console.error("Error Sintactico: "+yytext+" error de declaracion");
                           var error = new Error("Sintactico","Encontrado: "+yytext+" Se esperaba -> incremento o decremento",+yylineno+1,@1.last_column);
                           errores.addError(error);
+                          $$.trad = "";
+                          $$ = new Nodo("","")
+                          $$.trad = "";
                         };
 
 TIPOV: tk_string{
@@ -921,10 +931,15 @@ DECFUNCION: tk_fn tk_id tk_pabierto tk_pcerrado tk_dospuntos TIPOV2 BSENTENCIAS 
                                                                                           $$ = node;
                                                                                           $$.trad = $1+" "+$2+$3+$4.trad+$5+$6+" "+$7.trad+$8.trad;
                                                                                         }
-          | tk_fn error BSENTENCIAS {
+          | tk_fn tk_id error BSENTENCIAS {
                                       console.error("Error Sintactico: "+yytext+" Error parametros funciones");
                                       var error = new Error("Sintactico","Encontrado: "+yytext+" Se esperaba -> incremento o decremento",+yylineno+1,@1.last_column);
                                       errores.addError(error);
+                                      var nodo = new Nodo("FUNCION","FUNCION");
+                                      var id = new Nodo("ID",$2);
+                                      nodo.addHijo(id);
+                                      $$ = nodo;
+                                      $$.trad = $1+" "+$2+"():void "+$4.trad;
                                     };
 
 VALFUNCION: tk_id tk_pabierto tk_pcerrado 

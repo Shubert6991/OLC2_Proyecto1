@@ -10,8 +10,9 @@ var analizarTexto = function analizarTexto() {
     var result = analizador.parse(texto);
     console.log(result); //imprimir traduccion
 
-    console.log(result.traduccion);
-    escribirTraduccion(result.traduccion); //ejecutar ast,pasar lista errores
+    escribirTraduccion(result.traduccion); //reporte lista de errores
+    //reporte ast
+    //ejecutar ast,pasar lista errores
   } catch (error) {
     console.log(error);
   }
@@ -21,7 +22,13 @@ var analizarTexto = function analizarTexto() {
 var escribirTraduccion = function escribirTraduccion(texto) {
   var area = document.getElementById("area_result");
   area.value = texto;
-}; //funcion para boton reportes
+}; //funcion para crear reporte de errores
+//funcion para boton reportes
 
 
+var descargarReportes = function descargarReportes() {
+  console.log("descargando reportes...");
+};
+
+document.getElementById("reportesBtn").addEventListener("click", descargarReportes);
 document.getElementById("analizarBtn").addEventListener("click", analizarTexto);
