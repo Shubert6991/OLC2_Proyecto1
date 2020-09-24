@@ -67,7 +67,7 @@ var reportErrores = function reportErrores(lista) {
 var reporteAST = function reporteAST(ast) {
   console.log(ast);
   var div = document.createElement("div");
-  div.className = "row";
+  div.className = "div-reporte";
   var h3 = document.createElement("h3");
   h3.innerHTML = "Arbol de Analisis Sintactico(AST)";
   var result = recorrer(ast);
@@ -81,8 +81,9 @@ var reporteAST = function reporteAST(ast) {
   cadena += "}";
   var viz = new Viz();
   console.log(cadena);
-  viz.renderSVGElement(cadena).then(function (element) {
+  viz.renderImageElement(cadena).then(function (element) {
     div.appendChild(h3);
+    element.className = "img-fluid";
     div.appendChild(element);
     document.getElementById("reportes").appendChild(div); // document.body.appendChild(element);
   })["catch"](function (error) {
