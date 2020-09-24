@@ -175,7 +175,7 @@
 %locations
 /*-------------GRAMATICA------------*/
 S: I EOF{
-          var nodo = new Nodo("S","S")
+          var nodo = new Nodo("S","S",+yylineno+1,+@1.first_column+1)
           nodo.addHijo($1)
           var texto = ""
           if($1.trad){
@@ -186,13 +186,13 @@ S: I EOF{
           return trad;
         }
   |EOF{
-        var trad = new Traduccion(new Nodo("S","S"),"",errores.getLista()); 
+        var trad = new Traduccion(new Nodo("S","S",+yylineno+1,+@1.first_column+1),"",errores.getLista()); 
         errores.limpiar();
         return trad;
       };
 
 I: I DECLARACION{
-                  var nodo = new Nodo("I","I");
+                  var nodo = new Nodo("I","I",+yylineno+1,+@1.first_column+1);
                   nodo.addHijo($1);
                   nodo.addHijo($2);
                   $$ = nodo;
@@ -214,16 +214,16 @@ I: I DECLARACION{
   |FOR
   |FESP
   |error{
-          console.error("Error sintactico: "+yytext+" Desconocido Inicio");
-          var error = new Error("Sintactico","Encontrado: "+yytext+" Se esperaba -> DECLARACION || ASIGNACION || IF || SWITCH || WHILE || DOWHILE || FOR || console.log || graficar_ts",+yylineno+1,@1.last_column)
+          console.error("Error sintactico: "+$1+" Desconocido Inicio");
+          var error = new Error("Sintactico","Encontrado: "+$1+" Se esperaba -> DECLARACION || ASIGNACION || IF || SWITCH || WHILE || DOWHILE || FOR || console.log || graficar_ts",+yylineno+1,+@1.last_column+1)
           errores.addError(error);
           $$ = new Nodo("","")
           $$.trad = "";
         }; 
 
 DECLARACION: tk_let tk_id tk_dospuntos TIPOV2 tk_igual VALOR tk_puntoycoma{ 
-                                                                            var nodo = new Nodo("DECLARACION","LET");
-                                                                            var id = new Nodo("ID",$2);
+                                                                            var nodo = new Nodo("DECLARACION","LET",+yylineno+1,+@1.first_column+1);
+                                                                            var id = new Nodo("ID",$2+yylineno+1,+@2.first_column+1);
                                                                             nodo.addHijo(id);
                                                                             nodo.addHijo($4); //tipo
                                                                             nodo.addHijo($6); //valor
@@ -231,11 +231,11 @@ DECLARACION: tk_let tk_id tk_dospuntos TIPOV2 tk_igual VALOR tk_puntoycoma{
                                                                             $$.trad = $1+" "+$2+$3+" "+$4.trad+" "+$5+" "+$6.trad+$7+"\n";
                                                                           }
           | tk_let tk_id tk_dospuntos TIPOV2 tk_igual VALOR error {
-                                                                    console.error("Error Sintactico: "+yytext+ " falto punto y coma");
-                                                                    var error = new Error("Sintactico","Encontrado: "+yytext+" Se esperaba -> ;",+yylineno+1,@1.last_column)
+                                                                    console.error("Error Sintactico: "+$7+ " falto punto y coma");
+                                                                    var error = new Error("Sintactico","Encontrado: \""+$7+"\" Se esperaba -> ;",+yylineno+1,+@1.last_column+1)
                                                                     errores.addError(error);
-                                                                    var nodo = new Nodo("DECLARACION","LET");
-                                                                    var id = new Nodo("ID",$2);
+                                                                    var nodo = new Nodo("DECLARACION","LET",+yylineno+1,+@1.first_column+1);
+                                                                    var id = new Nodo("ID",$2,+yylineno+1,+@2.first_column+1);
                                                                     nodo.addHijo(id);
                                                                     nodo.addHijo($4); //tipo
                                                                     nodo.addHijo($6); //valor

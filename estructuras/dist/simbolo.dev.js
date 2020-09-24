@@ -6,23 +6,24 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var Nodo =
+var Simbolo =
 /*#__PURE__*/
 function () {
-  function Nodo(tipo, nombre, fila, col) {
-    _classCallCheck(this, Nodo);
+  function Simbolo(tdec, nombre, tipo, ambito, fila, columna) {
+    _classCallCheck(this, Simbolo);
 
-    this.tipo = tipo;
+    this.tdec = tdec;
     this.nombre = nombre;
-    this.listaNodos = new Array();
+    this.tipo = tipo;
+    this.ambito = ambito;
     this.fila = fila;
-    this.col = col;
+    this.columna = columna;
   }
 
-  _createClass(Nodo, [{
-    key: "getTipo",
-    value: function getTipo() {
-      return this.tipo;
+  _createClass(Simbolo, [{
+    key: "getTipoDec",
+    value: function getTipoDec() {
+      return this.tdec;
     }
   }, {
     key: "getNombre",
@@ -30,9 +31,14 @@ function () {
       return this.nombre;
     }
   }, {
-    key: "getListaNodos",
-    value: function getListaNodos() {
-      return this.listaNodos;
+    key: "getTipo",
+    value: function getTipo() {
+      return this.tipo;
+    }
+  }, {
+    key: "getAmbito",
+    value: function getAmbito() {
+      return this.ambito;
     }
   }, {
     key: "getFila",
@@ -42,19 +48,9 @@ function () {
   }, {
     key: "getColumna",
     value: function getColumna() {
-      return this.col;
-    }
-  }, {
-    key: "hijosCount",
-    value: function hijosCount() {
-      return this.listaNodos.length;
-    }
-  }, {
-    key: "addHijo",
-    value: function addHijo(nodo) {
-      this.listaNodos.push(nodo);
+      return this.columna;
     }
   }]);
 
-  return Nodo;
+  return Simbolo;
 }();

@@ -85,7 +85,7 @@ var $0 = $$.length - 1;
 switch (yystate) {
 case 1:
 
-          var nodo = new Nodo("S","S")
+          var nodo = new Nodo("S","S",+yylineno+1,+_$[$0-1].first_column+1)
           nodo.addHijo($$[$0-1])
           var texto = ""
           if($$[$0-1].trad){
@@ -98,14 +98,14 @@ case 1:
 break;
 case 2:
 
-        var trad = new Traduccion(new Nodo("S","S"),"",errores.getLista()); 
+        var trad = new Traduccion(new Nodo("S","S",+yylineno+1,+_$[$0].first_column+1),"",errores.getLista()); 
         errores.limpiar();
         return trad;
       
 break;
 case 3:
 
-                  var nodo = new Nodo("I","I");
+                  var nodo = new Nodo("I","I",+yylineno+1,+_$[$0-1].first_column+1);
                   nodo.addHijo($$[$0-1]);
                   nodo.addHijo($$[$0]);
                   this.$ = nodo;
@@ -117,8 +117,8 @@ case 11:
 break;
 case 19:
 
-          console.error("Error sintactico: "+yytext+" Desconocido Inicio");
-          var error = new Error("Sintactico","Encontrado: "+yytext+" Se esperaba -> DECLARACION || ASIGNACION || IF || SWITCH || WHILE || DOWHILE || FOR || console.log || graficar_ts",+yylineno+1,_$[$0].last_column)
+          console.error("Error sintactico: "+$$[$0]+" Desconocido Inicio");
+          var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> DECLARACION || ASIGNACION || IF || SWITCH || WHILE || DOWHILE || FOR || console.log || graficar_ts",+yylineno+1,+_$[$0].last_column+1)
           errores.addError(error);
           this.$ = new Nodo("","")
           this.$.trad = "";
@@ -126,8 +126,8 @@ case 19:
 break;
 case 20:
  
-                                                                            var nodo = new Nodo("DECLARACION","LET");
-                                                                            var id = new Nodo("ID",$$[$0-5]);
+                                                                            var nodo = new Nodo("DECLARACION","LET",+yylineno+1,+_$[$0-6].first_column+1);
+                                                                            var id = new Nodo("ID",$$[$0-5]+yylineno+1,+_$[$0-5].first_column+1);
                                                                             nodo.addHijo(id);
                                                                             nodo.addHijo($$[$0-3]); //tipo
                                                                             nodo.addHijo($$[$0-1]); //valor
@@ -137,11 +137,11 @@ case 20:
 break;
 case 21:
 
-                                                                    console.error("Error Sintactico: "+yytext+ " falto punto y coma");
-                                                                    var error = new Error("Sintactico","Encontrado: "+yytext+" Se esperaba -> ;",+yylineno+1,_$[$0-6].last_column)
+                                                                    console.error("Error Sintactico: "+$$[$0]+ " falto punto y coma");
+                                                                    var error = new Error("Sintactico","Encontrado: \""+$$[$0]+"\" Se esperaba -> ;",+yylineno+1,+_$[$0-6].last_column+1)
                                                                     errores.addError(error);
-                                                                    var nodo = new Nodo("DECLARACION","LET");
-                                                                    var id = new Nodo("ID",$$[$0-5]);
+                                                                    var nodo = new Nodo("DECLARACION","LET",+yylineno+1,+_$[$0-6].first_column+1);
+                                                                    var id = new Nodo("ID",$$[$0-5],+yylineno+1,+_$[$0-5].first_column+1);
                                                                     nodo.addHijo(id);
                                                                     nodo.addHijo($$[$0-3]); //tipo
                                                                     nodo.addHijo($$[$0-1]); //valor
