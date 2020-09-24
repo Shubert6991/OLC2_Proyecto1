@@ -67,6 +67,7 @@ var reportErrores = function reportErrores(lista) {
 var reporteAST = function reporteAST(ast) {
   console.log(ast);
   var div = document.createElement("div");
+  div.className = "row";
   var h3 = document.createElement("h3");
   h3.innerHTML = "Arbol de Analisis Sintactico(AST)";
   var result = recorrer(ast);
