@@ -9,12 +9,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 var Simbolo =
 /*#__PURE__*/
 function () {
-  function Simbolo(tdec, nombre, tipo, ambito, fila, columna) {
+  function Simbolo(tdec, nombre, tipo, valor, ambito, fila, columna) {
     _classCallCheck(this, Simbolo);
 
     this.tdec = tdec;
     this.nombre = nombre;
     this.tipo = tipo;
+    this.valor = valor;
     this.ambito = ambito;
     this.fila = fila;
     this.columna = columna;
@@ -34,6 +35,11 @@ function () {
     key: "getTipo",
     value: function getTipo() {
       return this.tipo;
+    }
+  }, {
+    key: "getValor",
+    value: function getValor() {
+      return this.valor;
     }
   }, {
     key: "getAmbito",

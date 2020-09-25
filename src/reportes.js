@@ -122,6 +122,8 @@ const reportSimbolos = (lista) => {
   cel = row.insertCell();
   cel.outerHTML = "<th>Tipo</th>";
   cel = row.insertCell();
+  cel.outerHTML = "<th>Valor</th>";
+  cel = row.insertCell();
   cel.outerHTML = "<th>Ambito</th>";
   cel = row.insertCell();
   cel.outerHTML = "<th>Fila</th>";
@@ -136,6 +138,8 @@ const reportSimbolos = (lista) => {
     cel.innerHTML = element.nombre;
     cel = row.insertCell();
     cel.innerHTML = element.tipo;
+    cel = row.insertCell();
+    cel.innerHTML = element.valor;
     cel = row.insertCell();
     cel.innerHTML = element.ambito;
     cel = row.insertCell();
