@@ -247,6 +247,7 @@ I: I DECLARACION{
             $$ = nodo;
             $$.trad = $1.trad + $2.trad;
           }
+  |I FUNCION {$2.func = "test";}
   |DECLARACION { $$ = $1; $$.trad = $1.trad; }
   |ASIGNACION { $$ = $1; $$.trad = $1.trad; }
   |IF { $$ = $1; $$.trad = $1.trad; }
@@ -255,6 +256,7 @@ I: I DECLARACION{
   |DOWHILE { $$ = $1; $$.trad = $1.trad; }
   |FOR { $$ = $1; $$.trad = $1.trad; }
   |FESP { $$ = $1; $$.trad = $1.trad; }
+  |FUNCION {$1.func = "test"; console.log("ENTRO A FUNCION!!!");}
   |error{
           console.error("Error sintactico: "+$1+" Desconocido Inicio");
           var error = new Error("Sintactico","Encontrado: "+$1+" Se esperaba -> DECLARACION || ASIGNACION || IF || SWITCH || WHILE || DOWHILE || FOR || console.log || graficar_ts",+yylineno+1,+@1.last_column+1)
@@ -389,10 +391,6 @@ DECLARACION: tk_let tk_id tk_dospuntos TIPOV2 tk_igual VALOR tk_puntoycoma{
                     $$ = $1;
                     $$.trad = $1.trad;
                   }
-          | DECFUNCION{
-                        $$ = $1;
-                        $$.trad = $1.trad;
-                      }
           | tk_id tk_inc tk_puntoycoma{
                                         var nodo = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@1.first_column+1);
                                         var id = new Nodo("ID",$1,+yylineno+1,+@2.first_column+1);
@@ -946,6 +944,7 @@ BSENTENCIAS: tk_llavea SENTENCIAS tk_llavec {
                                               $$ = $2;
                                               $$.trad = $1+"\n"+$2.trad+$3+"\n";
                                             }
+            |tk_llavea FUNCION tk_llavec
             |tk_llavea tk_llavec{
                                   $$ = new Nodo("","");
                                   $$.trad = $1+$2+"\n";
@@ -2515,44 +2514,27 @@ ST: tk_break tk_puntoycoma{
                           $$.trad = $1+" "+$2.trad;
                         };
 
-DECFUNCION: tk_fn tk_id tk_pabierto tk_pcerrado tk_dospuntos TIPOV2 BSENTENCIAS {
-                                                                                  var nodo = new Nodo("FUNCION","FUNCION");
-                                                                                  var id = new Nodo("ID",$2);
-                                                                                  nodo.addHijo(id);
-                                                                                  nodo.addHijo($6);
-                                                                                  nodo.addHijo($7);
-                                                                                  $$ = nodo;
-                                                                                  $$.trad = $1+" "+$2+$3+$4+$5+" "+$6.trad+$7.trad;
-                                                                                }
-          | tk_fn tk_id tk_pabierto PARFUNC tk_pcerrado tk_dospuntos TIPOV2 BSENTENCIAS {
-                                                                                          var node = new Nodo("FUNCION","FUNCION");
-                                                                                          var id = new Nodo("ID",$2);
-                                                                                          nodo.addHijo(id);
-                                                                                          nodo.addHijo($4);
-                                                                                          nodo.addHijo($7);
-                                                                                          nodo.addHijo($8);
-                                                                                          $$ = node;
-                                                                                          $$.trad = $1+" "+$2+$3+$4.trad+$5+$6+" "+$7.trad+$8.trad;
-                                                                                        }
-          | tk_fn tk_id error BSENTENCIAS {
-                                      console.error("Error Sintactico: "+yytext+" Error parametros funciones");
-                                      var error = new Error("Sintactico","Encontrado: "+yytext+" Se esperaba -> incremento o decremento",+yylineno+1,@1.last_column);
-                                      errores.addError(error);
-                                      var nodo = new Nodo("FUNCION","FUNCION");
-                                      var id = new Nodo("ID",$2);
-                                      nodo.addHijo(id);
-                                      $$ = nodo;
-                                      $$.trad = $1+" "+$2+"():void "+$4.trad;
-                                    };
+FUNCION: tk_fn tk_id tk_pabierto tk_pcerrado tk_dospuntos TIPOV2 BSENTENCIAS{ 
+                                                                              console.log("FUNCION")
+                                                                              //console.log("func ant");
+                                                                              //console.log($$.func);
+                                                                            }
+      | tk_fn tk_id tk_pabierto PARFUNC tk_pcerrado tk_dospuntos TIPOV2 BSENTENCIAS {
+                                                                                      console.log("FUNCION")
+                                                                                     // console.log("func ant");
+                                                                                      //console.log($$.func);
+                                                                                    }
+      | tk_fn tk_id error BSENTENCIAS {}
+      | tk_fn error{};
 
-VALFUNCION: tk_id tk_pabierto tk_pcerrado 
-          | tk_id tk_pabierto LPAR tk_pcerrado;
-
-PARFUNC: PARFUNC tk_coma tk_id tk_dospuntos TIPOV2
-        | tk_id tk_dospuntos TIPOV2;
+PARFUNC: PARFUNC tk_coma tk_id tk_dospuntos TIPOV2{}
+        | tk_id tk_dospuntos TIPOV2{};
         
-LPAR: LPAR tk_coma VALOR
-    | VALOR;
+VALFUNCION: tk_id tk_pabierto tk_pcerrado{} 
+          | tk_id tk_pabierto LPAR tk_pcerrado{};
+
+LPAR: LPAR tk_coma VALOR{}
+    | VALOR{};
 
 FESP: tk_console tk_pabierto VALOR tk_pcerrado tk_puntoycoma{
                                                               var nodo = new Nodo("CONSOLE","CONSOLE",+yylineno+1,+@1.last_column+1);
