@@ -72,12 +72,12 @@
   }
 */
 var analizador = (function(){
-var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,13],$V1=[1,17],$V2=[1,14],$V3=[1,27],$V4=[1,19],$V5=[1,20],$V6=[1,21],$V7=[1,22],$V8=[1,23],$V9=[1,24],$Va=[1,28],$Vb=[1,25],$Vc=[1,26],$Vd=[5,14,15,21,37,75,78,84,85,86,88,94,97,98],$Ve=[1,39],$Vf=[5,14,15,21,37,40,54,55,62,67,69,70,71,75,78,82,83,84,85,86,88,91,92,93,94,97,98],$Vg=[1,44],$Vh=[1,45],$Vi=[1,42],$Vj=[1,43],$Vk=[1,46],$Vl=[1,47],$Vm=[1,55],$Vn=[1,66],$Vo=[1,63],$Vp=[1,64],$Vq=[1,65],$Vr=[1,80],$Vs=[1,79],$Vt=[1,81],$Vu=[1,82],$Vv=[1,84],$Vw=[1,85],$Vx=[1,89],$Vy=[1,88],$Vz=[1,90],$VA=[1,91],$VB=[1,92],$VC=[1,95],$VD=[1,101],$VE=[1,116],$VF=[1,117],$VG=[1,118],$VH=[1,119],$VI=[1,139],$VJ=[1,138],$VK=[1,134],$VL=[1,135],$VM=[1,136],$VN=[1,137],$VO=[1,140],$VP=[2,20,43,48,68],$VQ=[2,52],$VR=[2,109],$VS=[1,146],$VT=[1,147],$VU=[1,148],$VV=[2,56],$VW=[1,155],$VX=[1,156],$VY=[2,16,20,43,48,51,52,53,68],$VZ=[1,164],$V_=[1,165],$V$=[1,166],$V01=[1,167],$V11=[1,168],$V21=[1,169],$V31=[2,16,20,43,45,46,48,51,52,53,57,58,59,60,61,62,63,64,65,66,68],$V41=[5,14,15,21,37,40,75,78,82,83,84,85,86,88,91,92,93,94,97,98],$V51=[1,178],$V61=[5,14,15,21,37,40,54,55,62,67,69,70,71,75,77,78,82,83,84,85,86,88,91,92,93,94,97,98],$V71=[14,15,21,37,40,75,78,82,83,84,85,86,88,91,92,93,94,97,98],$V81=[2,16,18,20,38,48,68],$V91=[2,41],$Va1=[2,42],$Vb1=[2,43],$Vc1=[2,16,18,20,38,46,48,68],$Vd1=[2,45],$Ve1=[2,43,48],$Vf1=[2,16,20,43,45,46,48,51,52,53,57,58,59,60,61,62,68],$Vg1=[2,18,20,43,48,68],$Vh1=[2,20],$Vi1=[48,68],$Vj1=[2,16,20,43,45,46,48,51,52,53,57,58,59,60,61,62,63,64,66,68],$Vk1=[40,82,83],$Vl1=[15,40],$Vm1=[2,15,27,28,29,30,40,44];
+var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,13],$V1=[1,17],$V2=[1,14],$V3=[1,26],$V4=[1,19],$V5=[1,20],$V6=[1,21],$V7=[1,22],$V8=[1,23],$V9=[1,27],$Va=[1,24],$Vb=[1,25],$Vc=[5,14,15,21,37,75,78,84,85,86,92,95,96],$Vd=[5,14,15,21,37,40,75,78,82,83,84,85,86,89,90,91,92,95,96],$Ve=[1,44],$Vf=[1,45],$Vg=[1,46],$Vh=[1,54],$Vi=[1,78],$Vj=[1,77],$Vk=[1,79],$Vl=[1,80],$Vm=[1,82],$Vn=[1,83],$Vo=[1,87],$Vp=[1,86],$Vq=[1,88],$Vr=[1,89],$Vs=[1,90],$Vt=[1,93],$Vu=[1,101],$Vv=[1,118],$Vw=[1,119],$Vx=[1,120],$Vy=[1,121],$Vz=[1,141],$VA=[1,140],$VB=[1,136],$VC=[1,137],$VD=[1,138],$VE=[1,139],$VF=[1,142],$VG=[2,20,43,48,68],$VH=[2,52],$VI=[2,109],$VJ=[1,148],$VK=[1,149],$VL=[1,150],$VM=[2,56],$VN=[1,157],$VO=[1,158],$VP=[2,16,20,43,48,51,52,53,68],$VQ=[1,166],$VR=[1,167],$VS=[1,168],$VT=[1,169],$VU=[1,170],$VV=[1,171],$VW=[2,16,20,43,45,46,48,51,52,53,57,58,59,60,61,62,63,64,65,66,68],$VX=[5,14,15,21,37,40,75,77,78,82,83,84,85,86,89,90,91,92,95,96],$VY=[14,15,21,37,40,75,78,82,83,84,85,86,89,90,91,92,95,96],$VZ=[2,16,18,20,38,48,68],$V_=[2,41],$V$=[2,42],$V01=[2,43],$V11=[2,16,18,20,38,46,48,68],$V21=[2,45],$V31=[2,43,48],$V41=[2,16,20,43,45,46,48,51,52,53,57,58,59,60,61,62,68],$V51=[2,18,20,43,48,68],$V61=[2,20],$V71=[48,68],$V81=[2,16,20,43,45,46,48,51,52,53,57,58,59,60,61,62,63,64,66,68],$V91=[20,45,46,51,52,53,57,58,59,60,61,62,63,64,65,66],$Va1=[40,82,83],$Vb1=[15,40],$Vc1=[2,15,27,28,29,30,40,44];
 var parser = {trace: function trace () { },
 yy: {},
-symbols_: {"error":2,"S":3,"I":4,"EOF":5,"DECLARACION":6,"ASIGNACION":7,"IF":8,"SWITCH":9,"WHILE":10,"DOWHILE":11,"FOR":12,"FESP":13,"tk_let":14,"tk_id":15,"tk_dospuntos":16,"TIPOV2":17,"tk_igual":18,"VALOR":19,"tk_puntoycoma":20,"tk_const":21,"TYPES":22,"DECFUNCION":23,"tk_inc":24,"tk_dec":25,"TIPOV":26,"tk_string":27,"tk_number":28,"tk_boolean":29,"tk_void":30,"ARRAY":31,"ASIGTYPE":32,"VARRAY":33,"T":34,"VALARRAY":35,"VALFUNCION":36,"tk_type":37,"tk_llavea":38,"LTYPE":39,"tk_llavec":40,"LASIGTYPE":41,"tk_llaveca":42,"tk_llavecc":43,"tk_array":44,"tk_menor":45,"tk_mayor":46,"LVALARRAY":47,"tk_coma":48,"A":49,"L":50,"tk_ternario":51,"tk_and":52,"tk_or":53,"tk_not":54,"tk_t_boolean":55,"R":56,"tk_mayorigual":57,"tk_menorigual":58,"tk_igualdad":59,"tk_diferente":60,"tk_suma":61,"tk_resta":62,"tk_mult":63,"tk_div":64,"tk_exp":65,"tk_mod":66,"tk_pabierto":67,"tk_pcerrado":68,"tk_t_string":69,"tk_t_entero":70,"tk_t_decimal":71,"BSENTENCIAS":72,"SENTENCIAS":73,"ST":74,"tk_if":75,"ELSE":76,"tk_else":77,"tk_switch":78,"BSWITCH":79,"CASE":80,"DEFAULT":81,"tk_case":82,"tk_default":83,"tk_while":84,"tk_do":85,"tk_for":86,"tk_in":87,"tk":88,"for":89,"tk_of":90,"tk_break":91,"tk_continue":92,"tk_return":93,"tk_fn":94,"PARFUNC":95,"LPAR":96,"tk_console":97,"tk_graficar":98,"$accept":0,"$end":1},
-terminals_: {2:"error",5:"EOF",14:"tk_let",15:"tk_id",16:"tk_dospuntos",18:"tk_igual",20:"tk_puntoycoma",21:"tk_const",24:"tk_inc",25:"tk_dec",27:"tk_string",28:"tk_number",29:"tk_boolean",30:"tk_void",37:"tk_type",38:"tk_llavea",40:"tk_llavec",42:"tk_llaveca",43:"tk_llavecc",44:"tk_array",45:"tk_menor",46:"tk_mayor",48:"tk_coma",51:"tk_ternario",52:"tk_and",53:"tk_or",54:"tk_not",55:"tk_t_boolean",57:"tk_mayorigual",58:"tk_menorigual",59:"tk_igualdad",60:"tk_diferente",61:"tk_suma",62:"tk_resta",63:"tk_mult",64:"tk_div",65:"tk_exp",66:"tk_mod",67:"tk_pabierto",68:"tk_pcerrado",69:"tk_t_string",70:"tk_t_entero",71:"tk_t_decimal",75:"tk_if",77:"tk_else",78:"tk_switch",82:"tk_case",83:"tk_default",84:"tk_while",85:"tk_do",86:"tk_for",87:"tk_in",88:"tk",89:"for",90:"tk_of",91:"tk_break",92:"tk_continue",93:"tk_return",94:"tk_fn",97:"tk_console",98:"tk_graficar"},
-productions_: [0,[3,2],[3,1],[4,2],[4,2],[4,2],[4,2],[4,2],[4,2],[4,2],[4,2],[4,1],[4,1],[4,1],[4,1],[4,1],[4,1],[4,1],[4,1],[4,1],[6,7],[6,7],[6,7],[6,7],[6,5],[6,5],[6,5],[6,5],[6,5],[6,5],[6,3],[6,3],[6,1],[6,1],[6,3],[6,3],[6,3],[6,3],[6,2],[6,2],[6,2],[26,1],[26,1],[26,1],[26,1],[26,1],[26,1],[17,1],[17,1],[19,1],[19,1],[19,1],[19,1],[19,1],[19,2],[19,2],[19,1],[22,6],[22,6],[39,5],[39,5],[39,4],[39,4],[32,3],[32,3],[41,5],[41,5],[41,4],[41,4],[31,3],[31,3],[31,3],[31,3],[31,4],[33,3],[47,3],[47,3],[47,1],[35,4],[35,4],[7,4],[7,4],[7,4],[7,4],[34,5],[34,1],[50,3],[50,3],[50,2],[50,1],[50,1],[56,3],[56,3],[56,3],[56,3],[56,3],[56,3],[56,1],[49,3],[49,3],[49,3],[49,3],[49,3],[49,3],[49,3],[49,2],[49,1],[49,1],[49,1],[49,1],[72,3],[72,2],[73,2],[73,2],[73,2],[73,2],[73,2],[73,2],[73,2],[73,2],[73,2],[73,1],[73,1],[73,1],[73,1],[73,1],[73,1],[73,1],[73,1],[73,1],[73,1],[8,6],[8,5],[8,4],[8,3],[76,2],[76,2],[9,5],[9,3],[79,4],[79,3],[79,2],[79,3],[80,5],[80,5],[80,4],[80,4],[80,4],[80,3],[81,3],[81,3],[81,2],[10,5],[10,3],[11,6],[11,4],[12,8],[12,8],[12,7],[12,8],[12,8],[12,8],[12,3],[74,2],[74,2],[74,2],[74,2],[74,2],[74,2],[74,3],[74,3],[74,2],[23,7],[23,8],[23,4],[36,3],[36,4],[95,5],[95,3],[96,3],[96,1],[13,5],[13,5],[13,4],[13,4]],
+symbols_: {"error":2,"S":3,"I":4,"EOF":5,"DECLARACION":6,"ASIGNACION":7,"IF":8,"SWITCH":9,"WHILE":10,"DOWHILE":11,"FOR":12,"FESP":13,"tk_let":14,"tk_id":15,"tk_dospuntos":16,"TIPOV2":17,"tk_igual":18,"VALOR":19,"tk_puntoycoma":20,"tk_const":21,"TYPES":22,"DECFUNCION":23,"tk_inc":24,"tk_dec":25,"TIPOV":26,"tk_string":27,"tk_number":28,"tk_boolean":29,"tk_void":30,"ARRAY":31,"ASIGTYPE":32,"VARRAY":33,"T":34,"VALARRAY":35,"VALFUNCION":36,"tk_type":37,"tk_llavea":38,"LTYPE":39,"tk_llavec":40,"LASIGTYPE":41,"tk_llaveca":42,"tk_llavecc":43,"tk_array":44,"tk_menor":45,"tk_mayor":46,"LVALARRAY":47,"tk_coma":48,"A":49,"L":50,"tk_ternario":51,"tk_and":52,"tk_or":53,"tk_not":54,"tk_t_boolean":55,"R":56,"tk_mayorigual":57,"tk_menorigual":58,"tk_igualdad":59,"tk_diferente":60,"tk_suma":61,"tk_resta":62,"tk_mult":63,"tk_div":64,"tk_exp":65,"tk_mod":66,"tk_pabierto":67,"tk_pcerrado":68,"tk_t_string":69,"tk_t_entero":70,"tk_t_decimal":71,"BSENTENCIAS":72,"SENTENCIAS":73,"ST":74,"tk_if":75,"ELSE":76,"tk_else":77,"tk_switch":78,"BSWITCH":79,"CASE":80,"DEFAULT":81,"tk_case":82,"tk_default":83,"tk_while":84,"tk_do":85,"tk_for":86,"tk_in":87,"tk_of":88,"tk_break":89,"tk_continue":90,"tk_return":91,"tk_fn":92,"PARFUNC":93,"LPAR":94,"tk_console":95,"tk_graficar":96,"$accept":0,"$end":1},
+terminals_: {2:"error",5:"EOF",14:"tk_let",15:"tk_id",16:"tk_dospuntos",18:"tk_igual",20:"tk_puntoycoma",21:"tk_const",24:"tk_inc",25:"tk_dec",27:"tk_string",28:"tk_number",29:"tk_boolean",30:"tk_void",37:"tk_type",38:"tk_llavea",40:"tk_llavec",42:"tk_llaveca",43:"tk_llavecc",44:"tk_array",45:"tk_menor",46:"tk_mayor",48:"tk_coma",51:"tk_ternario",52:"tk_and",53:"tk_or",54:"tk_not",55:"tk_t_boolean",57:"tk_mayorigual",58:"tk_menorigual",59:"tk_igualdad",60:"tk_diferente",61:"tk_suma",62:"tk_resta",63:"tk_mult",64:"tk_div",65:"tk_exp",66:"tk_mod",67:"tk_pabierto",68:"tk_pcerrado",69:"tk_t_string",70:"tk_t_entero",71:"tk_t_decimal",75:"tk_if",77:"tk_else",78:"tk_switch",82:"tk_case",83:"tk_default",84:"tk_while",85:"tk_do",86:"tk_for",87:"tk_in",88:"tk_of",89:"tk_break",90:"tk_continue",91:"tk_return",92:"tk_fn",95:"tk_console",96:"tk_graficar"},
+productions_: [0,[3,2],[3,1],[4,2],[4,2],[4,2],[4,2],[4,2],[4,2],[4,2],[4,2],[4,1],[4,1],[4,1],[4,1],[4,1],[4,1],[4,1],[4,1],[4,1],[6,7],[6,7],[6,7],[6,7],[6,5],[6,5],[6,5],[6,5],[6,5],[6,5],[6,3],[6,3],[6,1],[6,1],[6,3],[6,3],[6,3],[6,3],[6,2],[6,2],[6,2],[26,1],[26,1],[26,1],[26,1],[26,1],[26,1],[17,1],[17,1],[19,1],[19,1],[19,1],[19,1],[19,1],[19,2],[19,2],[19,1],[22,6],[22,6],[39,5],[39,5],[39,4],[39,4],[32,3],[32,3],[41,5],[41,5],[41,4],[41,4],[31,3],[31,3],[31,3],[31,3],[31,4],[33,3],[47,3],[47,3],[47,1],[35,4],[35,4],[7,4],[7,4],[7,4],[7,4],[34,5],[34,1],[50,3],[50,3],[50,2],[50,1],[50,1],[56,3],[56,3],[56,3],[56,3],[56,3],[56,3],[56,1],[49,3],[49,3],[49,3],[49,3],[49,3],[49,3],[49,3],[49,2],[49,1],[49,1],[49,1],[49,1],[72,3],[72,2],[73,2],[73,2],[73,2],[73,2],[73,2],[73,2],[73,2],[73,2],[73,2],[73,1],[73,1],[73,1],[73,1],[73,1],[73,1],[73,1],[73,1],[73,1],[73,1],[8,6],[8,5],[8,5],[8,5],[8,3],[76,2],[76,2],[9,5],[9,5],[9,5],[9,3],[79,4],[79,3],[79,2],[79,3],[80,5],[80,5],[80,5],[80,5],[80,4],[80,4],[80,4],[80,4],[80,4],[80,4],[80,3],[80,3],[81,3],[81,3],[81,2],[10,5],[10,5],[10,5],[10,5],[10,3],[11,7],[11,7],[11,7],[11,7],[11,7],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,7],[12,7],[12,7],[12,7],[12,7],[12,7],[12,8],[12,8],[12,8],[12,8],[12,8],[12,8],[12,8],[12,8],[12,7],[12,7],[12,7],[12,7],[12,7],[12,7],[12,7],[12,8],[12,8],[12,8],[12,8],[12,8],[12,8],[12,8],[12,5],[12,3],[74,2],[74,2],[74,2],[74,2],[74,2],[74,2],[74,3],[74,3],[74,2],[23,7],[23,8],[23,4],[36,3],[36,4],[93,5],[93,3],[94,3],[94,1],[13,5],[13,5],[13,4],[13,4]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
 
@@ -139,7 +139,7 @@ case 7: case 10:
             this.$.trad = $$[$0-1].trad + $$[$0].trad;
           
 break;
-case 11: case 12: case 13: case 14: case 15: case 16: case 17: case 18:
+case 11: case 12: case 13: case 14: case 15: case 16: case 17: case 18: case 121: case 122: case 123: case 124: case 125: case 126: case 127: case 128: case 129:
  this.$ = $$[$0]; this.$.trad = $$[$0].trad; 
 break;
 case 19:
@@ -985,38 +985,1697 @@ case 110:
 break;
 case 111:
 
-                                  this.$ = new nodo("","");
+                                  this.$ = new Nodo("","");
                                   this.$.trad = $$[$0-1]+$$[$0]+"\n";
                                 
 break;
+case 112:
+
+                                      var nodo = new Nodo("SENTENCIAS","SENTENCIAS",+yylineno+1,+_$[$0-1].first_column+1);
+                                      nodo.addHijo($$[$0-1]);
+                                      nodo.addHijo($$[$0]);
+                                      this.$ = nodo;
+                                      this.$.trad = $$[$0-1].trad + $$[$0].trad;
+                                   
+break;
+case 113:
+
+                                    var nodo = new Nodo("SENTENCIAS","SENTENCIAS",+yylineno+1,+_$[$0-1].first_column+1);
+                                    nodo.addHijo($$[$0-1]);
+                                    nodo.addHijo($$[$0]);
+                                    this.$ = nodo;
+                                    this.$.trad = $$[$0-1].trad + $$[$0].trad;
+                                  
+break;
+case 114: case 118:
+
+                            var nodo = new Nodo("SENTENCIAS","SENTENCIAS",+yylineno+1,+_$[$0-1].first_column+1);
+                            nodo.addHijo($$[$0-1]);
+                            nodo.addHijo($$[$0]);
+                            this.$ = nodo;
+                            this.$.trad = $$[$0-1].trad + $$[$0].trad;
+                          
+break;
+case 115: case 117:
+
+                                var nodo = new Nodo("SENTENCIAS","SENTENCIAS",+yylineno+1,+_$[$0-1].first_column+1);
+                                nodo.addHijo($$[$0-1]);
+                                nodo.addHijo($$[$0]);
+                                this.$ = nodo;
+                                this.$.trad = $$[$0-1].trad + $$[$0].trad;
+                              
+break;
+case 116:
+
+                              var nodo = new Nodo("SENTENCIAS","SENTENCIAS",+yylineno+1,+_$[$0-1].first_column+1);
+                              nodo.addHijo($$[$0-1]);
+                              nodo.addHijo($$[$0]);
+                              this.$ = nodo;
+                              this.$.trad = $$[$0-1].trad + $$[$0].trad;
+                            
+break;
+case 119:
+  
+                            var nodo = new Nodo("SENTENCIAS","SENTENCIAS",+yylineno+1,+_$[$0-1].first_column+1);
+                            nodo.addHijo($$[$0-1]);
+                            nodo.addHijo($$[$0]);
+                            this.$ = nodo;
+                            this.$.trad = $$[$0-1].trad + $$[$0].trad;
+                          
+break;
+case 120:
+  
+                              var nodo = new Nodo("SENTENCIAS","SENTENCIAS",+yylineno+1,+_$[$0-1].first_column+1);
+                              nodo.addHijo($$[$0-1]);
+                              nodo.addHijo($$[$0]);
+                              this.$ = nodo;
+                              this.$.trad = $$[$0-1].trad + $$[$0].trad;
+                            
+break;
 case 130:
-console.error("Error sintactico: "+yytext+" Desconocido Sentencias")
+
+                    console.error("Error sintactico: "+$$[$0]+" Desconocido Sentencias");
+                    var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> DECLARACION||ASIGNACION||IF||SWITCH||WHILE||DO WHILE||SENTENCIAS DE TRANSFARENCIA||console.log()||graficar_ts()",+yylineno+1,+_$[$0].last_column+1);
+                    errores.addError(error);
+                    this.$ = new Nodo("","");
+                    this.$.trad = "";
+                  
+break;
+case 131:
+
+                                                      var nodo = new Nodo("IF","IF",+yylineno+1,+_$[$0-5].first_column+1);
+                                                      nodo.addHijo($$[$0-3]); //condicion
+                                                      nodo.addHijo($$[$0-1]); //sentencias
+                                                      nodo.addHijo($$[$0]); //else
+                                                      this.$ = nodo;
+                                                      this.$.trad = $$[$0-5]+$$[$0-4]+$$[$0-3].trad+$$[$0-2]+$$[$0-1].trad+$$[$0].trad;
+                                                    
+break;
+case 132:
+
+                                                  var nodo = new Nodo("IF","IF",+yylineno+1,+_$[$0-4].first_column+1);
+                                                  nodo.addHijo($$[$0-2]); //condicion
+                                                  nodo.addHijo($$[$0]); //sentencias
+                                                  this.$ = nodo;
+                                                  this.$.trad = $$[$0-4]+$$[$0-3]+$$[$0-2].trad+$$[$0-1]+$$[$0].trad;
+                                                
 break;
 case 133:
-console.error("Error Sintactico: "+$$[$0-2]+" Error parametros en if")
+
+                                            console.error("Error Sintactico: "+$$[$0-3]+" Error parametros en if")
+                                            var error = new Error("Sintactico","Encontrado: "+$$[$0-3]+" Se esperaba -> (",+yylineno+1,+_$[$0-3].last_column+1);
+                                            errores.addError(error);
+
+                                            var nodo = new Nodo("IF","IF",+yylineno+1,+_$[$0-4].first_column+1);
+                                            nodo.addHijo($$[$0-2]); //condicion
+                                            nodo.addHijo($$[$0]); //sentencias
+                                            this.$ = nodo;
+                                            this.$.trad = $$[$0-4]+"("+$$[$0-2].trad+$$[$0-1]+$$[$0].trad;
+                                          
 break;
 case 134:
-console.error("Error Sintactico: "+$$[$0-1]+" Error parametros en if")
+
+                                            console.error("Error Sintactico: "+$$[$0-1]+" Error parametros en if")
+                                            var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> )",+yylineno+1,+_$[$0-1].last_column+1);
+                                            errores.addError(error);
+
+                                            var nodo = new Nodo("IF","IF",+yylineno+1,+_$[$0-4].first_column+1);
+                                            nodo.addHijo($$[$0-2]); //condicion
+                                            nodo.addHijo($$[$0]); //sentencias
+                                            this.$ = nodo;
+                                            this.$.trad = $$[$0-4]+$$[$0-3]+$$[$0-2].trad+")"+$$[$0].trad;
+                                          
+break;
+case 135:
+
+                              console.error("Error Sintactico: "+$$[$0-1]+" Error parametros en if")
+                              var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> Condicion en if",+yylineno+1,+_$[$0-1].last_column+1);
+                              errores.addError(error);
+
+                              this.$ = new Nodo("","");
+                              this.$.trad = "";
+                            
+break;
+case 136:
+
+                            var nodo = new Nodo("ELSE","ELSE",+yylineno+1,+_$[$0-1].first_column+1)
+                            nodo.addHijo($$[$0]);
+
+                            this.$ = nodo;
+                            this.$.trad = $$[$0-1]+" "+$$[$0].trad;
+                          
+break;
+case 137:
+
+                  var nodo = new Nodo("ELSE","ELSE",+yylineno+1,+_$[$0-1].first_column+1)
+                  nodo.addHijo($$[$0]);
+
+                  this.$ = nodo;
+                  this.$.trad = $$[$0-1]+" "+$$[$0].trad;
+                
 break;
 case 138:
- console.error("Error sintactico: "+$$[$0-1]+" Error parametros en switch") 
+
+                                                      var nodo = new Nodo("SWITCH","SWITCH",+yylineno+1,+_$[$0-4].first_column+1);
+                                                      nodo.addHijo($$[$0-2]);
+                                                      nodo.addHijo($$[$0]);
+                                                      this.$ = nodo;
+                                                      this.$.trad = $$[$0-4]+" "+$$[$0-3]+$$[$0-2].trad+$$[$0-1]+$$[$0].trad;
+                                                    
+break;
+case 139:
+
+                                                console.error("Error Sintactico: "+$$[$0-3]+" Error parametros en switch")
+                                                var error = new Error("Sintactico","Encontrado: "+$$[$0-3]+" Se esperaba -> (",+yylineno+1,+_$[$0-3].last_column+1);
+                                                errores.addError(error);
+
+                                                var nodo = new Nodo("SWITCH","SWITCH",+yylineno+1,+_$[$0-4].first_column+1);
+                                                nodo.addHijo($$[$0-2]);
+                                                nodo.addHijo($$[$0]);
+                                                this.$ = nodo;
+                                                this.$.trad = $$[$0-4]+" ("+$$[$0-2].trad+$$[$0-1]+$$[$0].trad;
+                                              
+break;
+case 140:
+
+                                                console.error("Error Sintactico: "+$$[$0-1]+" Error parametros en switch")
+                                                var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> )",+yylineno+1,+_$[$0-1].last_column+1);
+                                                errores.addError(error);
+
+                                                var nodo = new Nodo("SWITCH","SWITCH",+yylineno+1,+_$[$0-4].first_column+1);
+                                                nodo.addHijo($$[$0-2]);
+                                                nodo.addHijo($$[$0]);
+                                                this.$ = nodo;
+                                                this.$.trad = $$[$0-4]+" "+$$[$0-3]+$$[$0-2].trad+")"+$$[$0].trad;
+                                              
+break;
+case 141:
+ 
+                                  console.error("Error Sintactico: "+$$[$0-1]+" Error parametros en switch")
+                                  var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> condicion del switch",+yylineno+1,+_$[$0-1].last_column+1);
+                                  errores.addError(error);
+
+                                  this.$ = new Nodo("","");
+                                  this.$.trad = "";
+                                
 break;
 case 142:
- console.error("Error Sintactico: "+$$[$0-1]+" Error Cases en switch")
+
+                                            var nodo = new Nodo("BSWITCH","BSWITCH",+yylineno+1,+_$[$0-3].first_column+1);
+                                            nodo.addHijo($$[$0-2]);
+                                            nodo.addHijo($$[$0-1]);
+                                            this.$ = nodo;
+                                            this.$.trad = $$[$0-3]+"\n"+$$[$0-2].trad+$$[$0-1].trad+$$[$0]+"\n";
+                                          
 break;
-case 153:
-console.error("Error Sintactico: "+$$[$0-1]+" Error parametros while")
+case 143:
+
+                                  var nodo = new Nodo("BSWITCH","BSWITCH",+yylineno+1,+_$[$0-2].first_column+1);
+                                  nodo.addHijo($$[$0-1]);
+                                  this.$ = nodo;
+                                  this.$.trad = $$[$0-2]+"\n"+$$[$0-1].trad+$$[$0]+"\n";
+                                
 break;
-case 155:
-console.error("Error Sintactico: "+$$[$0-2]+" Error parametros doWhile")
+case 144:
+
+                            var nodo = new Nodo("BSWITCH","BSWITCH",+yylineno+1,+_$[$0-1].first_column+1);
+                            this.$ = nodo;
+                            this.$.trad = $$[$0-1]+"\n"+$$[$0]+"\n";
+                          
+break;
+case 145:
+ 
+                                  console.error("Error Sintactico: "+$$[$0-1]+" Error Cases en switch");
+                                  var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> CASE o DEFAULT",+yylineno+1,+_$[$0-1].last_column+1);
+                                  errores.addError(error);
+
+                                  var nodo = new Nodo("BSWITCH","BSWITCH",+yylineno+1,+_$[$0-2].first_column+1);
+                                  this.$ = nodo;
+                                  this.$.trad = $$[$0-2]+"\n"+$$[$0]+"\n";
+                                
+break;
+case 146:
+
+                                              var nodo = new Nodo("CASE","CASE",+yylineno+1,+_$[$0-4].first_column+1);
+                                              nodo.addHijo($$[$0-4]);
+                                              nodo.addHijo($$[$0-2]);
+                                              nodo.addHijo($$[$0]);
+                                              this.$ = nodo;
+                                              this.$.trad = $$[$0-4].trad+$$[$0-3]+" "+$$[$0-2].trad+$$[$0-1]+"\n"+$$[$0].trad;
+                                            
+break;
+case 147:
+
+                                                  console.error("Error Sintactico: "+$$[$0-2]+" Error Cases en switch");
+                                                  var error = new Error("Sintactico","Encontrado: "+$$[$0-2]+" Se esperaba -> Parametro case",+yylineno+1,+_$[$0-2].last_column+1);
+                                                  errores.addError(error);
+
+                                                  this.$ = $$[$0-4];
+                                                  this.$.trad = $$[$0-4].trad;
+                                                
+break;
+case 148:
+
+                                                var nodo = new Nodo("CASE","CASE",+yylineno+1,+_$[$0-4].first_column+1);
+                                                nodo.addHijo($$[$0-4]);
+                                                nodo.addHijo($$[$0-2]);
+                                                nodo.addHijo($$[$0]);
+                                                this.$ = nodo;
+                                                this.$.trad = $$[$0-4].trad+$$[$0-3]+" "+$$[$0-2].trad+$$[$0-1]+$$[$0].trad;
+                                              
+break;
+case 149:
+
+                                                    console.error("Error Sintactico: "+$$[$0-2]+" Error Cases en switch");
+                                                    var error = new Error("Sintactico","Encontrado: "+$$[$0-2]+" Se esperaba -> Parametro case",+yylineno+1,+_$[$0-2].last_column+1);
+                                                    errores.addError(error);
+
+                                                    this.$ = $$[$0-4];
+                                                    this.$.trad = $$[$0-4].trad;
+                                                 
+break;
+case 150:
+
+                                    var nodo = new Nodo("CASE","CASE",+yylineno+1,+_$[$0-3].first_column+1);
+                                    nodo.addHijo($$[$0-3]);
+                                    nodo.addHijo($$[$0-1]);
+                                    this.$ = nodo;
+                                    this.$.trad = $$[$0-3].trad+$$[$0-2]+" "+$$[$0-1].trad+$$[$0]+"\n";
+                                  
+break;
+case 151:
+
+                                        console.error("Error Sintactico: "+$$[$0-1]+" Error Cases en switch");
+                                        var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> Parametro case",+yylineno+1,+_$[$0-1].last_column+1);
+                                        errores.addError(error);
+
+                                        this.$ = $$[$0-3];
+                                        this.$.trad = $$[$0-3].trad;
+                                      
+break;
+case 152:
+
+                                          var nodo = new Nodo("CASE","CASE",+yylineno+1,+_$[$0-3].first_column+1);
+                                          nodo.addHijo($$[$0-2]);
+                                          nodo.addHijo($$[$0]);
+                                          this.$ = nodo;
+                                          this.$.trad = $$[$0-3]+" "+$$[$0-2].trad+$$[$0-1]+"\n"+$$[$0].trad;
+                                        
+break;
+case 153: case 155:
+
+                                              console.error("Error Sintactico: "+$$[$0-2]+" Error Cases en switch");
+                                              var error = new Error("Sintactico","Encontrado: "+$$[$0-2]+" Se esperaba -> Parametro case",+yylineno+1,+_$[$0-2].last_column+1);
+                                              errores.addError(error);
+
+                                              this.$ = new Nodo("","");
+                                              this.$.trad = "";
+                                            
+break;
+case 154:
+
+                                          var nodo = new Nodo("CASE","CASE",+yylineno+1,+_$[$0-3].first_column+1);
+                                          nodo.addHijo($$[$0-2]);
+                                          nodo.addHijo($$[$0]);
+                                          this.$ = nodo;
+                                          this.$.trad = $$[$0-3]+" "+$$[$0-2].trad+$$[$0-1]+$$[$0].trad;
+                                        
+break;
+case 156:
+
+                              var nodo = new Nodo("CASE","CASE",+yylineno+1,+_$[$0-2].first_column+1);
+                              nodo.addHijo($$[$0-1]);
+                              this.$ = nodo;
+                              this.$.trad = $$[$0-2]+" "+$$[$0-1].trad+$$[$0]+"\n";
+                            
+break;
+case 157:
+ 
+                                  console.error("Error Sintactico: "+$$[$0-1]+" Error Cases en switch");
+                                  var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> Parametro case",+yylineno+1,+_$[$0-1].last_column+1);
+                                  errores.addError(error);
+
+                                  this.$ = new Nodo("","");
+                                  this.$.trad = "";
+                                
+break;
+case 158:
+
+                                              var nodo = new Nodo("DEFAULT","DEFAULT",+yylineno+1,+_$[$0-2].last_column+1);
+                                              nodo.addHijo($$[$0]);
+                                              this.$ = nodo;
+                                              this.$.trad = $$[$0-2]+$$[$0-1]+"\n"+$$[$0].trad;
+                                            
+break;
+case 159:
+
+                                              var nodo = new Nodo("DEFAULT","DEFAULT",+yylineno+1,+_$[$0-2].last_column+1);
+                                              nodo.addHijo($$[$0]);
+                                              this.$ = nodo;
+                                              this.$.trad = $$[$0-2]+$$[$0-1]+$$[$0].trad;
+                                            
+break;
+case 160:
+
+                                  var nodo = new Nodo("DEFAULT","DEFAULT",+yylineno+1,+_$[$0-1].last_column+1);
+                                  this.$ = nodo;
+                                  this.$.trad = $$[$0-1]+$$[$0]+"\n";
+                                
+break;
+case 161:
+
+                                                        var nodo = new Nodo("WHILE","WHILE",+yylineno+1,+_$[$0-4].last_column+1);
+                                                        nodo.addHijo($$[$0-2]);
+                                                        nodo.addHijo($$[$0]);
+                                                        this.$ = nodo;
+                                                        this.$.trad = $$[$0-4]+$$[$0-3]+$$[$0-2].trad+$$[$0-1]+$$[$0].trad;
+                                                      
 break;
 case 162:
-console.error("Error Sintactico: "+$$[$0-1]+" Error parametros for")
+
+                                                  console.error("Error Sintactico: "+$$[$0-3]+" Error en While");
+                                                  var error = new Error("Sintactico","Encontrado: "+$$[$0-3]+" Se esperaba -> (",+yylineno+1,+_$[$0-3].last_column+1);
+                                                  errores.addError(error);
+
+                                                  var nodo = new Nodo("WHILE","WHILE",+yylineno+1,+_$[$0-4].last_column+1);
+                                                  nodo.addHijo($$[$0-2]);
+                                                  nodo.addHijo($$[$0]);
+                                                  this.$ = nodo;
+                                                  this.$.trad = $$[$0-4]+"("+$$[$0-2].trad+$$[$0-1]+$$[$0].trad;
+                                                
 break;
-case 164: case 166: case 168: case 170: case 182: case 184:
-console.error("Error Sintactico: "+$$[$0]+" falta punto y coma")
+case 163:
+
+                                                            console.error("Error Sintactico: "+$$[$0-2]+" Error en While");
+                                                            var error = new Error("Sintactico","Encontrado: "+$$[$0-2]+" Se esperaba -> (",+yylineno+1,+_$[$0-2].last_column+1);
+                                                            errores.addError(error);
+
+                                                            this.$ = new Nodo("","");
+                                                            this.$.trad = "";
+                                                          
+break;
+case 164:
+
+                                                  console.error("Error Sintactico: "+$$[$0-1]+" Error en While");
+                                                  var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> (",+yylineno+1,+_$[$0-1].last_column+1);
+                                                  errores.addError(error);
+
+                                                  var nodo = new Nodo("WHILE","WHILE",+yylineno+1,+_$[$0-4].last_column+1);
+                                                  nodo.addHijo($$[$0-2]);
+                                                  nodo.addHijo($$[$0]);
+                                                  this.$ = nodo;
+                                                  this.$.trad = $$[$0-4]+$$[$0-3]+$$[$0-2].trad+")"+$$[$0].trad;
+                                                
+break;
+case 165:
+
+                                    console.error("Error Sintactico: "+$$[$0]+" Error en While");
+                                    var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> Parametros While",+yylineno+1,+_$[$0].last_column+1);
+                                    errores.addError(error);
+
+                                    this.$ = new Nodo("","");
+                                    this.$.trad = "";
+                                  
+break;
+case 166:
+
+                                                                              var nodo = new Nodo("DOWHILE","DOWHILE",+yylineno+1,+_$[$0-6].last_column+1);
+                                                                              nodo.addHijo($$[$0-5]);
+                                                                              nodo.addHijo($$[$0-2]);
+                                                                              this.$ = nodo;
+                                                                              this.$.trad = $$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2].trad+$$[$0-1]+$$[$0]+"\n";
+                                                                            
+break;
+case 167:
+
+                                                                        console.error("Error Sintactico: "+$$[$0-3]+" Error en do While");
+                                                                        var error = new Error("Sintactico","Encontrado: "+$$[$0-3]+" Se esperaba -> (",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                        errores.addError(error);
+
+                                                                        var nodo = new Nodo("DOWHILE","DOWHILE",+yylineno+1,+_$[$0-6].last_column+1);
+                                                                        nodo.addHijo($$[$0-5]);
+                                                                        nodo.addHijo($$[$0-2]);
+                                                                        this.$ = nodo;
+                                                                        this.$.trad = $$[$0-6]+$$[$0-5].trad+"("+$$[$0-3]+$$[$0-2].trad+$$[$0-1]+$$[$0]+"\n";
+                                                                      
+break;
+case 168:
+
+                                                                                  console.error("Error Sintactico: "+$$[$0-2]+" Error en do While");
+                                                                                  var error = new Error("Sintactico","Encontrado: "+$$[$0-2]+" Se esperaba -> Parametros do While",+yylineno+1,+_$[$0-2].last_column+1);
+                                                                                  errores.addError(error);
+                                                                                  
+                                                                                  this.$ = new Nodo("","");
+                                                                                  this.$.trad = "";
+                                                                                
+break;
+case 169:
+
+                                                                        console.error("Error Sintactico: "+$$[$0-1]+" Error en do While");
+                                                                        var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> )",+yylineno+1,+_$[$0-1].last_column+1);
+                                                                        errores.addError(error);
+
+                                                                        var nodo = new Nodo("DOWHILE","DOWHILE",+yylineno+1,+_$[$0-6].last_column+1);
+                                                                        nodo.addHijo($$[$0-5]);
+                                                                        nodo.addHijo($$[$0-2]);
+                                                                        this.$ = nodo;
+                                                                        this.$.trad = $$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2].trad+")"+$$[$0]+"\n";
+                                                                      
+break;
+case 170:
+
+                                                                      console.error("Error Sintactico: "+$$[$0]+" Error en do While");
+                                                                      var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> ;",+yylineno+1,+_$[$0].last_column+1);
+                                                                      errores.addError(error);
+
+                                                                      var nodo = new Nodo("DOWHILE","DOWHILE",+yylineno+1,+_$[$0-6].last_column+1);
+                                                                      nodo.addHijo($$[$0-5]);
+                                                                      nodo.addHijo($$[$0-2]);
+                                                                      this.$ = nodo;
+                                                                      this.$.trad = $$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2].trad+$$[$0-1]+";\n";
+                                                                    
+break;
+case 171:
+
+                                                                                                                        var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
+                                                                                                                        var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
+                                                                                                                        var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                        var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                        inc.addHijo(id2);
+                                                                                                                        nodo.addHijo(id1);
+                                                                                                                        nodo.addHijo($$[$0-7]);
+                                                                                                                        nodo.addHijo($$[$0-5]);
+                                                                                                                        nodo.addHijo(inc);
+                                                                                                                        nodo.addHijo($$[$0]);
+                                                                                                                        this.$ = nodo;
+                                                                                                                        this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
+                                                                                                                      
 break;
 case 172:
+  
+                                                                                                                  console.error("Error Sintactico: "+$$[$0-11]+" Error en for");
+                                                                                                                  var error = new Error("Sintactico","Encontrado: "+$$[$0-11]+" Se esperaba -> (",+yylineno+1,+_$[$0-11].last_column+1);
+                                                                                                                  errores.addError(error);
+
+                                                                                                                  var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
+                                                                                                                  var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
+                                                                                                                  var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                  var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                  inc.addHijo(id2);
+                                                                                                                  nodo.addHijo(id1);
+                                                                                                                  nodo.addHijo($$[$0-7]);
+                                                                                                                  nodo.addHijo($$[$0-5]);
+                                                                                                                  nodo.addHijo(inc);
+                                                                                                                  nodo.addHijo($$[$0]);
+                                                                                                                  this.$ = nodo;
+                                                                                                                  this.$.trad = $$[$0-12]+"("+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
+                                                                                                                
+break;
+case 173:
+
+                                                                                                                      console.error("Error Sintactico: "+$$[$0-10]+" Error en do While");
+                                                                                                                      var error = new Error("Sintactico","Encontrado: "+$$[$0-10]+" Se esperaba -> let",+yylineno+1,+_$[$0-10].last_column+1);
+                                                                                                                      errores.addError(error);
+
+                                                                                                                      var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
+                                                                                                                      var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
+                                                                                                                      var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                      var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                      inc.addHijo(id2);
+                                                                                                                      nodo.addHijo(id1);
+                                                                                                                      nodo.addHijo($$[$0-7]);
+                                                                                                                      nodo.addHijo($$[$0-5]);
+                                                                                                                      nodo.addHijo(inc);
+                                                                                                                      nodo.addHijo($$[$0]);
+                                                                                                                      this.$ = nodo;
+                                                                                                                      this.$.trad = $$[$0-12]+$$[$0-11]+"let"+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;    
+                                                                                                                    
+break;
+case 174: case 186:
+
+                                                                                                                        console.error("Error Sintactico: "+$$[$0-9]+" Error en do While");
+                                                                                                                        var error = new Error("Sintactico","Encontrado: "+$$[$0-9]+" Se esperaba -> id",+yylineno+1,+_$[$0-9].last_column+1);
+                                                                                                                        errores.addError(error);
+
+                                                                                                                        this.$ = new Nodo("","");
+                                                                                                                        this.$.trad = "";
+                                                                                                                      
+break;
+case 175:
+
+                                                                                                                    console.error("Error Sintactico: "+$$[$0-8]+" Error en do While");
+                                                                                                                    var error = new Error("Sintactico","Encontrado: "+$$[$0-8]+" Se esperaba -> =",+yylineno+1,+_$[$0-8].last_column+1);
+                                                                                                                    errores.addError(error);
+
+                                                                                                                    var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
+                                                                                                                    var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
+                                                                                                                    var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                    var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                    inc.addHijo(id2);
+                                                                                                                    nodo.addHijo(id1);
+                                                                                                                    nodo.addHijo($$[$0-7]);
+                                                                                                                    nodo.addHijo($$[$0-5]);
+                                                                                                                    nodo.addHijo(inc);
+                                                                                                                    nodo.addHijo($$[$0]);
+                                                                                                                    this.$ = nodo;
+                                                                                                                    this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+"="+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
+                                                                                                                  
+break;
+case 176:
+
+                                                                                                                console.error("Error Sintactico: "+$$[$0-6]+" Error en do While");
+                                                                                                                var error = new Error("Sintactico","Encontrado: "+$$[$0-6]+" Se esperaba -> ;",+yylineno+1,+_$[$0-6].last_column+1);
+                                                                                                                errores.addError(error);
+
+                                                                                                                var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
+                                                                                                                var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
+                                                                                                                var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                inc.addHijo(id2);
+                                                                                                                nodo.addHijo(id1);
+                                                                                                                nodo.addHijo($$[$0-7]);
+                                                                                                                nodo.addHijo($$[$0-5]);
+                                                                                                                nodo.addHijo(inc);
+                                                                                                                nodo.addHijo($$[$0]);
+                                                                                                                this.$ = nodo;
+                                                                                                                this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+";"+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
+                                                                                                              
+break;
+case 177: case 189:
+
+                                                                                                                            console.error("Error Sintactico: "+$$[$0-5]+" Error en do While");
+                                                                                                                            var error = new Error("Sintactico","Encontrado: "+$$[$0-5]+" Se esperaba -> Condicion For",+yylineno+1,+_$[$0-5].last_column+1);
+                                                                                                                            errores.addError(error);
+
+                                                                                                                            this.$ = new Nodo("","");
+                                                                                                                            this.$.trad = "";
+                                                                                                                          
+break;
+case 178:
+
+                                                                                                                console.error("Error Sintactico: "+$$[$0-4]+" Error en do While");
+                                                                                                                var error = new Error("Sintactico","Encontrado: "+$$[$0-4]+" Se esperaba -> ;",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                errores.addError(error);
+
+                                                                                                                var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
+                                                                                                                var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
+                                                                                                                var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                inc.addHijo(id2);
+                                                                                                                nodo.addHijo(id1);
+                                                                                                                nodo.addHijo($$[$0-7]);
+                                                                                                                nodo.addHijo($$[$0-5]);
+                                                                                                                nodo.addHijo(inc);
+                                                                                                                nodo.addHijo($$[$0]);
+                                                                                                                this.$ = nodo;
+                                                                                                                this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+";"+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
+                                                                                                              
+break;
+case 179:
+
+                                                                                                                        console.error("Error Sintactico: "+$$[$0-3]+" Error en do While");
+                                                                                                                        var error = new Error("Sintactico","Encontrado: "+$$[$0-3]+" Se esperaba -> id",+yylineno+1,+_$[$0-11].last_column+1);
+                                                                                                                        errores.addError(error);
+
+                                                                                                                        var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
+                                                                                                                        var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
+                                                                                                                        var id2 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                        var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                        inc.addHijo(id2);
+                                                                                                                        nodo.addHijo(id1);
+                                                                                                                        nodo.addHijo($$[$0-7]);
+                                                                                                                        nodo.addHijo($$[$0-5]);
+                                                                                                                        nodo.addHijo(inc);
+                                                                                                                        nodo.addHijo($$[$0]);
+                                                                                                                        this.$ = nodo;
+                                                                                                                        this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-9]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
+                                                                                                                      
+break;
+case 180:
+
+                                                                                                                      console.error("Error Sintactico: "+$$[$0-2]+" Error en do While");
+                                                                                                                      var error = new Error("Sintactico","Encontrado: "+$$[$0-2]+" Se esperaba -> ++||--",+yylineno+1,+_$[$0-2].last_column+1);
+                                                                                                                      errores.addError(error);
+
+                                                                                                                      var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
+                                                                                                                      var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
+                                                                                                                      var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                      var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                      inc.addHijo(id2);
+                                                                                                                      nodo.addHijo(id1);
+                                                                                                                      nodo.addHijo($$[$0-7]);
+                                                                                                                      nodo.addHijo($$[$0-5]);
+                                                                                                                      nodo.addHijo(inc);
+                                                                                                                      nodo.addHijo($$[$0]);
+                                                                                                                      this.$ = nodo;
+                                                                                                                      this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+"++"+$$[$0-1]+$$[$0].trad;
+                                                                                                                    
+break;
+case 181:
+
+                                                                                                                  console.error("Error Sintactico: "+$$[$0-1]+" Error en do While");
+                                                                                                                  var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> )",+yylineno+1,+_$[$0-1].last_column+1);
+                                                                                                                  errores.addError(error);
+
+                                                                                                                  var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
+                                                                                                                  var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
+                                                                                                                  var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                  var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                  inc.addHijo(id2);
+                                                                                                                  nodo.addHijo(id1);
+                                                                                                                  nodo.addHijo($$[$0-7]);
+                                                                                                                  nodo.addHijo($$[$0-5]);
+                                                                                                                  nodo.addHijo(inc);
+                                                                                                                  nodo.addHijo($$[$0]);
+                                                                                                                  this.$ = nodo;
+                                                                                                                  this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
+                                                                                                                
+break;
+case 182:
+
+                                                                                                                  console.error("Error Sintactico: "+$$[$0]+" Error en do While");
+                                                                                                                  var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> SENTENCIAS",+yylineno+1,+_$[$0].last_column+1);
+                                                                                                                  errores.addError(error);
+
+                                                                                                                  var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
+                                                                                                                  var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
+                                                                                                                  var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                  var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                  inc.addHijo(id2);
+                                                                                                                  nodo.addHijo(id1);
+                                                                                                                  nodo.addHijo($$[$0-7]);
+                                                                                                                  nodo.addHijo($$[$0-5]);
+                                                                                                                  nodo.addHijo(inc);
+                                                                                                                  this.$ = nodo;
+                                                                                                                  this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+"{}\n";
+                                                                                                                
+break;
+case 183:
+
+                                                                                                                        var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
+                                                                                                                        var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
+                                                                                                                        var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                        var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                        inc.addHijo(id2);
+                                                                                                                        nodo.addHijo(id1);
+                                                                                                                        nodo.addHijo($$[$0-7]);
+                                                                                                                        nodo.addHijo($$[$0-5]);
+                                                                                                                        nodo.addHijo(inc);
+                                                                                                                        nodo.addHijo($$[$0]);
+                                                                                                                        this.$ = nodo;
+                                                                                                                        this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
+                                                                                                                      
+break;
+case 184:
+  
+                                                                                                                  console.error("Error Sintactico: "+$$[$0-11]+" Error en for");
+                                                                                                                  var error = new Error("Sintactico","Encontrado: "+$$[$0-11]+" Se esperaba -> (",+yylineno+1,+_$[$0-11].last_column+1);
+                                                                                                                  errores.addError(error);
+
+                                                                                                                  var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
+                                                                                                                  var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
+                                                                                                                  var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                  var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                  inc.addHijo(id2);
+                                                                                                                  nodo.addHijo(id1);
+                                                                                                                  nodo.addHijo($$[$0-7]);
+                                                                                                                  nodo.addHijo($$[$0-5]);
+                                                                                                                  nodo.addHijo(inc);
+                                                                                                                  nodo.addHijo($$[$0]);
+                                                                                                                  this.$ = nodo;
+                                                                                                                  this.$.trad = $$[$0-12]+"("+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
+                                                                                                                
+break;
+case 185:
+
+                                                                                                                      console.error("Error Sintactico: "+$$[$0-10]+" Error en do While");
+                                                                                                                      var error = new Error("Sintactico","Encontrado: "+$$[$0-10]+" Se esperaba -> let",+yylineno+1,+_$[$0-10].last_column+1);
+                                                                                                                      errores.addError(error);
+
+                                                                                                                      var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
+                                                                                                                      var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
+                                                                                                                      var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                      var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                      inc.addHijo(id2);
+                                                                                                                      nodo.addHijo(id1);
+                                                                                                                      nodo.addHijo($$[$0-7]);
+                                                                                                                      nodo.addHijo($$[$0-5]);
+                                                                                                                      nodo.addHijo(inc);
+                                                                                                                      nodo.addHijo($$[$0]);
+                                                                                                                      this.$ = nodo;
+                                                                                                                      this.$.trad = $$[$0-12]+$$[$0-11]+"let"+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;    
+                                                                                                                    
+break;
+case 187:
+
+                                                                                                                    console.error("Error Sintactico: "+$$[$0-8]+" Error en do While");
+                                                                                                                    var error = new Error("Sintactico","Encontrado: "+$$[$0-8]+" Se esperaba -> =",+yylineno+1,+_$[$0-8].last_column+1);
+                                                                                                                    errores.addError(error);
+
+                                                                                                                    var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
+                                                                                                                    var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
+                                                                                                                    var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                    var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                    inc.addHijo(id2);
+                                                                                                                    nodo.addHijo(id1);
+                                                                                                                    nodo.addHijo($$[$0-7]);
+                                                                                                                    nodo.addHijo($$[$0-5]);
+                                                                                                                    nodo.addHijo(inc);
+                                                                                                                    nodo.addHijo($$[$0]);
+                                                                                                                    this.$ = nodo;
+                                                                                                                    this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+"="+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
+                                                                                                                  
+break;
+case 188:
+
+                                                                                                                console.error("Error Sintactico: "+$$[$0-6]+" Error en do While");
+                                                                                                                var error = new Error("Sintactico","Encontrado: "+$$[$0-6]+" Se esperaba -> ;",+yylineno+1,+_$[$0-6].last_column+1);
+                                                                                                                errores.addError(error);
+
+                                                                                                                var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
+                                                                                                                var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
+                                                                                                                var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                inc.addHijo(id2);
+                                                                                                                nodo.addHijo(id1);
+                                                                                                                nodo.addHijo($$[$0-7]);
+                                                                                                                nodo.addHijo($$[$0-5]);
+                                                                                                                nodo.addHijo(inc);
+                                                                                                                nodo.addHijo($$[$0]);
+                                                                                                                this.$ = nodo;
+                                                                                                                this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+";"+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
+                                                                                                              
+break;
+case 190:
+
+                                                                                                                        console.error("Error Sintactico: "+$$[$0-4]+" Error en do While");
+                                                                                                                        var error = new Error("Sintactico","Encontrado: "+$$[$0-4]+" Se esperaba -> ;",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                        errores.addError(error);
+
+                                                                                                                        var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
+                                                                                                                        var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
+                                                                                                                        var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                        var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                        inc.addHijo(id2);
+                                                                                                                        nodo.addHijo(id1);
+                                                                                                                        nodo.addHijo($$[$0-7]);
+                                                                                                                        nodo.addHijo($$[$0-5]);
+                                                                                                                        nodo.addHijo(inc);
+                                                                                                                        nodo.addHijo($$[$0]);
+                                                                                                                        this.$ = nodo;
+                                                                                                                        this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+";"+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
+                                                                                                                      
+break;
+case 191:
+
+                                                                                                                        console.error("Error Sintactico: "+$$[$0-3]+" Error en do While");
+                                                                                                                        var error = new Error("Sintactico","Encontrado: "+$$[$0-3]+" Se esperaba -> id",+yylineno+1,+_$[$0-11].last_column+1);
+                                                                                                                        errores.addError(error);
+
+                                                                                                                        var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
+                                                                                                                        var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
+                                                                                                                        var id2 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                        var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                        inc.addHijo(id2);
+                                                                                                                        nodo.addHijo(id1);
+                                                                                                                        nodo.addHijo($$[$0-7]);
+                                                                                                                        nodo.addHijo($$[$0-5]);
+                                                                                                                        nodo.addHijo(inc);
+                                                                                                                        nodo.addHijo($$[$0]);
+                                                                                                                        this.$ = nodo;
+                                                                                                                        this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-9]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
+                                                                                                                      
+break;
+case 192:
+
+                                                                                                                  console.error("Error Sintactico: "+$$[$0-1]+" Error en do While");
+                                                                                                                  var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> )",+yylineno+1,+_$[$0-1].last_column+1);
+                                                                                                                  errores.addError(error);
+
+                                                                                                                  var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
+                                                                                                                  var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
+                                                                                                                  var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                  var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                  inc.addHijo(id2);
+                                                                                                                  nodo.addHijo(id1);
+                                                                                                                  nodo.addHijo($$[$0-7]);
+                                                                                                                  nodo.addHijo($$[$0-5]);
+                                                                                                                  nodo.addHijo(inc);
+                                                                                                                  nodo.addHijo($$[$0]);
+                                                                                                                  this.$ = nodo;
+                                                                                                                  this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
+                                                                                                                
+break;
+case 193:
+
+                                                                                                                  console.error("Error Sintactico: "+$$[$0]+" Error en do While");
+                                                                                                                  var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> SENTENCIAS",+yylineno+1,+_$[$0].last_column+1);
+                                                                                                                  errores.addError(error);
+
+                                                                                                                  var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
+                                                                                                                  var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
+                                                                                                                  var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                  var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                  inc.addHijo(id2);
+                                                                                                                  nodo.addHijo(id1);
+                                                                                                                  nodo.addHijo($$[$0-7]);
+                                                                                                                  nodo.addHijo($$[$0-5]);
+                                                                                                                  nodo.addHijo(inc);
+                                                                                                                  this.$ = nodo;
+                                                                                                                  this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+"{}\n";
+                                                                                                                
+break;
+case 194:
+
+                                                                                                                var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-11].last_column+1);
+                                                                                                                var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
+                                                                                                                var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-2].last_column+1);
+                                                                                                                var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                inc.addHijo(id2);
+                                                                                                                nodo.addHijo(id1);
+                                                                                                                nodo.addHijo($$[$0-7]);
+                                                                                                                nodo.addHijo($$[$0-5]);
+                                                                                                                nodo.addHijo(inc);
+                                                                                                                nodo.addHijo($$[$0]);
+                                                                                                                this.$ = nodo;
+                                                                                                                this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
+                                                                                                              
+break;
+case 195:
+
+                                                                                                          console.error("Error Sintactico: "+$$[$0-10]+" Error en for");
+                                                                                                          var error = new Error("Sintactico","Encontrado: "+$$[$0-10]+" Se esperaba -> (",+yylineno+1,+_$[$0-10].last_column+1);
+                                                                                                          errores.addError(error);
+
+                                                                                                          var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-11].last_column+1);
+                                                                                                          var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
+                                                                                                          var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-2].last_column+1);
+                                                                                                          var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                          inc.addHijo(id2);
+                                                                                                          nodo.addHijo(id1);
+                                                                                                          nodo.addHijo($$[$0-7]);
+                                                                                                          nodo.addHijo($$[$0-5]);
+                                                                                                          nodo.addHijo(inc);
+                                                                                                          nodo.addHijo($$[$0]);
+                                                                                                          this.$ = nodo;
+                                                                                                          this.$.trad = $$[$0-11]+"("+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
+                                                                                                        
+break;
+case 196: case 207:
+
+                                                                                                                console.error("Error Sintactico: "+$$[$0-9]+" Error en for");
+                                                                                                                var error = new Error("Sintactico","Encontrado: "+$$[$0-9]+" Se esperaba -> id",+yylineno+1,+_$[$0-10].last_column+1);
+                                                                                                                errores.addError(error);
+
+                                                                                                                this.$ = new Nodo("","");
+                                                                                                                this.$.trad = "";
+                                                                                                              
+break;
+case 197:
+
+                                                                                                              console.error("Error Sintactico: "+$$[$0-8]+" Error en for");
+                                                                                                              var error = new Error("Sintactico","Encontrado: "+$$[$0-8]+" Se esperaba -> =",+yylineno+1,+_$[$0-8].last_column+1);
+                                                                                                              errores.addError(error);
+
+                                                                                                              var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-11].last_column+1);
+                                                                                                              var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
+                                                                                                              var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-2].last_column+1);
+                                                                                                              var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                              inc.addHijo(id2);
+                                                                                                              nodo.addHijo(id1);
+                                                                                                              nodo.addHijo($$[$0-7]);
+                                                                                                              nodo.addHijo($$[$0-5]);
+                                                                                                              nodo.addHijo(inc);
+                                                                                                              nodo.addHijo($$[$0]);
+                                                                                                              this.$ = nodo;
+                                                                                                              this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+"="+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
+                                                                                                            
+break;
+case 198:
+
+                                                                                                        console.error("Error Sintactico: "+$$[$0-6]+" Error en for");
+                                                                                                        var error = new Error("Sintactico","Encontrado: "+$$[$0-6]+" Se esperaba -> ;",+yylineno+1,+_$[$0-6].last_column+1);
+                                                                                                        errores.addError(error);
+
+                                                                                                        var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-11].last_column+1);
+                                                                                                        var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
+                                                                                                        var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-2].last_column+1);
+                                                                                                        var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                        inc.addHijo(id2);
+                                                                                                        nodo.addHijo(id1);
+                                                                                                        nodo.addHijo($$[$0-7]);
+                                                                                                        nodo.addHijo($$[$0-5]);
+                                                                                                        nodo.addHijo(inc);
+                                                                                                        nodo.addHijo($$[$0]);
+                                                                                                        this.$ = nodo;
+                                                                                                        this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+";"+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
+                                                                                                      
+break;
+case 199: case 210:
+
+                                                                                                                    console.error("Error Sintactico: "+$$[$0-5]+" Error en for");
+                                                                                                                    var error = new Error("Sintactico","Encontrado: "+$$[$0-5]+" Se esperaba -> condicion for",+yylineno+1,+_$[$0-6].last_column+1);
+                                                                                                                    errores.addError(error);
+
+                                                                                                                    this.$ = new Nodo("","");
+                                                                                                                    this.$.trad = "";
+                                                                                                                  
+break;
+case 200:
+
+                                                                                                        console.error("Error Sintactico: "+$$[$0-4]+" Error en for");
+                                                                                                        var error = new Error("Sintactico","Encontrado: "+$$[$0-4]+" Se esperaba -> ;",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                        errores.addError(error);
+
+                                                                                                        var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-11].last_column+1);
+                                                                                                        var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
+                                                                                                        var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-2].last_column+1);
+                                                                                                        var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                        inc.addHijo(id2);
+                                                                                                        nodo.addHijo(id1);
+                                                                                                        nodo.addHijo($$[$0-7]);
+                                                                                                        nodo.addHijo($$[$0-5]);
+                                                                                                        nodo.addHijo(inc);
+                                                                                                        nodo.addHijo($$[$0]);
+                                                                                                        this.$ = nodo;
+                                                                                                        this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+";"+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
+                                                                                                      
+break;
+case 201:
+
+                                                                                                                console.error("Error Sintactico: "+$$[$0-3]+" Error en for");
+                                                                                                                var error = new Error("Sintactico","Encontrado: "+$$[$0-3]+" Se esperaba -> id",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                errores.addError(error);
+
+                                                                                                                var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-11].last_column+1);
+                                                                                                                var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
+                                                                                                                var id2 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-2].last_column+1);
+                                                                                                                var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                inc.addHijo(id2);
+                                                                                                                nodo.addHijo(id1);
+                                                                                                                nodo.addHijo($$[$0-7]);
+                                                                                                                nodo.addHijo($$[$0-5]);
+                                                                                                                nodo.addHijo(inc);
+                                                                                                                nodo.addHijo($$[$0]);
+                                                                                                                this.$ = nodo;
+                                                                                                                this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-9]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
+                                                                                                              
+break;
+case 202:
+  
+                                                                                                                console.error("Error Sintactico: "+$$[$0-2]+" Error en for");
+                                                                                                                var error = new Error("Sintactico","Encontrado: "+$$[$0-2]+" Se esperaba -> ++||--",+yylineno+1,+_$[$0-2].last_column+1);
+                                                                                                                errores.addError(error);
+
+                                                                                                                var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-11].last_column+1);
+                                                                                                                var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
+                                                                                                                var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-2].last_column+1);
+                                                                                                                var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                inc.addHijo(id2);
+                                                                                                                nodo.addHijo(id1);
+                                                                                                                nodo.addHijo($$[$0-7]);
+                                                                                                                nodo.addHijo($$[$0-5]);
+                                                                                                                nodo.addHijo(inc);
+                                                                                                                nodo.addHijo($$[$0]);
+                                                                                                                this.$ = nodo;
+                                                                                                                this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+"++"+$$[$0-1]+$$[$0].trad;
+                                                                                                              
+break;
+case 203:
+  
+                                                                                                          console.error("Error Sintactico: "+$$[$0-1]+" Error en for");
+                                                                                                          var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> )",+yylineno+1,+_$[$0-1].last_column+1);
+                                                                                                          errores.addError(error);
+
+                                                                                                          var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-11].last_column+1);
+                                                                                                          var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
+                                                                                                          var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-2].last_column+1);
+                                                                                                          var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                          inc.addHijo(id2);
+                                                                                                          nodo.addHijo(id1);
+                                                                                                          nodo.addHijo($$[$0-7]);
+                                                                                                          nodo.addHijo($$[$0-5]);
+                                                                                                          nodo.addHijo(inc);
+                                                                                                          nodo.addHijo($$[$0]);
+                                                                                                          this.$ = nodo;
+                                                                                                          this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+")"+$$[$0].trad;
+                                                                                                        
+break;
+case 204:
+  
+                                                                                                          console.error("Error Sintactico: "+$$[$0]+" Error en for");
+                                                                                                          var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> Sentencias",+yylineno+1,+_$[$0-1].last_column+1);
+                                                                                                          errores.addError(error);
+
+                                                                                                          var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-11].last_column+1);
+                                                                                                          var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
+                                                                                                          var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-2].last_column+1);
+                                                                                                          var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                          inc.addHijo(id2);
+                                                                                                          nodo.addHijo(id1);
+                                                                                                          nodo.addHijo($$[$0-7]);
+                                                                                                          nodo.addHijo($$[$0-5]);
+                                                                                                          nodo.addHijo(inc);
+                                                                                                          this.$ = nodo;
+                                                                                                          this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+"{}\n";
+                                                                                                        
+break;
+case 205:
+
+                                                                                                                var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-11].last_column+1);
+                                                                                                                var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
+                                                                                                                var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-2].last_column+1);
+                                                                                                                var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                inc.addHijo(id2);
+                                                                                                                nodo.addHijo(id1);
+                                                                                                                nodo.addHijo($$[$0-7]);
+                                                                                                                nodo.addHijo($$[$0-5]);
+                                                                                                                nodo.addHijo(inc);
+                                                                                                                nodo.addHijo($$[$0]);
+                                                                                                                this.$ = nodo;
+                                                                                                                this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
+                                                                                                              
+break;
+case 206:
+
+                                                                                                          console.error("Error Sintactico: "+$$[$0-10]+" Error en for");
+                                                                                                          var error = new Error("Sintactico","Encontrado: "+$$[$0-10]+" Se esperaba -> (",+yylineno+1,+_$[$0-10].last_column+1);
+                                                                                                          errores.addError(error);
+
+                                                                                                          var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-11].last_column+1);
+                                                                                                          var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
+                                                                                                          var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-2].last_column+1);
+                                                                                                          var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                          inc.addHijo(id2);
+                                                                                                          nodo.addHijo(id1);
+                                                                                                          nodo.addHijo($$[$0-7]);
+                                                                                                          nodo.addHijo($$[$0-5]);
+                                                                                                          nodo.addHijo(inc);
+                                                                                                          nodo.addHijo($$[$0]);
+                                                                                                          this.$ = nodo;
+                                                                                                          this.$.trad = $$[$0-11]+"("+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
+                                                                                                        
+break;
+case 208:
+
+                                                                                                              console.error("Error Sintactico: "+$$[$0-8]+" Error en for");
+                                                                                                              var error = new Error("Sintactico","Encontrado: "+$$[$0-8]+" Se esperaba -> =",+yylineno+1,+_$[$0-8].last_column+1);
+                                                                                                              errores.addError(error);
+
+                                                                                                              var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-11].last_column+1);
+                                                                                                              var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
+                                                                                                              var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-2].last_column+1);
+                                                                                                              var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                              inc.addHijo(id2);
+                                                                                                              nodo.addHijo(id1);
+                                                                                                              nodo.addHijo($$[$0-7]);
+                                                                                                              nodo.addHijo($$[$0-5]);
+                                                                                                              nodo.addHijo(inc);
+                                                                                                              nodo.addHijo($$[$0]);
+                                                                                                              this.$ = nodo;
+                                                                                                              this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+"="+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
+                                                                                                            
+break;
+case 209:
+
+                                                                                                        console.error("Error Sintactico: "+$$[$0-6]+" Error en for");
+                                                                                                        var error = new Error("Sintactico","Encontrado: "+$$[$0-6]+" Se esperaba -> ;",+yylineno+1,+_$[$0-6].last_column+1);
+                                                                                                        errores.addError(error);
+
+                                                                                                        var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-11].last_column+1);
+                                                                                                        var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
+                                                                                                        var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-2].last_column+1);
+                                                                                                        var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                        inc.addHijo(id2);
+                                                                                                        nodo.addHijo(id1);
+                                                                                                        nodo.addHijo($$[$0-7]);
+                                                                                                        nodo.addHijo($$[$0-5]);
+                                                                                                        nodo.addHijo(inc);
+                                                                                                        nodo.addHijo($$[$0]);
+                                                                                                        this.$ = nodo;
+                                                                                                        this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+";"+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
+                                                                                                      
+break;
+case 211:
+
+                                                                                                        console.error("Error Sintactico: "+$$[$0-4]+" Error en for");
+                                                                                                        var error = new Error("Sintactico","Encontrado: "+$$[$0-4]+" Se esperaba -> ;",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                        errores.addError(error);
+
+                                                                                                        var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-11].last_column+1);
+                                                                                                        var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
+                                                                                                        var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-2].last_column+1);
+                                                                                                        var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                        inc.addHijo(id2);
+                                                                                                        nodo.addHijo(id1);
+                                                                                                        nodo.addHijo($$[$0-7]);
+                                                                                                        nodo.addHijo($$[$0-5]);
+                                                                                                        nodo.addHijo(inc);
+                                                                                                        nodo.addHijo($$[$0]);
+                                                                                                        this.$ = nodo;
+                                                                                                        this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+";"+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
+                                                                                                      
+break;
+case 212:
+
+                                                                                                                console.error("Error Sintactico: "+$$[$0-3]+" Error en for");
+                                                                                                                var error = new Error("Sintactico","Encontrado: "+$$[$0-3]+" Se esperaba -> id",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                errores.addError(error);
+
+                                                                                                                var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-11].last_column+1);
+                                                                                                                var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
+                                                                                                                var id2 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-2].last_column+1);
+                                                                                                                var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                inc.addHijo(id2);
+                                                                                                                nodo.addHijo(id1);
+                                                                                                                nodo.addHijo($$[$0-7]);
+                                                                                                                nodo.addHijo($$[$0-5]);
+                                                                                                                nodo.addHijo(inc);
+                                                                                                                nodo.addHijo($$[$0]);
+                                                                                                                this.$ = nodo;
+                                                                                                                this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-9]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
+                                                                                                              
+break;
+case 213:
+  
+                                                                                                          console.error("Error Sintactico: "+$$[$0-1]+" Error en for");
+                                                                                                          var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> )",+yylineno+1,+_$[$0-1].last_column+1);
+                                                                                                          errores.addError(error);
+
+                                                                                                          var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-11].last_column+1);
+                                                                                                          var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
+                                                                                                          var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-2].last_column+1);
+                                                                                                          var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                          inc.addHijo(id2);
+                                                                                                          nodo.addHijo(id1);
+                                                                                                          nodo.addHijo($$[$0-7]);
+                                                                                                          nodo.addHijo($$[$0-5]);
+                                                                                                          nodo.addHijo(inc);
+                                                                                                          nodo.addHijo($$[$0]);
+                                                                                                          this.$ = nodo;
+                                                                                                          this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+")"+$$[$0].trad;
+                                                                                                        
+break;
+case 214:
+  
+                                                                                                          console.error("Error Sintactico: "+$$[$0]+" Error en for");
+                                                                                                          var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> Sentencias",+yylineno+1,+_$[$0-1].last_column+1);
+                                                                                                          errores.addError(error);
+
+                                                                                                          var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-11].last_column+1);
+                                                                                                          var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
+                                                                                                          var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-2].last_column+1);
+                                                                                                          var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                          inc.addHijo(id2);
+                                                                                                          nodo.addHijo(id1);
+                                                                                                          nodo.addHijo($$[$0-7]);
+                                                                                                          nodo.addHijo($$[$0-5]);
+                                                                                                          nodo.addHijo(inc);
+                                                                                                          this.$ = nodo;
+                                                                                                          this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+"{}\n";
+                                                                                                        
+break;
+case 215:
+
+                                                                  var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-6].last_column+1);
+                                                                  var fin = new Nodo("IN","IN",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                  var id1 = new Nodo("ID",$$[$0-4]);
+                                                                  var id2 = new Nodo("ID",$$[$0-2]);
+                                                                  fin.addHijo(id1);
+                                                                  fin.addHijo(id2);
+                                                                  nodo.addHijo(fin);
+                                                                  nodo.addHijo($$[$0]);
+                                                                  this.$ = nodo;
+                                                                  this.$.trad = $$[$0-6]+$$[$0-5]+$$[$0-4]+" "+$$[$0-3]+" "+$$[$0-2]+$$[$0-1]+$$[$0].trad;
+                                                                
+break;
+case 216:
+
+                                                            console.error("Error Sintactico: "+$$[$0-5]+" Error en for");
+                                                            var error = new Error("Sintactico","Encontrado: "+$$[$0-5]+" Se esperaba -> (",+yylineno+1,+_$[$0-5].last_column+1);
+                                                            errores.addError(error);
+
+                                                            var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-6].last_column+1);
+                                                            var fin = new Nodo("IN","IN",+yylineno+1,+_$[$0-3].last_column+1);
+                                                            var id1 = new Nodo("ID",$$[$0-4]);
+                                                            var id2 = new Nodo("ID",$$[$0-2]);
+                                                            fin.addHijo(id1);
+                                                            fin.addHijo(id2);
+                                                            nodo.addHijo(fin);
+                                                            nodo.addHijo($$[$0]);
+                                                            this.$ = nodo;
+                                                            this.$.trad = $$[$0-6]+"("+$$[$0-4]+" "+$$[$0-3]+" "+$$[$0-2]+$$[$0-1]+$$[$0].trad;
+                                                          
+break;
+case 217: case 231:
+
+                                                                  console.error("Error Sintactico: "+$$[$0-4]+" Error en for");
+                                                                  var error = new Error("Sintactico","Encontrado: "+$$[$0-4]+" Se esperaba -> id",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                  errores.addError(error);
+
+                                                                  this.$ = new Nodo("","")
+                                                                  this.$.trad = "";
+                                                                
+break;
+case 218: case 233:
+
+                                                                  console.error("Error Sintactico: "+$$[$0-2]+" Error en for");
+                                                                  var error = new Error("Sintactico","Encontrado: "+$$[$0-2]+" Se esperaba -> id",+yylineno+1,+_$[$0-2].last_column+1);
+                                                                  errores.addError(error);
+
+                                                                  this.$ = new Nodo("","")
+                                                                  this.$.trad = "";
+                                                                
+break;
+case 219:
+
+                                                            console.error("Error Sintactico: "+$$[$0-1]+" Error en for");
+                                                            var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> )",+yylineno+1,+_$[$0-1].last_column+1);
+                                                            errores.addError(error);
+
+                                                            var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-6].last_column+1);
+                                                            var fin = new Nodo("IN","IN",+yylineno+1,+_$[$0-3].last_column+1);
+                                                            var id1 = new Nodo("ID",$$[$0-4]);
+                                                            var id2 = new Nodo("ID",$$[$0-2]);
+                                                            fin.addHijo(id1);
+                                                            fin.addHijo(id2);
+                                                            nodo.addHijo(fin);
+                                                            nodo.addHijo($$[$0]);
+                                                            this.$ = nodo;
+                                                            this.$.trad = $$[$0-6]+$$[$0-5]+$$[$0-4]+" "+$$[$0-3]+" "+$$[$0-2]+")"+$$[$0].trad;
+                                                          
+break;
+case 220: case 235:
+
+                                                            console.error("Error Sintactico: "+$$[$0-1]+" Error en for");
+                                                            var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> Sentencias",+yylineno+1,+_$[$0-1].last_column+1);
+                                                            errores.addError(error);
+
+                                                            var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-6].last_column+1);
+                                                            var fin = new Nodo("IN","IN",+yylineno+1,+_$[$0-3].last_column+1);
+                                                            var id1 = new Nodo("ID",$$[$0-4]);
+                                                            var id2 = new Nodo("ID",$$[$0-2]);
+                                                            fin.addHijo(id1);
+                                                            fin.addHijo(id2);
+                                                            nodo.addHijo(fin);
+                                                            nodo.addHijo($$[$0]);
+                                                            this.$ = nodo;
+                                                            this.$.trad = $$[$0-6]+$$[$0-5]+$$[$0-4]+" "+$$[$0-3]+" "+$$[$0-2]+")"+$$[$0].trad;
+                                                          
+break;
+case 221:
+
+                                                                          var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-7].last_column+1);
+                                                                          var fin = new Nodo("IN","IN",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                          var dec = new Nodo("DECLARACION","LET");
+                                                                          var id1 = new Nodo("ID",$$[$0-5]);
+                                                                          var id2 = new Nodo("ID",$$[$0-2]);
+                                                                          dec.addHijo(id1);
+                                                                          fin.addHijo(dec);
+                                                                          fin.addHijo(id2);
+                                                                          nodo.addHijo(fin);
+                                                                          nodo.addHijo($$[$0]);
+                                                                          this.$ = nodo;
+                                                                          this.$.trad = $$[$0-7]+$$[$0-6]+$$[$0-5]+" "+$$[$0-4]+" "+$$[$0-3]+" "+$$[$0-2]+$$[$0-1]+$$[$0].trad;
+                                                                        
+break;
+case 222:
+
+                                                                    console.error("Error Sintactico: "+$$[$0-6]+" Error en for");
+                                                                    var error = new Error("Sintactico","Encontrado: "+$$[$0-6]+" Se esperaba -> (",+yylineno+1,+_$[$0-6].last_column+1);
+                                                                    errores.addError(error);
+
+                                                                    var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-7].last_column+1);
+                                                                    var fin = new Nodo("IN","IN",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                    var dec = new Nodo("DECLARACION","LET");
+                                                                    var id1 = new Nodo("ID",$$[$0-5]);
+                                                                    var id2 = new Nodo("ID",$$[$0-2]);
+                                                                    dec.addHijo(id1);
+                                                                    fin.addHijo(dec);
+                                                                    fin.addHijo(id2);
+                                                                    nodo.addHijo(fin);
+                                                                    nodo.addHijo($$[$0]);
+                                                                    this.$ = nodo;
+                                                                    this.$.trad = $$[$0-7]+"("+$$[$0-5]+" "+$$[$0-4]+" "+$$[$0-3]+" "+$$[$0-2]+$$[$0-1]+$$[$0].trad;
+                                                                  
+break;
+case 223:
+
+                                                                        console.error("Error Sintactico: "+$$[$0-5]+" Error en for");
+                                                                        var error = new Error("Sintactico","Encontrado: "+$$[$0-5]+" Se esperaba -> let",+yylineno+1,+_$[$0-5].last_column+1);
+                                                                        errores.addError(error);
+
+                                                                        var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-7].last_column+1);
+                                                                        var fin = new Nodo("IN","IN",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                        var dec = new Nodo("DECLARACION","LET");
+                                                                        var id1 = new Nodo("ID",$$[$0-5]);
+                                                                        var id2 = new Nodo("ID",$$[$0-2]);
+                                                                        dec.addHijo(id1);
+                                                                        fin.addHijo(dec);
+                                                                        fin.addHijo(id2);
+                                                                        nodo.addHijo(fin);
+                                                                        nodo.addHijo($$[$0]);
+                                                                        this.$ = nodo;
+                                                                        this.$.trad = $$[$0-7]+$$[$0-6]+"let"+" "+$$[$0-4]+" "+$$[$0-3]+" "+$$[$0-2]+$$[$0-1]+$$[$0].trad;
+                                                                      
+break;
+case 224:
+
+                                                                          console.error("Error Sintactico: "+$$[$0-4]+" Error en for");
+                                                                          var error = new Error("Sintactico","Encontrado: "+$$[$0-4]+" Se esperaba -> id",+yylineno+1,+_$[$0-5].last_column+1);
+                                                                          errores.addError(error);
+
+                                                                          this.$ = new Nodo("","");
+                                                                          this.$.trad = "";
+                                                                        
+break;
+case 225:
+
+                                                                          console.error("Error Sintactico: "+$$[$0-3]+" Error en for");
+                                                                          var error = new Error("Sintactico","Encontrado: "+$$[$0-3]+" Se esperaba -> in, of",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                          errores.addError(error);
+
+                                                                          this.$ = new Nodo("","");
+                                                                          this.$.trad = "";
+                                                                        
+break;
+case 226: case 240:
+
+                                                                          console.error("Error Sintactico: "+$$[$0-2]+" Error en for");
+                                                                          var error = new Error("Sintactico","Encontrado: "+$$[$0-2]+" Se esperaba -> id",+yylineno+1,+_$[$0-2].last_column+1);
+                                                                          errores.addError(error);
+
+                                                                          this.$ = new Nodo("","");
+                                                                          this.$.trad = "";
+                                                                        
+break;
+case 227:
+
+                                                                    console.error("Error Sintactico: "+$$[$0-1]+" Error en for");
+                                                                    var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> )",+yylineno+1,+_$[$0-1].last_column+1);
+                                                                    errores.addError(error);
+
+                                                                    var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-7].last_column+1);
+                                                                    var fin = new Nodo("IN","IN",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                    var dec = new Nodo("DECLARACION","LET");
+                                                                    var id1 = new Nodo("ID",$$[$0-5]);
+                                                                    var id2 = new Nodo("ID",$$[$0-2]);
+                                                                    dec.addHijo(id1);
+                                                                    fin.addHijo(dec);
+                                                                    fin.addHijo(id2);
+                                                                    nodo.addHijo(fin);
+                                                                    nodo.addHijo($$[$0]);
+                                                                    this.$ = nodo;
+                                                                    this.$.trad = $$[$0-7]+$$[$0-6]+$$[$0-5]+" "+$$[$0-4]+" "+$$[$0-3]+" "+$$[$0-2]+")"+$$[$0].trad;
+                                                                  
+break;
+case 228:
+
+                                                                    console.error("Error Sintactico: "+$$[$0]+" Error en for");
+                                                                    var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> Sentencias",+yylineno+1,+_$[$0].last_column+1);
+                                                                    errores.addError(error);
+
+                                                                    var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-7].last_column+1);
+                                                                    var fin = new Nodo("IN","IN",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                    var dec = new Nodo("DECLARACION","LET");
+                                                                    var id1 = new Nodo("ID",$$[$0-5]);
+                                                                    var id2 = new Nodo("ID",$$[$0-2]);
+                                                                    dec.addHijo(id1);
+                                                                    fin.addHijo(dec);
+                                                                    fin.addHijo(id2);
+                                                                    nodo.addHijo(fin);
+                                                                    this.$ = nodo;
+                                                                    this.$.trad = $$[$0-7]+$$[$0-6]+$$[$0-5]+" "+$$[$0-4]+" "+$$[$0-3]+" "+$$[$0-2]+$$[$0-1]+"{}\n";
+                                                                  
+break;
+case 229:
+
+                                                                  var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-6].last_column+1);
+                                                                  var fin = new Nodo("OF","OF",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                  var id1 = new Nodo("ID",$$[$0-4]);
+                                                                  var id2 = new Nodo("ID",$$[$0-2]);
+                                                                  fin.addHijo(id1);
+                                                                  fin.addHijo(id2);
+                                                                  nodo.addHijo(fin);
+                                                                  nodo.addHijo($$[$0]);
+                                                                  this.$ = nodo;
+                                                                  this.$.trad = $$[$0-6]+$$[$0-5]+$$[$0-4]+" "+$$[$0-3]+" "+$$[$0-2]+$$[$0-1]+$$[$0].trad;
+                                                                
+break;
+case 230:
+
+                                                            console.error("Error Sintactico: "+$$[$0-5]+" Error en for");
+                                                            var error = new Error("Sintactico","Encontrado: "+$$[$0-5]+" Se esperaba -> (",+yylineno+1,+_$[$0-5].last_column+1);
+                                                            errores.addError(error);
+
+                                                            var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-6].last_column+1);
+                                                            var fin = new Nodo("OF","OF",+yylineno+1,+_$[$0-3].last_column+1);
+                                                            var id1 = new Nodo("ID",$$[$0-4]);
+                                                            var id2 = new Nodo("ID",$$[$0-2]);
+                                                            fin.addHijo(id1);
+                                                            fin.addHijo(id2);
+                                                            nodo.addHijo(fin);
+                                                            nodo.addHijo($$[$0]);
+                                                            this.$ = nodo;
+                                                            this.$.trad = $$[$0-6]+"("+$$[$0-4]+" "+$$[$0-3]+" "+$$[$0-2]+$$[$0-1]+$$[$0].trad;
+                                                          
+break;
+case 232:
+
+                                                                  console.error("Error Sintactico: "+$$[$0-3]+" Error en for");
+                                                                  var error = new Error("Sintactico","Encontrado: "+$$[$0-3]+" Se esperaba -> in||of",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                  errores.addError(error);
+
+                                                                  this.$ = new Nodo("","")
+                                                                  this.$.trad = "";
+                                                                
+break;
+case 234:
+
+                                                            console.error("Error Sintactico: "+$$[$0-1]+" Error en for");
+                                                            var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> )",+yylineno+1,+_$[$0-1].last_column+1);
+                                                            errores.addError(error);
+
+                                                            var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-6].last_column+1);
+                                                            var fin = new Nodo("OF","OF",+yylineno+1,+_$[$0-3].last_column+1);
+                                                            var id1 = new Nodo("ID",$$[$0-4]);
+                                                            var id2 = new Nodo("ID",$$[$0-2]);
+                                                            fin.addHijo(id1);
+                                                            fin.addHijo(id2);
+                                                            nodo.addHijo(fin);
+                                                            nodo.addHijo($$[$0]);
+                                                            this.$ = nodo;
+                                                            this.$.trad = $$[$0-6]+$$[$0-5]+$$[$0-4]+" "+$$[$0-3]+" "+$$[$0-2]+")"+$$[$0].trad;
+                                                          
+break;
+case 236:
+
+                                                                          var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-7].last_column+1);
+                                                                          var fin = new Nodo("OF","OF",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                          var dec = new Nodo("DECLARACION","LET");
+                                                                          var id1 = new Nodo("ID",$$[$0-5]);
+                                                                          var id2 = new Nodo("ID",$$[$0-2]);
+                                                                          dec.addHijo(id1);
+                                                                          fin.addHijo(dec);
+                                                                          fin.addHijo(id2);
+                                                                          nodo.addHijo(fin);
+                                                                          nodo.addHijo($$[$0]);
+                                                                          this.$ = nodo;
+                                                                          this.$.trad = $$[$0-7]+$$[$0-6]+$$[$0-5]+" "+$$[$0-4]+" "+$$[$0-3]+" "+$$[$0-2]+$$[$0-1]+$$[$0].trad;
+                                                                        
+break;
+case 237:
+
+                                                                    console.error("Error Sintactico: "+$$[$0-6]+" Error en for");
+                                                                    var error = new Error("Sintactico","Encontrado: "+$$[$0-6]+" Se esperaba -> (",+yylineno+1,+_$[$0-6].last_column+1);
+                                                                    errores.addError(error);
+
+                                                                    var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-7].last_column+1);
+                                                                    var fin = new Nodo("OF","OF",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                    var dec = new Nodo("DECLARACION","LET");
+                                                                    var id1 = new Nodo("ID",$$[$0-5]);
+                                                                    var id2 = new Nodo("ID",$$[$0-2]);
+                                                                    dec.addHijo(id1);
+                                                                    fin.addHijo(dec);
+                                                                    fin.addHijo(id2);
+                                                                    nodo.addHijo(fin);
+                                                                    nodo.addHijo($$[$0]);
+                                                                    this.$ = nodo;
+                                                                    this.$.trad = $$[$0-7]+"("+$$[$0-5]+" "+$$[$0-4]+" "+$$[$0-3]+" "+$$[$0-2]+$$[$0-1]+$$[$0].trad;
+                                                                  
+break;
+case 238:
+
+                                                                        console.error("Error Sintactico: "+$$[$0-5]+" Error en for");
+                                                                        var error = new Error("Sintactico","Encontrado: "+$$[$0-5]+" Se esperaba -> let",+yylineno+1,+_$[$0-5].last_column+1);
+                                                                        errores.addError(error);
+
+                                                                        var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-7].last_column+1);
+                                                                        var fin = new Nodo("OF","OF",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                        var dec = new Nodo("DECLARACION","LET");
+                                                                        var id1 = new Nodo("ID",$$[$0-5]);
+                                                                        var id2 = new Nodo("ID",$$[$0-2]);
+                                                                        dec.addHijo(id1);
+                                                                        fin.addHijo(dec);
+                                                                        fin.addHijo(id2);
+                                                                        nodo.addHijo(fin);
+                                                                        nodo.addHijo($$[$0]);
+                                                                        this.$ = nodo;
+                                                                        this.$.trad = $$[$0-7]+$$[$0-6]+"let"+" "+$$[$0-4]+" "+$$[$0-3]+" "+$$[$0-2]+$$[$0-1]+$$[$0].trad;
+                                                                      
+break;
+case 239:
+
+                                                                          console.error("Error Sintactico: "+$$[$0-4]+" Error en for");
+                                                                          var error = new Error("Sintactico","Encontrado: "+$$[$0-4]+" Se esperaba -> id",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                          errores.addError(error);
+
+                                                                          this.$ = new Nodo("","");
+                                                                          this.$.trad = "";
+                                                                        
+break;
+case 241:
+
+                                                                    console.error("Error Sintactico: "+$$[$0-1]+" Error en for");
+                                                                    var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> )",+yylineno+1,+_$[$0-1].last_column+1);
+                                                                    errores.addError(error);
+
+                                                                    var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-7].last_column+1);
+                                                                    var fin = new Nodo("OF","OF",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                    var dec = new Nodo("DECLARACION","LET");
+                                                                    var id1 = new Nodo("ID",$$[$0-5]);
+                                                                    var id2 = new Nodo("ID",$$[$0-2]);
+                                                                    dec.addHijo(id1);
+                                                                    fin.addHijo(dec);
+                                                                    fin.addHijo(id2);
+                                                                    nodo.addHijo(fin);
+                                                                    nodo.addHijo($$[$0]);
+                                                                    this.$ = nodo;
+                                                                    this.$.trad = $$[$0-7]+$$[$0-6]+$$[$0-5]+" "+$$[$0-4]+" "+$$[$0-3]+" "+$$[$0-2]+")"+$$[$0].trad;
+                                                                  
+break;
+case 242:
+
+                                                                    console.error("Error Sintactico: "+$$[$0]+" Error en for");
+                                                                    var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> Sentencias",+yylineno+1,+_$[$0].last_column+1);
+                                                                    errores.addError(error);
+
+                                                                    var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-7].last_column+1);
+                                                                    var fin = new Nodo("OF","OF",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                    var dec = new Nodo("DECLARACION","LET");
+                                                                    var id1 = new Nodo("ID",$$[$0-5]);
+                                                                    var id2 = new Nodo("ID",$$[$0-2]);
+                                                                    dec.addHijo(id1);
+                                                                    fin.addHijo(dec);
+                                                                    fin.addHijo(id2);
+                                                                    nodo.addHijo(fin);
+                                                                    this.$ = nodo;
+                                                                    this.$.trad = $$[$0-7]+$$[$0-6]+$$[$0-5]+" "+$$[$0-4]+" "+$$[$0-3]+" "+$$[$0-2]+$$[$0-1]+"{}\n";
+                                                                  
+break;
+case 243:
+ 
+                                                      console.error("Error Sintactico: "+$$[$0-2]+" Error en for");
+                                                      var error = new Error("Sintactico","Encontrado: "+$$[$0-2]+" Se esperaba -> Sentencias",+yylineno+1,+_$[$0-2].last_column+1);
+                                                      errores.addError(error);
+
+                                                      this.$ = new Nodo("","")
+                                                      this.$.trad = "";
+                                                    
+break;
+case 244:
+
+                              console.error("Error Sintactico: "+$$[$0-1]+" Error parametros for");
+                              var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> Sentencias",+yylineno+1,+_$[$0-1].last_column+1);
+                              errores.addError(error);
+
+                              this.$ = new Nodo("","")
+                              this.$.trad = "";
+                            
+break;
+case 245:
+
+                            var nodo = new Nodo("BREAK","BREAK",+yylineno+1,+_$[$0-1].last_column+1);
+                            this.$ = nodo;
+                            this.$.trad = $$[$0-1]+$$[$0]+"\n";
+                          
+break;
+case 246:
+
+                    console.error("Error Sintactico: "+$$[$0]+" Error break");
+                    var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> ;",+yylineno+1,+_$[$0].last_column+1);
+                    errores.addError(error);
+
+                    var nodo = new Nodo("BREAK","BREAK",+yylineno+1,+_$[$0-1].last_column+1);
+                    this.$ = nodo;
+                    this.$.trad = $$[$0-1]+";\n";
+                  
+break;
+case 247:
+
+                                var nodo = new Nodo("CONTINUE","CONTINUE",+yylineno+1,+_$[$0-1].last_column+1);
+                                this.$ = nodo;
+                                this.$.trad = $$[$0-1]+$$[$0]+"\n";
+                              
+break;
+case 248:
+
+                        console.error("Error Sintactico: "+$$[$0]+" Error continue");
+                        var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> ;",+yylineno+1,+_$[$0].last_column+1);
+                        errores.addError(error);
+
+                        var nodo = new Nodo("CONTINUE","CONTINUE",+yylineno+1,+_$[$0-1].last_column+1);
+                        this.$ = nodo;
+                        this.$.trad = $$[$0-1]+";\n";
+                      
+break;
+case 249:
+
+                              var nodo = new Nodo("RETURN","RETURN",+yylineno+1,+_$[$0-1].last_column+1);
+                              this.$ = nodo;
+                              this.$.trad = $$[$0-1]+$$[$0]+"\n";
+                            
+break;
+case 250:
+
+                      console.error("Error Sintactico: "+$$[$0]+" Error return");
+                      var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> ;",+yylineno+1,+_$[$0].last_column+1);
+                      errores.addError(error);
+
+                      var nodo = new Nodo("RETURN","RETURN",+yylineno+1,+_$[$0-1].last_column+1);
+                      this.$ = nodo;
+                      this.$.trad = $$[$0-1]+";\n";
+                    
+break;
+case 251:
+
+                                    var nodo = new Nodo("RETURN","RETURN",+yylineno+1,+_$[$0-2].last_column+1);
+                                    nodo.addHijo($$[$0-1]);
+                                    this.$ = nodo;
+                                    this.$.trad = $$[$0-2]+" "+$$[$0-1].trad+$$[$0]+"\n";
+                                  
+break;
+case 252:
+
+                            console.error("Error Sintactico: "+$$[$0]+" Error return");
+                            var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> ;",+yylineno+1,+_$[$0].last_column+1);
+                            errores.addError(error);
+
+                            var nodo = new Nodo("RETURN","RETURN",+yylineno+1,+_$[$0-2].last_column+1);
+                            nodo.addHijo($$[$0-1]);
+                            this.$ = nodo;
+                            this.$.trad = $$[$0-2]+" "+$$[$0-1].trad+";\n";
+                          
+break;
+case 253:
+
+                          var nodo = new Nodo("RETURN","RETURN",+yylineno+1,+_$[$0-1].last_column+1);
+                          nodo.addHijo($$[$0]);
+                          this.$ = nodo;
+                          this.$.trad = $$[$0-1]+" "+$$[$0].trad;
+                        
+break;
+case 254:
 
                                                                                   var nodo = new Nodo("FUNCION","FUNCION");
                                                                                   var id = new Nodo("ID",$$[$0-5]);
@@ -1027,7 +2686,7 @@ case 172:
                                                                                   this.$.trad = $$[$0-6]+" "+$$[$0-5]+$$[$0-4]+$$[$0-3]+$$[$0-2]+" "+$$[$0-1].trad+$$[$0].trad;
                                                                                 
 break;
-case 173:
+case 255:
 
                                                                                           var node = new Nodo("FUNCION","FUNCION");
                                                                                           var id = new Nodo("ID",$$[$0-6]);
@@ -1039,7 +2698,7 @@ case 173:
                                                                                           this.$.trad = $$[$0-7]+" "+$$[$0-6]+$$[$0-5]+$$[$0-4].trad+$$[$0-3]+$$[$0-2]+" "+$$[$0-1].trad+$$[$0].trad;
                                                                                         
 break;
-case 174:
+case 256:
 
                                       console.error("Error Sintactico: "+yytext+" Error parametros funciones");
                                       var error = new Error("Sintactico","Encontrado: "+yytext+" Se esperaba -> incremento o decremento",+yylineno+1,_$[$0-3].last_column);
@@ -1051,10 +2710,48 @@ case 174:
                                       this.$.trad = $$[$0-3]+" "+$$[$0-2]+"():void "+$$[$0].trad;
                                     
 break;
+case 263:
+
+                                                              var nodo = new Nodo("CONSOLE","CONSOLE",+yylineno+1,+_$[$0-4].last_column+1);
+                                                              nodo.addHijo($$[$0-2]);
+                                                              this.$ = nodo;
+                                                              this.$.trad = $$[$0-4]+$$[$0-3]+$$[$0-2].trad+$$[$0-1]+$$[$0]+"\n";
+                                                            
+break;
+case 264:
+
+                                                      console.error("Error Sintactico: "+$$[$0]+" Error console");
+                                                      var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> ;",+yylineno+1,+_$[$0].last_column+1);
+                                                      errores.addError(error);
+
+                                                      var nodo = new Nodo("CONSOLE","CONSOLE",+yylineno+1,+_$[$0-4].last_column+1);
+                                                      nodo.addHijo($$[$0-2]);
+                                                      this.$ = nodo;
+                                                      this.$.trad = $$[$0-4]+$$[$0-3]+$$[$0-2].trad+$$[$0-1]+";\n";
+                                                    
+break;
+case 265:
+
+                                                          var nodo = new Nodo("GRAFICAR","GRAFICAR",+yylineno+1,+_$[$0-3].last_column+1);
+                                                          this.$ = nodo;
+                                                          this.$.trad = $$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0]+"\n";
+                                                        
+break;
+case 266:
+ 
+                                                  console.error("Error Sintactico: "+$$[$0]+" Error graficar");
+                                                  var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> ;",+yylineno+1,+_$[$0].last_column+1);
+                                                  errores.addError(error);
+
+                                                  var nodo = new Nodo("GRAFICAR","GRAFICAR",+yylineno+1,+_$[$0-3].last_column+1);
+                                                  this.$ = nodo;
+                                                  this.$.trad = $$[$0-3]+$$[$0-2]+$$[$0-1]+";\n";
+                                                
+break;
 }
 },
-table: [{2:[1,12],3:1,4:2,5:[1,3],6:4,7:5,8:6,9:7,10:8,11:9,12:10,13:11,14:$V0,15:$V1,21:$V2,22:15,23:16,35:18,37:$V3,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,88:$V9,94:$Va,97:$Vb,98:$Vc},{1:[3]},{5:[1,29],6:30,7:31,8:32,9:33,10:34,11:35,12:36,13:37,14:$V0,15:$V1,21:$V2,22:15,23:16,35:18,37:$V3,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,88:$V9,94:$Va,97:$Vb,98:$Vc},{1:[2,2]},o($Vd,[2,11]),o($Vd,[2,12]),o($Vd,[2,13]),o($Vd,[2,14]),o($Vd,[2,15]),o($Vd,[2,16]),o($Vd,[2,17]),o($Vd,[2,18]),o($Vd,[2,19]),{2:$Ve,15:[1,38]},{2:[1,41],15:[1,40]},o($Vf,[2,32]),o($Vf,[2,33]),{2:$Vg,18:$Vh,24:$Vi,25:$Vj,42:$Vk},{18:$Vl},{2:[1,49],67:[1,48]},{2:[1,51],67:[1,50]},{2:[1,53],67:[1,52]},{38:$Vm,72:54},{2:[1,57],67:[1,56]},{89:[1,58]},{67:[1,59]},{67:[1,60]},{15:[1,61]},{15:[1,62]},{1:[2,1]},o($Vd,[2,3]),o($Vd,[2,4]),o($Vd,[2,5]),o($Vd,[2,6]),o($Vd,[2,7]),o($Vd,[2,8]),o($Vd,[2,9]),o($Vd,[2,10]),{2:$Vn,16:$Vo,18:$Vp,20:$Vq},o($Vf,[2,38]),{16:[1,67],18:[1,68]},o($Vf,[2,39]),{2:[1,70],20:[1,69]},{2:[1,72],20:[1,71]},o($Vf,[2,40]),{2:$Vr,15:$Vs,19:73,32:74,33:75,34:76,35:77,36:78,38:$Vt,42:$Vu,49:87,50:83,54:$Vv,55:$Vw,56:86,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},{2:[1,94],15:$VC,49:93,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},{2:$Vr,15:$Vs,19:96,32:74,33:75,34:76,35:77,36:78,38:$Vt,42:$Vu,49:87,50:83,54:$Vv,55:$Vw,56:86,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},{15:$VC,49:87,50:97,54:$Vv,55:$Vw,56:86,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},{38:$Vm,72:98},{15:$VC,49:87,50:99,54:$Vv,55:$Vw,56:86,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},{38:$VD,79:100},{15:$VC,49:87,50:102,54:$Vv,55:$Vw,56:86,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},{38:$Vm,72:103},{84:[1,104]},{2:$VE,6:107,7:108,8:109,9:110,10:111,11:112,12:113,13:115,14:$V0,15:$V1,21:$V2,22:15,23:16,35:18,37:$V3,40:[1,106],73:105,74:114,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,88:$V9,91:$VF,92:$VG,93:$VH,94:$Va,97:$Vb,98:$Vc},{6:120,7:121,14:[1,123],15:[1,122],21:$V2,22:15,23:16,35:18,37:$V3,94:$Va},{38:$Vm,72:124},{67:[1,125]},{2:$Vr,15:$Vs,19:126,32:74,33:75,34:76,35:77,36:78,38:$Vt,42:$Vu,49:87,50:83,54:$Vv,55:$Vw,56:86,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},{68:[1,127]},{38:[1,128]},{2:[1,130],67:[1,129]},{2:$VI,15:$VJ,17:131,26:132,27:$VK,28:$VL,29:$VM,30:$VN,31:133,44:$VO},{2:$Vr,15:$Vs,19:141,32:74,33:75,34:76,35:77,36:78,38:$Vt,42:$Vu,49:87,50:83,54:$Vv,55:$Vw,56:86,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},o($Vf,[2,30]),o($Vf,[2,31]),{2:$VI,15:$VJ,17:142,26:132,27:$VK,28:$VL,29:$VM,30:$VN,31:133,44:$VO},{2:$Vr,15:$Vs,19:143,32:74,33:75,34:76,35:77,36:78,38:$Vt,42:$Vu,49:87,50:83,54:$Vv,55:$Vw,56:86,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},o($Vf,[2,34]),o($Vf,[2,35]),o($Vf,[2,36]),o($Vf,[2,37]),{2:[1,145],20:[1,144]},o($VP,[2,49]),o($VP,[2,50]),o($VP,[2,51]),o($VP,$VQ),o($VP,[2,53]),o([2,20,43,45,46,48,51,52,53,57,58,59,60,61,62,63,64,65,66,68],$VR,{24:$VS,25:$VT,42:$Vk,67:$VU}),o($VP,$VV),{2:[1,150],15:[1,151],41:149},{2:$Vr,15:$Vs,19:153,32:74,33:75,34:76,35:77,36:78,38:$Vt,42:$Vu,47:152,49:87,50:83,54:$Vv,55:$Vw,56:86,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},o($VP,[2,85],{51:[1,154],52:$VW,53:$VX}),{15:$VC,49:87,50:157,54:$Vv,55:$Vw,56:86,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},o($VY,[2,89]),o($VY,[2,90]),o($VY,[2,97],{45:[1,159],46:[1,158],57:[1,160],58:[1,161],59:[1,162],60:[1,163],61:$VZ,62:$V_,63:$V$,64:$V01,65:$V11,66:$V21}),{15:$VC,49:170,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},{15:$VC,49:171,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},o($V31,[2,106]),o($V31,[2,107]),o($V31,[2,108]),{43:[1,172],61:$VZ,62:$V_,63:$V$,64:$V01,65:$V11,66:$V21},{43:[1,173]},o($V31,$VR),{2:[1,175],20:[1,174]},{52:$VW,53:$VX,68:[1,176]},o($V41,[2,134],{76:177,77:$V51}),{52:$VW,53:$VX,68:[1,179]},o($V41,[2,138]),{2:[1,182],40:[1,181],80:180,82:[1,183]},{52:$VW,53:$VX,68:[1,184]},o($V41,[2,153]),{2:[1,186],67:[1,185]},{6:188,7:189,8:190,9:191,10:192,11:193,12:194,13:196,14:$V0,15:$V1,21:$V2,22:15,23:16,35:18,37:$V3,40:[1,187],74:195,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,88:$V9,91:$VF,92:$VG,93:$VH,94:$Va,97:$Vb,98:$Vc},o($V61,[2,111]),o($V71,[2,121]),o($V71,[2,122]),o($V71,[2,123]),o($V71,[2,124]),o($V71,[2,125]),o($V71,[2,126]),o($V71,[2,127]),o($V71,[2,128]),o($V71,[2,129]),o($V71,[2,130]),{2:[1,198],20:[1,197]},{2:[1,200],20:[1,199]},{2:[1,202],7:204,15:[1,206],19:203,20:[1,201],32:74,33:75,34:76,35:205,36:78,38:$Vt,42:$Vu,49:87,50:83,54:$Vv,55:$Vw,56:86,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},{15:$VC,49:87,50:207,54:$Vv,55:$Vw,56:86,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},{15:$VC,49:87,50:208,54:$Vv,55:$Vw,56:86,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},{2:$Vg,18:$Vh,24:$Vi,25:$Vj,42:$Vk,87:[1,209]},{2:$Ve,15:[1,210]},o($V41,[2,162]),{15:[1,211]},{68:[1,212]},{2:[1,214],20:[1,213]},{2:$VI,15:$VJ,17:216,26:132,27:$VK,28:$VL,29:$VM,30:$VN,31:133,39:215,44:$VO},{15:[1,219],68:[1,217],95:218},{38:$Vm,72:220},{2:[1,223],18:[1,221],20:[1,222]},o($V81,[2,47]),o($V81,[2,48]),o($V81,$V91,{42:[1,224]}),o($V81,$Va1,{42:[1,225]}),o($V81,$Vb1,{42:[1,226]}),o($Vc1,[2,44]),o($V81,$Vd1,{43:[1,227]}),o($Vc1,[2,46]),{45:[1,228]},{2:[1,230],20:[1,229]},{18:[1,231]},{2:[1,233],20:[1,232]},o($Vf,[2,80]),o($Vf,[2,81]),o($VP,[2,54]),o($VP,[2,55]),{2:$Vr,15:$Vs,19:236,32:74,33:75,34:76,35:77,36:78,38:$Vt,42:$Vu,49:87,50:83,54:$Vv,55:$Vw,56:86,62:$Vx,67:$Vy,68:[1,234],69:$Vz,70:$VA,71:$VB,96:235},{15:[1,238],40:[1,237]},{40:[1,239]},{16:[1,240]},{2:[1,243],43:[1,241],48:[1,242]},o($Ve1,[2,77]),{15:$VC,49:87,50:244,54:$Vv,55:$Vw,56:86,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},{15:$VC,49:87,50:245,54:$Vv,55:$Vw,56:86,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},{15:$VC,49:87,50:246,54:$Vv,55:$Vw,56:86,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},o($VY,[2,88]),{15:$VC,49:247,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},{15:$VC,49:248,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},{15:$VC,49:249,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},{15:$VC,49:250,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},{15:$VC,49:251,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},{15:$VC,49:252,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},{15:$VC,49:253,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},{15:$VC,49:254,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},{15:$VC,49:255,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},{15:$VC,49:256,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},{15:$VC,49:257,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},{15:$VC,49:258,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},{61:$VZ,62:$V_,63:$V$,64:$V01,65:$V11,66:$V21,68:[1,259]},o($Vf1,[2,105],{63:$V$,64:$V01,65:$V11,66:$V21}),o($Vg1,[2,78]),o($Vg1,[2,79]),o($Vf,[2,82]),o($Vf,[2,83]),{38:$Vm,72:260},o($V41,[2,133]),{8:262,38:$Vm,72:261,75:$V4},{38:$VD,79:263},{40:[1,265],81:264,82:[1,266],83:[1,267]},o($V41,[2,141]),{40:[1,268]},{15:$VC,49:87,50:269,54:$Vv,55:$Vw,56:86,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},{38:$Vm,72:270},{15:$VC,49:87,50:271,54:$Vv,55:$Vw,56:86,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},o($V41,[2,155]),o($V61,[2,110]),o($V71,[2,112]),o($V71,[2,113]),o($V71,[2,114]),o($V71,[2,115]),o($V71,[2,116]),o($V71,[2,117]),o($V71,[2,118]),o($V71,[2,119]),o($V71,[2,120]),o($V71,[2,163]),o($V71,[2,164]),o($V71,[2,165]),o($V71,[2,166]),o($V71,[2,167]),o($V71,[2,168],{2:$VV,20:$VV}),{2:[1,273],20:[1,272]},o($V71,[2,171]),o($Vh1,$VQ,{18:$Vl}),o([2,20,45,46,51,52,53,57,58,59,60,61,62,63,64,65,66],$VR,{18:$Vh,24:$VS,25:$VT,42:$Vk,67:$VU}),{20:[1,274],52:$VW,53:$VX},{20:[1,275],52:$VW,53:$VX},{15:[1,276]},{2:$Vn,16:$Vo,18:$Vp,20:$Vq,87:[1,277],90:[1,278]},{90:[1,279]},{2:[1,281],20:[1,280]},o($V41,[2,183]),o($V41,[2,184]),{2:$VI,15:$VJ,17:283,26:132,27:$VK,28:$VL,29:$VM,30:$VN,31:133,40:[1,282],44:$VO},{16:[1,284]},{16:[1,285]},{48:[1,287],68:[1,286]},{16:[1,288]},o($Vf,[2,174]),{2:$Vr,15:$Vs,19:289,32:74,33:75,34:76,35:77,36:78,38:$Vt,42:$Vu,49:87,50:83,54:$Vv,55:$Vw,56:86,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},o($Vf,[2,28]),o($Vf,[2,29]),{43:[1,290]},{43:[1,291]},{43:[1,292]},{43:[1,293]},{2:$VI,15:[1,298],26:294,27:[1,295],28:[1,296],29:[1,297],30:$VN},o($Vf,[2,24]),o($Vf,[2,25]),{2:$Vr,15:$Vs,19:299,32:74,33:75,34:76,35:77,36:78,38:$Vt,42:$Vu,49:87,50:83,54:$Vv,55:$Vw,56:86,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},o($Vf,[2,26]),o($Vf,[2,27]),o($VP,[2,175]),{48:[1,301],68:[1,300]},o($Vi1,[2,180]),o($VP,[2,63]),{16:[1,302]},o($VP,[2,64]),{2:$Vr,15:$Vs,19:303,32:74,33:75,34:76,35:77,36:78,38:$Vt,42:$Vu,49:87,50:83,54:$Vv,55:$Vw,56:86,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},o($VP,[2,74]),{2:$Vr,15:$Vs,19:304,32:74,33:75,34:76,35:77,36:78,38:$Vt,42:$Vu,49:87,50:83,54:$Vv,55:$Vw,56:86,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},{2:$Vr,15:$Vs,19:305,32:74,33:75,34:76,35:77,36:78,38:$Vt,42:$Vu,49:87,50:83,54:$Vv,55:$Vw,56:86,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},{16:[1,306],52:$VW,53:$VX},o($VY,[2,86]),o([2,16,20,43,48,51,53,68],[2,87],{52:$VW}),o($VY,[2,91],{61:$VZ,62:$V_,63:$V$,64:$V01,65:$V11,66:$V21}),o($VY,[2,92],{61:$VZ,62:$V_,63:$V$,64:$V01,65:$V11,66:$V21}),o($VY,[2,93],{61:$VZ,62:$V_,63:$V$,64:$V01,65:$V11,66:$V21}),o($VY,[2,94],{61:$VZ,62:$V_,63:$V$,64:$V01,65:$V11,66:$V21}),o($VY,[2,95],{61:$VZ,62:$V_,63:$V$,64:$V01,65:$V11,66:$V21}),o($VY,[2,96],{61:$VZ,62:$V_,63:$V$,64:$V01,65:$V11,66:$V21}),o($Vf1,[2,98],{63:$V$,64:$V01,65:$V11,66:$V21}),o($Vf1,[2,99],{63:$V$,64:$V01,65:$V11,66:$V21}),o($Vj1,[2,100],{65:$V11}),o($Vj1,[2,101],{65:$V11}),o($V31,[2,102]),o($Vj1,[2,103],{65:$V11}),o($V31,[2,104]),o($V41,[2,132],{76:307,77:$V51}),o($V41,[2,135]),o($V41,[2,136]),o($V41,[2,137]),{40:[1,308]},o($V41,[2,140]),{15:$VC,49:87,50:309,54:$Vv,55:$Vw,56:86,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},{16:[1,310]},o($V41,[2,142]),{16:[1,311],52:$VW,53:$VX},o($V41,[2,152]),{52:$VW,53:$VX,68:[1,312]},o($V71,[2,169]),o($V71,[2,170]),{15:$VC,49:87,50:313,54:$Vv,55:$Vw,56:86,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},{15:$VC,49:87,50:314,54:$Vv,55:$Vw,56:86,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},{68:[1,315]},{15:[1,316]},{15:[1,317]},{15:[1,318]},o($V41,[2,181]),o($V41,[2,182]),{2:[1,320],20:[1,319]},{16:[1,321]},{15:[1,322]},{2:$VI,15:$VJ,17:323,26:132,27:$VK,28:$VL,29:$VM,30:$VN,31:133,44:$VO},{16:[1,324]},{15:[1,325]},{2:$VI,15:$VJ,17:326,26:132,27:$VK,28:$VL,29:$VM,30:$VN,31:133,44:$VO},{2:[1,328],20:[1,327]},o($V81,[2,69]),o($V81,[2,70]),o($V81,[2,71]),o($V81,[2,72]),{46:[1,329]},{46:$V91},{46:$Va1},{46:$Vb1},{46:$Vd1},{2:[1,331],20:[1,330]},o($VP,[2,176]),{2:$Vr,15:$Vs,19:332,32:74,33:75,34:76,35:77,36:78,38:$Vt,42:$Vu,49:87,50:83,54:$Vv,55:$Vw,56:86,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},{2:$Vr,15:$Vs,19:333,32:74,33:75,34:76,35:77,36:78,38:$Vt,42:$Vu,49:87,50:83,54:$Vv,55:$Vw,56:86,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},{2:[1,335],20:[1,334]},o($Ve1,[2,75]),o($Ve1,[2,76]),{15:$VC,49:87,50:336,54:$Vv,55:$Vw,56:86,62:$Vx,67:$Vy,69:$Vz,70:$VA,71:$VB},o($V41,[2,131]),o($V41,[2,139]),{16:[1,337],52:$VW,53:$VX},{2:$VE,6:107,7:108,8:109,9:110,10:111,11:112,12:113,13:115,14:$V0,15:$V1,21:$V2,22:15,23:16,35:18,37:$V3,38:$Vm,40:[2,151],72:339,73:338,74:114,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,88:$V9,91:$VF,92:$VG,93:$VH,94:$Va,97:$Vb,98:$Vc},o($Vk1,[2,148],{22:15,23:16,35:18,6:107,7:108,8:109,9:110,10:111,11:112,12:113,74:114,13:115,73:340,72:341,2:$VE,14:$V0,15:$V1,21:$V2,37:$V3,38:$Vm,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,88:$V9,91:$VF,92:$VG,93:$VH,94:$Va,97:$Vb,98:$Vc}),o($V41,[2,154]),{52:$VW,53:$VX,68:[1,342]},{52:$VW,53:$VX,68:[1,343]},{38:$Vm,72:344},{68:[1,345]},{68:[1,346]},{68:[1,347]},o($Vf,[2,57]),o($Vf,[2,58]),{15:[1,348]},{2:[1,350],20:[1,349]},{38:$Vm,72:351},{2:$VI,15:$VJ,17:352,26:132,27:$VK,28:$VL,29:$VM,30:$VN,31:133,44:$VO},{16:[1,353]},o($Vi1,[2,178]),o($Vf,$Vh1),o($Vf,[2,21]),o($V81,[2,73]),o($Vf,[2,22]),o($Vf,[2,23]),o($Vi1,[2,179]),{2:[1,355],20:[1,354]},o($Vl1,[2,67]),o($Vl1,[2,68]),o($VP,[2,84],{52:$VW,53:$VX}),o($Vk1,[2,145],{22:15,23:16,35:18,6:107,7:108,8:109,9:110,10:111,11:112,12:113,74:114,13:115,73:356,72:357,2:$VE,14:$V0,15:$V1,21:$V2,37:$V3,38:$Vm,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,88:$V9,91:$VF,92:$VG,93:$VH,94:$Va,97:$Vb,98:$Vc}),{6:188,7:189,8:190,9:191,10:192,11:193,12:194,13:196,14:$V0,15:$V1,21:$V2,22:15,23:16,35:18,37:$V3,40:[2,149],74:195,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,88:$V9,91:$VF,92:$VG,93:$VH,94:$Va,97:$Vb,98:$Vc},{40:[2,150]},o($Vk1,[2,146],{22:15,23:16,35:18,6:188,7:189,8:190,9:191,10:192,11:193,12:194,74:195,13:196,14:$V0,15:$V1,21:$V2,37:$V3,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,88:$V9,91:$VF,92:$VG,93:$VH,94:$Va,97:$Vb,98:$Vc}),o($Vk1,[2,147]),{38:$Vm,72:358},{38:$Vm,72:359},o($V41,[2,158]),{38:$Vm,72:360},{38:$Vm,72:361},{38:$Vm,72:362},{2:[1,364],20:[1,363]},o($Vm1,[2,61]),o($Vm1,[2,62]),o($Vf,[2,172]),{38:$Vm,72:365},{2:$VI,15:$VJ,17:366,26:132,27:$VK,28:$VL,29:$VM,30:$VN,31:133,44:$VO},o($Vl1,[2,65]),o($Vl1,[2,66]),o($Vk1,[2,143],{22:15,23:16,35:18,6:188,7:189,8:190,9:191,10:192,11:193,12:194,74:195,13:196,14:$V0,15:$V1,21:$V2,37:$V3,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,88:$V9,91:$VF,92:$VG,93:$VH,94:$Va,97:$Vb,98:$Vc}),o($Vk1,[2,144]),o($V41,[2,156]),o($V41,[2,157]),o($V41,[2,159]),o($V41,[2,161]),o($V41,[2,160]),o($Vm1,[2,59]),o($Vm1,[2,60]),o($Vf,[2,173]),o($Vi1,[2,177])],
-defaultActions: {3:[2,2],29:[2,1],295:[2,41],296:[2,42],297:[2,43],298:[2,45],339:[2,150]},
+table: [{2:[1,12],3:1,4:2,5:[1,3],6:4,7:5,8:6,9:7,10:8,11:9,12:10,13:11,14:$V0,15:$V1,21:$V2,22:15,23:16,35:18,37:$V3,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,92:$V9,95:$Va,96:$Vb},{1:[3]},{5:[1,28],6:29,7:30,8:31,9:32,10:33,11:34,12:35,13:36,14:$V0,15:$V1,21:$V2,22:15,23:16,35:18,37:$V3,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,92:$V9,95:$Va,96:$Vb},{1:[2,2]},o($Vc,[2,11]),o($Vc,[2,12]),o($Vc,[2,13]),o($Vc,[2,14]),o($Vc,[2,15]),o($Vc,[2,16]),o($Vc,[2,17]),o($Vc,[2,18]),o($Vc,[2,19]),{2:[1,38],15:[1,37]},{2:[1,40],15:[1,39]},o($Vd,[2,32]),o($Vd,[2,33]),{2:[1,43],18:$Ve,24:[1,41],25:[1,42],42:$Vf},{18:$Vg},{2:[1,48],67:[1,47]},{2:[1,50],67:[1,49]},{2:[1,52],67:[1,51]},{38:$Vh,72:53},{2:[1,56],67:[1,55]},{67:[1,57]},{67:[1,58]},{15:[1,59]},{15:[1,60]},{1:[2,1]},o($Vc,[2,3]),o($Vc,[2,4]),o($Vc,[2,5]),o($Vc,[2,6]),o($Vc,[2,7]),o($Vc,[2,8]),o($Vc,[2,9]),o($Vc,[2,10]),{2:[1,64],16:[1,61],18:[1,62],20:[1,63]},o($Vd,[2,38]),{16:[1,65],18:[1,66]},o($Vd,[2,39]),{2:[1,68],20:[1,67]},{2:[1,70],20:[1,69]},o($Vd,[2,40]),{2:$Vi,15:$Vj,19:71,32:72,33:73,34:74,35:75,36:76,38:$Vk,42:$Vl,49:85,50:81,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{2:[1,92],15:$Vt,49:91,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{2:$Vi,15:$Vj,19:94,32:72,33:73,34:74,35:75,36:76,38:$Vk,42:$Vl,49:85,50:81,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{15:$Vt,49:85,50:95,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{15:$Vt,38:$Vh,49:85,50:96,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs,72:97},{15:$Vt,49:85,50:98,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{15:$Vt,38:$Vu,49:85,50:99,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs,79:100},{2:[1,103],15:$Vt,49:85,50:102,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{15:$Vt,38:$Vh,49:85,50:104,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs,72:105},{84:[1,106]},{2:$Vv,6:109,7:110,8:111,9:112,10:113,11:114,12:115,13:117,14:$V0,15:$V1,21:$V2,22:15,23:16,35:18,37:$V3,40:[1,108],73:107,74:116,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,89:$Vw,90:$Vx,91:$Vy,92:$V9,95:$Va,96:$Vb},{2:[1,123],14:[1,122],15:[1,124]},{14:[1,125],15:[1,126],38:$Vh,72:127},{2:$Vi,15:$Vj,19:128,32:72,33:73,34:74,35:75,36:76,38:$Vk,42:$Vl,49:85,50:81,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{68:[1,129]},{38:[1,130]},{2:[1,132],67:[1,131]},{2:$Vz,15:$VA,17:133,26:134,27:$VB,28:$VC,29:$VD,30:$VE,31:135,44:$VF},{2:$Vi,15:$Vj,19:143,32:72,33:73,34:74,35:75,36:76,38:$Vk,42:$Vl,49:85,50:81,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},o($Vd,[2,30]),o($Vd,[2,31]),{2:$Vz,15:$VA,17:144,26:134,27:$VB,28:$VC,29:$VD,30:$VE,31:135,44:$VF},{2:$Vi,15:$Vj,19:145,32:72,33:73,34:74,35:75,36:76,38:$Vk,42:$Vl,49:85,50:81,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},o($Vd,[2,34]),o($Vd,[2,35]),o($Vd,[2,36]),o($Vd,[2,37]),{2:[1,147],20:[1,146]},o($VG,[2,49]),o($VG,[2,50]),o($VG,[2,51]),o($VG,$VH),o($VG,[2,53]),o([2,20,43,45,46,48,51,52,53,57,58,59,60,61,62,63,64,65,66,68],$VI,{24:$VJ,25:$VK,42:$Vf,67:$VL}),o($VG,$VM),{2:[1,152],15:[1,153],41:151},{2:$Vi,15:$Vj,19:155,32:72,33:73,34:74,35:75,36:76,38:$Vk,42:$Vl,47:154,49:85,50:81,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},o($VG,[2,85],{51:[1,156],52:$VN,53:$VO}),{15:$Vt,49:85,50:159,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},o($VP,[2,89]),o($VP,[2,90]),o($VP,[2,97],{45:[1,161],46:[1,160],57:[1,162],58:[1,163],59:[1,164],60:[1,165],61:$VQ,62:$VR,63:$VS,64:$VT,65:$VU,66:$VV}),{15:$Vt,49:172,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{15:$Vt,49:173,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},o($VW,[2,106]),o($VW,[2,107]),o($VW,[2,108]),{43:[1,174],61:$VQ,62:$VR,63:$VS,64:$VT,65:$VU,66:$VV},{43:[1,175]},o($VW,$VI),{2:[1,177],20:[1,176]},{2:[1,179],52:$VN,53:$VO,68:[1,178]},{52:$VN,53:$VO,68:[1,180]},o($Vd,[2,135]),{2:[1,182],52:$VN,53:$VO,68:[1,181]},{52:$VN,53:$VO,68:[1,183]},o($Vd,[2,141]),{2:[1,186],40:[1,185],80:184,82:[1,187]},{2:[1,189],52:$VN,53:$VO,68:[1,188]},{68:[1,190]},{52:$VN,53:$VO,68:[1,191]},o($Vd,[2,165]),{2:[1,193],67:[1,192]},{6:195,7:196,8:197,9:198,10:199,11:200,12:201,13:203,14:$V0,15:$V1,21:$V2,22:15,23:16,35:18,37:$V3,40:[1,194],74:202,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,89:$Vw,90:$Vx,91:$Vy,92:$V9,95:$Va,96:$Vb},o($VX,[2,111]),o($VY,[2,121]),o($VY,[2,122]),o($VY,[2,123]),o($VY,[2,124]),o($VY,[2,125]),o($VY,[2,126]),o($VY,[2,127]),o($VY,[2,128]),o($VY,[2,129]),o($VY,[2,130]),{2:[1,205],20:[1,204]},{2:[1,207],20:[1,206]},{2:[1,209],7:211,15:[1,213],19:210,20:[1,208],32:72,33:73,34:74,35:212,36:76,38:$Vk,42:$Vl,49:85,50:81,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{2:[1,215],15:[1,214]},{15:[1,216],18:[1,217],68:[1,220],87:[1,218],88:[1,219]},{2:[1,222],18:[1,221],87:[1,223],88:[1,224]},{15:[1,225]},{18:[1,226],87:[1,227],88:[1,228]},o($Vd,[2,244]),{68:[1,229]},{2:[1,231],20:[1,230]},{2:$Vz,15:$VA,17:233,26:134,27:$VB,28:$VC,29:$VD,30:$VE,31:135,39:232,44:$VF},{15:[1,236],68:[1,234],93:235},{38:$Vh,72:237},{2:[1,240],18:[1,238],20:[1,239]},o($VZ,[2,47]),o($VZ,[2,48]),o($VZ,$V_,{42:[1,241]}),o($VZ,$V$,{42:[1,242]}),o($VZ,$V01,{42:[1,243]}),o($V11,[2,44]),o($VZ,$V21,{43:[1,244]}),o($V11,[2,46]),{45:[1,245]},{2:[1,247],20:[1,246]},{18:[1,248]},{2:[1,250],20:[1,249]},o($Vd,[2,80]),o($Vd,[2,81]),o($VG,[2,54]),o($VG,[2,55]),{2:$Vi,15:$Vj,19:253,32:72,33:73,34:74,35:75,36:76,38:$Vk,42:$Vl,49:85,50:81,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,68:[1,251],69:$Vq,70:$Vr,71:$Vs,94:252},{15:[1,255],40:[1,254]},{40:[1,256]},{16:[1,257]},{2:[1,260],43:[1,258],48:[1,259]},o($V31,[2,77]),{15:$Vt,49:85,50:261,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{15:$Vt,49:85,50:262,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{15:$Vt,49:85,50:263,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},o($VP,[2,88]),{15:$Vt,49:264,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{15:$Vt,49:265,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{15:$Vt,49:266,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{15:$Vt,49:267,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{15:$Vt,49:268,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{15:$Vt,49:269,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{15:$Vt,49:270,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{15:$Vt,49:271,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{15:$Vt,49:272,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{15:$Vt,49:273,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{15:$Vt,49:274,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{15:$Vt,49:275,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{61:$VQ,62:$VR,63:$VS,64:$VT,65:$VU,66:$VV,68:[1,276]},o($V41,[2,105],{63:$VS,64:$VT,65:$VU,66:$VV}),o($V51,[2,78]),o($V51,[2,79]),o($Vd,[2,82]),o($Vd,[2,83]),{38:$Vh,72:277},{38:$Vh,72:278},{38:$Vh,72:279},{38:$Vu,79:280},{38:$Vu,79:281},{38:$Vu,79:282},{40:[1,284],81:283,82:[1,285],83:[1,286]},o($Vd,[2,144]),{40:[1,287]},{2:[1,289],15:$Vt,49:85,50:288,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{38:$Vh,72:290},{38:$Vh,72:291},{38:$Vh,72:292},{38:$Vh,72:293},{2:[1,295],15:$Vt,49:85,50:294,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{15:$Vt,49:85,50:296,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},o($VX,[2,110]),o($VY,[2,112]),o($VY,[2,113]),o($VY,[2,114]),o($VY,[2,115]),o($VY,[2,116]),o($VY,[2,117]),o($VY,[2,118]),o($VY,[2,119]),o($VY,[2,120]),o($VY,[2,245]),o($VY,[2,246]),o($VY,[2,247]),o($VY,[2,248]),o($VY,[2,249]),o($VY,[2,250],{2:$VM,20:$VM}),{2:[1,298],20:[1,297]},o($VY,[2,253]),o($V61,$VH,{18:$Vg}),o([2,20,45,46,51,52,53,57,58,59,60,61,62,63,64,65,66],$VI,{18:$Ve,24:$VJ,25:$VK,42:$Vf,67:$VL}),{2:[1,300],18:[1,299],87:[1,301],88:[1,302]},{18:[1,303],87:[1,304],88:[1,305]},{18:[1,306],87:[1,307],88:[1,308]},{2:$Vi,15:$Vj,19:309,32:72,33:73,34:74,35:75,36:76,38:$Vk,42:$Vl,49:85,50:81,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{15:[1,310]},{15:[1,311]},{38:$Vh,72:312},{2:$Vi,15:$Vj,19:313,32:72,33:73,34:74,35:75,36:76,38:$Vk,42:$Vl,49:85,50:81,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{2:$Vi,15:[1,315],19:314,32:72,33:73,34:74,35:75,36:76,38:$Vk,42:$Vl,49:85,50:81,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{2:[1,317],15:[1,316]},{2:[1,319],15:[1,318]},{18:[1,320],87:[1,321],88:[1,322]},{2:$Vi,15:$Vj,19:323,32:72,33:73,34:74,35:75,36:76,38:$Vk,42:$Vl,49:85,50:81,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{15:[1,324]},{15:[1,325]},{2:[1,327],20:[1,326]},o($Vd,[2,265]),o($Vd,[2,266]),{2:$Vz,15:$VA,17:329,26:134,27:$VB,28:$VC,29:$VD,30:$VE,31:135,40:[1,328],44:$VF},{16:[1,330]},{16:[1,331]},{48:[1,333],68:[1,332]},{16:[1,334]},o($Vd,[2,256]),{2:$Vi,15:$Vj,19:335,32:72,33:73,34:74,35:75,36:76,38:$Vk,42:$Vl,49:85,50:81,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},o($Vd,[2,28]),o($Vd,[2,29]),{43:[1,336]},{43:[1,337]},{43:[1,338]},{43:[1,339]},{2:$Vz,15:[1,344],26:340,27:[1,341],28:[1,342],29:[1,343],30:$VE},o($Vd,[2,24]),o($Vd,[2,25]),{2:$Vi,15:$Vj,19:345,32:72,33:73,34:74,35:75,36:76,38:$Vk,42:$Vl,49:85,50:81,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},o($Vd,[2,26]),o($Vd,[2,27]),o($VG,[2,257]),{48:[1,347],68:[1,346]},o($V71,[2,262]),o($VG,[2,63]),{16:[1,348]},o($VG,[2,64]),{2:$Vi,15:$Vj,19:349,32:72,33:73,34:74,35:75,36:76,38:$Vk,42:$Vl,49:85,50:81,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},o($VG,[2,74]),{2:$Vi,15:$Vj,19:350,32:72,33:73,34:74,35:75,36:76,38:$Vk,42:$Vl,49:85,50:81,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{2:$Vi,15:$Vj,19:351,32:72,33:73,34:74,35:75,36:76,38:$Vk,42:$Vl,49:85,50:81,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{16:[1,352],52:$VN,53:$VO},o($VP,[2,86]),o([2,16,20,43,48,51,53,68],[2,87],{52:$VN}),o($VP,[2,91],{61:$VQ,62:$VR,63:$VS,64:$VT,65:$VU,66:$VV}),o($VP,[2,92],{61:$VQ,62:$VR,63:$VS,64:$VT,65:$VU,66:$VV}),o($VP,[2,93],{61:$VQ,62:$VR,63:$VS,64:$VT,65:$VU,66:$VV}),o($VP,[2,94],{61:$VQ,62:$VR,63:$VS,64:$VT,65:$VU,66:$VV}),o($VP,[2,95],{61:$VQ,62:$VR,63:$VS,64:$VT,65:$VU,66:$VV}),o($VP,[2,96],{61:$VQ,62:$VR,63:$VS,64:$VT,65:$VU,66:$VV}),o($V41,[2,98],{63:$VS,64:$VT,65:$VU,66:$VV}),o($V41,[2,99],{63:$VS,64:$VT,65:$VU,66:$VV}),o($V81,[2,100],{65:$VU}),o($V81,[2,101],{65:$VU}),o($VW,[2,102]),o($V81,[2,103],{65:$VU}),o($VW,[2,104]),o($Vd,[2,132],{76:353,77:[1,354]}),o($Vd,[2,134]),o($Vd,[2,133]),o($Vd,[2,138]),o($Vd,[2,140]),o($Vd,[2,139]),{40:[1,355]},o($Vd,[2,143]),{2:[1,357],15:$Vt,49:85,50:356,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{16:[1,358]},o($Vd,[2,145]),{16:[1,359],52:$VN,53:$VO},{16:[1,360]},o($Vd,[2,161]),o($Vd,[2,164]),o($Vd,[2,163]),o($Vd,[2,162]),{2:[1,362],52:$VN,53:$VO,68:[1,361]},{68:[1,363]},{52:$VN,53:$VO,68:[1,364]},o($VY,[2,251]),o($VY,[2,252]),{2:$Vi,15:$Vj,19:365,32:72,33:73,34:74,35:75,36:76,38:$Vk,42:$Vl,49:85,50:81,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{2:$Vi,15:[1,367],19:366,32:72,33:73,34:74,35:75,36:76,38:$Vk,42:$Vl,49:85,50:81,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{2:[1,369],15:[1,368]},{2:[1,371],15:[1,370]},{2:$Vi,15:$Vj,19:372,32:72,33:73,34:74,35:75,36:76,38:$Vk,42:$Vl,49:85,50:81,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{15:[1,373]},{15:[1,374]},{2:$Vi,15:$Vj,19:375,32:72,33:73,34:74,35:75,36:76,38:$Vk,42:$Vl,49:85,50:81,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{15:[1,376]},{15:[1,377]},{20:[1,378]},{68:[1,379]},{68:[1,380]},o($Vd,[2,243]),{2:[1,382],20:[1,381]},{20:[1,383]},o($V91,$VI,{24:$VJ,25:$VK,42:$Vf,67:$VL,68:[1,384]}),{2:[1,386],68:[1,385]},{68:[1,387]},{2:[1,389],68:[1,388]},{68:[1,390]},{2:$Vi,15:$Vj,19:391,32:72,33:73,34:74,35:75,36:76,38:$Vk,42:$Vl,49:85,50:81,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{15:[1,392]},{15:[1,393]},{20:[1,394]},{68:[1,395]},{68:[1,396]},o($Vd,[2,263]),o($Vd,[2,264]),{2:[1,398],20:[1,397]},{16:[1,399]},{15:[1,400]},{2:$Vz,15:$VA,17:401,26:134,27:$VB,28:$VC,29:$VD,30:$VE,31:135,44:$VF},{16:[1,402]},{15:[1,403]},{2:$Vz,15:$VA,17:404,26:134,27:$VB,28:$VC,29:$VD,30:$VE,31:135,44:$VF},{2:[1,406],20:[1,405]},o($VZ,[2,69]),o($VZ,[2,70]),o($VZ,[2,71]),o($VZ,[2,72]),{46:[1,407]},{46:$V_},{46:$V$},{46:$V01},{46:$V21},{2:[1,409],20:[1,408]},o($VG,[2,258]),{2:$Vi,15:$Vj,19:410,32:72,33:73,34:74,35:75,36:76,38:$Vk,42:$Vl,49:85,50:81,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{2:$Vi,15:$Vj,19:411,32:72,33:73,34:74,35:75,36:76,38:$Vk,42:$Vl,49:85,50:81,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{2:[1,413],20:[1,412]},o($V31,[2,75]),o($V31,[2,76]),{15:$Vt,49:85,50:414,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},o($Vd,[2,131]),{8:416,38:$Vh,72:415,75:$V4},o($Vd,[2,142]),{16:[1,417],52:$VN,53:$VO},{16:[1,418]},{2:$Vv,6:109,7:110,8:111,9:112,10:113,11:114,12:115,13:117,14:$V0,15:$V1,21:$V2,22:15,23:16,35:18,37:$V3,38:$Vh,40:[2,160],72:420,73:419,74:116,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,89:$Vw,90:$Vx,91:$Vy,92:$V9,95:$Va,96:$Vb},o($Va1,[2,156],{22:15,23:16,35:18,6:109,7:110,8:111,9:112,10:113,11:114,12:115,74:116,13:117,73:421,72:422,2:$Vv,14:$V0,15:$V1,21:$V2,37:$V3,38:$Vh,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,89:$Vw,90:$Vx,91:$Vy,92:$V9,95:$Va,96:$Vb}),o($Va1,[2,157],{22:15,23:16,35:18,6:109,7:110,8:111,9:112,10:113,11:114,12:115,74:116,13:117,73:423,72:424,2:$Vv,14:$V0,15:$V1,21:$V2,37:$V3,38:$Vh,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,89:$Vw,90:$Vx,91:$Vy,92:$V9,95:$Va,96:$Vb}),{2:[1,426],20:[1,425]},{20:[1,427]},{20:[1,428]},{20:[1,429]},{2:[1,431],20:[1,430]},{20:[1,432]},o($V91,$VI,{24:$VJ,25:$VK,42:$Vf,67:$VL,68:[1,433]}),{2:[1,435],68:[1,434]},{68:[1,436]},{2:[1,438],68:[1,437]},{68:[1,439]},{20:[1,440]},{68:[1,441]},{68:[1,442]},{20:[1,443]},{68:[1,444]},{68:[1,445]},{15:$Vt,49:85,50:446,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{38:$Vh,72:447},{38:$Vh,72:448},{2:[1,450],15:$Vt,49:85,50:449,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{15:$Vt,49:85,50:451,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{15:$Vt,49:85,50:452,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{38:$Vh,72:453},{2:[1,455],38:$Vh,72:454},{38:$Vh,72:456},{38:$Vh,72:457},{2:[1,459],38:$Vh,72:458},{38:$Vh,72:460},{38:$Vh,72:461},{20:[1,462]},{68:[1,463]},{68:[1,464]},{15:$Vt,49:85,50:465,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{38:$Vh,72:466},{38:$Vh,72:467},o($Vd,[2,57]),o($Vd,[2,58]),{15:[1,468]},{2:[1,470],20:[1,469]},{38:$Vh,72:471},{2:$Vz,15:$VA,17:472,26:134,27:$VB,28:$VC,29:$VD,30:$VE,31:135,44:$VF},{16:[1,473]},o($V71,[2,260]),o($Vd,$V61),o($Vd,[2,21]),o($VZ,[2,73]),o($Vd,[2,22]),o($Vd,[2,23]),o($V71,[2,261]),{2:[1,475],20:[1,474]},o($Vb1,[2,67]),o($Vb1,[2,68]),o($VG,[2,84],{52:$VN,53:$VO}),o($Vd,[2,136]),o($Vd,[2,137]),o($Va1,[2,150],{22:15,23:16,35:18,6:109,7:110,8:111,9:112,10:113,11:114,12:115,74:116,13:117,73:476,72:477,2:$Vv,14:$V0,15:$V1,21:$V2,37:$V3,38:$Vh,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,89:$Vw,90:$Vx,91:$Vy,92:$V9,95:$Va,96:$Vb}),o($Va1,[2,151],{22:15,23:16,35:18,6:109,7:110,8:111,9:112,10:113,11:114,12:115,74:116,13:117,73:478,72:479,2:$Vv,14:$V0,15:$V1,21:$V2,37:$V3,38:$Vh,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,89:$Vw,90:$Vx,91:$Vy,92:$V9,95:$Va,96:$Vb}),{6:195,7:196,8:197,9:198,10:199,11:200,12:201,13:203,14:$V0,15:$V1,21:$V2,22:15,23:16,35:18,37:$V3,40:[2,158],74:202,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,89:$Vw,90:$Vx,91:$Vy,92:$V9,95:$Va,96:$Vb},{40:[2,159]},o($Va1,[2,152],{22:15,23:16,35:18,6:195,7:196,8:197,9:198,10:199,11:200,12:201,74:202,13:203,14:$V0,15:$V1,21:$V2,37:$V3,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,89:$Vw,90:$Vx,91:$Vy,92:$V9,95:$Va,96:$Vb}),o($Va1,[2,154]),o($Va1,[2,153],{22:15,23:16,35:18,6:195,7:196,8:197,9:198,10:199,11:200,12:201,74:202,13:203,14:$V0,15:$V1,21:$V2,37:$V3,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,89:$Vw,90:$Vx,91:$Vy,92:$V9,95:$Va,96:$Vb}),o($Va1,[2,155]),o($Vd,[2,166]),o($Vd,[2,170]),o($Vd,[2,169]),o($Vd,[2,168]),o($Vd,[2,167]),{2:[1,481],15:$Vt,49:85,50:480,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{15:$Vt,49:85,50:482,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{15:$Vt,49:85,50:483,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{38:$Vh,72:484},{2:[1,486],38:$Vh,72:485},{38:$Vh,72:487},{38:$Vh,72:488},{2:[1,490],38:$Vh,72:489},{38:$Vh,72:491},{38:$Vh,72:492},{15:$Vt,49:85,50:493,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{38:$Vh,72:494},{38:$Vh,72:495},{15:$Vt,49:85,50:496,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{38:$Vh,72:497},{38:$Vh,72:498},{20:[1,499],52:$VN,53:$VO},o($Vd,[2,217]),o($Vd,[2,231]),{2:[1,501],20:[1,500],52:$VN,53:$VO},{20:[1,502]},{20:[1,503],52:$VN,53:$VO},{20:[1,504],52:$VN,53:$VO},o($Vd,[2,232]),o($Vd,[2,215]),o($Vd,[2,220]),o($Vd,[2,219]),o($Vd,[2,218]),o($Vd,[2,229]),o($Vd,[2,235]),o($Vd,[2,234]),o($Vd,[2,233]),{15:$Vt,49:85,50:505,54:$Vm,55:$Vn,56:84,62:$Vo,67:$Vp,69:$Vq,70:$Vr,71:$Vs},{38:$Vh,72:506},{38:$Vh,72:507},{20:[1,508],52:$VN,53:$VO},o($Vd,[2,216]),o($Vd,[2,230]),{2:[1,510],20:[1,509]},o($Vc1,[2,61]),o($Vc1,[2,62]),o($Vd,[2,254]),{38:$Vh,72:511},{2:$Vz,15:$VA,17:512,26:134,27:$VB,28:$VC,29:$VD,30:$VE,31:135,44:$VF},o($Vb1,[2,65]),o($Vb1,[2,66]),o($Va1,[2,146],{22:15,23:16,35:18,6:195,7:196,8:197,9:198,10:199,11:200,12:201,74:202,13:203,14:$V0,15:$V1,21:$V2,37:$V3,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,89:$Vw,90:$Vx,91:$Vy,92:$V9,95:$Va,96:$Vb}),o($Va1,[2,148]),o($Va1,[2,147],{22:15,23:16,35:18,6:195,7:196,8:197,9:198,10:199,11:200,12:201,74:202,13:203,14:$V0,15:$V1,21:$V2,37:$V3,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,89:$Vw,90:$Vx,91:$Vy,92:$V9,95:$Va,96:$Vb}),o($Va1,[2,149]),{2:[1,514],20:[1,513],52:$VN,53:$VO},{20:[1,515]},{20:[1,516],52:$VN,53:$VO},{20:[1,517],52:$VN,53:$VO},o($Vd,[2,225]),o($Vd,[2,221]),o($Vd,[2,228]),o($Vd,[2,227]),o($Vd,[2,226]),o($Vd,[2,236]),o($Vd,[2,242]),o($Vd,[2,241]),o($Vd,[2,240]),{20:[1,518],52:$VN,53:$VO},o($Vd,[2,224]),o($Vd,[2,239]),{20:[1,519],52:$VN,53:$VO},o($Vd,[2,223]),o($Vd,[2,238]),{15:[1,520]},{2:[1,522],15:[1,521]},{15:[1,523]},{15:[1,524]},{15:[1,525]},{15:[1,526]},{20:[1,527],52:$VN,53:$VO},o($Vd,[2,222]),o($Vd,[2,237]),{15:[1,528]},o($Vc1,[2,59]),o($Vc1,[2,60]),o($Vd,[2,255]),o($V71,[2,259]),{2:[1,530],15:[1,529]},{15:[1,531]},{15:[1,532]},{15:[1,533]},{15:[1,534]},{15:[1,535]},{15:[1,536]},{24:[1,537],25:[1,538]},{2:[1,540],24:[1,539],25:[1,541]},{24:[1,542],25:[1,543]},{24:[1,544],25:[1,545]},{24:[1,546],25:[1,547]},{24:[1,548],25:[1,549]},{24:[1,550],25:[1,551]},{15:[1,552]},{24:[1,553],25:[1,554]},{2:[1,556],24:[1,555],25:[1,557]},{24:[1,558],25:[1,559]},{24:[1,560],25:[1,561]},{24:[1,562],25:[1,563]},{24:[1,564],25:[1,565]},{24:[1,566],25:[1,567]},{24:[1,568],25:[1,569]},{24:[1,570],25:[1,571]},{68:[1,572]},{68:[1,573]},{2:[1,575],68:[1,574]},{68:[1,576]},{2:[1,578],68:[1,577]},{68:[1,579]},{68:[1,580]},{68:[1,581]},{68:[1,582]},{68:[1,583]},{68:[1,584]},{68:[1,585]},{68:[1,586]},{68:[1,587]},{68:[1,588]},{24:[1,589],25:[1,590]},{68:[1,591]},{68:[1,592]},{2:[1,594],68:[1,593]},{68:[1,595]},{2:[1,597],68:[1,596]},{68:[1,598]},{68:[1,599]},{68:[1,600]},{68:[1,601]},{68:[1,602]},{68:[1,603]},{68:[1,604]},{68:[1,605]},{68:[1,606]},{68:[1,607]},{68:[1,608]},{68:[1,609]},{68:[1,610]},{68:[1,611]},{38:$Vh,72:612},{38:$Vh,72:613},{2:[1,615],38:$Vh,72:614},{38:$Vh,72:616},{38:$Vh,72:617},{2:[1,619],38:$Vh,72:618},{38:$Vh,72:620},{38:$Vh,72:621},{38:$Vh,72:622},{38:$Vh,72:623},{38:$Vh,72:624},{38:$Vh,72:625},{38:$Vh,72:626},{38:$Vh,72:627},{38:$Vh,72:628},{38:$Vh,72:629},{38:$Vh,72:630},{68:[1,631]},{68:[1,632]},{38:$Vh,72:633},{38:$Vh,72:634},{2:[1,636],38:$Vh,72:635},{38:$Vh,72:637},{38:$Vh,72:638},{2:[1,640],38:$Vh,72:639},{38:$Vh,72:641},{38:$Vh,72:642},{38:$Vh,72:643},{38:$Vh,72:644},{38:$Vh,72:645},{38:$Vh,72:646},{38:$Vh,72:647},{38:$Vh,72:648},{38:$Vh,72:649},{38:$Vh,72:650},{38:$Vh,72:651},{38:$Vh,72:652},{38:$Vh,72:653},{38:$Vh,72:654},{38:$Vh,72:655},o($Vd,[2,196]),o($Vd,[2,207]),o($Vd,[2,194]),o($Vd,[2,204]),o($Vd,[2,203]),o($Vd,[2,202]),o($Vd,[2,205]),o($Vd,[2,214]),o($Vd,[2,213]),o($Vd,[2,201]),o($Vd,[2,212]),o($Vd,[2,200]),o($Vd,[2,211]),o($Vd,[2,199]),o($Vd,[2,210]),o($Vd,[2,198]),o($Vd,[2,209]),o($Vd,[2,197]),o($Vd,[2,208]),{38:$Vh,72:656},{38:$Vh,72:657},o($Vd,[2,195]),o($Vd,[2,206]),o($Vd,[2,171]),o($Vd,[2,182]),o($Vd,[2,181]),o($Vd,[2,180]),o($Vd,[2,183]),o($Vd,[2,193]),o($Vd,[2,192]),o($Vd,[2,179]),o($Vd,[2,191]),o($Vd,[2,178]),o($Vd,[2,190]),o($Vd,[2,177]),o($Vd,[2,189]),o($Vd,[2,176]),o($Vd,[2,188]),o($Vd,[2,175]),o($Vd,[2,187]),o($Vd,[2,174]),o($Vd,[2,186]),o($Vd,[2,173]),o($Vd,[2,185]),o($Vd,[2,172]),o($Vd,[2,184])],
+defaultActions: {3:[2,2],28:[2,1],341:[2,41],342:[2,42],343:[2,43],344:[2,45],420:[2,159]},
 parseError: function parseError (str, hash) {
     if (hash.recoverable) {
         this.trace(str);
@@ -1767,19 +3464,19 @@ case 57: console.log("sentencias:"+yy_.yytext);  return 86;
 break;
 case 58: console.log("sentencias:"+yy_.yytext);  return 87; 
 break;
-case 59: console.log("sentencias:"+yy_.yytext);  return 90; 
+case 59: console.log("sentencias:"+yy_.yytext);  return 88; 
 break;
-case 60: console.log("transferencia:"+yy_.yytext);  return 91; 
+case 60: console.log("transferencia:"+yy_.yytext);  return 89; 
 break;
-case 61: console.log("transferencia:"+yy_.yytext);  return 92; 
+case 61: console.log("transferencia:"+yy_.yytext);  return 90; 
 break;
-case 62: console.log("transferencia:"+yy_.yytext);  return 93; 
+case 62: console.log("transferencia:"+yy_.yytext);  return 91; 
 break;
-case 63: console.log("funcion:"+yy_.yytext);  return 94; 
+case 63: console.log("funcion:"+yy_.yytext);  return 92; 
 break;
-case 64: console.log("funcion:"+yy_.yytext);  return 97; 
+case 64: console.log("funcion:"+yy_.yytext);  return 95; 
 break;
-case 65: console.log("funcion:"+yy_.yytext);  return 98; 
+case 65: console.log("funcion:"+yy_.yytext);  return 96; 
 break;
 case 66: console.log("arimetica:"+yy_.yytext); return 65; 
 break;

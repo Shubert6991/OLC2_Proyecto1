@@ -4,7 +4,7 @@ const analizarTexto = () => {
   let texto = document.getElementById("textInput").value
   try {
     let result = analizador.parse(texto);
-    // console.log(result);
+    // console.log("test");
     //imprimir traduccion
     escribirTraduccion(result.traduccion);
     //reporte ast

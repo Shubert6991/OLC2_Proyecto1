@@ -94,7 +94,11 @@ var recursivo = function recursivo(ast, nodos, conexiones, cont) {
     if (ast.hijosCount() > 0) {
       ast.getListaNodos().forEach(function (element) {
         cont++;
-        conexiones = conexiones + aux + " -> " + cont + ";\n";
+
+        if (element.getTipo() !== "") {
+          conexiones = conexiones + aux + " -> " + cont + ";\n";
+        }
+
         var res = recursivo(element, nodos, conexiones, cont);
         nodos = res.nodos;
         conexiones = res.conexiones;

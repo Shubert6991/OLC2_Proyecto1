@@ -947,80 +947,1573 @@ BSENTENCIAS: tk_llavea SENTENCIAS tk_llavec {
                                               $$.trad = $1+"\n"+$2.trad+$3+"\n";
                                             }
             |tk_llavea tk_llavec{
-                                  $$ = new nodo("","");
+                                  $$ = new Nodo("","");
                                   $$.trad = $1+$2+"\n";
                                 };
 
-SENTENCIAS: SENTENCIAS DECLARACION
-          | SENTENCIAS ASIGNACION
-          | SENTENCIAS IF
-          | SENTENCIAS SWITCH
-          | SENTENCIAS WHILE
-          | SENTENCIAS DOWHILE
-          | SENTENCIAS FOR
-          | SENTENCIAS ST
-          | SENTENCIAS FESP
-          | DECLARACION
-          | ASIGNACION
-          | IF
-          | SWITCH
-          | WHILE
-          | DOWHILE
-          | FOR
-          | ST
-          | FESP
-          | error  {console.error("Error sintactico: "+yytext+" Desconocido Sentencias")};
+SENTENCIAS: SENTENCIAS DECLARACION {
+                                      var nodo = new Nodo("SENTENCIAS","SENTENCIAS",+yylineno+1,+@1.first_column+1);
+                                      nodo.addHijo($1);
+                                      nodo.addHijo($2);
+                                      $$ = nodo;
+                                      $$.trad = $1.trad + $2.trad;
+                                   }
+          | SENTENCIAS ASIGNACION {
+                                    var nodo = new Nodo("SENTENCIAS","SENTENCIAS",+yylineno+1,+@1.first_column+1);
+                                    nodo.addHijo($1);
+                                    nodo.addHijo($2);
+                                    $$ = nodo;
+                                    $$.trad = $1.trad + $2.trad;
+                                  }
+          | SENTENCIAS IF {
+                            var nodo = new Nodo("SENTENCIAS","SENTENCIAS",+yylineno+1,+@1.first_column+1);
+                            nodo.addHijo($1);
+                            nodo.addHijo($2);
+                            $$ = nodo;
+                            $$.trad = $1.trad + $2.trad;
+                          }
+          | SENTENCIAS SWITCH {
+                                var nodo = new Nodo("SENTENCIAS","SENTENCIAS",+yylineno+1,+@1.first_column+1);
+                                nodo.addHijo($1);
+                                nodo.addHijo($2);
+                                $$ = nodo;
+                                $$.trad = $1.trad + $2.trad;
+                              }
+          | SENTENCIAS WHILE{
+                              var nodo = new Nodo("SENTENCIAS","SENTENCIAS",+yylineno+1,+@1.first_column+1);
+                              nodo.addHijo($1);
+                              nodo.addHijo($2);
+                              $$ = nodo;
+                              $$.trad = $1.trad + $2.trad;
+                            }
+          | SENTENCIAS DOWHILE{
+                                var nodo = new Nodo("SENTENCIAS","SENTENCIAS",+yylineno+1,+@1.first_column+1);
+                                nodo.addHijo($1);
+                                nodo.addHijo($2);
+                                $$ = nodo;
+                                $$.trad = $1.trad + $2.trad;
+                              }
+          | SENTENCIAS FOR{
+                            var nodo = new Nodo("SENTENCIAS","SENTENCIAS",+yylineno+1,+@1.first_column+1);
+                            nodo.addHijo($1);
+                            nodo.addHijo($2);
+                            $$ = nodo;
+                            $$.trad = $1.trad + $2.trad;
+                          }
+          | SENTENCIAS ST {  
+                            var nodo = new Nodo("SENTENCIAS","SENTENCIAS",+yylineno+1,+@1.first_column+1);
+                            nodo.addHijo($1);
+                            nodo.addHijo($2);
+                            $$ = nodo;
+                            $$.trad = $1.trad + $2.trad;
+                          }
+          | SENTENCIAS FESP {  
+                              var nodo = new Nodo("SENTENCIAS","SENTENCIAS",+yylineno+1,+@1.first_column+1);
+                              nodo.addHijo($1);
+                              nodo.addHijo($2);
+                              $$ = nodo;
+                              $$.trad = $1.trad + $2.trad;
+                            }
+          | DECLARACION { $$ = $1; $$.trad = $1.trad; }
+          | ASIGNACION { $$ = $1; $$.trad = $1.trad; }
+          | IF { $$ = $1; $$.trad = $1.trad; }
+          | SWITCH { $$ = $1; $$.trad = $1.trad; }
+          | WHILE { $$ = $1; $$.trad = $1.trad; }
+          | DOWHILE { $$ = $1; $$.trad = $1.trad; }
+          | FOR { $$ = $1; $$.trad = $1.trad; }
+          | ST { $$ = $1; $$.trad = $1.trad; }
+          | FESP { $$ = $1; $$.trad = $1.trad; }
+          | error {
+                    console.error("Error sintactico: "+$1+" Desconocido Sentencias");
+                    var error = new Error("Sintactico","Encontrado: "+$1+" Se esperaba -> DECLARACION||ASIGNACION||IF||SWITCH||WHILE||DO WHILE||SENTENCIAS DE TRANSFARENCIA||console.log()||graficar_ts()",+yylineno+1,+@1.last_column+1);
+                    errores.addError(error);
+                    $$ = new Nodo("","");
+                    $$.trad = "";
+                  };
 
-IF: tk_if tk_pabierto L tk_pcerrado BSENTENCIAS ELSE
-  | tk_if tk_pabierto L tk_pcerrado BSENTENCIAS
-  | tk_if error BSENTENCIAS ELSE {console.error("Error Sintactico: "+$2+" Error parametros en if")}
-  | tk_if error BSENTENCIAS {console.error("Error Sintactico: "+$2+" Error parametros en if")};
+IF: tk_if tk_pabierto L tk_pcerrado BSENTENCIAS ELSE{
+                                                      var nodo = new Nodo("IF","IF",+yylineno+1,+@1.first_column+1);
+                                                      nodo.addHijo($3); //condicion
+                                                      nodo.addHijo($5); //sentencias
+                                                      nodo.addHijo($6); //else
+                                                      $$ = nodo;
+                                                      $$.trad = $1+$2+$3.trad+$4+$5.trad+$6.trad;
+                                                    }
+  | tk_if tk_pabierto L tk_pcerrado BSENTENCIAS {
+                                                  var nodo = new Nodo("IF","IF",+yylineno+1,+@1.first_column+1);
+                                                  nodo.addHijo($3); //condicion
+                                                  nodo.addHijo($5); //sentencias
+                                                  $$ = nodo;
+                                                  $$.trad = $1+$2+$3.trad+$4+$5.trad;
+                                                }
+  | tk_if error L tk_pcerrado BSENTENCIAS {
+                                            console.error("Error Sintactico: "+$2+" Error parametros en if")
+                                            var error = new Error("Sintactico","Encontrado: "+$2+" Se esperaba -> (",+yylineno+1,+@2.last_column+1);
+                                            errores.addError(error);
 
-ELSE: tk_else BSENTENCIAS
-    | tk_else IF;
+                                            var nodo = new Nodo("IF","IF",+yylineno+1,+@1.first_column+1);
+                                            nodo.addHijo($3); //condicion
+                                            nodo.addHijo($5); //sentencias
+                                            $$ = nodo;
+                                            $$.trad = $1+"("+$3.trad+$4+$5.trad;
+                                          }
+  | tk_if tk_pabierto L error BSENTENCIAS {
+                                            console.error("Error Sintactico: "+$4+" Error parametros en if")
+                                            var error = new Error("Sintactico","Encontrado: "+$4+" Se esperaba -> )",+yylineno+1,+@4.last_column+1);
+                                            errores.addError(error);
 
-SWITCH: tk_switch tk_pabierto L tk_pcerrado BSWITCH
-      | tk_switch error BSWITCH { console.error("Error sintactico: "+$2+" Error parametros en switch") };
+                                            var nodo = new Nodo("IF","IF",+yylineno+1,+@1.first_column+1);
+                                            nodo.addHijo($3); //condicion
+                                            nodo.addHijo($5); //sentencias
+                                            $$ = nodo;
+                                            $$.trad = $1+$2+$3.trad+")"+$5.trad;
+                                          }
+  | tk_if error BSENTENCIAS {
+                              console.error("Error Sintactico: "+$2+" Error parametros en if")
+                              var error = new Error("Sintactico","Encontrado: "+$2+" Se esperaba -> Condicion en if",+yylineno+1,+@2.last_column+1);
+                              errores.addError(error);
 
-BSWITCH: tk_llavea CASE DEFAULT tk_llavec
-      |tk_llavea CASE tk_llavec
-      |tk_llavea tk_llavec
-      |tk_llavea error tk_llavec { console.error("Error Sintactico: "+$2+" Error Cases en switch")};
+                              $$ = new Nodo("","");
+                              $$.trad = "";
+                            };
 
-CASE: CASE tk_case L tk_dospuntos SENTENCIAS
-    | CASE tk_case L tk_dospuntos BSENTENCIAS
-    | CASE tk_case L tk_dospuntos
-    | tk_case L tk_dospuntos SENTENCIAS
-    | tk_case L tk_dospuntos BSENTENCIAS
-    | tk_case L tk_dospuntos;
+ELSE: tk_else BSENTENCIAS {
+                            var nodo = new Nodo("ELSE","ELSE",+yylineno+1,+@1.first_column+1)
+                            nodo.addHijo($2);
 
-DEFAULT: tk_default tk_dospuntos SENTENCIAS
-        |tk_default tk_dospuntos BSENTENCIAS
-        |tk_default tk_dospuntos;
+                            $$ = nodo;
+                            $$.trad = $1+" "+$2.trad;
+                          }
+    | tk_else IF{
+                  var nodo = new Nodo("ELSE","ELSE",+yylineno+1,+@1.first_column+1)
+                  nodo.addHijo($2);
 
-WHILE: tk_while tk_pabierto L tk_pcerrado BSENTENCIAS
-      |tk_while error BSENTENCIAS {console.error("Error Sintactico: "+$2+" Error parametros while")};
+                  $$ = nodo;
+                  $$.trad = $1+" "+$2.trad;
+                };
 
-DOWHILE: tk_do BSENTENCIAS tk_while tk_pabierto L tk_pcerrado
-       | tk_do BSENTENCIAS tk_while error {console.error("Error Sintactico: "+$2+" Error parametros doWhile")};
+SWITCH: tk_switch tk_pabierto L tk_pcerrado BSWITCH {
+                                                      var nodo = new Nodo("SWITCH","SWITCH",+yylineno+1,+@1.first_column+1);
+                                                      nodo.addHijo($3);
+                                                      nodo.addHijo($5);
+                                                      $$ = nodo;
+                                                      $$.trad = $1+" "+$2+$3.trad+$4+$5.trad;
+                                                    }
+      | tk_switch error L tk_pcerrado BSWITCH {
+                                                console.error("Error Sintactico: "+$2+" Error parametros en switch")
+                                                var error = new Error("Sintactico","Encontrado: "+$2+" Se esperaba -> (",+yylineno+1,+@2.last_column+1);
+                                                errores.addError(error);
 
-FOR: tk_for tk_pabierto DECLARACION L tk_puntoycoma L tk_pcerrado BSENTENCIAS
-  | tk_for tk_pabierto ASIGNACION L tk_puntoycoma L tk_pcerrado BSENTENCIAS
-  | tk_for tk_pabierto tk_id tk_in tk_id tk_pcerrado BSENTENCIAS
-  | tk_for tk_pabierto tk_let tk_id tk_in tk_id tk_pcerrado BSENTENCIAS
-  | tk for tk_pabierto tk_id tk_of tk_id tk_pcerrado BSENTENCIAS
-  | tk_for tk_pabierto tk_let tk_id tk_of tk_id tk_pcerrado BSENTENCIAS
-  | tk_for error BSENTENCIAS {console.error("Error Sintactico: "+$2+" Error parametros for")}; 
+                                                var nodo = new Nodo("SWITCH","SWITCH",+yylineno+1,+@1.first_column+1);
+                                                nodo.addHijo($3);
+                                                nodo.addHijo($5);
+                                                $$ = nodo;
+                                                $$.trad = $1+" ("+$3.trad+$4+$5.trad;
+                                              }
+      | tk_switch tk_pabierto L error BSWITCH {
+                                                console.error("Error Sintactico: "+$4+" Error parametros en switch")
+                                                var error = new Error("Sintactico","Encontrado: "+$4+" Se esperaba -> )",+yylineno+1,+@4.last_column+1);
+                                                errores.addError(error);
 
-ST: tk_break tk_puntoycoma
-  | tk_break error {console.error("Error Sintactico: "+$2+" falta punto y coma")}
-  | tk_continue tk_puntoycoma
-  | tk_continue error {console.error("Error Sintactico: "+$2+" falta punto y coma")}
-  | tk_return tk_puntoycoma
-  | tk_return error {console.error("Error Sintactico: "+$2+" falta punto y coma")}
-  | tk_return VALOR tk_puntoycoma
-  | tk_return VALOR error {console.error("Error Sintactico: "+$3+" falta punto y coma")}
-  | tk_return ASIGNACION;
+                                                var nodo = new Nodo("SWITCH","SWITCH",+yylineno+1,+@1.first_column+1);
+                                                nodo.addHijo($3);
+                                                nodo.addHijo($5);
+                                                $$ = nodo;
+                                                $$.trad = $1+" "+$2+$3.trad+")"+$5.trad;
+                                              }
+      | tk_switch error BSWITCH { 
+                                  console.error("Error Sintactico: "+$2+" Error parametros en switch")
+                                  var error = new Error("Sintactico","Encontrado: "+$2+" Se esperaba -> condicion del switch",+yylineno+1,+@2.last_column+1);
+                                  errores.addError(error);
+
+                                  $$ = new Nodo("","");
+                                  $$.trad = "";
+                                };
+
+BSWITCH: tk_llavea CASE DEFAULT tk_llavec {
+                                            var nodo = new Nodo("BSWITCH","BSWITCH",+yylineno+1,+@1.first_column+1);
+                                            nodo.addHijo($2);
+                                            nodo.addHijo($3);
+                                            $$ = nodo;
+                                            $$.trad = $1+"\n"+$2.trad+$3.trad+$4+"\n";
+                                          }
+      |tk_llavea CASE tk_llavec {
+                                  var nodo = new Nodo("BSWITCH","BSWITCH",+yylineno+1,+@1.first_column+1);
+                                  nodo.addHijo($2);
+                                  $$ = nodo;
+                                  $$.trad = $1+"\n"+$2.trad+$3+"\n";
+                                }
+      |tk_llavea tk_llavec{
+                            var nodo = new Nodo("BSWITCH","BSWITCH",+yylineno+1,+@1.first_column+1);
+                            $$ = nodo;
+                            $$.trad = $1+"\n"+$2+"\n";
+                          }
+      |tk_llavea error tk_llavec{ 
+                                  console.error("Error Sintactico: "+$2+" Error Cases en switch");
+                                  var error = new Error("Sintactico","Encontrado: "+$2+" Se esperaba -> CASE o DEFAULT",+yylineno+1,+@2.last_column+1);
+                                  errores.addError(error);
+
+                                  var nodo = new Nodo("BSWITCH","BSWITCH",+yylineno+1,+@1.first_column+1);
+                                  $$ = nodo;
+                                  $$.trad = $1+"\n"+$3+"\n";
+                                };
+
+CASE: CASE tk_case L tk_dospuntos SENTENCIAS{
+                                              var nodo = new Nodo("CASE","CASE",+yylineno+1,+@1.first_column+1);
+                                              nodo.addHijo($1);
+                                              nodo.addHijo($3);
+                                              nodo.addHijo($5);
+                                              $$ = nodo;
+                                              $$.trad = $1.trad+$2+" "+$3.trad+$4+"\n"+$5.trad;
+                                            }
+    | CASE tk_case error tk_dospuntos SENTENCIAS{
+                                                  console.error("Error Sintactico: "+$3+" Error Cases en switch");
+                                                  var error = new Error("Sintactico","Encontrado: "+$3+" Se esperaba -> Parametro case",+yylineno+1,+@3.last_column+1);
+                                                  errores.addError(error);
+
+                                                  $$ = $1;
+                                                  $$.trad = $1.trad;
+                                                }
+    | CASE tk_case L tk_dospuntos BSENTENCIAS {
+                                                var nodo = new Nodo("CASE","CASE",+yylineno+1,+@1.first_column+1);
+                                                nodo.addHijo($1);
+                                                nodo.addHijo($3);
+                                                nodo.addHijo($5);
+                                                $$ = nodo;
+                                                $$.trad = $1.trad+$2+" "+$3.trad+$4+$5.trad;
+                                              }
+    | CASE tk_case error tk_dospuntos BSENTENCIAS{
+                                                    console.error("Error Sintactico: "+$3+" Error Cases en switch");
+                                                    var error = new Error("Sintactico","Encontrado: "+$3+" Se esperaba -> Parametro case",+yylineno+1,+@3.last_column+1);
+                                                    errores.addError(error);
+
+                                                    $$ = $1;
+                                                    $$.trad = $1.trad;
+                                                 }                                      
+    | CASE tk_case L tk_dospuntos {
+                                    var nodo = new Nodo("CASE","CASE",+yylineno+1,+@1.first_column+1);
+                                    nodo.addHijo($1);
+                                    nodo.addHijo($3);
+                                    $$ = nodo;
+                                    $$.trad = $1.trad+$2+" "+$3.trad+$4+"\n";
+                                  }
+    | CASE tk_case error tk_dospuntos {
+                                        console.error("Error Sintactico: "+$3+" Error Cases en switch");
+                                        var error = new Error("Sintactico","Encontrado: "+$3+" Se esperaba -> Parametro case",+yylineno+1,+@3.last_column+1);
+                                        errores.addError(error);
+
+                                        $$ = $1;
+                                        $$.trad = $1.trad;
+                                      }
+    | tk_case L tk_dospuntos SENTENCIAS {
+                                          var nodo = new Nodo("CASE","CASE",+yylineno+1,+@1.first_column+1);
+                                          nodo.addHijo($2);
+                                          nodo.addHijo($4);
+                                          $$ = nodo;
+                                          $$.trad = $1+" "+$2.trad+$3+"\n"+$4.trad;
+                                        }
+    | tk_case error tk_dospuntos SENTENCIAS {
+                                              console.error("Error Sintactico: "+$2+" Error Cases en switch");
+                                              var error = new Error("Sintactico","Encontrado: "+$2+" Se esperaba -> Parametro case",+yylineno+1,+@2.last_column+1);
+                                              errores.addError(error);
+
+                                              $$ = new Nodo("","");
+                                              $$.trad = "";
+                                            }
+    | tk_case L tk_dospuntos BSENTENCIAS{
+                                          var nodo = new Nodo("CASE","CASE",+yylineno+1,+@1.first_column+1);
+                                          nodo.addHijo($2);
+                                          nodo.addHijo($4);
+                                          $$ = nodo;
+                                          $$.trad = $1+" "+$2.trad+$3+$4.trad;
+                                        }
+    | tk_case error tk_dospuntos BSENTENCIAS{
+                                              console.error("Error Sintactico: "+$2+" Error Cases en switch");
+                                              var error = new Error("Sintactico","Encontrado: "+$2+" Se esperaba -> Parametro case",+yylineno+1,+@2.last_column+1);
+                                              errores.addError(error);
+
+                                              $$ = new Nodo("","");
+                                              $$.trad = "";
+                                            }
+    | tk_case L tk_dospuntos{
+                              var nodo = new Nodo("CASE","CASE",+yylineno+1,+@1.first_column+1);
+                              nodo.addHijo($2);
+                              $$ = nodo;
+                              $$.trad = $1+" "+$2.trad+$3+"\n";
+                            }
+    | tk_case error tk_dospuntos{ 
+                                  console.error("Error Sintactico: "+$2+" Error Cases en switch");
+                                  var error = new Error("Sintactico","Encontrado: "+$2+" Se esperaba -> Parametro case",+yylineno+1,+@2.last_column+1);
+                                  errores.addError(error);
+
+                                  $$ = new Nodo("","");
+                                  $$.trad = "";
+                                };
+
+DEFAULT: tk_default tk_dospuntos SENTENCIAS {
+                                              var nodo = new Nodo("DEFAULT","DEFAULT",+yylineno+1,+@1.last_column+1);
+                                              nodo.addHijo($3);
+                                              $$ = nodo;
+                                              $$.trad = $1+$2+"\n"+$3.trad;
+                                            }
+        |tk_default tk_dospuntos BSENTENCIAS{
+                                              var nodo = new Nodo("DEFAULT","DEFAULT",+yylineno+1,+@1.last_column+1);
+                                              nodo.addHijo($3);
+                                              $$ = nodo;
+                                              $$.trad = $1+$2+$3.trad;
+                                            }
+        |tk_default tk_dospuntos{
+                                  var nodo = new Nodo("DEFAULT","DEFAULT",+yylineno+1,+@1.last_column+1);
+                                  $$ = nodo;
+                                  $$.trad = $1+$2+"\n";
+                                };
+
+WHILE: tk_while tk_pabierto L tk_pcerrado BSENTENCIAS {
+                                                        var nodo = new Nodo("WHILE","WHILE",+yylineno+1,+@1.last_column+1);
+                                                        nodo.addHijo($3);
+                                                        nodo.addHijo($5);
+                                                        $$ = nodo;
+                                                        $$.trad = $1+$2+$3.trad+$4+$5.trad;
+                                                      }
+      |tk_while error L tk_pcerrado BSENTENCIAS {
+                                                  console.error("Error Sintactico: "+$2+" Error en While");
+                                                  var error = new Error("Sintactico","Encontrado: "+$2+" Se esperaba -> (",+yylineno+1,+@2.last_column+1);
+                                                  errores.addError(error);
+
+                                                  var nodo = new Nodo("WHILE","WHILE",+yylineno+1,+@1.last_column+1);
+                                                  nodo.addHijo($3);
+                                                  nodo.addHijo($5);
+                                                  $$ = nodo;
+                                                  $$.trad = $1+"("+$3.trad+$4+$5.trad;
+                                                }
+      |tk_while tk_pabierto error tk_pcerrado BSENTENCIAS {
+                                                            console.error("Error Sintactico: "+$3+" Error en While");
+                                                            var error = new Error("Sintactico","Encontrado: "+$3+" Se esperaba -> (",+yylineno+1,+@3.last_column+1);
+                                                            errores.addError(error);
+
+                                                            $$ = new Nodo("","");
+                                                            $$.trad = "";
+                                                          }
+      |tk_while tk_pabierto L error BSENTENCIAS {
+                                                  console.error("Error Sintactico: "+$4+" Error en While");
+                                                  var error = new Error("Sintactico","Encontrado: "+$4+" Se esperaba -> (",+yylineno+1,+@4.last_column+1);
+                                                  errores.addError(error);
+
+                                                  var nodo = new Nodo("WHILE","WHILE",+yylineno+1,+@1.last_column+1);
+                                                  nodo.addHijo($3);
+                                                  nodo.addHijo($5);
+                                                  $$ = nodo;
+                                                  $$.trad = $1+$2+$3.trad+")"+$5.trad;
+                                                }
+      |tk_while error BSENTENCIAS {
+                                    console.error("Error Sintactico: "+$3+" Error en While");
+                                    var error = new Error("Sintactico","Encontrado: "+$3+" Se esperaba -> Parametros While",+yylineno+1,+@3.last_column+1);
+                                    errores.addError(error);
+
+                                    $$ = new Nodo("","");
+                                    $$.trad = "";
+                                  };
+
+DOWHILE: tk_do BSENTENCIAS tk_while tk_pabierto L tk_pcerrado tk_puntoycoma {
+                                                                              var nodo = new Nodo("DOWHILE","DOWHILE",+yylineno+1,+@1.last_column+1);
+                                                                              nodo.addHijo($2);
+                                                                              nodo.addHijo($5);
+                                                                              $$ = nodo;
+                                                                              $$.trad = $1+$2.trad+$3+$4+$5.trad+$6+$7+"\n";
+                                                                            }
+        |tk_do BSENTENCIAS tk_while error L tk_pcerrado tk_puntoycoma {
+                                                                        console.error("Error Sintactico: "+$4+" Error en do While");
+                                                                        var error = new Error("Sintactico","Encontrado: "+$4+" Se esperaba -> (",+yylineno+1,+@4.last_column+1);
+                                                                        errores.addError(error);
+
+                                                                        var nodo = new Nodo("DOWHILE","DOWHILE",+yylineno+1,+@1.last_column+1);
+                                                                        nodo.addHijo($2);
+                                                                        nodo.addHijo($5);
+                                                                        $$ = nodo;
+                                                                        $$.trad = $1+$2.trad+"("+$4+$5.trad+$6+$7+"\n";
+                                                                      }
+        |tk_do BSENTENCIAS tk_while tk_pabierto error tk_pcerrado tk_puntoycoma {
+                                                                                  console.error("Error Sintactico: "+$5+" Error en do While");
+                                                                                  var error = new Error("Sintactico","Encontrado: "+$5+" Se esperaba -> Parametros do While",+yylineno+1,+@5.last_column+1);
+                                                                                  errores.addError(error);
+                                                                                  
+                                                                                  $$ = new Nodo("","");
+                                                                                  $$.trad = "";
+                                                                                }
+        |tk_do BSENTENCIAS tk_while tk_pabierto L error tk_puntoycoma {
+                                                                        console.error("Error Sintactico: "+$6+" Error en do While");
+                                                                        var error = new Error("Sintactico","Encontrado: "+$6+" Se esperaba -> )",+yylineno+1,+@6.last_column+1);
+                                                                        errores.addError(error);
+
+                                                                        var nodo = new Nodo("DOWHILE","DOWHILE",+yylineno+1,+@1.last_column+1);
+                                                                        nodo.addHijo($2);
+                                                                        nodo.addHijo($5);
+                                                                        $$ = nodo;
+                                                                        $$.trad = $1+$2.trad+$3+$4+$5.trad+")"+$7+"\n";
+                                                                      }
+        |tk_do BSENTENCIAS tk_while tk_pabierto L tk_pcerrado error {
+                                                                      console.error("Error Sintactico: "+$7+" Error en do While");
+                                                                      var error = new Error("Sintactico","Encontrado: "+$7+" Se esperaba -> ;",+yylineno+1,+@7.last_column+1);
+                                                                      errores.addError(error);
+
+                                                                      var nodo = new Nodo("DOWHILE","DOWHILE",+yylineno+1,+@1.last_column+1);
+                                                                      nodo.addHijo($2);
+                                                                      nodo.addHijo($5);
+                                                                      $$ = nodo;
+                                                                      $$.trad = $1+$2.trad+$3+$4+$5.trad+$6+";\n";
+                                                                    };
+
+FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycoma tk_id tk_inc tk_pcerrado BSENTENCIAS{
+                                                                                                                        var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                                                                        var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
+                                                                                                                        var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
+                                                                                                                        var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                        inc.addHijo(id2);
+                                                                                                                        nodo.addHijo(id1);
+                                                                                                                        nodo.addHijo($6);
+                                                                                                                        nodo.addHijo($8);
+                                                                                                                        nodo.addHijo(inc);
+                                                                                                                        nodo.addHijo($13);
+                                                                                                                        $$ = nodo;
+                                                                                                                        $$.trad = $1+$2+$3+" "+$4+$5+$6.trad+$7+$8.trad+$9+$10+$11+$12+$13.trad;
+                                                                                                                      }
+  | tk_for error tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycoma tk_id tk_inc tk_pcerrado BSENTENCIAS {  
+                                                                                                                  console.error("Error Sintactico: "+$2+" Error en for");
+                                                                                                                  var error = new Error("Sintactico","Encontrado: "+$2+" Se esperaba -> (",+yylineno+1,+@2.last_column+1);
+                                                                                                                  errores.addError(error);
+
+                                                                                                                  var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                                                                  var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
+                                                                                                                  var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
+                                                                                                                  var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                  inc.addHijo(id2);
+                                                                                                                  nodo.addHijo(id1);
+                                                                                                                  nodo.addHijo($6);
+                                                                                                                  nodo.addHijo($8);
+                                                                                                                  nodo.addHijo(inc);
+                                                                                                                  nodo.addHijo($13);
+                                                                                                                  $$ = nodo;
+                                                                                                                  $$.trad = $1+"("+$3+" "+$4+$5+$6.trad+$7+$8.trad+$9+$10+$11+$12+$13.trad;
+                                                                                                                }
+  | tk_for tk_pabierto error tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycoma tk_id tk_inc tk_pcerrado BSENTENCIAS{
+                                                                                                                      console.error("Error Sintactico: "+$3+" Error en do While");
+                                                                                                                      var error = new Error("Sintactico","Encontrado: "+$3+" Se esperaba -> let",+yylineno+1,+@3.last_column+1);
+                                                                                                                      errores.addError(error);
+
+                                                                                                                      var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                                                                      var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
+                                                                                                                      var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
+                                                                                                                      var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                      inc.addHijo(id2);
+                                                                                                                      nodo.addHijo(id1);
+                                                                                                                      nodo.addHijo($6);
+                                                                                                                      nodo.addHijo($8);
+                                                                                                                      nodo.addHijo(inc);
+                                                                                                                      nodo.addHijo($13);
+                                                                                                                      $$ = nodo;
+                                                                                                                      $$.trad = $1+$2+"let"+" "+$4+$5+$6.trad+$7+$8.trad+$9+$10+$11+$12+$13.trad;    
+                                                                                                                    }
+  | tk_for tk_pabierto tk_let error tk_igual VALOR tk_puntoycoma L tk_puntoycoma tk_id tk_inc tk_pcerrado BSENTENCIAS {
+                                                                                                                        console.error("Error Sintactico: "+$4+" Error en do While");
+                                                                                                                        var error = new Error("Sintactico","Encontrado: "+$4+" Se esperaba -> id",+yylineno+1,+@4.last_column+1);
+                                                                                                                        errores.addError(error);
+
+                                                                                                                        $$ = new Nodo("","");
+                                                                                                                        $$.trad = "";
+                                                                                                                      }
+  | tk_for tk_pabierto tk_let tk_id error VALOR tk_puntoycoma L tk_puntoycoma tk_id tk_inc tk_pcerrado BSENTENCIAS{
+                                                                                                                    console.error("Error Sintactico: "+$5+" Error en do While");
+                                                                                                                    var error = new Error("Sintactico","Encontrado: "+$5+" Se esperaba -> =",+yylineno+1,+@5.last_column+1);
+                                                                                                                    errores.addError(error);
+
+                                                                                                                    var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                                                                    var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
+                                                                                                                    var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
+                                                                                                                    var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                    inc.addHijo(id2);
+                                                                                                                    nodo.addHijo(id1);
+                                                                                                                    nodo.addHijo($6);
+                                                                                                                    nodo.addHijo($8);
+                                                                                                                    nodo.addHijo(inc);
+                                                                                                                    nodo.addHijo($13);
+                                                                                                                    $$ = nodo;
+                                                                                                                    $$.trad = $1+$2+$3+" "+$4+"="+$6.trad+$7+$8.trad+$9+$10+$11+$12+$13.trad;
+                                                                                                                  }
+  | tk_for tk_pabierto tk_let tk_id tk_igual VALOR error L tk_puntoycoma tk_id tk_inc tk_pcerrado BSENTENCIAS{
+                                                                                                                console.error("Error Sintactico: "+$7+" Error en do While");
+                                                                                                                var error = new Error("Sintactico","Encontrado: "+$7+" Se esperaba -> ;",+yylineno+1,+@7.last_column+1);
+                                                                                                                errores.addError(error);
+
+                                                                                                                var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                                                                var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
+                                                                                                                var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
+                                                                                                                var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                inc.addHijo(id2);
+                                                                                                                nodo.addHijo(id1);
+                                                                                                                nodo.addHijo($6);
+                                                                                                                nodo.addHijo($8);
+                                                                                                                nodo.addHijo(inc);
+                                                                                                                nodo.addHijo($13);
+                                                                                                                $$ = nodo;
+                                                                                                                $$.trad = $1+$2+$3+" "+$4+$5+$6.trad+";"+$8.trad+$9+$10+$11+$12+$13.trad;
+                                                                                                              }
+  | tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma error tk_puntoycoma tk_id tk_inc tk_pcerrado BSENTENCIAS {
+                                                                                                                            console.error("Error Sintactico: "+$8+" Error en do While");
+                                                                                                                            var error = new Error("Sintactico","Encontrado: "+$8+" Se esperaba -> Condicion For",+yylineno+1,+@8.last_column+1);
+                                                                                                                            errores.addError(error);
+
+                                                                                                                            $$ = new Nodo("","");
+                                                                                                                            $$.trad = "";
+                                                                                                                          }
+  | tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L error tk_id tk_inc tk_pcerrado BSENTENCIAS {
+                                                                                                                console.error("Error Sintactico: "+$9+" Error en do While");
+                                                                                                                var error = new Error("Sintactico","Encontrado: "+$9+" Se esperaba -> ;",+yylineno+1,+@9.last_column+1);
+                                                                                                                errores.addError(error);
+
+                                                                                                                var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                                                                var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
+                                                                                                                var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
+                                                                                                                var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                inc.addHijo(id2);
+                                                                                                                nodo.addHijo(id1);
+                                                                                                                nodo.addHijo($6);
+                                                                                                                nodo.addHijo($8);
+                                                                                                                nodo.addHijo(inc);
+                                                                                                                nodo.addHijo($13);
+                                                                                                                $$ = nodo;
+                                                                                                                $$.trad = $1+$2+$3+" "+$4+$5+$6.trad+$7+$8.trad+";"+$10+$11+$12+$13.trad;
+                                                                                                              }
+  | tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycoma error tk_inc tk_pcerrado BSENTENCIAS {
+                                                                                                                        console.error("Error Sintactico: "+$10+" Error en do While");
+                                                                                                                        var error = new Error("Sintactico","Encontrado: "+$10+" Se esperaba -> id",+yylineno+1,+@2.last_column+1);
+                                                                                                                        errores.addError(error);
+
+                                                                                                                        var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                                                                        var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
+                                                                                                                        var id2 = new Nodo("ID",$4,+yylineno+1,+@10.last_column+1);
+                                                                                                                        var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                        inc.addHijo(id2);
+                                                                                                                        nodo.addHijo(id1);
+                                                                                                                        nodo.addHijo($6);
+                                                                                                                        nodo.addHijo($8);
+                                                                                                                        nodo.addHijo(inc);
+                                                                                                                        nodo.addHijo($13);
+                                                                                                                        $$ = nodo;
+                                                                                                                        $$.trad = $1+$2+$3+" "+$4+$5+$6.trad+$7+$8.trad+$9+$4+$11+$12+$13.trad;
+                                                                                                                      }
+  | tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycoma tk_id error tk_pcerrado BSENTENCIAS{
+                                                                                                                      console.error("Error Sintactico: "+$11+" Error en do While");
+                                                                                                                      var error = new Error("Sintactico","Encontrado: "+$11+" Se esperaba -> ++||--",+yylineno+1,+@11.last_column+1);
+                                                                                                                      errores.addError(error);
+
+                                                                                                                      var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                                                                      var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
+                                                                                                                      var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
+                                                                                                                      var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                      inc.addHijo(id2);
+                                                                                                                      nodo.addHijo(id1);
+                                                                                                                      nodo.addHijo($6);
+                                                                                                                      nodo.addHijo($8);
+                                                                                                                      nodo.addHijo(inc);
+                                                                                                                      nodo.addHijo($13);
+                                                                                                                      $$ = nodo;
+                                                                                                                      $$.trad = $1+$2+$3+" "+$4+$5+$6.trad+$7+$8.trad+$9+$10+"++"+$12+$13.trad;
+                                                                                                                    }
+  | tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycoma tk_id tk_inc error BSENTENCIAS {
+                                                                                                                  console.error("Error Sintactico: "+$12+" Error en do While");
+                                                                                                                  var error = new Error("Sintactico","Encontrado: "+$12+" Se esperaba -> )",+yylineno+1,+@12.last_column+1);
+                                                                                                                  errores.addError(error);
+
+                                                                                                                  var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                                                                  var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
+                                                                                                                  var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
+                                                                                                                  var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                  inc.addHijo(id2);
+                                                                                                                  nodo.addHijo(id1);
+                                                                                                                  nodo.addHijo($6);
+                                                                                                                  nodo.addHijo($8);
+                                                                                                                  nodo.addHijo(inc);
+                                                                                                                  nodo.addHijo($13);
+                                                                                                                  $$ = nodo;
+                                                                                                                  $$.trad = $1+$2+$3+" "+$4+$5+$6.trad+$7+$8.trad+$9+$10+$11+$12+$13.trad;
+                                                                                                                }
+  | tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycoma tk_id tk_inc tk_pcerrado error {
+                                                                                                                  console.error("Error Sintactico: "+$13+" Error en do While");
+                                                                                                                  var error = new Error("Sintactico","Encontrado: "+$13+" Se esperaba -> SENTENCIAS",+yylineno+1,+@13.last_column+1);
+                                                                                                                  errores.addError(error);
+
+                                                                                                                  var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                                                                  var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
+                                                                                                                  var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
+                                                                                                                  var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                  inc.addHijo(id2);
+                                                                                                                  nodo.addHijo(id1);
+                                                                                                                  nodo.addHijo($6);
+                                                                                                                  nodo.addHijo($8);
+                                                                                                                  nodo.addHijo(inc);
+                                                                                                                  $$ = nodo;
+                                                                                                                  $$.trad = $1+$2+$3+" "+$4+$5+$6.trad+$7+$8.trad+$9+$10+$11+$12+"{}\n";
+                                                                                                                }
+
+  | tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycoma tk_id tk_dec tk_pcerrado BSENTENCIAS {
+                                                                                                                        var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                                                                        var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
+                                                                                                                        var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
+                                                                                                                        var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                        inc.addHijo(id2);
+                                                                                                                        nodo.addHijo(id1);
+                                                                                                                        nodo.addHijo($6);
+                                                                                                                        nodo.addHijo($8);
+                                                                                                                        nodo.addHijo(inc);
+                                                                                                                        nodo.addHijo($13);
+                                                                                                                        $$ = nodo;
+                                                                                                                        $$.trad = $1+$2+$3+" "+$4+$5+$6.trad+$7+$8.trad+$9+$10+$11+$12+$13.trad;
+                                                                                                                      }
+  | tk_for error tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycoma tk_id tk_dec tk_pcerrado BSENTENCIAS {  
+                                                                                                                  console.error("Error Sintactico: "+$2+" Error en for");
+                                                                                                                  var error = new Error("Sintactico","Encontrado: "+$2+" Se esperaba -> (",+yylineno+1,+@2.last_column+1);
+                                                                                                                  errores.addError(error);
+
+                                                                                                                  var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                                                                  var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
+                                                                                                                  var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
+                                                                                                                  var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                  inc.addHijo(id2);
+                                                                                                                  nodo.addHijo(id1);
+                                                                                                                  nodo.addHijo($6);
+                                                                                                                  nodo.addHijo($8);
+                                                                                                                  nodo.addHijo(inc);
+                                                                                                                  nodo.addHijo($13);
+                                                                                                                  $$ = nodo;
+                                                                                                                  $$.trad = $1+"("+$3+" "+$4+$5+$6.trad+$7+$8.trad+$9+$10+$11+$12+$13.trad;
+                                                                                                                }
+  | tk_for tk_pabierto error tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycoma tk_id tk_dec tk_pcerrado BSENTENCIAS{
+                                                                                                                      console.error("Error Sintactico: "+$3+" Error en do While");
+                                                                                                                      var error = new Error("Sintactico","Encontrado: "+$3+" Se esperaba -> let",+yylineno+1,+@3.last_column+1);
+                                                                                                                      errores.addError(error);
+
+                                                                                                                      var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                                                                      var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
+                                                                                                                      var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
+                                                                                                                      var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                      inc.addHijo(id2);
+                                                                                                                      nodo.addHijo(id1);
+                                                                                                                      nodo.addHijo($6);
+                                                                                                                      nodo.addHijo($8);
+                                                                                                                      nodo.addHijo(inc);
+                                                                                                                      nodo.addHijo($13);
+                                                                                                                      $$ = nodo;
+                                                                                                                      $$.trad = $1+$2+"let"+" "+$4+$5+$6.trad+$7+$8.trad+$9+$10+$11+$12+$13.trad;    
+                                                                                                                    }
+  | tk_for tk_pabierto tk_let error tk_igual VALOR tk_puntoycoma L tk_puntoycoma tk_id tk_dec tk_pcerrado BSENTENCIAS {
+                                                                                                                        console.error("Error Sintactico: "+$4+" Error en do While");
+                                                                                                                        var error = new Error("Sintactico","Encontrado: "+$4+" Se esperaba -> id",+yylineno+1,+@4.last_column+1);
+                                                                                                                        errores.addError(error);
+
+                                                                                                                        $$ = new Nodo("","");
+                                                                                                                        $$.trad = "";
+                                                                                                                      }
+  | tk_for tk_pabierto tk_let tk_id error VALOR tk_puntoycoma L tk_puntoycoma tk_id tk_dec tk_pcerrado BSENTENCIAS{
+                                                                                                                    console.error("Error Sintactico: "+$5+" Error en do While");
+                                                                                                                    var error = new Error("Sintactico","Encontrado: "+$5+" Se esperaba -> =",+yylineno+1,+@5.last_column+1);
+                                                                                                                    errores.addError(error);
+
+                                                                                                                    var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                                                                    var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
+                                                                                                                    var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
+                                                                                                                    var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                    inc.addHijo(id2);
+                                                                                                                    nodo.addHijo(id1);
+                                                                                                                    nodo.addHijo($6);
+                                                                                                                    nodo.addHijo($8);
+                                                                                                                    nodo.addHijo(inc);
+                                                                                                                    nodo.addHijo($13);
+                                                                                                                    $$ = nodo;
+                                                                                                                    $$.trad = $1+$2+$3+" "+$4+"="+$6.trad+$7+$8.trad+$9+$10+$11+$12+$13.trad;
+                                                                                                                  }
+  | tk_for tk_pabierto tk_let tk_id tk_igual VALOR error L tk_puntoycoma tk_id tk_dec tk_pcerrado BSENTENCIAS {
+                                                                                                                console.error("Error Sintactico: "+$7+" Error en do While");
+                                                                                                                var error = new Error("Sintactico","Encontrado: "+$7+" Se esperaba -> ;",+yylineno+1,+@7.last_column+1);
+                                                                                                                errores.addError(error);
+
+                                                                                                                var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                                                                var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
+                                                                                                                var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
+                                                                                                                var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                inc.addHijo(id2);
+                                                                                                                nodo.addHijo(id1);
+                                                                                                                nodo.addHijo($6);
+                                                                                                                nodo.addHijo($8);
+                                                                                                                nodo.addHijo(inc);
+                                                                                                                nodo.addHijo($13);
+                                                                                                                $$ = nodo;
+                                                                                                                $$.trad = $1+$2+$3+" "+$4+$5+$6.trad+";"+$8.trad+$9+$10+$11+$12+$13.trad;
+                                                                                                              }
+  | tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma error tk_puntoycoma tk_id tk_dec tk_pcerrado BSENTENCIAS {
+                                                                                                                            console.error("Error Sintactico: "+$8+" Error en do While");
+                                                                                                                            var error = new Error("Sintactico","Encontrado: "+$8+" Se esperaba -> Condicion For",+yylineno+1,+@8.last_column+1);
+                                                                                                                            errores.addError(error);
+
+                                                                                                                            $$ = new Nodo("","");
+                                                                                                                            $$.trad = "";
+                                                                                                                          } 
+  | tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L error tk_id tk_dec tk_pcerrado BSENTENCIAS {
+                                                                                                                        console.error("Error Sintactico: "+$9+" Error en do While");
+                                                                                                                        var error = new Error("Sintactico","Encontrado: "+$9+" Se esperaba -> ;",+yylineno+1,+@9.last_column+1);
+                                                                                                                        errores.addError(error);
+
+                                                                                                                        var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                                                                        var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
+                                                                                                                        var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
+                                                                                                                        var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                        inc.addHijo(id2);
+                                                                                                                        nodo.addHijo(id1);
+                                                                                                                        nodo.addHijo($6);
+                                                                                                                        nodo.addHijo($8);
+                                                                                                                        nodo.addHijo(inc);
+                                                                                                                        nodo.addHijo($13);
+                                                                                                                        $$ = nodo;
+                                                                                                                        $$.trad = $1+$2+$3+" "+$4+$5+$6.trad+$7+$8.trad+";"+$10+$11+$12+$13.trad;
+                                                                                                                      } 
+  | tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycoma error tk_dec tk_pcerrado BSENTENCIAS {
+                                                                                                                        console.error("Error Sintactico: "+$10+" Error en do While");
+                                                                                                                        var error = new Error("Sintactico","Encontrado: "+$10+" Se esperaba -> id",+yylineno+1,+@2.last_column+1);
+                                                                                                                        errores.addError(error);
+
+                                                                                                                        var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                                                                        var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
+                                                                                                                        var id2 = new Nodo("ID",$4,+yylineno+1,+@10.last_column+1);
+                                                                                                                        var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                        inc.addHijo(id2);
+                                                                                                                        nodo.addHijo(id1);
+                                                                                                                        nodo.addHijo($6);
+                                                                                                                        nodo.addHijo($8);
+                                                                                                                        nodo.addHijo(inc);
+                                                                                                                        nodo.addHijo($13);
+                                                                                                                        $$ = nodo;
+                                                                                                                        $$.trad = $1+$2+$3+" "+$4+$5+$6.trad+$7+$8.trad+$9+$4+$11+$12+$13.trad;
+                                                                                                                      }
+  | tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycoma tk_id tk_dec error BSENTENCIAS {
+                                                                                                                  console.error("Error Sintactico: "+$12+" Error en do While");
+                                                                                                                  var error = new Error("Sintactico","Encontrado: "+$12+" Se esperaba -> )",+yylineno+1,+@12.last_column+1);
+                                                                                                                  errores.addError(error);
+
+                                                                                                                  var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                                                                  var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
+                                                                                                                  var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
+                                                                                                                  var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                  inc.addHijo(id2);
+                                                                                                                  nodo.addHijo(id1);
+                                                                                                                  nodo.addHijo($6);
+                                                                                                                  nodo.addHijo($8);
+                                                                                                                  nodo.addHijo(inc);
+                                                                                                                  nodo.addHijo($13);
+                                                                                                                  $$ = nodo;
+                                                                                                                  $$.trad = $1+$2+$3+" "+$4+$5+$6.trad+$7+$8.trad+$9+$10+$11+$12+$13.trad;
+                                                                                                                }
+  | tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycoma tk_id tk_dec tk_pcerrado error {
+                                                                                                                  console.error("Error Sintactico: "+$13+" Error en do While");
+                                                                                                                  var error = new Error("Sintactico","Encontrado: "+$13+" Se esperaba -> SENTENCIAS",+yylineno+1,+@13.last_column+1);
+                                                                                                                  errores.addError(error);
+
+                                                                                                                  var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                                                                  var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
+                                                                                                                  var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
+                                                                                                                  var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                  inc.addHijo(id2);
+                                                                                                                  nodo.addHijo(id1);
+                                                                                                                  nodo.addHijo($6);
+                                                                                                                  nodo.addHijo($8);
+                                                                                                                  nodo.addHijo(inc);
+                                                                                                                  $$ = nodo;
+                                                                                                                  $$.trad = $1+$2+$3+" "+$4+$5+$6.trad+$7+$8.trad+$9+$10+$11+$12+"{}\n";
+                                                                                                                }
+
+  | tk_for tk_pabierto tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycoma tk_id tk_inc tk_pcerrado BSENTENCIAS{
+                                                                                                                var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                                                                var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
+                                                                                                                var id2 = new Nodo("ID",$9,+yylineno+1,+@10.last_column+1);
+                                                                                                                var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                inc.addHijo(id2);
+                                                                                                                nodo.addHijo(id1);
+                                                                                                                nodo.addHijo($5);
+                                                                                                                nodo.addHijo($7);
+                                                                                                                nodo.addHijo(inc);
+                                                                                                                nodo.addHijo($12);
+                                                                                                                $$ = nodo;
+                                                                                                                $$.trad = $1+$2+$3+$4+$5.trad+$6+$7.trad+$8+$9+$10+$11+$12.trad;
+                                                                                                              }
+  | tk_for error tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycoma tk_id tk_inc tk_pcerrado BSENTENCIAS{
+                                                                                                          console.error("Error Sintactico: "+$2+" Error en for");
+                                                                                                          var error = new Error("Sintactico","Encontrado: "+$2+" Se esperaba -> (",+yylineno+1,+@2.last_column+1);
+                                                                                                          errores.addError(error);
+
+                                                                                                          var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                                                          var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
+                                                                                                          var id2 = new Nodo("ID",$9,+yylineno+1,+@10.last_column+1);
+                                                                                                          var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                          inc.addHijo(id2);
+                                                                                                          nodo.addHijo(id1);
+                                                                                                          nodo.addHijo($5);
+                                                                                                          nodo.addHijo($7);
+                                                                                                          nodo.addHijo(inc);
+                                                                                                          nodo.addHijo($12);
+                                                                                                          $$ = nodo;
+                                                                                                          $$.trad = $1+"("+$3+$4+$5.trad+$6+$7.trad+$8+$9+$10+$11+$12.trad;
+                                                                                                        }
+  | tk_for tk_pabierto error tk_igual VALOR tk_puntoycoma L tk_puntoycoma tk_id tk_inc tk_pcerrado BSENTENCIAS{
+                                                                                                                console.error("Error Sintactico: "+$3+" Error en for");
+                                                                                                                var error = new Error("Sintactico","Encontrado: "+$3+" Se esperaba -> id",+yylineno+1,+@2.last_column+1);
+                                                                                                                errores.addError(error);
+
+                                                                                                                $$ = new Nodo("","");
+                                                                                                                $$.trad = "";
+                                                                                                              }
+  | tk_for tk_pabierto tk_id error VALOR tk_puntoycoma L tk_puntoycoma tk_id tk_inc tk_pcerrado BSENTENCIAS{
+                                                                                                              console.error("Error Sintactico: "+$4+" Error en for");
+                                                                                                              var error = new Error("Sintactico","Encontrado: "+$4+" Se esperaba -> =",+yylineno+1,+@4.last_column+1);
+                                                                                                              errores.addError(error);
+
+                                                                                                              var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                                                              var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
+                                                                                                              var id2 = new Nodo("ID",$9,+yylineno+1,+@10.last_column+1);
+                                                                                                              var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                              inc.addHijo(id2);
+                                                                                                              nodo.addHijo(id1);
+                                                                                                              nodo.addHijo($5);
+                                                                                                              nodo.addHijo($7);
+                                                                                                              nodo.addHijo(inc);
+                                                                                                              nodo.addHijo($12);
+                                                                                                              $$ = nodo;
+                                                                                                              $$.trad = $1+$2+$3+"="+$5.trad+$6+$7.trad+$8+$9+$10+$11+$12.trad;
+                                                                                                            }
+  | tk_for tk_pabierto tk_id tk_igual VALOR error L tk_puntoycoma tk_id tk_inc tk_pcerrado BSENTENCIAS{
+                                                                                                        console.error("Error Sintactico: "+$6+" Error en for");
+                                                                                                        var error = new Error("Sintactico","Encontrado: "+$6+" Se esperaba -> ;",+yylineno+1,+@6.last_column+1);
+                                                                                                        errores.addError(error);
+
+                                                                                                        var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                                                        var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
+                                                                                                        var id2 = new Nodo("ID",$9,+yylineno+1,+@10.last_column+1);
+                                                                                                        var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                        inc.addHijo(id2);
+                                                                                                        nodo.addHijo(id1);
+                                                                                                        nodo.addHijo($5);
+                                                                                                        nodo.addHijo($7);
+                                                                                                        nodo.addHijo(inc);
+                                                                                                        nodo.addHijo($12);
+                                                                                                        $$ = nodo;
+                                                                                                        $$.trad = $1+$2+$3+$4+$5.trad+";"+$7.trad+$8+$9+$10+$11+$12.trad;
+                                                                                                      }
+  | tk_for tk_pabierto tk_id tk_igual VALOR tk_puntoycoma error tk_puntoycoma tk_id tk_inc tk_pcerrado BSENTENCIAS{
+                                                                                                                    console.error("Error Sintactico: "+$7+" Error en for");
+                                                                                                                    var error = new Error("Sintactico","Encontrado: "+$7+" Se esperaba -> condicion for",+yylineno+1,+@6.last_column+1);
+                                                                                                                    errores.addError(error);
+
+                                                                                                                    $$ = new Nodo("","");
+                                                                                                                    $$.trad = "";
+                                                                                                                  } 
+  | tk_for tk_pabierto tk_id tk_igual VALOR tk_puntoycoma L error tk_id tk_inc tk_pcerrado BSENTENCIAS{
+                                                                                                        console.error("Error Sintactico: "+$8+" Error en for");
+                                                                                                        var error = new Error("Sintactico","Encontrado: "+$8+" Se esperaba -> ;",+yylineno+1,+@8.last_column+1);
+                                                                                                        errores.addError(error);
+
+                                                                                                        var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                                                        var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
+                                                                                                        var id2 = new Nodo("ID",$9,+yylineno+1,+@10.last_column+1);
+                                                                                                        var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                        inc.addHijo(id2);
+                                                                                                        nodo.addHijo(id1);
+                                                                                                        nodo.addHijo($5);
+                                                                                                        nodo.addHijo($7);
+                                                                                                        nodo.addHijo(inc);
+                                                                                                        nodo.addHijo($12);
+                                                                                                        $$ = nodo;
+                                                                                                        $$.trad = $1+$2+$3+$4+$5.trad+$6+$7.trad+";"+$9+$10+$11+$12.trad;
+                                                                                                      }
+  | tk_for tk_pabierto tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycoma error tk_inc tk_pcerrado BSENTENCIAS{
+                                                                                                                console.error("Error Sintactico: "+$9+" Error en for");
+                                                                                                                var error = new Error("Sintactico","Encontrado: "+$9+" Se esperaba -> id",+yylineno+1,+@9.last_column+1);
+                                                                                                                errores.addError(error);
+
+                                                                                                                var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                                                                var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
+                                                                                                                var id2 = new Nodo("ID",$3,+yylineno+1,+@10.last_column+1);
+                                                                                                                var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                inc.addHijo(id2);
+                                                                                                                nodo.addHijo(id1);
+                                                                                                                nodo.addHijo($5);
+                                                                                                                nodo.addHijo($7);
+                                                                                                                nodo.addHijo(inc);
+                                                                                                                nodo.addHijo($12);
+                                                                                                                $$ = nodo;
+                                                                                                                $$.trad = $1+$2+$3+$4+$5.trad+$6+$7.trad+$8+$3+$10+$11+$12.trad;
+                                                                                                              }
+  | tk_for tk_pabierto tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycoma tk_id error tk_pcerrado BSENTENCIAS {  
+                                                                                                                console.error("Error Sintactico: "+$10+" Error en for");
+                                                                                                                var error = new Error("Sintactico","Encontrado: "+$10+" Se esperaba -> ++||--",+yylineno+1,+@10.last_column+1);
+                                                                                                                errores.addError(error);
+
+                                                                                                                var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                                                                var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
+                                                                                                                var id2 = new Nodo("ID",$9,+yylineno+1,+@10.last_column+1);
+                                                                                                                var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                inc.addHijo(id2);
+                                                                                                                nodo.addHijo(id1);
+                                                                                                                nodo.addHijo($5);
+                                                                                                                nodo.addHijo($7);
+                                                                                                                nodo.addHijo(inc);
+                                                                                                                nodo.addHijo($12);
+                                                                                                                $$ = nodo;
+                                                                                                                $$.trad = $1+$2+$3+$4+$5.trad+$6+$7.trad+$8+$9+"++"+$11+$12.trad;
+                                                                                                              }
+  | tk_for tk_pabierto tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycoma tk_id tk_inc error BSENTENCIAS{  
+                                                                                                          console.error("Error Sintactico: "+$11+" Error en for");
+                                                                                                          var error = new Error("Sintactico","Encontrado: "+$11+" Se esperaba -> )",+yylineno+1,+@11.last_column+1);
+                                                                                                          errores.addError(error);
+
+                                                                                                          var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                                                          var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
+                                                                                                          var id2 = new Nodo("ID",$9,+yylineno+1,+@10.last_column+1);
+                                                                                                          var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                          inc.addHijo(id2);
+                                                                                                          nodo.addHijo(id1);
+                                                                                                          nodo.addHijo($5);
+                                                                                                          nodo.addHijo($7);
+                                                                                                          nodo.addHijo(inc);
+                                                                                                          nodo.addHijo($12);
+                                                                                                          $$ = nodo;
+                                                                                                          $$.trad = $1+$2+$3+$4+$5.trad+$6+$7.trad+$8+$9+$10+")"+$12.trad;
+                                                                                                        }
+  | tk_for tk_pabierto tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycoma tk_id tk_inc tk_pcerrado error{  
+                                                                                                          console.error("Error Sintactico: "+$12+" Error en for");
+                                                                                                          var error = new Error("Sintactico","Encontrado: "+$12+" Se esperaba -> Sentencias",+yylineno+1,+@11.last_column+1);
+                                                                                                          errores.addError(error);
+
+                                                                                                          var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                                                          var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
+                                                                                                          var id2 = new Nodo("ID",$9,+yylineno+1,+@10.last_column+1);
+                                                                                                          var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                          inc.addHijo(id2);
+                                                                                                          nodo.addHijo(id1);
+                                                                                                          nodo.addHijo($5);
+                                                                                                          nodo.addHijo($7);
+                                                                                                          nodo.addHijo(inc);
+                                                                                                          $$ = nodo;
+                                                                                                          $$.trad = $1+$2+$3+$4+$5.trad+$6+$7.trad+$8+$9+$10+$11+"{}\n";
+                                                                                                        }
+
+  | tk_for tk_pabierto tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycoma tk_id tk_dec tk_pcerrado BSENTENCIAS{
+                                                                                                                var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                                                                var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
+                                                                                                                var id2 = new Nodo("ID",$9,+yylineno+1,+@10.last_column+1);
+                                                                                                                var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                inc.addHijo(id2);
+                                                                                                                nodo.addHijo(id1);
+                                                                                                                nodo.addHijo($5);
+                                                                                                                nodo.addHijo($7);
+                                                                                                                nodo.addHijo(inc);
+                                                                                                                nodo.addHijo($12);
+                                                                                                                $$ = nodo;
+                                                                                                                $$.trad = $1+$2+$3+$4+$5.trad+$6+$7.trad+$8+$9+$10+$11+$12.trad;
+                                                                                                              }
+  | tk_for error tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycoma tk_id tk_dec tk_pcerrado BSENTENCIAS{
+                                                                                                          console.error("Error Sintactico: "+$2+" Error en for");
+                                                                                                          var error = new Error("Sintactico","Encontrado: "+$2+" Se esperaba -> (",+yylineno+1,+@2.last_column+1);
+                                                                                                          errores.addError(error);
+
+                                                                                                          var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                                                          var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
+                                                                                                          var id2 = new Nodo("ID",$9,+yylineno+1,+@10.last_column+1);
+                                                                                                          var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                          inc.addHijo(id2);
+                                                                                                          nodo.addHijo(id1);
+                                                                                                          nodo.addHijo($5);
+                                                                                                          nodo.addHijo($7);
+                                                                                                          nodo.addHijo(inc);
+                                                                                                          nodo.addHijo($12);
+                                                                                                          $$ = nodo;
+                                                                                                          $$.trad = $1+"("+$3+$4+$5.trad+$6+$7.trad+$8+$9+$10+$11+$12.trad;
+                                                                                                        }
+  | tk_for tk_pabierto error tk_igual VALOR tk_puntoycoma L tk_puntoycoma tk_id tk_dec tk_pcerrado BSENTENCIAS{
+                                                                                                                console.error("Error Sintactico: "+$3+" Error en for");
+                                                                                                                var error = new Error("Sintactico","Encontrado: "+$3+" Se esperaba -> id",+yylineno+1,+@2.last_column+1);
+                                                                                                                errores.addError(error);
+
+                                                                                                                $$ = new Nodo("","");
+                                                                                                                $$.trad = "";
+                                                                                                              }
+  | tk_for tk_pabierto tk_id error VALOR tk_puntoycoma L tk_puntoycoma tk_id tk_dec tk_pcerrado BSENTENCIAS{
+                                                                                                              console.error("Error Sintactico: "+$4+" Error en for");
+                                                                                                              var error = new Error("Sintactico","Encontrado: "+$4+" Se esperaba -> =",+yylineno+1,+@4.last_column+1);
+                                                                                                              errores.addError(error);
+
+                                                                                                              var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                                                              var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
+                                                                                                              var id2 = new Nodo("ID",$9,+yylineno+1,+@10.last_column+1);
+                                                                                                              var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                              inc.addHijo(id2);
+                                                                                                              nodo.addHijo(id1);
+                                                                                                              nodo.addHijo($5);
+                                                                                                              nodo.addHijo($7);
+                                                                                                              nodo.addHijo(inc);
+                                                                                                              nodo.addHijo($12);
+                                                                                                              $$ = nodo;
+                                                                                                              $$.trad = $1+$2+$3+"="+$5.trad+$6+$7.trad+$8+$9+$10+$11+$12.trad;
+                                                                                                            }
+  | tk_for tk_pabierto tk_id tk_igual VALOR error L tk_puntoycoma tk_id tk_dec tk_pcerrado BSENTENCIAS{
+                                                                                                        console.error("Error Sintactico: "+$6+" Error en for");
+                                                                                                        var error = new Error("Sintactico","Encontrado: "+$6+" Se esperaba -> ;",+yylineno+1,+@6.last_column+1);
+                                                                                                        errores.addError(error);
+
+                                                                                                        var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                                                        var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
+                                                                                                        var id2 = new Nodo("ID",$9,+yylineno+1,+@10.last_column+1);
+                                                                                                        var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                        inc.addHijo(id2);
+                                                                                                        nodo.addHijo(id1);
+                                                                                                        nodo.addHijo($5);
+                                                                                                        nodo.addHijo($7);
+                                                                                                        nodo.addHijo(inc);
+                                                                                                        nodo.addHijo($12);
+                                                                                                        $$ = nodo;
+                                                                                                        $$.trad = $1+$2+$3+$4+$5.trad+";"+$7.trad+$8+$9+$10+$11+$12.trad;
+                                                                                                      }
+  | tk_for tk_pabierto tk_id tk_igual VALOR tk_puntoycoma error tk_puntoycoma tk_id tk_dec tk_pcerrado BSENTENCIAS{
+                                                                                                                    console.error("Error Sintactico: "+$7+" Error en for");
+                                                                                                                    var error = new Error("Sintactico","Encontrado: "+$7+" Se esperaba -> condicion for",+yylineno+1,+@6.last_column+1);
+                                                                                                                    errores.addError(error);
+
+                                                                                                                    $$ = new Nodo("","");
+                                                                                                                    $$.trad = "";
+                                                                                                                  } 
+  | tk_for tk_pabierto tk_id tk_igual VALOR tk_puntoycoma L error tk_id tk_dec tk_pcerrado BSENTENCIAS{
+                                                                                                        console.error("Error Sintactico: "+$8+" Error en for");
+                                                                                                        var error = new Error("Sintactico","Encontrado: "+$8+" Se esperaba -> ;",+yylineno+1,+@8.last_column+1);
+                                                                                                        errores.addError(error);
+
+                                                                                                        var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                                                        var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
+                                                                                                        var id2 = new Nodo("ID",$9,+yylineno+1,+@10.last_column+1);
+                                                                                                        var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                        inc.addHijo(id2);
+                                                                                                        nodo.addHijo(id1);
+                                                                                                        nodo.addHijo($5);
+                                                                                                        nodo.addHijo($7);
+                                                                                                        nodo.addHijo(inc);
+                                                                                                        nodo.addHijo($12);
+                                                                                                        $$ = nodo;
+                                                                                                        $$.trad = $1+$2+$3+$4+$5.trad+$6+$7.trad+";"+$9+$10+$11+$12.trad;
+                                                                                                      }
+  | tk_for tk_pabierto tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycoma error tk_dec tk_pcerrado BSENTENCIAS{
+                                                                                                                console.error("Error Sintactico: "+$9+" Error en for");
+                                                                                                                var error = new Error("Sintactico","Encontrado: "+$9+" Se esperaba -> id",+yylineno+1,+@9.last_column+1);
+                                                                                                                errores.addError(error);
+
+                                                                                                                var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                                                                var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
+                                                                                                                var id2 = new Nodo("ID",$3,+yylineno+1,+@10.last_column+1);
+                                                                                                                var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                inc.addHijo(id2);
+                                                                                                                nodo.addHijo(id1);
+                                                                                                                nodo.addHijo($5);
+                                                                                                                nodo.addHijo($7);
+                                                                                                                nodo.addHijo(inc);
+                                                                                                                nodo.addHijo($12);
+                                                                                                                $$ = nodo;
+                                                                                                                $$.trad = $1+$2+$3+$4+$5.trad+$6+$7.trad+$8+$3+$10+$11+$12.trad;
+                                                                                                              }
+  | tk_for tk_pabierto tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycoma tk_id tk_dec error BSENTENCIAS{  
+                                                                                                          console.error("Error Sintactico: "+$11+" Error en for");
+                                                                                                          var error = new Error("Sintactico","Encontrado: "+$11+" Se esperaba -> )",+yylineno+1,+@11.last_column+1);
+                                                                                                          errores.addError(error);
+
+                                                                                                          var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                                                          var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
+                                                                                                          var id2 = new Nodo("ID",$9,+yylineno+1,+@10.last_column+1);
+                                                                                                          var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                          inc.addHijo(id2);
+                                                                                                          nodo.addHijo(id1);
+                                                                                                          nodo.addHijo($5);
+                                                                                                          nodo.addHijo($7);
+                                                                                                          nodo.addHijo(inc);
+                                                                                                          nodo.addHijo($12);
+                                                                                                          $$ = nodo;
+                                                                                                          $$.trad = $1+$2+$3+$4+$5.trad+$6+$7.trad+$8+$9+$10+")"+$12.trad;
+                                                                                                        }
+  | tk_for tk_pabierto tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycoma tk_id tk_dec tk_pcerrado error{  
+                                                                                                          console.error("Error Sintactico: "+$12+" Error en for");
+                                                                                                          var error = new Error("Sintactico","Encontrado: "+$12+" Se esperaba -> Sentencias",+yylineno+1,+@11.last_column+1);
+                                                                                                          errores.addError(error);
+
+                                                                                                          var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                                                          var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
+                                                                                                          var id2 = new Nodo("ID",$9,+yylineno+1,+@10.last_column+1);
+                                                                                                          var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                          inc.addHijo(id2);
+                                                                                                          nodo.addHijo(id1);
+                                                                                                          nodo.addHijo($5);
+                                                                                                          nodo.addHijo($7);
+                                                                                                          nodo.addHijo(inc);
+                                                                                                          $$ = nodo;
+                                                                                                          $$.trad = $1+$2+$3+$4+$5.trad+$6+$7.trad+$8+$9+$10+$11+"{}\n";
+                                                                                                        }
+
+  | tk_for tk_pabierto tk_id tk_in tk_id tk_pcerrado BSENTENCIAS{
+                                                                  var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                  var fin = new Nodo("IN","IN",+yylineno+1,+@4.last_column+1);
+                                                                  var id1 = new Nodo("ID",$3);
+                                                                  var id2 = new Nodo("ID",$5);
+                                                                  fin.addHijo(id1);
+                                                                  fin.addHijo(id2);
+                                                                  nodo.addHijo(fin);
+                                                                  nodo.addHijo($7);
+                                                                  $$ = nodo;
+                                                                  $$.trad = $1+$2+$3+" "+$4+" "+$5+$6+$7.trad;
+                                                                }
+  | tk_for error tk_id tk_in tk_id tk_pcerrado BSENTENCIAS{
+                                                            console.error("Error Sintactico: "+$2+" Error en for");
+                                                            var error = new Error("Sintactico","Encontrado: "+$2+" Se esperaba -> (",+yylineno+1,+@2.last_column+1);
+                                                            errores.addError(error);
+
+                                                            var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                            var fin = new Nodo("IN","IN",+yylineno+1,+@4.last_column+1);
+                                                            var id1 = new Nodo("ID",$3);
+                                                            var id2 = new Nodo("ID",$5);
+                                                            fin.addHijo(id1);
+                                                            fin.addHijo(id2);
+                                                            nodo.addHijo(fin);
+                                                            nodo.addHijo($7);
+                                                            $$ = nodo;
+                                                            $$.trad = $1+"("+$3+" "+$4+" "+$5+$6+$7.trad;
+                                                          }
+  | tk_for tk_pabierto error tk_in tk_id tk_pcerrado BSENTENCIAS{
+                                                                  console.error("Error Sintactico: "+$3+" Error en for");
+                                                                  var error = new Error("Sintactico","Encontrado: "+$3+" Se esperaba -> id",+yylineno+1,+@3.last_column+1);
+                                                                  errores.addError(error);
+
+                                                                  $$ = new Nodo("","")
+                                                                  $$.trad = "";
+                                                                }
+  | tk_for tk_pabierto tk_id tk_in error tk_pcerrado BSENTENCIAS{
+                                                                  console.error("Error Sintactico: "+$5+" Error en for");
+                                                                  var error = new Error("Sintactico","Encontrado: "+$5+" Se esperaba -> id",+yylineno+1,+@5.last_column+1);
+                                                                  errores.addError(error);
+
+                                                                  $$ = new Nodo("","")
+                                                                  $$.trad = "";
+                                                                }
+  | tk_for tk_pabierto tk_id tk_in tk_id error BSENTENCIAS{
+                                                            console.error("Error Sintactico: "+$6+" Error en for");
+                                                            var error = new Error("Sintactico","Encontrado: "+$6+" Se esperaba -> )",+yylineno+1,+@6.last_column+1);
+                                                            errores.addError(error);
+
+                                                            var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                            var fin = new Nodo("IN","IN",+yylineno+1,+@4.last_column+1);
+                                                            var id1 = new Nodo("ID",$3);
+                                                            var id2 = new Nodo("ID",$5);
+                                                            fin.addHijo(id1);
+                                                            fin.addHijo(id2);
+                                                            nodo.addHijo(fin);
+                                                            nodo.addHijo($7);
+                                                            $$ = nodo;
+                                                            $$.trad = $1+$2+$3+" "+$4+" "+$5+")"+$7.trad;
+                                                          }
+  | tk_for tk_pabierto tk_id tk_in tk_id tk_pcerrado error{
+                                                            console.error("Error Sintactico: "+$6+" Error en for");
+                                                            var error = new Error("Sintactico","Encontrado: "+$6+" Se esperaba -> Sentencias",+yylineno+1,+@6.last_column+1);
+                                                            errores.addError(error);
+
+                                                            var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                            var fin = new Nodo("IN","IN",+yylineno+1,+@4.last_column+1);
+                                                            var id1 = new Nodo("ID",$3);
+                                                            var id2 = new Nodo("ID",$5);
+                                                            fin.addHijo(id1);
+                                                            fin.addHijo(id2);
+                                                            nodo.addHijo(fin);
+                                                            nodo.addHijo($7);
+                                                            $$ = nodo;
+                                                            $$.trad = $1+$2+$3+" "+$4+" "+$5+")"+$7.trad;
+                                                          }
+
+  | tk_for tk_pabierto tk_let tk_id tk_in tk_id tk_pcerrado BSENTENCIAS {
+                                                                          var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                          var fin = new Nodo("IN","IN",+yylineno+1,+@4.last_column+1);
+                                                                          var dec = new Nodo("DECLARACION","LET");
+                                                                          var id1 = new Nodo("ID",$3);
+                                                                          var id2 = new Nodo("ID",$6);
+                                                                          dec.addHijo(id1);
+                                                                          fin.addHijo(dec);
+                                                                          fin.addHijo(id2);
+                                                                          nodo.addHijo(fin);
+                                                                          nodo.addHijo($8);
+                                                                          $$ = nodo;
+                                                                          $$.trad = $1+$2+$3+" "+$4+" "+$5+" "+$6+$7+$8.trad;
+                                                                        }                                                                        
+  | tk_for error tk_let tk_id tk_in tk_id tk_pcerrado BSENTENCIAS {
+                                                                    console.error("Error Sintactico: "+$2+" Error en for");
+                                                                    var error = new Error("Sintactico","Encontrado: "+$2+" Se esperaba -> (",+yylineno+1,+@2.last_column+1);
+                                                                    errores.addError(error);
+
+                                                                    var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                    var fin = new Nodo("IN","IN",+yylineno+1,+@4.last_column+1);
+                                                                    var dec = new Nodo("DECLARACION","LET");
+                                                                    var id1 = new Nodo("ID",$3);
+                                                                    var id2 = new Nodo("ID",$6);
+                                                                    dec.addHijo(id1);
+                                                                    fin.addHijo(dec);
+                                                                    fin.addHijo(id2);
+                                                                    nodo.addHijo(fin);
+                                                                    nodo.addHijo($8);
+                                                                    $$ = nodo;
+                                                                    $$.trad = $1+"("+$3+" "+$4+" "+$5+" "+$6+$7+$8.trad;
+                                                                  }  
+  | tk_for tk_pabierto error tk_id tk_in tk_id tk_pcerrado BSENTENCIAS{
+                                                                        console.error("Error Sintactico: "+$3+" Error en for");
+                                                                        var error = new Error("Sintactico","Encontrado: "+$3+" Se esperaba -> let",+yylineno+1,+@3.last_column+1);
+                                                                        errores.addError(error);
+
+                                                                        var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                        var fin = new Nodo("IN","IN",+yylineno+1,+@4.last_column+1);
+                                                                        var dec = new Nodo("DECLARACION","LET");
+                                                                        var id1 = new Nodo("ID",$3);
+                                                                        var id2 = new Nodo("ID",$6);
+                                                                        dec.addHijo(id1);
+                                                                        fin.addHijo(dec);
+                                                                        fin.addHijo(id2);
+                                                                        nodo.addHijo(fin);
+                                                                        nodo.addHijo($8);
+                                                                        $$ = nodo;
+                                                                        $$.trad = $1+$2+"let"+" "+$4+" "+$5+" "+$6+$7+$8.trad;
+                                                                      } 
+  | tk_for tk_pabierto tk_let error tk_in tk_id tk_pcerrado BSENTENCIAS {
+                                                                          console.error("Error Sintactico: "+$4+" Error en for");
+                                                                          var error = new Error("Sintactico","Encontrado: "+$4+" Se esperaba -> id",+yylineno+1,+@3.last_column+1);
+                                                                          errores.addError(error);
+
+                                                                          $$ = new Nodo("","");
+                                                                          $$.trad = "";
+                                                                        }
+  | tk_for tk_pabierto tk_let tk_id error tk_id tk_pcerrado BSENTENCIAS {
+                                                                          console.error("Error Sintactico: "+$5+" Error en for");
+                                                                          var error = new Error("Sintactico","Encontrado: "+$5+" Se esperaba -> in, of",+yylineno+1,+@5.last_column+1);
+                                                                          errores.addError(error);
+
+                                                                          $$ = new Nodo("","");
+                                                                          $$.trad = "";
+                                                                        }
+  | tk_for tk_pabierto tk_let tk_id tk_in error tk_pcerrado BSENTENCIAS {
+                                                                          console.error("Error Sintactico: "+$6+" Error en for");
+                                                                          var error = new Error("Sintactico","Encontrado: "+$6+" Se esperaba -> id",+yylineno+1,+@6.last_column+1);
+                                                                          errores.addError(error);
+
+                                                                          $$ = new Nodo("","");
+                                                                          $$.trad = "";
+                                                                        }
+  | tk_for tk_pabierto tk_let tk_id tk_in tk_id error BSENTENCIAS {
+                                                                    console.error("Error Sintactico: "+$7+" Error en for");
+                                                                    var error = new Error("Sintactico","Encontrado: "+$7+" Se esperaba -> )",+yylineno+1,+@7.last_column+1);
+                                                                    errores.addError(error);
+
+                                                                    var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                    var fin = new Nodo("IN","IN",+yylineno+1,+@4.last_column+1);
+                                                                    var dec = new Nodo("DECLARACION","LET");
+                                                                    var id1 = new Nodo("ID",$3);
+                                                                    var id2 = new Nodo("ID",$6);
+                                                                    dec.addHijo(id1);
+                                                                    fin.addHijo(dec);
+                                                                    fin.addHijo(id2);
+                                                                    nodo.addHijo(fin);
+                                                                    nodo.addHijo($8);
+                                                                    $$ = nodo;
+                                                                    $$.trad = $1+$2+$3+" "+$4+" "+$5+" "+$6+")"+$8.trad;
+                                                                  }
+  | tk_for tk_pabierto tk_let tk_id tk_in tk_id tk_pcerrado error {
+                                                                    console.error("Error Sintactico: "+$8+" Error en for");
+                                                                    var error = new Error("Sintactico","Encontrado: "+$8+" Se esperaba -> Sentencias",+yylineno+1,+@8.last_column+1);
+                                                                    errores.addError(error);
+
+                                                                    var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                    var fin = new Nodo("IN","IN",+yylineno+1,+@4.last_column+1);
+                                                                    var dec = new Nodo("DECLARACION","LET");
+                                                                    var id1 = new Nodo("ID",$3);
+                                                                    var id2 = new Nodo("ID",$6);
+                                                                    dec.addHijo(id1);
+                                                                    fin.addHijo(dec);
+                                                                    fin.addHijo(id2);
+                                                                    nodo.addHijo(fin);
+                                                                    $$ = nodo;
+                                                                    $$.trad = $1+$2+$3+" "+$4+" "+$5+" "+$6+$7+"{}\n";
+                                                                  }
+
+  | tk_for tk_pabierto tk_id tk_of tk_id tk_pcerrado BSENTENCIAS{
+                                                                  var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                  var fin = new Nodo("OF","OF",+yylineno+1,+@4.last_column+1);
+                                                                  var id1 = new Nodo("ID",$3);
+                                                                  var id2 = new Nodo("ID",$5);
+                                                                  fin.addHijo(id1);
+                                                                  fin.addHijo(id2);
+                                                                  nodo.addHijo(fin);
+                                                                  nodo.addHijo($7);
+                                                                  $$ = nodo;
+                                                                  $$.trad = $1+$2+$3+" "+$4+" "+$5+$6+$7.trad;
+                                                                }
+  | tk_for error tk_id tk_of tk_id tk_pcerrado BSENTENCIAS{
+                                                            console.error("Error Sintactico: "+$2+" Error en for");
+                                                            var error = new Error("Sintactico","Encontrado: "+$2+" Se esperaba -> (",+yylineno+1,+@2.last_column+1);
+                                                            errores.addError(error);
+
+                                                            var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                            var fin = new Nodo("OF","OF",+yylineno+1,+@4.last_column+1);
+                                                            var id1 = new Nodo("ID",$3);
+                                                            var id2 = new Nodo("ID",$5);
+                                                            fin.addHijo(id1);
+                                                            fin.addHijo(id2);
+                                                            nodo.addHijo(fin);
+                                                            nodo.addHijo($7);
+                                                            $$ = nodo;
+                                                            $$.trad = $1+"("+$3+" "+$4+" "+$5+$6+$7.trad;
+                                                          }
+  | tk_for tk_pabierto error tk_of tk_id tk_pcerrado BSENTENCIAS{
+                                                                  console.error("Error Sintactico: "+$3+" Error en for");
+                                                                  var error = new Error("Sintactico","Encontrado: "+$3+" Se esperaba -> id",+yylineno+1,+@3.last_column+1);
+                                                                  errores.addError(error);
+
+                                                                  $$ = new Nodo("","")
+                                                                  $$.trad = "";
+                                                                }
+  | tk_for tk_pabierto tk_id error tk_id tk_pcerrado BSENTENCIAS{
+                                                                  console.error("Error Sintactico: "+$4+" Error en for");
+                                                                  var error = new Error("Sintactico","Encontrado: "+$4+" Se esperaba -> in||of",+yylineno+1,+@4.last_column+1);
+                                                                  errores.addError(error);
+
+                                                                  $$ = new Nodo("","")
+                                                                  $$.trad = "";
+                                                                }
+  | tk_for tk_pabierto tk_id tk_of error tk_pcerrado BSENTENCIAS{
+                                                                  console.error("Error Sintactico: "+$5+" Error en for");
+                                                                  var error = new Error("Sintactico","Encontrado: "+$5+" Se esperaba -> id",+yylineno+1,+@5.last_column+1);
+                                                                  errores.addError(error);
+
+                                                                  $$ = new Nodo("","")
+                                                                  $$.trad = "";
+                                                                }
+  | tk_for tk_pabierto tk_id tk_of tk_id error BSENTENCIAS{
+                                                            console.error("Error Sintactico: "+$6+" Error en for");
+                                                            var error = new Error("Sintactico","Encontrado: "+$6+" Se esperaba -> )",+yylineno+1,+@6.last_column+1);
+                                                            errores.addError(error);
+
+                                                            var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                            var fin = new Nodo("OF","OF",+yylineno+1,+@4.last_column+1);
+                                                            var id1 = new Nodo("ID",$3);
+                                                            var id2 = new Nodo("ID",$5);
+                                                            fin.addHijo(id1);
+                                                            fin.addHijo(id2);
+                                                            nodo.addHijo(fin);
+                                                            nodo.addHijo($7);
+                                                            $$ = nodo;
+                                                            $$.trad = $1+$2+$3+" "+$4+" "+$5+")"+$7.trad;
+                                                          }
+  | tk_for tk_pabierto tk_id tk_of tk_id tk_pcerrado error{
+                                                            console.error("Error Sintactico: "+$6+" Error en for");
+                                                            var error = new Error("Sintactico","Encontrado: "+$6+" Se esperaba -> Sentencias",+yylineno+1,+@6.last_column+1);
+                                                            errores.addError(error);
+
+                                                            var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                            var fin = new Nodo("IN","IN",+yylineno+1,+@4.last_column+1);
+                                                            var id1 = new Nodo("ID",$3);
+                                                            var id2 = new Nodo("ID",$5);
+                                                            fin.addHijo(id1);
+                                                            fin.addHijo(id2);
+                                                            nodo.addHijo(fin);
+                                                            nodo.addHijo($7);
+                                                            $$ = nodo;
+                                                            $$.trad = $1+$2+$3+" "+$4+" "+$5+")"+$7.trad;
+                                                          }
+
+  | tk_for tk_pabierto tk_let tk_id tk_of tk_id tk_pcerrado BSENTENCIAS {
+                                                                          var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                          var fin = new Nodo("OF","OF",+yylineno+1,+@4.last_column+1);
+                                                                          var dec = new Nodo("DECLARACION","LET");
+                                                                          var id1 = new Nodo("ID",$3);
+                                                                          var id2 = new Nodo("ID",$6);
+                                                                          dec.addHijo(id1);
+                                                                          fin.addHijo(dec);
+                                                                          fin.addHijo(id2);
+                                                                          nodo.addHijo(fin);
+                                                                          nodo.addHijo($8);
+                                                                          $$ = nodo;
+                                                                          $$.trad = $1+$2+$3+" "+$4+" "+$5+" "+$6+$7+$8.trad;
+                                                                        } 
+  | tk_for error tk_let tk_id tk_of tk_id tk_pcerrado BSENTENCIAS {
+                                                                    console.error("Error Sintactico: "+$2+" Error en for");
+                                                                    var error = new Error("Sintactico","Encontrado: "+$2+" Se esperaba -> (",+yylineno+1,+@2.last_column+1);
+                                                                    errores.addError(error);
+
+                                                                    var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                    var fin = new Nodo("OF","OF",+yylineno+1,+@4.last_column+1);
+                                                                    var dec = new Nodo("DECLARACION","LET");
+                                                                    var id1 = new Nodo("ID",$3);
+                                                                    var id2 = new Nodo("ID",$6);
+                                                                    dec.addHijo(id1);
+                                                                    fin.addHijo(dec);
+                                                                    fin.addHijo(id2);
+                                                                    nodo.addHijo(fin);
+                                                                    nodo.addHijo($8);
+                                                                    $$ = nodo;
+                                                                    $$.trad = $1+"("+$3+" "+$4+" "+$5+" "+$6+$7+$8.trad;
+                                                                  } 
+  | tk_for tk_pabierto error tk_id tk_of tk_id tk_pcerrado BSENTENCIAS{
+                                                                        console.error("Error Sintactico: "+$3+" Error en for");
+                                                                        var error = new Error("Sintactico","Encontrado: "+$3+" Se esperaba -> let",+yylineno+1,+@3.last_column+1);
+                                                                        errores.addError(error);
+
+                                                                        var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                        var fin = new Nodo("OF","OF",+yylineno+1,+@4.last_column+1);
+                                                                        var dec = new Nodo("DECLARACION","LET");
+                                                                        var id1 = new Nodo("ID",$3);
+                                                                        var id2 = new Nodo("ID",$6);
+                                                                        dec.addHijo(id1);
+                                                                        fin.addHijo(dec);
+                                                                        fin.addHijo(id2);
+                                                                        nodo.addHijo(fin);
+                                                                        nodo.addHijo($8);
+                                                                        $$ = nodo;
+                                                                        $$.trad = $1+$2+"let"+" "+$4+" "+$5+" "+$6+$7+$8.trad;
+                                                                      } 
+  | tk_for tk_pabierto tk_let error tk_of tk_id tk_pcerrado BSENTENCIAS {
+                                                                          console.error("Error Sintactico: "+$4+" Error en for");
+                                                                          var error = new Error("Sintactico","Encontrado: "+$4+" Se esperaba -> id",+yylineno+1,+@4.last_column+1);
+                                                                          errores.addError(error);
+
+                                                                          $$ = new Nodo("","");
+                                                                          $$.trad = "";
+                                                                        }
+  | tk_for tk_pabierto tk_let tk_id tk_of error tk_pcerrado BSENTENCIAS {
+                                                                          console.error("Error Sintactico: "+$6+" Error en for");
+                                                                          var error = new Error("Sintactico","Encontrado: "+$6+" Se esperaba -> id",+yylineno+1,+@6.last_column+1);
+                                                                          errores.addError(error);
+
+                                                                          $$ = new Nodo("","");
+                                                                          $$.trad = "";
+                                                                        }
+  | tk_for tk_pabierto tk_let tk_id tk_of tk_id error BSENTENCIAS {
+                                                                    console.error("Error Sintactico: "+$7+" Error en for");
+                                                                    var error = new Error("Sintactico","Encontrado: "+$7+" Se esperaba -> )",+yylineno+1,+@7.last_column+1);
+                                                                    errores.addError(error);
+
+                                                                    var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                    var fin = new Nodo("OF","OF",+yylineno+1,+@4.last_column+1);
+                                                                    var dec = new Nodo("DECLARACION","LET");
+                                                                    var id1 = new Nodo("ID",$3);
+                                                                    var id2 = new Nodo("ID",$6);
+                                                                    dec.addHijo(id1);
+                                                                    fin.addHijo(dec);
+                                                                    fin.addHijo(id2);
+                                                                    nodo.addHijo(fin);
+                                                                    nodo.addHijo($8);
+                                                                    $$ = nodo;
+                                                                    $$.trad = $1+$2+$3+" "+$4+" "+$5+" "+$6+")"+$8.trad;
+                                                                  }
+  | tk_for tk_pabierto tk_let tk_id tk_of tk_id tk_pcerrado error {
+                                                                    console.error("Error Sintactico: "+$8+" Error en for");
+                                                                    var error = new Error("Sintactico","Encontrado: "+$8+" Se esperaba -> Sentencias",+yylineno+1,+@8.last_column+1);
+                                                                    errores.addError(error);
+
+                                                                    var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                    var fin = new Nodo("OF","OF",+yylineno+1,+@4.last_column+1);
+                                                                    var dec = new Nodo("DECLARACION","LET");
+                                                                    var id1 = new Nodo("ID",$3);
+                                                                    var id2 = new Nodo("ID",$6);
+                                                                    dec.addHijo(id1);
+                                                                    fin.addHijo(dec);
+                                                                    fin.addHijo(id2);
+                                                                    nodo.addHijo(fin);
+                                                                    $$ = nodo;
+                                                                    $$.trad = $1+$2+$3+" "+$4+" "+$5+" "+$6+$7+"{}\n";
+                                                                  }
+
+  | tk_for tk_pabierto error tk_pcerrado BSENTENCIAS{ 
+                                                      console.error("Error Sintactico: "+$3+" Error en for");
+                                                      var error = new Error("Sintactico","Encontrado: "+$3+" Se esperaba -> Sentencias",+yylineno+1,+@3.last_column+1);
+                                                      errores.addError(error);
+
+                                                      $$ = new Nodo("","")
+                                                      $$.trad = "";
+                                                    }
+  | tk_for error BSENTENCIAS{
+                              console.error("Error Sintactico: "+$2+" Error parametros for");
+                              var error = new Error("Sintactico","Encontrado: "+$2+" Se esperaba -> Sentencias",+yylineno+1,+@2.last_column+1);
+                              errores.addError(error);
+
+                              $$ = new Nodo("","")
+                              $$.trad = "";
+                            }; 
+
+ST: tk_break tk_puntoycoma{
+                            var nodo = new Nodo("BREAK","BREAK",+yylineno+1,+@1.last_column+1);
+                            $$ = nodo;
+                            $$.trad = $1+$2+"\n";
+                          }
+  | tk_break error{
+                    console.error("Error Sintactico: "+$2+" Error break");
+                    var error = new Error("Sintactico","Encontrado: "+$2+" Se esperaba -> ;",+yylineno+1,+@2.last_column+1);
+                    errores.addError(error);
+
+                    var nodo = new Nodo("BREAK","BREAK",+yylineno+1,+@1.last_column+1);
+                    $$ = nodo;
+                    $$.trad = $1+";\n";
+                  }
+  | tk_continue tk_puntoycoma {
+                                var nodo = new Nodo("CONTINUE","CONTINUE",+yylineno+1,+@1.last_column+1);
+                                $$ = nodo;
+                                $$.trad = $1+$2+"\n";
+                              }
+  | tk_continue error {
+                        console.error("Error Sintactico: "+$2+" Error continue");
+                        var error = new Error("Sintactico","Encontrado: "+$2+" Se esperaba -> ;",+yylineno+1,+@2.last_column+1);
+                        errores.addError(error);
+
+                        var nodo = new Nodo("CONTINUE","CONTINUE",+yylineno+1,+@1.last_column+1);
+                        $$ = nodo;
+                        $$.trad = $1+";\n";
+                      }
+  | tk_return tk_puntoycoma {
+                              var nodo = new Nodo("RETURN","RETURN",+yylineno+1,+@1.last_column+1);
+                              $$ = nodo;
+                              $$.trad = $1+$2+"\n";
+                            }
+  | tk_return error {
+                      console.error("Error Sintactico: "+$2+" Error return");
+                      var error = new Error("Sintactico","Encontrado: "+$2+" Se esperaba -> ;",+yylineno+1,+@2.last_column+1);
+                      errores.addError(error);
+
+                      var nodo = new Nodo("RETURN","RETURN",+yylineno+1,+@1.last_column+1);
+                      $$ = nodo;
+                      $$.trad = $1+";\n";
+                    }
+  | tk_return VALOR tk_puntoycoma {
+                                    var nodo = new Nodo("RETURN","RETURN",+yylineno+1,+@1.last_column+1);
+                                    nodo.addHijo($2);
+                                    $$ = nodo;
+                                    $$.trad = $1+" "+$2.trad+$3+"\n";
+                                  }
+  | tk_return VALOR error {
+                            console.error("Error Sintactico: "+$3+" Error return");
+                            var error = new Error("Sintactico","Encontrado: "+$3+" Se esperaba -> ;",+yylineno+1,+@3.last_column+1);
+                            errores.addError(error);
+
+                            var nodo = new Nodo("RETURN","RETURN",+yylineno+1,+@1.last_column+1);
+                            nodo.addHijo($2);
+                            $$ = nodo;
+                            $$.trad = $1+" "+$2.trad+";\n";
+                          }
+  | tk_return ASIGNACION{
+                          var nodo = new Nodo("RETURN","RETURN",+yylineno+1,+@1.last_column+1);
+                          nodo.addHijo($2);
+                          $$ = nodo;
+                          $$.trad = $1+" "+$2.trad;
+                        };
 
 DECFUNCION: tk_fn tk_id tk_pabierto tk_pcerrado tk_dospuntos TIPOV2 BSENTENCIAS {
                                                                                   var nodo = new Nodo("FUNCION","FUNCION");
@@ -1061,7 +2554,33 @@ PARFUNC: PARFUNC tk_coma tk_id tk_dospuntos TIPOV2
 LPAR: LPAR tk_coma VALOR
     | VALOR;
 
-FESP: tk_console tk_pabierto VALOR tk_pcerrado tk_puntoycoma
-    | tk_console tk_pabierto VALOR tk_pcerrado error {console.error("Error Sintactico: "+$5+" falta punto y coma")}
-    | tk_graficar tk_pabierto tk_pcerrado tk_puntoycoma
-    | tk_graficar tk_pabierto tk_pcerrado error {console.error("Error Sintactico: "+$4+" falta punto y coma")};
+FESP: tk_console tk_pabierto VALOR tk_pcerrado tk_puntoycoma{
+                                                              var nodo = new Nodo("CONSOLE","CONSOLE",+yylineno+1,+@1.last_column+1);
+                                                              nodo.addHijo($3);
+                                                              $$ = nodo;
+                                                              $$.trad = $1+$2+$3.trad+$4+$5+"\n";
+                                                            }
+    | tk_console tk_pabierto VALOR tk_pcerrado error{
+                                                      console.error("Error Sintactico: "+$5+" Error console");
+                                                      var error = new Error("Sintactico","Encontrado: "+$5+" Se esperaba -> ;",+yylineno+1,+@5.last_column+1);
+                                                      errores.addError(error);
+
+                                                      var nodo = new Nodo("CONSOLE","CONSOLE",+yylineno+1,+@1.last_column+1);
+                                                      nodo.addHijo($3);
+                                                      $$ = nodo;
+                                                      $$.trad = $1+$2+$3.trad+$4+";\n";
+                                                    }
+    | tk_graficar tk_pabierto tk_pcerrado tk_puntoycoma {
+                                                          var nodo = new Nodo("GRAFICAR","GRAFICAR",+yylineno+1,+@1.last_column+1);
+                                                          $$ = nodo;
+                                                          $$.trad = $1+$2+$3+$4+"\n";
+                                                        }
+    | tk_graficar tk_pabierto tk_pcerrado error { 
+                                                  console.error("Error Sintactico: "+$4+" Error graficar");
+                                                  var error = new Error("Sintactico","Encontrado: "+$4+" Se esperaba -> ;",+yylineno+1,+@4.last_column+1);
+                                                  errores.addError(error);
+
+                                                  var nodo = new Nodo("GRAFICAR","GRAFICAR",+yylineno+1,+@1.last_column+1);
+                                                  $$ = nodo;
+                                                  $$.trad = $1+$2+$3+";\n";
+                                                };

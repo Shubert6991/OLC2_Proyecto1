@@ -7,7 +7,7 @@ var analizarTexto = function analizarTexto() {
   var texto = document.getElementById("textInput").value;
 
   try {
-    var result = analizador.parse(texto); // console.log(result);
+    var result = analizador.parse(texto); // console.log("test");
     //imprimir traduccion
 
     escribirTraduccion(result.traduccion); //reporte ast
