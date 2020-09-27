@@ -3,6 +3,8 @@
   let valcadena = ""; 
   let resultado = "";
   let errores = new ListaErrores();
+  let id_anidadas = "";
+  let trad_func = "";
 %}
 
 /*----------------------------LEXICO-------------------------------*/
@@ -247,7 +249,16 @@ I: I DECLARACION{
             $$ = nodo;
             $$.trad = $1.trad + $2.trad;
           }
-  |I FUNCION {$2.func = "test";}
+  |I FUNCION{
+              //imprimir cola de funciones
+              console.log("Funciones Desanidadas!!!!")
+              console.log(id_anidadas)
+              console.log(trad_func)
+              console.log("##########################")
+              //limpiar cola
+              id_anidadas = "";
+              trad_func = "";
+            }
   |DECLARACION { $$ = $1; $$.trad = $1.trad; }
   |ASIGNACION { $$ = $1; $$.trad = $1.trad; }
   |IF { $$ = $1; $$.trad = $1.trad; }
@@ -256,7 +267,16 @@ I: I DECLARACION{
   |DOWHILE { $$ = $1; $$.trad = $1.trad; }
   |FOR { $$ = $1; $$.trad = $1.trad; }
   |FESP { $$ = $1; $$.trad = $1.trad; }
-  |FUNCION {$1.func = "test"; console.log("ENTRO A FUNCION!!!");}
+  |FUNCION  {
+              //imprimir cola de funciones
+              console.log("Funciones Desanidadas!!!!")
+              console.log(id_anidadas)
+              console.log(trad_func)
+              console.log("##########################")
+              //limpiar cola
+              id_anidadas = "";
+              trad_func = "";
+            }
   |error{
           console.error("Error sintactico: "+$1+" Desconocido Inicio");
           var error = new Error("Sintactico","Encontrado: "+$1+" Se esperaba -> DECLARACION || ASIGNACION || IF || SWITCH || WHILE || DOWHILE || FOR || console.log || graficar_ts",+yylineno+1,+@1.last_column+1)
@@ -944,7 +964,15 @@ BSENTENCIAS: tk_llavea SENTENCIAS tk_llavec {
                                               $$ = $2;
                                               $$.trad = $1+"\n"+$2.trad+$3+"\n";
                                             }
-            |tk_llavea FUNCION tk_llavec
+            |tk_llavea FUNCION tk_llavec{
+                                          //aqui puede venir anidada
+                                          //console.log("Func en bsentencias")
+                                          //guardar funcion en cola
+                                          //console.log(trad_func)
+                                          //trad_func+="{}\n"
+                                          $$ = new Nodo("","")
+                                          $$.trad = "{}\n"
+                                        }
             |tk_llavea tk_llavec{
                                   $$ = new Nodo("","");
                                   $$.trad = $1+$2+"\n";
@@ -2516,16 +2544,27 @@ ST: tk_break tk_puntoycoma{
 
 FUNCION: tk_fn tk_id tk_pabierto tk_pcerrado tk_dospuntos TIPOV2 BSENTENCIAS{ 
                                                                               console.log("FUNCION")
-                                                                              //console.log("func ant");
-                                                                              //console.log($$.func);
+                                                                              //guardar traduccion en cola
+                                                                              if(id_anidadas == ""){
+                                                                                trad_func += $1+" "+$2+$3+$4+$5+$6.trad+" "+$7.trad;
+                                                                                id_anidadas = "_"+$2;
+                                                                              } else {
+                                                                                trad_func += $1+" "+$2+"_"+id_anidadas+$3+$4+$5+$6.trad+" "+$7.trad;
+                                                                                id_anidadas = $2+id_anidadas;
+                                                                              }
                                                                             }
       | tk_fn tk_id tk_pabierto PARFUNC tk_pcerrado tk_dospuntos TIPOV2 BSENTENCIAS {
                                                                                       console.log("FUNCION")
-                                                                                     // console.log("func ant");
+                                                                                      //console.log("func ant");
                                                                                       //console.log($$.func);
+                                                                                      //guardar traduccion en cola
                                                                                     }
-      | tk_fn tk_id error BSENTENCIAS {}
-      | tk_fn error{};
+      | tk_fn tk_id error BSENTENCIAS {
+                                        //error
+                                      }
+      | tk_fn error {
+                      //error
+                    };
 
 PARFUNC: PARFUNC tk_coma tk_id tk_dospuntos TIPOV2{}
         | tk_id tk_dospuntos TIPOV2{};
