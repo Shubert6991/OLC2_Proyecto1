@@ -75,6 +75,18 @@ var ejecutar = function ejecutar(ast, entorno, errores) {
         entorno.updateSimbolo(result);
         break;
 
+      case "ASIGNACION":
+        asignacion(ast, entorno, errores);
+        break;
+
+      case "CONSOLE":
+        print(ast, entorno, errores);
+        break;
+
+      case "GRAFICAR":
+        graphts(entorno);
+        break;
+
       default:
         console.error("todavia no he programado eso -> " + tipo);
         break;

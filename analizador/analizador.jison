@@ -756,9 +756,10 @@ VALARRAY: tk_id tk_llaveca A tk_llavecc {
 ASIGNACION: tk_id tk_igual VALOR tk_puntoycoma{ 
                                                 var nodo = new Nodo("ASIGNACION","ASIGNACION",+yylineno+1,+@1.first_column+1);
                                                 var id = new Nodo("ID",$1,+yylineno+1,+@1.first_column+1);
-                                                nodo.addHijo($1);
+                                                nodo.addHijo(id);
                                                 nodo.addHijo($3);
-                                                $$ = $1+" "+$2+" "+$3.trad+$4+"\n";
+                                                $$ = nodo;
+                                                $$.trad = $1+" "+$2+" "+$3.trad+$4+"\n";
                                               }
           | tk_id tk_igual VALOR error{
                                         console.log("Error Sintactico "+$4+"Error falto punto y coma");
@@ -767,9 +768,10 @@ ASIGNACION: tk_id tk_igual VALOR tk_puntoycoma{
 
                                         var nodo = new Nodo("ASIGNACION","ASIGNACION",+yylineno+1,+@1.first_column+1);
                                         var id = new Nodo("ID",$1,+yylineno+1,+@1.first_column+1);
-                                        nodo.addHijo($1);
+                                        nodo.addHijo(id);
                                         nodo.addHijo($3);
-                                        $$ = $1+" "+$2+" "+$3.trad+";\n";
+                                        $$ = nodo;
+                                        $$.trad = $1+" "+$2+" "+$3.trad+";\n";
                                       }
           | VALARRAY tk_igual VALOR tk_puntoycoma {
                                                     var nodo = new Nodo("ASIGNACION","ASIGNACION",+yylineno+1,+@1.first_column+1);

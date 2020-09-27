@@ -127,12 +127,9 @@ const declaracion = (nodo,entorno,errores) => {
         errores.push(err);
       }
       break;
-    default:
-      console.error("todavia no he programado la declaracion con esos hijos -> "+nodo.hijosCount());
-      break;
   }
-  entorno.printTablaSimbolos();
-  reportSimbolos(entorno.getTablaSimbolos());
+  // entorno.printTablaSimbolos();
+  // reportSimbolos(entorno.getTablaSimbolos());
 }
 
 //getID

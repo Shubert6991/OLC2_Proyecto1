@@ -727,9 +727,10 @@ case 81:
  
                                                 var nodo = new Nodo("ASIGNACION","ASIGNACION",+yylineno+1,+_$[$0-3].first_column+1);
                                                 var id = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].first_column+1);
-                                                nodo.addHijo($$[$0-3]);
+                                                nodo.addHijo(id);
                                                 nodo.addHijo($$[$0-1]);
-                                                this.$ = $$[$0-3]+" "+$$[$0-2]+" "+$$[$0-1].trad+$$[$0]+"\n";
+                                                this.$ = nodo;
+                                                this.$.trad = $$[$0-3]+" "+$$[$0-2]+" "+$$[$0-1].trad+$$[$0]+"\n";
                                               
 break;
 case 82:
@@ -740,9 +741,10 @@ case 82:
 
                                         var nodo = new Nodo("ASIGNACION","ASIGNACION",+yylineno+1,+_$[$0-3].first_column+1);
                                         var id = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].first_column+1);
-                                        nodo.addHijo($$[$0-3]);
+                                        nodo.addHijo(id);
                                         nodo.addHijo($$[$0-1]);
-                                        this.$ = $$[$0-3]+" "+$$[$0-2]+" "+$$[$0-1].trad+";\n";
+                                        this.$ = nodo;
+                                        this.$.trad = $$[$0-3]+" "+$$[$0-2]+" "+$$[$0-1].trad+";\n";
                                       
 break;
 case 83:

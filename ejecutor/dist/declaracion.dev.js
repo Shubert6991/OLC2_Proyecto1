@@ -158,14 +158,9 @@ var declaracion = function declaracion(nodo, entorno, errores) {
       }
 
       break;
+  } // entorno.printTablaSimbolos();
+  // reportSimbolos(entorno.getTablaSimbolos());
 
-    default:
-      console.error("todavia no he programado la declaracion con esos hijos -> " + nodo.hijosCount());
-      break;
-  }
-
-  entorno.printTablaSimbolos();
-  reportSimbolos(entorno.getTablaSimbolos());
 }; //getID
 
 
