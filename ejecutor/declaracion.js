@@ -24,23 +24,115 @@ const declaracion = (nodo,entorno,errores) => {
       }
       //tercer hijo valor
       var valor = getValor(hijos[2],entorno,errores);
-
+      
+      //verificar tipo del valor
+      var tipo = true;
+      switch (type) {
+        case "STRING":
+          if(typeof valor != "string"){
+            //error
+            console.error("Error Semantico");
+            var err = new Error("Semantico","El valor de la variable no es tipo string",nodo.getFila(),nodo.getColumna());
+            errores.push(err);
+            tipo = false;
+          }
+          break;
+        case "NUMBER":
+          if(typeof valor != "number"){
+            //error
+            console.error("Error Semantico");
+            var err = new Error("Semantico","El valor de la variable no es tipo number",nodo.getFila(),nodo.getColumna());
+            errores.push(err);
+            tipo = false;
+          }
+          break;
+        case "BOOLEAN":
+          if(typeof valor != "boolean"){
+            //error
+            console.error("Error Semantico");
+            var err = new Error("Semantico","El valor de la variable no es tipo boolean",nodo.getFila(),nodo.getColumna());
+            errores.push(err);
+            tipo = false;
+          }
+          break;
+      }
+      if(!tipo){
+        break;
+      }
       var nuevo = new Simbolo(tipo,id,type,valor,entorno.nombre,nodo.getFila(),nodo.getColumna());
       var result = entorno.addSimbolo(nuevo);
-      console.log(result)
+      // console.log(result)
       if(!result) {
         console.error("Error Semantico");
         var err = new Error("Semantico","La variable "+id+" ya se habia declarado",nodo.getFila(),nodo.getColumna());
         errores.push(err);
-        break;
       }
-      entorno.printTablaSimbolos();
-      reportSimbolos(entorno.getTablaSimbolos());
+      break;
+    case 2:
+      //hijo 1 id
+      var id = getID(nodo.getListaNodos()[0]);
+      //hijo 2 valor
+      var valor = getValor(nodo.getListaNodos()[1],entorno,errores);
+      //hijo 2 tipo
+      var type = getType(nodo.getListaNodos()[1]);
+      var nuevo;
+      if(valor == null){
+        //es con tipo
+        switch (type) {
+          case "STRING":
+            valor = "";
+            break;
+          case "NUMBER":
+            valor = 0;
+            break;
+          case "BOOLEAN":
+            valor = true;
+            break;
+        }
+        nuevo = new Simbolo(tipo,id,type,valor,entorno.nombre,nodo.getFila(),nodo.getColumna());
+      } else {
+        //es con valor
+        switch (typeof valor) {
+          case "string":
+              type = "STRING";
+            break;
+          case "number":
+            type = "NUMBER";
+          break;
+          case "boolean":
+            type = "BOOLEAN";
+          break;
+          default:
+            break;
+        }
+        nuevo = new Simbolo(tipo,id,type,valor,entorno.nombre,nodo.getFila(),nodo.getColumna());
+      }
+      var result = entorno.addSimbolo(nuevo);
+      // console.log(result)
+      if(!result) {
+        console.error("Error Semantico");
+        var err = new Error("Semantico","La variable "+id+" ya se habia declarado",nodo.getFila(),nodo.getColumna());
+        errores.push(err);
+      }
+      break;
+    case 1:
+      //let id
+      var id = getID(nodo.getListaNodos()[0]);
+      var nuevo = new Simbolo(tipo,id,null,null,entorno.nombre,nodo.getFila(),nodo.getColumna());
+      var result = entorno.addSimbolo(nuevo);
+      // console.log(result)
+      if(!result) {
+        console.error("Error Semantico");
+        var err = new Error("Semantico","La variable "+id+" ya se habia declarado",nodo.getFila(),nodo.getColumna());
+        errores.push(err);
+      }
       break;
     default:
       console.error("todavia no he programado la declaracion con esos hijos -> "+nodo.hijosCount());
       break;
   }
+  entorno.printTablaSimbolos();
+  reportSimbolos(entorno.getTablaSimbolos());
 }
 
 //getID

@@ -753,7 +753,7 @@ VALARRAY: tk_id tk_llaveca A tk_llavecc {
                                               $$.trad = $1 + $2 + " " + $4;
                                             };
 
-ASIGNACION: tk_id tk_igual VALOR tk_puntoycoma{
+ASIGNACION: tk_id tk_igual VALOR tk_puntoycoma{ 
                                                 var nodo = new Nodo("ASIGNACION","ASIGNACION",+yylineno+1,+@1.first_column+1);
                                                 var id = new Nodo("ID",$1,+yylineno+1,+@1.first_column+1);
                                                 nodo.addHijo($1);
@@ -828,10 +828,6 @@ L: L tk_and L {
                   $$ = nodo;
                   $$.trad = $1
                 }
-  |tk_pabierto L tk_pcerrado {
-                              $$ = $2;
-                              $$.trad = $1 + " " + $2.trad + " " + $3
-                            }
   |R {
        $$=$1;
        $$.trad = $1.trad;
@@ -932,6 +928,10 @@ A:A tk_suma A {
                 $$ = nodo;
                 $$.trad = $1 + $2.trad;
              }
+ |tk_pabierto T tk_pcerrado{
+                              $$ = $2;
+                              $$.trad = $1+" "+$2.trad+" "+$3;
+                           }
  |tk_t_string {
                 var nodo = new Nodo("STRING",$1,+yylineno+1,+@1.first_column+1);
                 $$ = nodo;
