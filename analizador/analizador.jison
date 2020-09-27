@@ -834,42 +834,42 @@ L: L tk_and L {
      };
 
 R: A tk_mayor A {
-                  var nodo = new Nodo("R","MAYOR",$1,+yylineno+1,+@1.first_column+1);
+                  var nodo = new Nodo("R","MAYOR",+yylineno+1,+@1.first_column+1);
                   nodo.addHijo($1);
                   nodo.addHijo($3);
                   $$ = nodo;
                   $$.trad = $1.trad + " " + $2 + " " + $3.trad;
                 }
   |A tk_menor A {
-                  var nodo = new Nodo("R","MENOR",$1,+yylineno+1,+@1.first_column+1);
+                  var nodo = new Nodo("R","MENOR",+yylineno+1,+@1.first_column+1);
                   nodo.addHijo($1);
                   nodo.addHijo($3);
                   $$ = nodo;
                   $$.trad = $1.trad + " " + $2 + " " + $3.trad;
                 }
   |A tk_mayorigual A{
-                      var nodo = new Nodo("R","MAYORIGUAL",$1,+yylineno+1,+@1.first_column+1);
+                      var nodo = new Nodo("R","MAYORIGUAL",+yylineno+1,+@1.first_column+1);
                       nodo.addHijo($1);
                       nodo.addHijo($3);
                       $$ = nodo;
                       $$.trad = $1.trad + " " + $2 + " " + $3.trad;
                     }
   |A tk_menorigual A{
-                      var nodo = new Nodo("R","MENORIGUAL",$1,+yylineno+1,+@1.first_column+1);
+                      var nodo = new Nodo("R","MENORIGUAL",+yylineno+1,+@1.first_column+1);
                       nodo.addHijo($1);
                       nodo.addHijo($3);
                       $$ = nodo;
                       $$.trad = $1.trad + " " + $2 + " " + $3.trad;
                     }
   |A tk_igualdad A {
-                      var nodo = new Nodo("R","IGUALDAD",$1,+yylineno+1,+@1.first_column+1);
+                      var nodo = new Nodo("R","IGUALDAD",+yylineno+1,+@1.first_column+1);
                       nodo.addHijo($1);
                       nodo.addHijo($3);
                       $$ = nodo;
                       $$.trad = $1.trad + " " + $2 + " " + $3.trad;
                    }
   |A tk_diferente A {
-                      var nodo = new Nodo("R","DESIGUALDAD",$1,+yylineno+1,+@1.first_column+1);
+                      var nodo = new Nodo("R","DESIGUALDAD",+yylineno+1,+@1.first_column+1);
                       nodo.addHijo($1);
                       nodo.addHijo($3);
                       $$ = nodo;

@@ -824,7 +824,7 @@ case 91:
 break;
 case 92:
 
-                  var nodo = new Nodo("R","MAYOR",$$[$0-2],+yylineno+1,+_$[$0-2].first_column+1);
+                  var nodo = new Nodo("R","MAYOR",+yylineno+1,+_$[$0-2].first_column+1);
                   nodo.addHijo($$[$0-2]);
                   nodo.addHijo($$[$0]);
                   this.$ = nodo;
@@ -833,7 +833,7 @@ case 92:
 break;
 case 93:
 
-                  var nodo = new Nodo("R","MENOR",$$[$0-2],+yylineno+1,+_$[$0-2].first_column+1);
+                  var nodo = new Nodo("R","MENOR",+yylineno+1,+_$[$0-2].first_column+1);
                   nodo.addHijo($$[$0-2]);
                   nodo.addHijo($$[$0]);
                   this.$ = nodo;
@@ -842,7 +842,7 @@ case 93:
 break;
 case 94:
 
-                      var nodo = new Nodo("R","MAYORIGUAL",$$[$0-2],+yylineno+1,+_$[$0-2].first_column+1);
+                      var nodo = new Nodo("R","MAYORIGUAL",+yylineno+1,+_$[$0-2].first_column+1);
                       nodo.addHijo($$[$0-2]);
                       nodo.addHijo($$[$0]);
                       this.$ = nodo;
@@ -851,7 +851,7 @@ case 94:
 break;
 case 95:
 
-                      var nodo = new Nodo("R","MENORIGUAL",$$[$0-2],+yylineno+1,+_$[$0-2].first_column+1);
+                      var nodo = new Nodo("R","MENORIGUAL",+yylineno+1,+_$[$0-2].first_column+1);
                       nodo.addHijo($$[$0-2]);
                       nodo.addHijo($$[$0]);
                       this.$ = nodo;
@@ -860,7 +860,7 @@ case 95:
 break;
 case 96:
 
-                      var nodo = new Nodo("R","IGUALDAD",$$[$0-2],+yylineno+1,+_$[$0-2].first_column+1);
+                      var nodo = new Nodo("R","IGUALDAD",+yylineno+1,+_$[$0-2].first_column+1);
                       nodo.addHijo($$[$0-2]);
                       nodo.addHijo($$[$0]);
                       this.$ = nodo;
@@ -869,7 +869,7 @@ case 96:
 break;
 case 97:
 
-                      var nodo = new Nodo("R","DESIGUALDAD",$$[$0-2],+yylineno+1,+_$[$0-2].first_column+1);
+                      var nodo = new Nodo("R","DESIGUALDAD",+yylineno+1,+_$[$0-2].first_column+1);
                       nodo.addHijo($$[$0-2]);
                       nodo.addHijo($$[$0]);
                       this.$ = nodo;

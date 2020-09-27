@@ -190,6 +190,72 @@ var getValor = function getValor(nodo, entorno, errores) {
     }
   }
 
+  if (nodo.getTipo() === "R") {
+    if (nodo.getNombre() === "MAYOR") {
+      var val1 = getValor(nodo.getListaNodos()[0], entorno, errores);
+      var val2 = getValor(nodo.getListaNodos()[1], entorno, errores);
+
+      if (isNaN(+val1) || isNaN(+val2)) {
+        var err = new Error("Semantico", "No se puede realizar la operacion > con valores que no sean numericos", nodo.getFila(), nodo.getColumna());
+        errores.push(err);
+        return false;
+      }
+
+      return val1 > val2;
+    }
+
+    if (nodo.getNombre() === "MENOR") {
+      var val1 = getValor(nodo.getListaNodos()[0], entorno, errores);
+      var val2 = getValor(nodo.getListaNodos()[1], entorno, errores);
+
+      if (isNaN(+val1) || isNaN(+val2)) {
+        var err = new Error("Semantico", "No se puede realizar la operacion < con valores que no sean numericos", nodo.getFila(), nodo.getColumna());
+        errores.push(err);
+        return false;
+      }
+
+      return val1 < val2;
+    }
+
+    if (nodo.getNombre() === "MAYORIGUAL") {
+      var val1 = getValor(nodo.getListaNodos()[0], entorno, errores);
+      var val2 = getValor(nodo.getListaNodos()[1], entorno, errores);
+
+      if (isNaN(+val1) || isNaN(+val2)) {
+        var err = new Error("Semantico", "No se puede realizar la operacion >= con valores que no sean numericos", nodo.getFila(), nodo.getColumna());
+        errores.push(err);
+        return false;
+      }
+
+      return val1 >= val2;
+    }
+
+    if (nodo.getNombre() === "MENORIGUAL") {
+      var val1 = getValor(nodo.getListaNodos()[0], entorno, errores);
+      var val2 = getValor(nodo.getListaNodos()[1], entorno, errores);
+
+      if (isNaN(+val1) || isNaN(+val2)) {
+        var err = new Error("Semantico", "No se puede realizar la operacion <= con valores que no sean numericos", nodo.getFila(), nodo.getColumna());
+        errores.push(err);
+        return false;
+      }
+
+      return val1 <= val2;
+    }
+
+    if (nodo.getNombre() === "IGUALDAD") {
+      var val1 = getValor(nodo.getListaNodos()[0], entorno, errores);
+      var val2 = getValor(nodo.getListaNodos()[1], entorno, errores);
+      return val1 == val2;
+    }
+
+    if (nodo.getNombre() === "DESIGUALDAD") {
+      var val1 = getValor(nodo.getListaNodos()[0], entorno, errores);
+      var val2 = getValor(nodo.getListaNodos()[1], entorno, errores);
+      return val1 != val2;
+    }
+  }
+
   if (nodo.getTipo() === "INCREMENTO") {
     var id = getID(nodo.getListaNodos()[0]); // console.log(id)
     //buscar en tabla de simbolos
