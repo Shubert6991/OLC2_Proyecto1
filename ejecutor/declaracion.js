@@ -46,3 +46,5 @@ const getType = (nodo) => {
     return nodo.getNombre();
   }
 }
+
+//get valor

@@ -53,4 +53,4 @@ var getType = function getType(nodo) {
   if (nodo.getTipo() === "TIPO") {
     return nodo.getNombre();
   }
-};
+}; //get valor

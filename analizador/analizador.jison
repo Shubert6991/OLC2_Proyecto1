@@ -82,9 +82,6 @@
 "type"                          %{ console.log("tipo de dato:"+yytext);  return 'tk_type'; %}
 
 "Array"                         %{ console.log("inicio array:"+yytext);  return 'tk_array'; %}
-"Push"                          %{ console.log("accion array:"+yytext);  return 'tk_push'; %}
-"Pop"                           %{ console.log("accion array:"+yytext);  return 'tk_pop'; %}
-"Lenght"                        %{ console.log("accion array:"+yytext);  return 'tk_lenght'; %}
 
 "let"                           %{ console.log("declaracion:"+yytext);  return 'tk_let'; %}
 "const"                         %{ console.log("declaracion:"+yytext);  return 'tk_const'; %}
