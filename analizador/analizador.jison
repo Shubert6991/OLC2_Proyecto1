@@ -688,7 +688,7 @@ ARRAY: tk_string tk_llaveca tk_llavecc {
                                         $$ = nodo;
                                         $$.trad = $1+$2+$3;
                                        }
-     | tk_id tk_llavecc tk_llavecc{
+     | tk_id tk_llaveca tk_llavecc{
                                     var nodo = new Nodo("TIPO","ARRAY_ID",+yylineno+1,+@1.first_column+1);
                                     var id = new Nodo("ID",$1,+yylineno+1,+@1.first_column+1);
                                     nodo.addHijo(id)

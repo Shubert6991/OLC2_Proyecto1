@@ -44,7 +44,7 @@ function () {
 
         for (var index = 0; index < tmp.length; index++) {
           if (tmp[index].getNombre() === nombre) {
-            return element;
+            return tmp[index];
           }
         }
 

@@ -25,7 +25,7 @@ class Entorno {
       var tmp = ent.tablaSimbolos.getTabla();
       for (let index = 0; index < tmp.length; index++) {
         if(tmp[index].getNombre() === nombre){
-          return element;
+          return tmp[index];
         } 
       }
       ent = ent.anterior;
