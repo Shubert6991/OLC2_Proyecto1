@@ -210,6 +210,29 @@ const getValor = (nodo,entorno,errores) =>{
       return val1 != val2;
     }
   }
+  if(nodo.getTipo() === "L"){
+    if(nodo.getNombre() === "AND"){
+      var val1 = getValor(nodo.getListaNodos()[0],entorno,errores);
+      var val2 = getValor(nodo.getListaNodos()[1],entorno,errores);
+      return val1 && val2;
+    }
+    if(nodo.getNombre() === "OR"){
+      var val1 = getValor(nodo.getListaNodos()[0],entorno,errores);
+      var val2 = getValor(nodo.getListaNodos()[1],entorno,errores);
+      return val1 || val2;
+    }
+    if(nodo.getNombre() === "NOT"){
+      var val1 = getValor(nodo.getListaNodos()[0],entorno,errores);
+      return !(val1);
+    }
+  }
+  if(nodo.getTipo() === "BOOLEAN"){
+    if(nodo.getNombre() === "true"){
+      return true;
+    } else {
+      return false;
+    }
+  }
   if(nodo.getTipo() === "INCREMENTO"){
     var id = getID(nodo.getListaNodos()[0]);
     // console.log(id)
