@@ -3,8 +3,9 @@
   let valcadena = ""; 
   let resultado = "";
   let errores = new ListaErrores();
-  let id_anidadas = "";
-  let trad_func = "";
+  var ids = new Array();
+  var funcs = new Array();
+  var trads = new Array();
 %}
 
 /*----------------------------LEXICO-------------------------------*/
@@ -109,6 +110,9 @@
 "function"                      %{ console.log("funcion:"+yytext);  return 'tk_fn'; %}
 "console.log"                   %{ console.log("funcion:"+yytext);  return 'tk_console'; %}
 "graficar_ts"                   %{ console.log("funcion:"+yytext);  return 'tk_graficar'; %}
+".Lenght"                       %{ console.log("funcion:"+yytext);  return 'tk_lenght'; %}
+".Push"                         %{ console.log("funcion:"+yytext);  return 'tk_push'; %}
+".Pop"                          %{ console.log("funcion:"+yytext);  return 'tk_pop'; %}
 
 "**"                            %{ console.log("arimetica:"+yytext); return 'tk_exp'; %}
 "++"                            %{ console.log("arimetica:"+yytext); return 'tk_inc'; %}
@@ -250,12 +254,11 @@ I: I DECLARACION{
             $$.trad = $1.trad + $2.trad;
           }
   |I FUNCION{
-              $$ = new Nodo("I","I");
-              $$.fun = "test";
-              console.log("#### I -> I FUNCION ####")
-              var s =  eval('$$');
-              console.log(s);
-              console.log("################")
+              var nodo = new Nodo("I","I",+yylineno+1,+@1.first_column+1);
+              nodo.addHijo($1);
+              nodo.addHijo($2);
+              $$ = nodo;
+              $$.trad = $1.trad + $2.trad;
             }
   |DECLARACION { $$ = $1; $$.trad = $1.trad; }
   |ASIGNACION { $$ = $1; $$.trad = $1.trad; }
@@ -266,12 +269,8 @@ I: I DECLARACION{
   |FOR { $$ = $1; $$.trad = $1.trad; }
   |FESP { $$ = $1; $$.trad = $1.trad; }
   |FUNCION  {
-              $$ = new Nodo("I","I");
-              $$.fun = "test";
-              console.log("#### I -> FUNCION ####")
-              var s =  eval('$$');
-              console.log(s);
-              console.log("################")
+              $$ = $1;
+              $$.trad = $1.trad; 
             }
   |error{
           console.error("Error sintactico: "+$1+" Desconocido Inicio");
@@ -957,17 +956,20 @@ A:A tk_suma A {
         };
 
 BSENTENCIAS: tk_llavea SENTENCIAS tk_llavec {
+                                              //console.log("BSENTENCIAS-----------------")
+                                              //var s =  eval('$$');
+                                              //console.log(s)
                                               $$ = $2;
-                                              $$.trad = $1+"\n"+$2.trad+$3+"\n";
+                                              if($2.func){
+                                                $$.trad = $1+"\n"+$2.trad+$3+"\n"+$2.func;
+                                              } else {
+                                                $$.trad = $1+"\n"+$2.trad+$3+"\n";
+                                              }
                                             }
-            |tk_llavea FUNCION tk_llavec{
-                                          console.log("#### BSentencias->  FUNCION ####")
-                                          var s =  eval('$$');
-                                          console.log(s);
-                                          console.log("################")
-                                          $$ = $2;
-                                        }
             |tk_llavea tk_llavec{
+                                  //console.log("BSENTENCIAS-----------------")
+                                  //var s =  eval('$$');
+                                  //console.log(s)
                                   $$ = new Nodo("","");
                                   $$.trad = $1+$2+"\n";
                                 };
@@ -1035,6 +1037,14 @@ SENTENCIAS: SENTENCIAS DECLARACION {
                               $$ = nodo;
                               $$.trad = $1.trad + $2.trad;
                             }
+          | SENTENCIAS FUNCION{  
+                                var nodo = new Nodo("SENTENCIAS","SENTENCIAS",+yylineno+1,+@1.first_column+1);
+                                nodo.addHijo($1);
+                                nodo.addHijo($2);
+                                $$ = nodo;
+                                $$.trad = $1.trad;
+                                $$.func = $2.trad;
+                              }
           | DECLARACION { $$ = $1; $$.trad = $1.trad; }
           | ASIGNACION { $$ = $1; $$.trad = $1.trad; }
           | IF { $$ = $1; $$.trad = $1.trad; }
@@ -1044,6 +1054,11 @@ SENTENCIAS: SENTENCIAS DECLARACION {
           | FOR { $$ = $1; $$.trad = $1.trad; }
           | ST { $$ = $1; $$.trad = $1.trad; }
           | FESP { $$ = $1; $$.trad = $1.trad; }
+          | FUNCION { 
+                     $$ = $1; 
+                     $$.trad = ""; 
+                     $$.func = $1.func;
+                    }
           | error {
                     console.error("Error sintactico: "+$1+" Desconocido Sentencias");
                     var error = new Error("Sintactico","Encontrado: "+$1+" Se esperaba -> DECLARACION||ASIGNACION||IF||SWITCH||WHILE||DO WHILE||SENTENCIAS DE TRANSFARENCIA||console.log()||graficar_ts()",+yylineno+1,+@1.last_column+1);
@@ -2537,30 +2552,176 @@ ST: tk_break tk_puntoycoma{
                         };
 
 FUNCION: tk_fn tk_id tk_pabierto tk_pcerrado tk_dospuntos TIPOV2 BSENTENCIAS{ 
-                                                                              console.log("#### FUNCION ####")
                                                                               var s =  eval('$$');
-                                                                              console.log(s);
-                                                                              console.log("################")
-                                                                              $$ = new Nodo("FUNCION","FUNCION")
-                                                                              $$.id = $2;
+                                                                              var ids = "";
+                                                                              for(var i=0;i<s.length;i++){
+                                                                                if(s[i] === $1){
+                                                                                    ids += s[i+1]+"_";
+                                                                                }
+                                                                              }
+                                                                              var nodo = new Nodo("FUNCION","FUNCION",+yylineno+1,+@1.first_column+1);
+                                                                              var id = new Nodo("ID",$2,+yylineno+1,+@2.first_column+1);
+                                                                              nodo.addHijo(id);
+                                                                              nodo.addHijo($6);
+                                                                              nodo.addHijo($7);
+                                                                              $$ = nodo;
+                                                                              $$.trad = $1+" "+ids.replace(/.$/,"")+$3+$4+$5+$6.trad+$7.trad;
+                                                                              $$.func = $1+" "+ids.replace(/.$/,"")+$3+$4+$5+$6.trad+$7.trad;
                                                                             }
+      | tk_fn error tk_pabierto tk_pcerrado tk_dospuntos TIPOV2 BSENTENCIAS {
+                                                                              console.error("Error sintactico: "+$2+" Desconocido Sentencias");
+                                                                              var error = new Error("Sintactico","Encontrado: "+$2+" Se esperaba -> id"+yylineno+1,+@2.last_column+1);
+                                                                              
+                                                                              errores.addError(error);
+                                                                              $$ = new Nodo("","");
+                                                                              $$.trad = "";
+                                                                            }
+      | tk_fn tk_id error tk_pcerrado tk_dospuntos TIPOV2 BSENTENCIAS {
+                                                                        console.error("Error sintactico: "+$3+" Desconocido Sentencias");
+                                                                        var error = new Error("Sintactico","Encontrado: "+$3+" Se esperaba -> ("+yylineno+1,+@3.last_column+1);
+                                                                        
+                                                                        errores.addError(error);
+                                                                        $$ = new Nodo("","");
+                                                                        $$.trad = "";
+                                                                      }
+      | tk_fn tk_id tk_pabierto error tk_dospuntos TIPOV2 BSENTENCIAS {
+                                                                        console.error("Error sintactico: "+$4+" Desconocido Sentencias");
+                                                                        var error = new Error("Sintactico","Encontrado: "+$4+" Se esperaba -> )"+yylineno+1,+@4.last_column+1);
+                                                                        
+                                                                        errores.addError(error);
+                                                                        $$ = new Nodo("","");
+                                                                        $$.trad = "";
+                                                                      }
+      | tk_fn tk_id tk_pabierto tk_pcerrado error TIPOV2 BSENTENCIAS{
+                                                                      console.error("Error sintactico: "+$5+" Desconocido Sentencias");
+                                                                      var error = new Error("Sintactico","Encontrado: "+$5+" Se esperaba -> :"+yylineno+1,+@5.last_column+1);
+                                                                      
+                                                                      errores.addError(error);
+                                                                      $$ = new Nodo("","");
+                                                                      $$.trad = "";
+                                                                    }
+      | tk_fn tk_id tk_pabierto tk_pcerrado tk_dospuntos TIPOV2 error {
+                                                                      console.error("Error sintactico: "+$7+" Desconocido Sentencias");
+                                                                      var error = new Error("Sintactico","Encontrado: "+$7+" Se esperaba -> {"+yylineno+1,+@7.last_column+1);
+                                                                      
+                                                                      errores.addError(error);
+                                                                      $$ = new Nodo("","");
+                                                                      $$.trad = "";
+                                                                    }
       | tk_fn tk_id tk_pabierto PARFUNC tk_pcerrado tk_dospuntos TIPOV2 BSENTENCIAS {
+                                                                                      var s =  eval('$$');
+                                                                                      var ids = "";
+                                                                                      for(var i=0;i<s.length;i++){
+                                                                                        if(s[i] === $1){
+                                                                                            ids += s[i+1]+"_";
+                                                                                        }
+                                                                                      }
+                                                                                      var nodo = new Nodo("FUNCION","FUNCION",+yylineno+1,+@1.first_column+1);
+                                                                                      var id = new Nodo("ID",$2,+yylineno+1,+@2.first_column+1);
+                                                                                      nodo.addHijo(id);
+                                                                                      nodo.addHijo($4);
+                                                                                      nodo.addHijo($7);
+                                                                                      nodo.addHijo($8);
+                                                                                      $$ = nodo;
+                                                                                      $$.trad = $1+" "+ids.replace(/.$/,"")+$3+$4.trad+$5+$6+$7.trad+$8.trad;
+                                                                                      $$.func = $1+" "+ids.replace(/.$/,"")+$3+$4.trad+$5+$6+$7.trad+$8.trad;
                                                                                     }
-      | tk_fn tk_id error BSENTENCIAS {
-                                        //error
-                                      }
-      | tk_fn error {
-                      //error
-                    };
+      | tk_fn error tk_pabierto PARFUNC tk_pcerrado tk_dospuntos TIPOV2 BSENTENCIAS {
+                                                                                      console.error("Error sintactico: "+$2+" Desconocido Sentencias");
+                                                                                      var error = new Error("Sintactico","Encontrado: "+$2+" Se esperaba -> id"+yylineno+1,+@2.last_column+1);
+                                                                                      
+                                                                                      errores.addError(error);
+                                                                                      $$ = new Nodo("","");
+                                                                                      $$.trad = "";
+                                                                                    }
+      | tk_fn tk_id error PARFUNC tk_pcerrado tk_dospuntos TIPOV2 BSENTENCIAS{
+                                                                                console.error("Error sintactico: "+$3+" Desconocido Sentencias");
+                                                                                var error = new Error("Sintactico","Encontrado: "+$3+" Se esperaba -> ("+yylineno+1,+@3.last_column+1);
+                                                                                
+                                                                                errores.addError(error);
+                                                                                $$ = new Nodo("","");
+                                                                                $$.trad = "";
+                                                                              }
+      | tk_fn tk_id tk_pabierto PARFUNC error tk_dospuntos TIPOV2 BSENTENCIAS{
+                                                                                console.error("Error sintactico: "+$5+" Desconocido Sentencias");
+                                                                                var error = new Error("Sintactico","Encontrado: "+$5+" Se esperaba -> )"+yylineno+1,+@5.last_column+1);
+                                                                                
+                                                                                errores.addError(error);
+                                                                                $$ = new Nodo("","");
+                                                                                $$.trad = "";
+                                                                              }
+      | tk_fn tk_id tk_pabierto PARFUNC tk_pcerrado error TIPOV2 BSENTENCIAS{
+                                                                              console.error("Error sintactico: "+$6+" Desconocido Sentencias");
+                                                                              var error = new Error("Sintactico","Encontrado: "+$6+" Se esperaba -> :"+yylineno+1,+@6.last_column+1);
+                                                                              
+                                                                              errores.addError(error);
+                                                                              $$ = new Nodo("","");
+                                                                              $$.trad = "";
+                                                                            }
+      | tk_fn tk_id tk_pabierto PARFUNC tk_pcerrado tk_dospuntos TIPOV2 error{
+                                                                              console.error("Error sintactico: "+$7+" Desconocido Sentencias");
+                                                                              var error = new Error("Sintactico","Encontrado: "+$7+" Se esperaba -> {"+yylineno+1,+@7.last_column+1);
+                                                                              
+                                                                              errores.addError(error);
+                                                                              $$ = new Nodo("","");
+                                                                              $$.trad = "";
+                                                                            };
 
-PARFUNC: PARFUNC tk_coma tk_id tk_dospuntos TIPOV2{}
-        | tk_id tk_dospuntos TIPOV2{};
+PARFUNC: PARFUNC tk_coma tk_id tk_dospuntos TIPOV2{
+                                                    var nodo = new Nodo("PARFUNC","PARFUNC",+yylineno+1,+@1.first_column+1);
+                                                    var id = new Nodo("ID",$3,+yylineno+1,+@3.first_column+1);
+                                                    nodo.add($1);
+                                                    nodo.add(id);
+                                                    noco.add($5);
+
+                                                    $$ = nodo;
+                                                    $$.trad = $1.trad+$2+$3+$4+$5.trad;
+                                                  }
+        | tk_id tk_dospuntos TIPOV2 {
+                                      var nodo = new Nodo("PARFUNC","PARFUNC",+yylineno+1,+@1.first_column+1);
+                                      var id = new Nodo("ID",$1,+yylineno+1,+@1.first_column+1);
+                                      nodo.add(id);
+                                      noco.add($3);
+
+                                      $$ = nodo;
+                                      $$.trad = $1+$2+$3.trad;
+                                    }
+        | error {
+                  console.error("Error sintactico: "+$1+" Desconocido Sentencias");
+                  var error = new Error("Sintactico","Encontrado: "+$1+" Se esperaba -> Parametro de funcion(id)"+yylineno+1,+@1.last_column+1);
+                  
+                  errores.addError(error);
+                  $$ = new Nodo("","");
+                  $$.trad = "";
+                };
         
-VALFUNCION: tk_id tk_pabierto tk_pcerrado{} 
-          | tk_id tk_pabierto LPAR tk_pcerrado{};
+VALFUNCION: tk_id tk_pabierto tk_pcerrado { 
+                                            var nodo = new Nodo("VALOR","VALFUNCION",+yylineno+1,+@1.first_column+1);
+                                            var id = new Nodo("ID",$1,+yylineno+1,+@1.first_column+1);
+                                            nodo.addHijo(id);
+                                            $$ = nodo;
+                                            $$.trad = $1+$2+$3;
+                                          }  
+          | tk_id tk_pabierto LPAR tk_pcerrado{
+                                                var nodo = new Nodo("VALOR","VALFUNCION",+yylineno+1,+@1.first_column+1);
+                                                var id = new Nodo("ID",$1,+yylineno+1,+@1.first_column+1);
+                                                nodo.addHijo(id);
+                                                nodo.addHijo($3);
+                                                $$ = nodo;
+                                                $$.trad = $1+$2+$3.trad+$4;
+                                              };
 
-LPAR: LPAR tk_coma VALOR{}
-    | VALOR{};
+LPAR: LPAR tk_coma VALOR{
+                          var nodo = new Nodo("LPAR","LPAR",+yylineno+1,+@1.first_column+1);
+                          nodo.addHijo($1);
+                          nodo.addHijo($3);
+                          $$ = nodo;
+                          $$.trad = $1.trad+$2+$3.trad;
+                        }
+    | VALOR {
+              $$ = $1;
+              $$.trad = $1.trad;
+            };
 
 FESP: tk_console tk_pabierto VALOR tk_pcerrado tk_puntoycoma{
                                                               var nodo = new Nodo("CONSOLE","CONSOLE",+yylineno+1,+@1.last_column+1);
@@ -2568,6 +2729,22 @@ FESP: tk_console tk_pabierto VALOR tk_pcerrado tk_puntoycoma{
                                                               $$ = nodo;
                                                               $$.trad = $1+$2+$3.trad+$4+$5+"\n";
                                                             }
+    | tk_console error VALOR tk_pcerrado tk_puntoycoma{
+                                                        console.error("Error sintactico: "+$2+" Desconocido Sentencias");
+                                                        var error = new Error("Sintactico","Encontrado: "+$2+" Se esperaba -> ("+yylineno+1,+@2.last_column+1);
+                                                        
+                                                        errores.addError(error);
+                                                        $$ = new Nodo("","");
+                                                        $$.trad = "";
+                                                      }
+    | tk_console tk_pabierto VALOR error tk_puntoycoma{
+                                                        console.error("Error sintactico: "+$4+" Desconocido Sentencias");
+                                                        var error = new Error("Sintactico","Encontrado: "+$4+" Se esperaba -> ("+yylineno+1,+@4.last_column+1);
+                                                        
+                                                        errores.addError(error);
+                                                        $$ = new Nodo("","");
+                                                        $$.trad = "";
+                                                      }
     | tk_console tk_pabierto VALOR tk_pcerrado error{
                                                       console.error("Error Sintactico: "+$5+" Error console");
                                                       var error = new Error("Sintactico","Encontrado: "+$5+" Se esperaba -> ;",+yylineno+1,+@5.last_column+1);
@@ -2583,6 +2760,22 @@ FESP: tk_console tk_pabierto VALOR tk_pcerrado tk_puntoycoma{
                                                           $$ = nodo;
                                                           $$.trad = $1+$2+$3+$4+"\n";
                                                         }
+    | tk_graficar error tk_pcerrado tk_puntoycoma {
+                                                    console.error("Error sintactico: "+$2+" Desconocido Sentencias");
+                                                    var error = new Error("Sintactico","Encontrado: "+$2+" Se esperaba -> ("+yylineno+1,+@2.last_column+1);
+                                                    
+                                                    errores.addError(error);
+                                                    $$ = new Nodo("","");
+                                                    $$.trad = "";
+                                                  }
+    | tk_graficar tk_pabierto error tk_puntoycoma{
+                                                    console.error("Error sintactico: "+$3+" Desconocido Sentencias");
+                                                    var error = new Error("Sintactico","Encontrado: "+$3+" Se esperaba -> )"+yylineno+1,+@3.last_column+1);
+                                                    
+                                                    errores.addError(error);
+                                                    $$ = new Nodo("","");
+                                                    $$.trad = "";
+                                                  }
     | tk_graficar tk_pabierto tk_pcerrado error { 
                                                   console.error("Error Sintactico: "+$4+" Error graficar");
                                                   var error = new Error("Sintactico","Encontrado: "+$4+" Se esperaba -> ;",+yylineno+1,+@4.last_column+1);
@@ -2591,4 +2784,132 @@ FESP: tk_console tk_pabierto VALOR tk_pcerrado tk_puntoycoma{
                                                   var nodo = new Nodo("GRAFICAR","GRAFICAR",+yylineno+1,+@1.last_column+1);
                                                   $$ = nodo;
                                                   $$.trad = $1+$2+$3+";\n";
+                                                }
+    | tk_id tk_lenght tk_pabierto tk_pcerrado tk_puntoycoma {
+                                                              var nodo = new Nodo("LENGTH","LENGTH",+yylineno+1,+@1.last_column+1);
+                                                              var id = new Nodo("ID",$1,+yylineno+1,+@1.last_column+1);
+                                                              nodo.addHijo(id);
+                                                              $$ = nodo;
+                                                              $$.trad = $1+$2+$3+$4+$5+"\n";
+                                                            }
+    | tk_id error tk_pabierto tk_pcerrado tk_puntoycoma { 
+                                                          console.error("Error Sintactico: "+$2+" Error graficar");
+                                                          var error = new Error("Sintactico","Encontrado: "+$2+" Se esperaba -> .lenght",+yylineno+1,+@2.last_column+1);
+                                                          errores.addError(error);
+
+                                                          errores.addError(error);
+                                                          $$ = new Nodo("","");
+                                                          $$.trad = "";
+                                                        }
+    | tk_id tk_lenght error tk_pcerrado tk_puntoycoma { 
+                                                        console.error("Error Sintactico: "+$3+" Error graficar");
+                                                        var error = new Error("Sintactico","Encontrado: "+$3+" Se esperaba -> (",+yylineno+1,+@3.last_column+1);
+                                                        errores.addError(error);
+
+                                                        errores.addError(error);
+                                                        $$ = new Nodo("","");
+                                                        $$.trad = "";
+                                                      }
+    | tk_id tk_lenght tk_pabierto error tk_puntoycoma{ 
+                                                        console.error("Error Sintactico: "+$4+" Error graficar");
+                                                        var error = new Error("Sintactico","Encontrado: "+$4+" Se esperaba -> )",+yylineno+1,+@4.last_column+1);
+                                                        errores.addError(error);
+
+                                                        errores.addError(error);
+                                                        $$ = new Nodo("","");
+                                                        $$.trad = "";
+                                                      }
+    | tk_id tk_lenght tk_pabierto tk_pcerrado error{ 
+                                                      console.error("Error Sintactico: "+$5+" Error graficar");
+                                                      var error = new Error("Sintactico","Encontrado: "+$5+" Se esperaba -> ;",+yylineno+1,+@5.last_column+1);
+                                                      errores.addError(error);
+
+                                                      var nodo = new Nodo("LENGTH","LENGTH",+yylineno+1,+@1.last_column+1);
+                                                      var id = new Nodo("ID",$1,+yylineno+1,+@1.last_column+1);
+                                                      nodo.addHijo(id);
+                                                      $$ = nodo;
+                                                      $$.trad = $1+$2+$3+$4+";\n";
+                                                    }
+    | tk_id tk_push tk_pabierto VALOR tk_pcerrado tk_puntoycoma {
+                                                                  var nodo = new Nodo("PUSH","PUSH",+yylineno+1,+@1.last_column+1);
+                                                                  var id = new Nodo("ID",$1,+yylineno+1,+@1.last_column+1);
+                                                                  nodo.addHijo(id);
+                                                                  nodo.addHijo($4);
+                                                                  $$ = nodo;
+                                                                  $$.trad = $1+$2+$3+$4.trad+$5+$6+"\n";
+                                                                }
+    | tk_id error tk_pabierto VALOR tk_pcerrado tk_puntoycoma { 
+                                                                console.error("Error Sintactico: "+$2+" Error graficar");
+                                                                var error = new Error("Sintactico","Encontrado: "+$2+" Se esperaba -> .push",+yylineno+1,+@2.last_column+1);
+                                                                errores.addError(error);
+
+                                                                errores.addError(error);
+                                                                $$ = new Nodo("","");
+                                                                $$.trad = "";
+                                                              }
+    | tk_id tk_push error VALOR tk_pcerrado tk_puntoycoma { 
+                                                            console.error("Error Sintactico: "+$3+" Error graficar");
+                                                            var error = new Error("Sintactico","Encontrado: "+$3+" Se esperaba -> (",+yylineno+1,+@3.last_column+1);
+                                                            errores.addError(error);
+
+                                                            errores.addError(error);
+                                                            $$ = new Nodo("","");
+                                                            $$.trad = "";
+                                                          }
+    | tk_id tk_push tk_pabierto VALOR error tk_puntoycoma { 
+                                                            console.error("Error Sintactico: "+$5+" Error graficar");
+                                                            var error = new Error("Sintactico","Encontrado: "+$5+" Se esperaba -> )",+yylineno+1,+@5.last_column+1);
+                                                            errores.addError(error);
+
+                                                            errores.addError(error);
+                                                            $$ = new Nodo("","");
+                                                            $$.trad = "";
+                                                          }
+    | tk_id tk_push tk_pabierto VALOR tk_pcerrado error { 
+                                                          console.error("Error Sintactico: "+$6+" Error graficar");
+                                                          var error = new Error("Sintactico","Encontrado: "+$6+" Se esperaba -> )",+yylineno+1,+@6.last_column+1);
+                                                          errores.addError(error);
+
+                                                          var nodo = new Nodo("PUSH","PUSH",+yylineno+1,+@1.last_column+1);
+                                                          var id = new Nodo("ID",$1,+yylineno+1,+@1.last_column+1);
+                                                          nodo.addHijo(id);
+                                                          nodo.addHijo($4);
+                                                          $$ = nodo;
+                                                          $$.trad = $1+$2+$3+$4.trad+$5+";\n";
+                                                        }
+    | tk_id tk_pop tk_pabierto tk_pcerrado tk_puntoycoma{
+                                                          var nodo = new Nodo("POP","POP",+yylineno+1,+@1.last_column+1);
+                                                          var id = new Nodo("ID",$1,+yylineno+1,+@1.last_column+1);
+                                                          nodo.addHijo(id);
+                                                          $$ = nodo;
+                                                          $$.trad = $1+$2+$3+$4+$5+"\n";
+                                                        }
+    | tk_id tk_pop error tk_pcerrado tk_puntoycoma{ 
+                                                    console.error("Error Sintactico: "+$3+" Error graficar");
+                                                    var error = new Error("Sintactico","Encontrado: "+$3+" Se esperaba -> (",+yylineno+1,+@3.last_column+1);
+                                                    errores.addError(error);
+
+                                                    errores.addError(error);
+                                                    $$ = new Nodo("","");
+                                                    $$.trad = "";
+                                                  }
+    | tk_id tk_pop tk_pabierto error tk_puntoycoma{ 
+                                                    console.error("Error Sintactico: "+$4+" Error graficar");
+                                                    var error = new Error("Sintactico","Encontrado: "+$4+" Se esperaba -> )",+yylineno+1,+@4.last_column+1);
+                                                    errores.addError(error);
+
+                                                    errores.addError(error);
+                                                    $$ = new Nodo("","");
+                                                    $$.trad = "";
+                                                  }
+    | tk_id tk_pop tk_pabierto tk_pcerrado error{ 
+                                                  console.error("Error Sintactico: "+$5+" Error graficar");
+                                                  var error = new Error("Sintactico","Encontrado: "+$5+" Se esperaba -> ;",+yylineno+1,+@5.last_column+1);
+                                                  errores.addError(error);
+
+                                                  var nodo = new Nodo("POP","POP",+yylineno+1,+@1.last_column+1);
+                                                  var id = new Nodo("ID",$1,+yylineno+1,+@1.last_column+1);
+                                                  nodo.addHijo(id);
+                                                  $$ = nodo;
+                                                  $$.trad = $1+$2+$3+$4+";\n";
                                                 };
