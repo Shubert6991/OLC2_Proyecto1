@@ -881,42 +881,42 @@ R: A tk_mayor A {
     };
 
 A:A tk_suma A {
-                var nodo = new Nodo("A","SUMA",$1,+yylineno+1,+@1.first_column+1);
+                var nodo = new Nodo("A","SUMA",+yylineno+1,+@1.first_column+1);
                 nodo.addHijo($1);
                 nodo.addHijo($3);
                 $$ = nodo;
                 $$.trad = $1.trad + " " + $2 + " " + $3.trad;
               }
  |A tk_resta A{
-                var nodo = new Nodo("A","RESTA",$1,+yylineno+1,+@1.first_column+1);
+                var nodo = new Nodo("A","RESTA",+yylineno+1,+@1.first_column+1);
                 nodo.addHijo($1);
                 nodo.addHijo($3);
                 $$ = nodo;
                 $$.trad = $1.trad + " " + $2 + " " + $3.trad;
               }
  |A tk_mult A {
-                var nodo = new Nodo("A","MULTI",$1,+yylineno+1,+@1.first_column+1);
+                var nodo = new Nodo("A","MULTI",+yylineno+1,+@1.first_column+1);
                 nodo.addHijo($1);
                 nodo.addHijo($3);
                 $$ = nodo;
                 $$.trad = $1.trad + " " + $2 + " " + $3.trad;
               }
  |A tk_div A{
-              var nodo = new Nodo("A","DIV",$1,+yylineno+1,+@1.first_column+1);
+              var nodo = new Nodo("A","DIV",+yylineno+1,+@1.first_column+1);
               nodo.addHijo($1);
               nodo.addHijo($3);
               $$ = nodo;
               $$.trad = $1.trad + " " + $2 + " " + $3.trad;
             }
  |A tk_exp A{
-              var nodo = new Nodo("A","EXP",$1,+yylineno+1,+@1.first_column+1);
+              var nodo = new Nodo("A","EXP",+yylineno+1,+@1.first_column+1);
               nodo.addHijo($1);
               nodo.addHijo($3);
               $$ = nodo;
               $$.trad = $1.trad + " " + $2 + " " + $3.trad;
             }
  |A tk_mod A{
-              var nodo = new Nodo("A","MOD",$1,+yylineno+1,+@1.first_column+1);
+              var nodo = new Nodo("A","MOD",+yylineno+1,+@1.first_column+1);
               nodo.addHijo($1);
               nodo.addHijo($3);
               $$ = nodo;
@@ -927,27 +927,28 @@ A:A tk_suma A {
                               $$.trad = $1 + " " + $2.trad + " " + $3
                             }
  |tk_resta A {
-                var nodo = new Nodo("NEGATIVO",$2,$1,+yylineno+1,+@1.first_column+1);
+                var nodo = new Nodo("NEGATIVO","NEGATIVO",+yylineno+1,+@1.first_column+1);
+                nodo.addHijo($2)
                 $$ = nodo;
                 $$.trad = $1 + $2.trad;
              }
  |tk_t_string {
-                var nodo = new Nodo("STRING",$1,$1,+yylineno+1,+@1.first_column+1);
+                var nodo = new Nodo("STRING",$1,+yylineno+1,+@1.first_column+1);
                 $$ = nodo;
-                $$.trad = $1;
+                $$.trad = "\""+$1+"\"";
               }
  |tk_t_entero {
-                var nodo = new Nodo("ENTERO",$1,$1,+yylineno+1,+@1.first_column+1);
+                var nodo = new Nodo("ENTERO",$1,+yylineno+1,+@1.first_column+1);
                 $$ = nodo;
                 $$.trad = $1;
               }
  |tk_t_decimal{
-                var nodo = new Nodo("DECIMAL",$1,$1,+yylineno+1,+@1.first_column+1);
+                var nodo = new Nodo("DECIMAL",$1,+yylineno+1,+@1.first_column+1);
                 $$ = nodo;
                 $$.trad = $1;
               }
  |tk_id {
-          var nodo = new Nodo("ID",$1,$1,+yylineno+1,+@1.first_column+1);
+          var nodo = new Nodo("ID",$1,+yylineno+1,+@1.first_column+1);
           $$ = nodo;
           $$.trad = $1;
         };

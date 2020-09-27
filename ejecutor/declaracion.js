@@ -92,7 +92,71 @@ const getValor = (nodo,entorno,errores) =>{
     //Valores
   }
   if(nodo.getTipo() === "A"){
-    return 120;
+    if(nodo.getNombre() === "SUMA"){
+      var val1 = getValor(nodo.getListaNodos()[0],entorno,errores);
+      var val2 = getValor(nodo.getListaNodos()[1],entorno,errores);
+      return val1 + val2;
+    }
+    if(nodo.getNombre() === "RESTA"){
+      var val1 = getValor(nodo.getListaNodos()[0],entorno,errores);
+      var val2 = getValor(nodo.getListaNodos()[1],entorno,errores);
+      var res = val1-val2
+      if(isNaN(res)){
+        var err = new Error("Semantico","No se pueden restar valores no numericos",nodo.getFila(),nodo.getColumna());
+        errores.push(err);
+        return 0;
+      }
+      return res;
+    }
+    if(nodo.getNombre() === "MULTI"){
+      var val1 = getValor(nodo.getListaNodos()[0],entorno,errores);
+      var val2 = getValor(nodo.getListaNodos()[1],entorno,errores);
+      var res = val1*val2
+      if(isNaN(res)){
+        var err = new Error("Semantico","No se pueden multiplicar valores no numericos",nodo.getFila(),nodo.getColumna());
+        errores.push(err);
+        return 0;
+      }
+      return res;
+    }
+    if(nodo.getNombre() === "DIV"){
+      var val1 = getValor(nodo.getListaNodos()[0],entorno,errores);
+      var val2 = getValor(nodo.getListaNodos()[1],entorno,errores);
+      var res = val1/val2
+      if(isNaN(res)){
+        var err = new Error("Semantico","No se pueden dividir valores no numericos",nodo.getFila(),nodo.getColumna());
+        errores.push(err);
+        return 0;
+      }
+      if(val2 === 0){
+        var err = new Error("Semantico","No se pueden dividir entre 0",nodo.getFila(),nodo.getColumna());
+        errores.push(err);
+        return 0;
+      }
+      return res;
+    }
+    if(nodo.getNombre() === "EXP"){
+      var val1 = getValor(nodo.getListaNodos()[0],entorno,errores);
+      var val2 = getValor(nodo.getListaNodos()[1],entorno,errores);
+      var res = val1**val2
+      if(isNaN(res)){
+        var err = new Error("Semantico","No se pueden elevar valores no numericos",nodo.getFila(),nodo.getColumna());
+        errores.push(err);
+        return 0;
+      }
+      return res;
+    }
+    if(nodo.getNombre() === "MOD"){
+      var val1 = getValor(nodo.getListaNodos()[0],entorno,errores);
+      var val2 = getValor(nodo.getListaNodos()[1],entorno,errores);
+      var res = val1%val2
+      if(isNaN(res)){
+        var err = new Error("Semantico","No se pueden encontrar mod de valores no numericos",nodo.getFila(),nodo.getColumna());
+        errores.push(err);
+        return 0;
+      }
+      return res;
+    }
   }
   if(nodo.getTipo() === "INCREMENTO"){
     var id = getID(nodo.getListaNodos()[0]);
@@ -114,7 +178,7 @@ const getValor = (nodo,entorno,errores) =>{
     }
     // sumarle 1
     // regresar nuevo valor
-    return tid.getValor()+1;
+    return +tid.getValor()+1;
   }
   if(nodo.getTipo() === "DECREMENTO"){
     var id = getID(nodo.getListaNodos()[0]);
@@ -134,6 +198,36 @@ const getValor = (nodo,entorno,errores) =>{
     }
     //sumarle 1
     //regresar nuevo valor
-    return tid.getValor()-1;
+    return +tid.getValor()-1;
+  }
+  if(nodo.getTipo() === "NEGATIVO"){
+    var val = getValor(nodo.getListaNodos()[0],entorno,errores)
+    var res = +val*-1;
+    if(isNaN(res)){
+      var err = new Error("Semantico","Solo se puede volver negativo un valor numerico",nodo.getFila(),nodo.getColumna());
+      errores.push(err);
+      return 0;
+    }
+    return +val*-1;
+  }
+  if(nodo.getTipo() === "STRING"){
+    return nodo.getNombre();
+  }
+  if(nodo.getTipo() === "ENTERO"){
+    return +nodo.getNombre();
+  }
+  if(nodo.getTipo() === "DECIMAL"){
+    return +nodo.getNombre();
+  }
+  if(nodo.getTipo() === "ID"){
+    //buscar valor de id en la tabla de simbolos
+    var id = nodo.getNombre();
+    var tid = entorno.getSimbolo(id);
+    if(!tid){
+      var err = new Error("Semantico","La variable ->"+id+" no ha sido declarada",nodo.getFila(),nodo.getColumna());
+      errores.push(err);
+      return 0;
+    }
+    return tid.getValor();
   }
 }

@@ -884,7 +884,7 @@ case 98:
 break;
 case 99:
 
-                var nodo = new Nodo("A","SUMA",$$[$0-2],+yylineno+1,+_$[$0-2].first_column+1);
+                var nodo = new Nodo("A","SUMA",+yylineno+1,+_$[$0-2].first_column+1);
                 nodo.addHijo($$[$0-2]);
                 nodo.addHijo($$[$0]);
                 this.$ = nodo;
@@ -893,7 +893,7 @@ case 99:
 break;
 case 100:
 
-                var nodo = new Nodo("A","RESTA",$$[$0-2],+yylineno+1,+_$[$0-2].first_column+1);
+                var nodo = new Nodo("A","RESTA",+yylineno+1,+_$[$0-2].first_column+1);
                 nodo.addHijo($$[$0-2]);
                 nodo.addHijo($$[$0]);
                 this.$ = nodo;
@@ -902,7 +902,7 @@ case 100:
 break;
 case 101:
 
-                var nodo = new Nodo("A","MULTI",$$[$0-2],+yylineno+1,+_$[$0-2].first_column+1);
+                var nodo = new Nodo("A","MULTI",+yylineno+1,+_$[$0-2].first_column+1);
                 nodo.addHijo($$[$0-2]);
                 nodo.addHijo($$[$0]);
                 this.$ = nodo;
@@ -911,7 +911,7 @@ case 101:
 break;
 case 102:
 
-              var nodo = new Nodo("A","DIV",$$[$0-2],+yylineno+1,+_$[$0-2].first_column+1);
+              var nodo = new Nodo("A","DIV",+yylineno+1,+_$[$0-2].first_column+1);
               nodo.addHijo($$[$0-2]);
               nodo.addHijo($$[$0]);
               this.$ = nodo;
@@ -920,7 +920,7 @@ case 102:
 break;
 case 103:
 
-              var nodo = new Nodo("A","EXP",$$[$0-2],+yylineno+1,+_$[$0-2].first_column+1);
+              var nodo = new Nodo("A","EXP",+yylineno+1,+_$[$0-2].first_column+1);
               nodo.addHijo($$[$0-2]);
               nodo.addHijo($$[$0]);
               this.$ = nodo;
@@ -929,7 +929,7 @@ case 103:
 break;
 case 104:
 
-              var nodo = new Nodo("A","MOD",$$[$0-2],+yylineno+1,+_$[$0-2].first_column+1);
+              var nodo = new Nodo("A","MOD",+yylineno+1,+_$[$0-2].first_column+1);
               nodo.addHijo($$[$0-2]);
               nodo.addHijo($$[$0]);
               this.$ = nodo;
@@ -944,35 +944,36 @@ case 105:
 break;
 case 106:
 
-                var nodo = new Nodo("NEGATIVO",$$[$0],$$[$0-1],+yylineno+1,+_$[$0-1].first_column+1);
+                var nodo = new Nodo("NEGATIVO","NEGATIVO",+yylineno+1,+_$[$0-1].first_column+1);
+                nodo.addHijo($$[$0])
                 this.$ = nodo;
                 this.$.trad = $$[$0-1] + $$[$0].trad;
              
 break;
 case 107:
 
-                var nodo = new Nodo("STRING",$$[$0],$$[$0],+yylineno+1,+_$[$0].first_column+1);
+                var nodo = new Nodo("STRING",$$[$0],+yylineno+1,+_$[$0].first_column+1);
                 this.$ = nodo;
-                this.$.trad = $$[$0];
+                this.$.trad = "\""+$$[$0]+"\"";
               
 break;
 case 108:
 
-                var nodo = new Nodo("ENTERO",$$[$0],$$[$0],+yylineno+1,+_$[$0].first_column+1);
+                var nodo = new Nodo("ENTERO",$$[$0],+yylineno+1,+_$[$0].first_column+1);
                 this.$ = nodo;
                 this.$.trad = $$[$0];
               
 break;
 case 109:
 
-                var nodo = new Nodo("DECIMAL",$$[$0],$$[$0],+yylineno+1,+_$[$0].first_column+1);
+                var nodo = new Nodo("DECIMAL",$$[$0],+yylineno+1,+_$[$0].first_column+1);
                 this.$ = nodo;
                 this.$.trad = $$[$0];
               
 break;
 case 110:
 
-          var nodo = new Nodo("ID",$$[$0],$$[$0],+yylineno+1,+_$[$0].first_column+1);
+          var nodo = new Nodo("ID",$$[$0],+yylineno+1,+_$[$0].first_column+1);
           this.$ = nodo;
           this.$.trad = $$[$0];
         
