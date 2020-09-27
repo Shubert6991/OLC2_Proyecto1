@@ -406,7 +406,7 @@ DECLARACION: tk_let tk_id tk_dospuntos TIPOV2 tk_igual VALOR tk_puntoycoma{
           | tk_id tk_inc tk_puntoycoma{
                                         var nodo = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@1.first_column+1);
                                         var id = new Nodo("ID",$1,+yylineno+1,+@2.first_column+1);
-                                        nodo.addError(id);
+                                        nodo.addHijo(id);
                                         $$ = nodo;
                                         $$.trad = $1+$2+$3+"\n";
                                       }
@@ -417,7 +417,7 @@ DECLARACION: tk_let tk_id tk_dospuntos TIPOV2 tk_igual VALOR tk_puntoycoma{
 
                                 var nodo = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@1.first_column+1);
                                 var id = new Nodo("ID",$1,+yylineno+1,+@2.first_column+1);
-                                nodo.addError(id);
+                                nodo.addHijo(id);
                                 $$ = nodo;
                                 $$.trad = $1+$2+";\n";
                               } 
@@ -828,6 +828,10 @@ L: L tk_and L {
                   $$ = nodo;
                   $$.trad = $1
                 }
+  |tk_pabierto L tk_pcerrado {
+                              $$ = $2;
+                              $$.trad = $1 + " " + $2.trad + " " + $3
+                            }
   |R {
        $$=$1;
        $$.trad = $1.trad;
@@ -922,10 +926,6 @@ A:A tk_suma A {
               $$ = nodo;
               $$.trad = $1.trad + " " + $2 + " " + $3.trad;
             }
- |tk_pabierto A tk_pcerrado {
-                              $$ = $2;
-                              $$.trad = $1 + " " + $2.trad + " " + $3
-                            }
  |tk_resta A {
                 var nodo = new Nodo("NEGATIVO","NEGATIVO",+yylineno+1,+@1.first_column+1);
                 nodo.addHijo($2)

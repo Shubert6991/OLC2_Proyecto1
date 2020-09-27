@@ -275,6 +275,18 @@ var getValor = function getValor(nodo, entorno, errores) {
     }
   }
 
+  if (nodo.getTipo() === "T") {
+    var val1 = getValor(nodo.getListaNodos()[0], entorno, errores);
+    var val2 = getValor(nodo.getListaNodos()[1], entorno, errores);
+    var val3 = getValor(nodo.getListaNodos()[2], entorno, errores);
+
+    if (val1) {
+      return val2;
+    } else {
+      return val3;
+    }
+  }
+
   if (nodo.getTipo() === "BOOLEAN") {
     if (nodo.getNombre() === "true") {
       return true;
