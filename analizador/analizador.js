@@ -139,20 +139,28 @@ case 7: case 10:
             this.$.trad = $$[$0-1].trad + $$[$0].trad;
           
 break;
-case 11: case 20:
+case 11:
 
-              //imprimir cola de funciones
-              console.log("Funciones Desanidadas!!!!")
-              console.log(id_anidadas)
-              console.log(trad_func)
-              console.log("##########################")
-              //limpiar cola
-              id_anidadas = "";
-              trad_func = "";
+              this.$ = new Nodo("I","I");
+              this.$.fun = "test";
+              console.log("#### I -> I FUNCION ####")
+              var s =  eval('$$');
+              console.log(s);
+              console.log("################")
             
 break;
 case 12: case 13: case 14: case 15: case 16: case 17: case 18: case 19: case 123: case 124: case 125: case 126: case 127: case 128: case 129: case 130: case 131:
  this.$ = $$[$0]; this.$.trad = $$[$0].trad; 
+break;
+case 20:
+
+              this.$ = new Nodo("I","I");
+              this.$.fun = "test";
+              console.log("#### I -> FUNCION ####")
+              var s =  eval('$$');
+              console.log(s);
+              console.log("################")
+            
 break;
 case 21:
 
@@ -991,13 +999,11 @@ case 111:
 break;
 case 112:
 
-                                          //aqui puede venir anidada
-                                          //console.log("Func en bsentencias")
-                                          //guardar funcion en cola
-                                          //console.log(trad_func)
-                                          //trad_func+="{}\n"
-                                          this.$ = new Nodo("","")
-                                          this.$.trad = "{}\n"
+                                          console.log("#### BSentencias->  FUNCION ####")
+                                          var s =  eval('$$');
+                                          console.log(s);
+                                          console.log("################")
+                                          this.$ = $$[$0-1];
                                         
 break;
 case 113:
@@ -2694,23 +2700,16 @@ case 255:
 break;
 case 256:
  
-                                                                              console.log("FUNCION")
-                                                                              //guardar traduccion en cola
-                                                                              if(id_anidadas == ""){
-                                                                                trad_func += $$[$0-6]+" "+$$[$0-5]+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1].trad+" "+$$[$0].trad;
-                                                                                id_anidadas = "_"+$$[$0-5];
-                                                                              } else {
-                                                                                trad_func += $$[$0-6]+" "+$$[$0-5]+"_"+id_anidadas+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1].trad+" "+$$[$0].trad;
-                                                                                id_anidadas = $$[$0-5]+id_anidadas;
-                                                                              }
+                                                                              console.log("#### FUNCION ####")
+                                                                              var s =  eval('$$');
+                                                                              console.log(s);
+                                                                              console.log("################")
+                                                                              this.$ = new Nodo("FUNCION","FUNCION")
+                                                                              this.$.id = $$[$0-5];
                                                                             
 break;
 case 257:
 
-                                                                                      console.log("FUNCION")
-                                                                                      //console.log("func ant");
-                                                                                      //console.log(this.$.func);
-                                                                                      //guardar traduccion en cola
                                                                                     
 break;
 case 258:
