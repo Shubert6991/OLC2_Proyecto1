@@ -5,12 +5,9 @@ const ejecutar = (ast,entorno,errores) => {
     console.log(tipo);
     switch (tipo) {
       case "S":
-        ejecutar(ast.getListaNodos()[0],entorno,errores);
-        break;
+        return ejecutar(ast.getListaNodos()[0],entorno,errores);
       case "I":
-        ejecutar(ast.getListaNodos()[0],entorno,errores);
-        ejecutar(ast.getListaNodos()[1],entorno,errores);
-        break;
+        return Math.max(ejecutar(ast.getListaNodos()[0],entorno,errores),ejecutar(ast.getListaNodos()[1],entorno,errores));
       case "DECLARACION":
         //ejecutar declaracion;
         declaracion(ast,entorno,errores);
@@ -25,12 +22,10 @@ const ejecutar = (ast,entorno,errores) => {
           //error semantico
           var err = new Error("Semantico","No se puede incrementar ->"+id+" no esta declarado",nodo.getFila(),nodo.getColumna());
           errores.push(err);
-          return 0;
         } else {
           if (tid.getTipo() !== "NUMBER") {
             var err = new Error("Semantico","No se puede incrementar ->"+id+" no es tipo numero",nodo.getFila(),nodo.getColumna());
             errores.push(err);
-            return 0;
           }
         }
         // sumarle 1
@@ -51,12 +46,10 @@ const ejecutar = (ast,entorno,errores) => {
           //error semantico
           var err = new Error("Semantico","No se puede incrementar ->"+id+" no esta declarado",nodo.getFila(),nodo.getColumna());
           errores.push(err);
-          return 0;
         } else {
           if (tid.getTipo() !== "NUMBER") {
             var err = new Error("Semantico","No se puede incrementar ->"+id+" no es tipo numero",nodo.getFila(),nodo.getColumna());
             errores.push(err);
-            return 0;
           }
         }
         // sumarle 1
@@ -90,17 +83,22 @@ const ejecutar = (ast,entorno,errores) => {
         ejecutarElse(ast,entorno,errores);
         break;
       case "SENTENCIAS":
-        ejecutar(ast.getListaNodos()[0],entorno,errores);
-        ejecutar(ast.getListaNodos()[1],entorno,errores);
-        break
+        return Math.max(ejecutar(ast.getListaNodos()[0],entorno,errores),ejecutar(ast.getListaNodos()[1],entorno,errores));
       case "SWITCH":
         ejecutarSwitch(ast,new Entorno("SWITCH",entorno),errores);
         break;
       case "BREAK":
-        return "BREAK";
+        if(entorno.nombre === "SWITCH"){
+          return 1;
+        }
+        console.error("Error Semantico");
+        var err = new Error("Semantico","La sentencia break solo se puede utilzar en switch",ast.getFila(),ast.getColumna());
+        errores.push(err);
+        break;
       default:
         console.error("todavia no he programado eso -> "+tipo);
         break;
     }
   }
+  return 0;
 }

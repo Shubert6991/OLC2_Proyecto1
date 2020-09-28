@@ -8,9 +8,11 @@ const ejecutarSwitch = (nodo,entorno,errores) => {
 const ejecutarBSwitch = (cond,nodo,entorno,errores) => {
   if(nodo.hijosCount() == 2){
     //case default
-    ejecutarCases(cond,nodo.getListaNodos()[0],entorno,errores,false,false);
-    ejecutarDefault(nodo.getListaNodos()[1],entorno,errores);
-
+    // if( != "break"){
+    // console.log(ejecutarCases(cond,nodo.getListaNodos()[0],entorno,errores))
+    if(ejecutarCases(cond,nodo.getListaNodos()[0],entorno,errores) != 1){
+       ejecutarDefault(nodo.getListaNodos()[1],entorno,errores);
+    }
   }
   if(nodo.hijosCount() == 1){
     //case
@@ -20,59 +22,62 @@ const ejecutarBSwitch = (cond,nodo,entorno,errores) => {
 
 const ejecutarCases = (cond,nodo,entorno,errores) => {
   if(nodo.hijosCount() == 3){
-    if(ejecutarCases(cond,nodo.getListaNodos()[0],entorno,errores)){
-      console.log("Ejecutando cases 3 hijos")
-      ejecutar(nodo.getListaNodos()[2],entorno,errores);
-      return true;
+    var ec = ejecutarCases(cond,nodo.getListaNodos()[0],entorno,errores);
+    if(ec === 0){
+      r = ejecutar(nodo.getListaNodos()[2],entorno,errores)
+      // console.log("Retornando: "+r)
+      return r
     } else {
-      //verificar la sentencia
-      console.log("verificando sentencias cases 3 hijos")
+      if(ec === 1) return 1
       var val = getValor(nodo.getListaNodos()[1],entorno,errores);
-      console.log("verificando: "+val+" y "+cond);
       if(val === cond){
-        ejecutar(nodo.getListaNodos()[2],entorno,errores);
-        return true;
+        r = ejecutar(nodo.getListaNodos()[2],entorno,errores)
+        // console.log("Retornando: "+r)
+        return r
       }
+      // console.log("Retornando: 2")
+      return 2;
     }
   }
   if(nodo.hijosCount() == 2){
     if(nodo.getListaNodos()[0].getTipo() === "CASE"){
-      if(ejecutarCases(cond,nodo.getListaNodos()[0],entorno,errores)){
-        //no tiene nada;
-        console.log("Ejecutando cases 2 hijos no tiene nada v1")
-        return true;
+      var ec = ejecutarCases(cond,nodo.getListaNodos()[0],entorno,errores);
+      if(ec === 0){
+        // console.log("Retornando: 0")
+        return 0;
       } else{
-        //verificar la sentencia
-        console.log("verificando sentencias cases 2 hijos v1")
+        if(ec === 1) return 1;
         var val = getValor(nodo.getListaNodos()[1],entorno,errores);
-        console.log("verificando: "+val+" y "+cond);
         if(val === cond){
-          // no tiene nada
-          return true;
+          // console.log("Retornando: 0")
+          return 0;
         }
+        // console.log("Retornando: 2")
+        return 2;
       }
     }else{
-      console.log("verificando sentencias cases 2 hijos v2")
       var val = getValor(nodo.getListaNodos()[0],entorno,errores);
-      console.log("verificando: "+val+" y "+cond);
       if(val === cond){
-        console.log("Ejecutando cases 2 hijos v2")
-        ejecutar(nodo.getListaNodos()[1],entorno,errores);
-        return true;
-      }
+        r = ejecutar(nodo.getListaNodos()[1],entorno,errores)
+        // console.log("Retornando: "+r)
+        return r
+      } 
+      // console.log("Retornando: 2")
+      return 2;
     }
   }
   if(nodo.hijosCount() == 1){
-    console.log("verificando sentencias cases 1 hijos")
     var val = getValor(nodo.getListaNodos()[0],entorno,errores);
-    console.log("verificando: "+val+" y "+cond);
     if(val === cond){
-      //no tiene sentencias
-      console.log("Ejecutando cases 1 hijos no tiene nada")
-      return true;
+      console.log("Retornando: 0")
+      return 0;
     }
+    console.log("Retornando: 2")
+    return 2;
   }
-  return false;
+  //no encontro el valor
+  console.log("Retornando: 2")
+  return 2;
 }
 
 const ejecutarDefault = (nodo,entorno,errores,hasBreak) => {
