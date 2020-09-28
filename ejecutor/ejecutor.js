@@ -87,12 +87,17 @@ const ejecutar = (ast,entorno,errores) => {
         ejecutarIF(ast,ent,errores);
         break;
       case "ELSE":
-        ejecutarElse(ast,ent,errores);
+        ejecutarElse(ast,entorno,errores);
         break;
       case "SENTENCIAS":
         ejecutar(ast.getListaNodos()[0],entorno,errores);
         ejecutar(ast.getListaNodos()[1],entorno,errores);
         break
+      case "SWITCH":
+        ejecutarSwitch(ast,new Entorno("SWITCH",entorno),errores);
+        break;
+      case "BREAK":
+        return "BREAK";
       default:
         console.error("todavia no he programado eso -> "+tipo);
         break;

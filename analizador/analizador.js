@@ -1257,8 +1257,8 @@ case 149:
                                                   var error = new Error("Sintactico","Encontrado: "+$$[$0-2]+" Se esperaba -> Parametro case",+yylineno+1,+_$[$0-2].last_column+1);
                                                   errores.addError(error);
 
-                                                  this.$ = $$[$0-4];
-                                                  this.$.trad = $$[$0-4].trad;
+                                                  this.$ = new Nodo("","");
+                                                  this.$.trad = "";
                                                 
 break;
 case 150:
@@ -1277,8 +1277,8 @@ case 151:
                                                     var error = new Error("Sintactico","Encontrado: "+$$[$0-2]+" Se esperaba -> Parametro case",+yylineno+1,+_$[$0-2].last_column+1);
                                                     errores.addError(error);
 
-                                                    this.$ = $$[$0-4];
-                                                    this.$.trad = $$[$0-4].trad;
+                                                    this.$ = new Nodo("","");
+                                                    this.$.trad = "";
                                                  
 break;
 case 152:
@@ -1296,8 +1296,8 @@ case 153:
                                         var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> Parametro case",+yylineno+1,+_$[$0-1].last_column+1);
                                         errores.addError(error);
 
-                                        this.$ = $$[$0-3];
-                                        this.$.trad = $$[$0-3].trad;
+                                        this.$ = new Nodo("","");
+                                        this.$.trad = "";
                                       
 break;
 case 154:

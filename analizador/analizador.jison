@@ -1205,8 +1205,8 @@ CASE: CASE tk_case L tk_dospuntos SENTENCIAS{
                                                   var error = new Error("Sintactico","Encontrado: "+$3+" Se esperaba -> Parametro case",+yylineno+1,+@3.last_column+1);
                                                   errores.addError(error);
 
-                                                  $$ = $1;
-                                                  $$.trad = $1.trad;
+                                                  $$ = new Nodo("","");
+                                                  $$.trad = "";
                                                 }
     | CASE tk_case L tk_dospuntos BSENTENCIAS {
                                                 var nodo = new Nodo("CASE","CASE",+yylineno+1,+@1.first_column+1);
@@ -1221,8 +1221,8 @@ CASE: CASE tk_case L tk_dospuntos SENTENCIAS{
                                                     var error = new Error("Sintactico","Encontrado: "+$3+" Se esperaba -> Parametro case",+yylineno+1,+@3.last_column+1);
                                                     errores.addError(error);
 
-                                                    $$ = $1;
-                                                    $$.trad = $1.trad;
+                                                    $$ = new Nodo("","");
+                                                    $$.trad = "";
                                                  }                                      
     | CASE tk_case L tk_dospuntos {
                                     var nodo = new Nodo("CASE","CASE",+yylineno+1,+@1.first_column+1);
@@ -1236,8 +1236,8 @@ CASE: CASE tk_case L tk_dospuntos SENTENCIAS{
                                         var error = new Error("Sintactico","Encontrado: "+$3+" Se esperaba -> Parametro case",+yylineno+1,+@3.last_column+1);
                                         errores.addError(error);
 
-                                        $$ = $1;
-                                        $$.trad = $1.trad;
+                                        $$ = new Nodo("","");
+                                        $$.trad = "";
                                       }
     | tk_case L tk_dospuntos SENTENCIAS {
                                           var nodo = new Nodo("CASE","CASE",+yylineno+1,+@1.first_column+1);
