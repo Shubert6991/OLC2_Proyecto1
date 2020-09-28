@@ -95,6 +95,20 @@ var ejecutar = function ejecutar(ast, entorno, errores) {
         arrPop(ast, entorno, errores);
         break;
 
+      case "IF":
+        var ent = new Entorno("IF", entorno);
+        ejecutarIF(ast, ent, errores);
+        break;
+
+      case "ELSE":
+        ejecutarElse(ast, ent, errores);
+        break;
+
+      case "SENTENCIAS":
+        ejecutar(ast.getListaNodos()[0], entorno, errores);
+        ejecutar(ast.getListaNodos()[1], entorno, errores);
+        break;
+
       default:
         console.error("todavia no he programado eso -> " + tipo);
         break;
