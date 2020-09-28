@@ -114,6 +114,10 @@ var ejecutar = function ejecutar(ast, entorno, errores) {
         errores.push(err);
         break;
 
+      case "WHILE":
+        ejecutarWhile(ast, new Entorno("WHILE", entorno), errores);
+        break;
+
       default:
         console.error("todavia no he programado eso -> " + tipo);
         break;

@@ -95,6 +95,9 @@ const ejecutar = (ast,entorno,errores) => {
         var err = new Error("Semantico","La sentencia break solo se puede utilzar en switch",ast.getFila(),ast.getColumna());
         errores.push(err);
         break;
+      case "WHILE":
+        ejecutarWhile(ast,new Entorno("WHILE",entorno),errores);
+        break;
       default:
         console.error("todavia no he programado eso -> "+tipo);
         break;
