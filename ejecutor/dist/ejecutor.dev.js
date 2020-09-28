@@ -118,6 +118,10 @@ var ejecutar = function ejecutar(ast, entorno, errores) {
         ejecutarWhile(ast, new Entorno("WHILE", entorno), errores);
         break;
 
+      case "DOWHILE":
+        ejecutarDoWhile(ast, new Entorno("DOWHILE", entorno), errores);
+        break;
+
       default:
         console.error("todavia no he programado eso -> " + tipo);
         break;
