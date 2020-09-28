@@ -23,19 +23,18 @@ var declaracion = function declaracion(nodo, entorno, errores) {
 
       if (type === false) {
         break;
-      }
-
-      if (type === "VOID") {
-        console.error("Error Semantico");
-        var err = new Error("Semantico", "La variable " + id + " no puede ser de tipo void", nodo.getFila(), nodo.getColumna());
-        errores.push(err);
-        break;
-      } //tercer hijo valor
+      } // if(type === "VOID"){
+      //   console.error("Error Semantico");
+      //   var err = new Error("Semantico","La variable "+id+" no puede ser de tipo void",nodo.getFila(),nodo.getColumna());
+      //   errores.push(err);
+      //   break;
+      // }
+      //tercer hijo valor
 
 
       var valor = getValor(hijos[2], entorno, errores); //verificar tipo del valor
 
-      var tipo = true;
+      console.log(_typeof(valor));
 
       switch (type) {
         case "STRING":
@@ -44,7 +43,7 @@ var declaracion = function declaracion(nodo, entorno, errores) {
             console.error("Error Semantico");
             var err = new Error("Semantico", "El valor de la variable no es tipo string", nodo.getFila(), nodo.getColumna());
             errores.push(err);
-            tipo = false;
+            return;
           }
 
           break;
@@ -55,7 +54,7 @@ var declaracion = function declaracion(nodo, entorno, errores) {
             console.error("Error Semantico");
             var err = new Error("Semantico", "El valor de la variable no es tipo number", nodo.getFila(), nodo.getColumna());
             errores.push(err);
-            tipo = false;
+            return;
           }
 
           break;
@@ -66,14 +65,10 @@ var declaracion = function declaracion(nodo, entorno, errores) {
             console.error("Error Semantico");
             var err = new Error("Semantico", "El valor de la variable no es tipo boolean", nodo.getFila(), nodo.getColumna());
             errores.push(err);
-            tipo = false;
+            return;
           }
 
           break;
-      }
-
-      if (!tipo) {
-        break;
       }
 
       var nuevo = new Simbolo(tipo, id, type, valor, entorno.nombre, nodo.getFila(), nodo.getColumna());
@@ -213,9 +208,6 @@ var getType = function getType(nodo, entorno, errores) {
 
 
 var getValor = function getValor(nodo, entorno, errores) {
-  if (nodo.getTipo() === "VALOR") {//Valores
-  }
-
   if (nodo.getTipo() === "A") {
     if (nodo.getNombre() === "SUMA") {
       var val1 = getValor(nodo.getListaNodos()[0], entorno, errores);
@@ -489,5 +481,77 @@ var getValor = function getValor(nodo, entorno, errores) {
     }
 
     return tid.getValor();
+  }
+
+  if (nodo.getTipo() === "ARRAY") {
+    //hijo1 == id
+    //hijo2 == pos
+    //buscar valor en la tabla de simbolos
+    var id = getID(nodo.getListaNodos()[0]);
+    var pos = getValor(nodo.getListaNodos()[1]);
+    var sim = entorno.getSimbolo(id);
+
+    if (sim.getTipo() === "ARRAY_STRING") {
+      return sim.getValor()[pos];
+    } else if (sim.getTipo() === "ARRAY_NUMBER") {
+      return sim.getValor()[pos];
+    } else if (sim.getTipo() === "ARRAY_BOOLEAN") {
+      return sim.getValor()[pos];
+    } else {
+      //error
+      var err = new Error("Semantico", "La variable ->" + id + " no es un array", nodo.getFila(), nodo.getColumna());
+      errores.push(err);
+      return 0;
+    }
+  }
+
+  if (nodo.getTipo() === "VARRAY") {
+    //arreglo
+    //hijo1 = lista
+    //obtener valores
+    var val = getValor(nodo.getListaNodos()[0], entorno, errores);
+    return val;
+  }
+
+  if (nodo.getTipo() === "LISTA_ARRAY") {
+    //si tiene 2 hijos, vienen varios valores
+    //si tiene 1 hijo viene 1 valor
+    var lista = new Array();
+
+    if (nodo.hijosCount() == 2) {
+      //hijo1 = lista
+      var tmp = getValor(nodo.getListaNodos()[0], entorno, errores);
+
+      if (Array.isArray(tmp)) {
+        tmp.forEach(function (element) {
+          lista.push(element);
+        });
+      } else {
+        lista.push(tmp);
+      } //hijo2 = valor
+
+
+      lista.push(getValor(nodo.getListaNodos()[1], entorno, errores));
+    }
+
+    if (nodo.hijosCount() == 1) {
+      //hijo1 = valor
+      lista.push(getValor(nodo.getListaNodos()[0], entorno, errores));
+    }
+
+    return lista;
+  }
+
+  if (nodo.getTipo() === "LENGTH") {
+    var id = getID(nodo.getListaNodos()[0]);
+    var sim = entorno.getSimbolo(id);
+
+    if (sim.getTipo().includes("ARRAY")) {
+      return sim.getValor().length;
+    } else {
+      console.error("Error Semantico");
+      var err = new Error("Semantico", "La variable " + id + " no es un array, no se puede utilizar esta funcion", nodo.getFila(), nodo.getColumna());
+      errores.push(err);
+    }
   }
 };

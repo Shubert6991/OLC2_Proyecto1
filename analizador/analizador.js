@@ -72,12 +72,12 @@
   }
 */
 var analizador = (function(){
-var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,14],$V1=[1,17],$V2=[1,15],$V3=[1,27],$V4=[1,19],$V5=[1,20],$V6=[1,21],$V7=[1,22],$V8=[1,23],$V9=[1,26],$Va=[1,24],$Vb=[1,25],$Vc=[5,15,16,22,37,75,78,84,85,86,92,95,96],$Vd=[2,21],$Ve=[5,15,16,22,37,40,75,78,82,83,84,85,86,89,90,91,92,95,96],$Vf=[1,45],$Vg=[1,49],$Vh=[1,50],$Vi=[1,58],$Vj=[1,86],$Vk=[1,85],$Vl=[1,87],$Vm=[1,88],$Vn=[1,90],$Vo=[1,91],$Vp=[1,94],$Vq=[1,95],$Vr=[1,96],$Vs=[1,97],$Vt=[1,98],$Vu=[1,107],$Vv=[1,115],$Vw=[1,133],$Vx=[1,134],$Vy=[1,135],$Vz=[1,136],$VA=[1,160],$VB=[1,159],$VC=[1,155],$VD=[1,156],$VE=[1,157],$VF=[1,158],$VG=[1,161],$VH=[2,21,43,48,68],$VI=[2,53],$VJ=[2,110],$VK=[1,169],$VL=[1,170],$VM=[1,171],$VN=[2,57],$VO=[1,178],$VP=[1,179],$VQ=[2,17,21,43,48,51,52,53,68],$VR=[1,187],$VS=[1,188],$VT=[1,189],$VU=[1,190],$VV=[1,191],$VW=[1,192],$VX=[2,17,21,43,45,46,48,51,52,53,57,58,59,60,61,62,63,64,65,66,68],$VY=[5,15,16,22,37,40,75,77,78,82,83,84,85,86,89,90,91,92,95,96],$VZ=[15,16,22,37,40,75,78,82,83,84,85,86,89,90,91,92,95,96],$V_=[1,269],$V$=[1,272],$V01=[2,17,19,21,38,48,68],$V11=[2,42],$V21=[2,43],$V31=[2,44],$V41=[2,17,19,21,38,46,48,68],$V51=[2,46],$V61=[2,43,48],$V71=[2,17,21,43,45,46,48,51,52,53,57,58,59,60,61,62,68],$V81=[2,19,21,43,48,68],$V91=[2,48,68],$Va1=[2,271],$Vb1=[1,387],$Vc1=[48,68],$Vd1=[2,17,21,43,45,46,48,51,52,53,57,58,59,60,61,62,63,64,66,68],$Ve1=[21,45,46,51,52,53,57,58,59,60,61,62,63,64,65,66],$Vf1=[40,82,83],$Vg1=[16,40],$Vh1=[2,16,27,28,29,30,40,44];
+var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,14],$V1=[1,17],$V2=[1,15],$V3=[1,26],$V4=[1,18],$V5=[1,19],$V6=[1,20],$V7=[1,21],$V8=[1,22],$V9=[1,25],$Va=[1,23],$Vb=[1,24],$Vc=[5,15,16,22,36,75,78,84,85,86,92,95,96],$Vd=[5,15,16,22,36,39,75,78,82,83,84,85,86,89,90,91,92,95,96],$Ve=[1,44],$Vf=[1,55],$Vg=[1,82],$Vh=[1,81],$Vi=[1,83],$Vj=[1,84],$Vk=[1,86],$Vl=[1,87],$Vm=[1,90],$Vn=[1,91],$Vo=[1,92],$Vp=[1,93],$Vq=[1,94],$Vr=[1,96],$Vs=[1,107],$Vt=[1,125],$Vu=[1,126],$Vv=[1,127],$Vw=[1,128],$Vx=[1,152],$Vy=[1,151],$Vz=[1,147],$VA=[1,148],$VB=[1,149],$VC=[1,150],$VD=[1,153],$VE=[2,21,42,47,67],$VF=[2,109],$VG=[1,160],$VH=[1,161],$VI=[1,163],$VJ=[1,162],$VK=[1,164],$VL=[2,56],$VM=[1,171],$VN=[1,172],$VO=[2,17,21,42,47,50,51,52,67],$VP=[1,180],$VQ=[1,181],$VR=[1,182],$VS=[1,183],$VT=[1,184],$VU=[1,185],$VV=[2,17,21,42,44,45,47,50,51,52,56,57,58,59,60,61,62,63,64,65,67],$VW=[5,15,16,22,36,39,75,77,78,82,83,84,85,86,89,90,91,92,95,96],$VX=[15,16,22,36,39,75,78,82,83,84,85,86,89,90,91,92,95,96],$VY=[1,255],$VZ=[1,258],$V_=[2,17,19,21,37,47,67],$V$=[2,42],$V01=[2,43],$V11=[2,44],$V21=[2,17,19,21,37,45,47,67],$V31=[2,46],$V41=[2,42,47],$V51=[2,17,21,42,44,45,47,50,51,52,56,57,58,59,60,61,67],$V61=[1,305],$V71=[2,21,44,45,50,51,52,56,57,58,59,60,61,62,63,64,65],$V81=[2,47,67],$V91=[2,270],$Va1=[1,372],$Vb1=[47,67],$Vc1=[2,17,21,42,44,45,47,50,51,52,56,57,58,59,60,61,62,63,65,67],$Vd1=[21,44,45,50,51,52,56,57,58,59,60,61,62,63,64,65],$Ve1=[2,107],$Vf1=[39,82,83],$Vg1=[16,39],$Vh1=[2,16,27,28,29,30,39,43];
 var parser = {trace: function trace () { },
 yy: {},
-symbols_: {"error":2,"S":3,"I":4,"EOF":5,"DECLARACION":6,"ASIGNACION":7,"IF":8,"SWITCH":9,"WHILE":10,"DOWHILE":11,"FOR":12,"FESP":13,"FUNCION":14,"tk_let":15,"tk_id":16,"tk_dospuntos":17,"TIPOV2":18,"tk_igual":19,"VALOR":20,"tk_puntoycoma":21,"tk_const":22,"TYPES":23,"tk_inc":24,"tk_dec":25,"TIPOV":26,"tk_string":27,"tk_number":28,"tk_boolean":29,"tk_void":30,"ARRAY":31,"ASIGTYPE":32,"VARRAY":33,"T":34,"VALARRAY":35,"VALFUNCION":36,"tk_type":37,"tk_llavea":38,"LTYPE":39,"tk_llavec":40,"LASIGTYPE":41,"tk_llaveca":42,"tk_llavecc":43,"tk_array":44,"tk_menor":45,"tk_mayor":46,"LVALARRAY":47,"tk_coma":48,"A":49,"L":50,"tk_ternario":51,"tk_and":52,"tk_or":53,"tk_not":54,"tk_t_boolean":55,"R":56,"tk_mayorigual":57,"tk_menorigual":58,"tk_igualdad":59,"tk_diferente":60,"tk_suma":61,"tk_resta":62,"tk_mult":63,"tk_div":64,"tk_exp":65,"tk_mod":66,"tk_pabierto":67,"tk_pcerrado":68,"tk_t_string":69,"tk_t_entero":70,"tk_t_decimal":71,"BSENTENCIAS":72,"SENTENCIAS":73,"ST":74,"tk_if":75,"ELSE":76,"tk_else":77,"tk_switch":78,"BSWITCH":79,"CASE":80,"DEFAULT":81,"tk_case":82,"tk_default":83,"tk_while":84,"tk_do":85,"tk_for":86,"tk_in":87,"tk_of":88,"tk_break":89,"tk_continue":90,"tk_return":91,"tk_fn":92,"PARFUNC":93,"LPAR":94,"tk_console":95,"tk_graficar":96,"tk_lenght":97,"tk_push":98,"tk_pop":99,"$accept":0,"$end":1},
-terminals_: {2:"error",5:"EOF",15:"tk_let",16:"tk_id",17:"tk_dospuntos",19:"tk_igual",21:"tk_puntoycoma",22:"tk_const",24:"tk_inc",25:"tk_dec",27:"tk_string",28:"tk_number",29:"tk_boolean",30:"tk_void",37:"tk_type",38:"tk_llavea",40:"tk_llavec",42:"tk_llaveca",43:"tk_llavecc",44:"tk_array",45:"tk_menor",46:"tk_mayor",48:"tk_coma",51:"tk_ternario",52:"tk_and",53:"tk_or",54:"tk_not",55:"tk_t_boolean",57:"tk_mayorigual",58:"tk_menorigual",59:"tk_igualdad",60:"tk_diferente",61:"tk_suma",62:"tk_resta",63:"tk_mult",64:"tk_div",65:"tk_exp",66:"tk_mod",67:"tk_pabierto",68:"tk_pcerrado",69:"tk_t_string",70:"tk_t_entero",71:"tk_t_decimal",75:"tk_if",77:"tk_else",78:"tk_switch",82:"tk_case",83:"tk_default",84:"tk_while",85:"tk_do",86:"tk_for",87:"tk_in",88:"tk_of",89:"tk_break",90:"tk_continue",91:"tk_return",92:"tk_fn",95:"tk_console",96:"tk_graficar",97:"tk_lenght",98:"tk_push",99:"tk_pop"},
-productions_: [0,[3,2],[3,1],[4,2],[4,2],[4,2],[4,2],[4,2],[4,2],[4,2],[4,2],[4,2],[4,1],[4,1],[4,1],[4,1],[4,1],[4,1],[4,1],[4,1],[4,1],[4,1],[6,7],[6,7],[6,7],[6,7],[6,5],[6,5],[6,5],[6,5],[6,5],[6,5],[6,3],[6,3],[6,1],[6,3],[6,3],[6,3],[6,3],[6,2],[6,2],[6,2],[26,1],[26,1],[26,1],[26,1],[26,1],[26,1],[18,1],[18,1],[20,1],[20,1],[20,1],[20,1],[20,1],[20,2],[20,2],[20,1],[23,6],[23,6],[39,5],[39,5],[39,4],[39,4],[32,3],[32,3],[41,5],[41,5],[41,4],[41,4],[31,3],[31,3],[31,3],[31,3],[31,4],[33,3],[47,3],[47,3],[47,1],[35,4],[35,4],[7,4],[7,4],[7,4],[7,4],[34,5],[34,1],[50,3],[50,3],[50,2],[50,1],[50,1],[56,3],[56,3],[56,3],[56,3],[56,3],[56,3],[56,1],[49,3],[49,3],[49,3],[49,3],[49,3],[49,3],[49,2],[49,3],[49,1],[49,1],[49,1],[49,1],[72,3],[72,2],[73,2],[73,2],[73,2],[73,2],[73,2],[73,2],[73,2],[73,2],[73,2],[73,2],[73,1],[73,1],[73,1],[73,1],[73,1],[73,1],[73,1],[73,1],[73,1],[73,1],[73,1],[8,6],[8,5],[8,5],[8,5],[8,3],[76,2],[76,2],[9,5],[9,5],[9,5],[9,3],[79,4],[79,3],[79,2],[79,3],[80,5],[80,5],[80,5],[80,5],[80,4],[80,4],[80,4],[80,4],[80,4],[80,4],[80,3],[80,3],[81,3],[81,3],[81,2],[10,5],[10,5],[10,5],[10,5],[10,3],[11,7],[11,7],[11,7],[11,7],[11,7],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,7],[12,7],[12,7],[12,7],[12,7],[12,7],[12,8],[12,8],[12,8],[12,8],[12,8],[12,8],[12,8],[12,8],[12,7],[12,7],[12,7],[12,7],[12,7],[12,7],[12,7],[12,8],[12,8],[12,8],[12,8],[12,8],[12,8],[12,8],[12,5],[12,3],[74,2],[74,2],[74,2],[74,2],[74,2],[74,2],[74,3],[74,3],[74,2],[14,7],[14,7],[14,7],[14,7],[14,7],[14,7],[14,8],[14,8],[14,8],[14,8],[14,8],[14,8],[93,5],[93,3],[93,1],[36,3],[36,4],[94,3],[94,1],[13,5],[13,5],[13,5],[13,5],[13,4],[13,4],[13,4],[13,4],[13,5],[13,5],[13,5],[13,5],[13,5],[13,6],[13,6],[13,6],[13,6],[13,6],[13,5],[13,5],[13,5],[13,5]],
+symbols_: {"error":2,"S":3,"I":4,"EOF":5,"DECLARACION":6,"ASIGNACION":7,"IF":8,"SWITCH":9,"WHILE":10,"DOWHILE":11,"FOR":12,"FESP":13,"FUNCION":14,"tk_let":15,"tk_id":16,"tk_dospuntos":17,"TIPOV2":18,"tk_igual":19,"VALOR":20,"tk_puntoycoma":21,"tk_const":22,"TYPES":23,"tk_inc":24,"tk_dec":25,"TIPOV":26,"tk_string":27,"tk_number":28,"tk_boolean":29,"tk_void":30,"ARRAY":31,"ASIGTYPE":32,"VARRAY":33,"T":34,"VALFUNCION":35,"tk_type":36,"tk_llavea":37,"LTYPE":38,"tk_llavec":39,"LASIGTYPE":40,"tk_llaveca":41,"tk_llavecc":42,"tk_array":43,"tk_menor":44,"tk_mayor":45,"LVALARRAY":46,"tk_coma":47,"A":48,"L":49,"tk_ternario":50,"tk_and":51,"tk_or":52,"tk_not":53,"tk_t_boolean":54,"R":55,"tk_mayorigual":56,"tk_menorigual":57,"tk_igualdad":58,"tk_diferente":59,"tk_suma":60,"tk_resta":61,"tk_mult":62,"tk_div":63,"tk_exp":64,"tk_mod":65,"tk_pabierto":66,"tk_pcerrado":67,"tk_t_string":68,"tk_t_entero":69,"tk_t_decimal":70,"tk_lenght":71,"BSENTENCIAS":72,"SENTENCIAS":73,"ST":74,"tk_if":75,"ELSE":76,"tk_else":77,"tk_switch":78,"BSWITCH":79,"CASE":80,"DEFAULT":81,"tk_case":82,"tk_default":83,"tk_while":84,"tk_do":85,"tk_for":86,"tk_in":87,"tk_of":88,"tk_break":89,"tk_continue":90,"tk_return":91,"tk_fn":92,"PARFUNC":93,"LPAR":94,"tk_console":95,"tk_graficar":96,"tk_push":97,"tk_pop":98,"$accept":0,"$end":1},
+terminals_: {2:"error",5:"EOF",15:"tk_let",16:"tk_id",17:"tk_dospuntos",19:"tk_igual",21:"tk_puntoycoma",22:"tk_const",24:"tk_inc",25:"tk_dec",27:"tk_string",28:"tk_number",29:"tk_boolean",30:"tk_void",36:"tk_type",37:"tk_llavea",39:"tk_llavec",41:"tk_llaveca",42:"tk_llavecc",43:"tk_array",44:"tk_menor",45:"tk_mayor",47:"tk_coma",50:"tk_ternario",51:"tk_and",52:"tk_or",53:"tk_not",54:"tk_t_boolean",56:"tk_mayorigual",57:"tk_menorigual",58:"tk_igualdad",59:"tk_diferente",60:"tk_suma",61:"tk_resta",62:"tk_mult",63:"tk_div",64:"tk_exp",65:"tk_mod",66:"tk_pabierto",67:"tk_pcerrado",68:"tk_t_string",69:"tk_t_entero",70:"tk_t_decimal",71:"tk_lenght",75:"tk_if",77:"tk_else",78:"tk_switch",82:"tk_case",83:"tk_default",84:"tk_while",85:"tk_do",86:"tk_for",87:"tk_in",88:"tk_of",89:"tk_break",90:"tk_continue",91:"tk_return",92:"tk_fn",95:"tk_console",96:"tk_graficar",97:"tk_push",98:"tk_pop"},
+productions_: [0,[3,2],[3,1],[4,2],[4,2],[4,2],[4,2],[4,2],[4,2],[4,2],[4,2],[4,2],[4,1],[4,1],[4,1],[4,1],[4,1],[4,1],[4,1],[4,1],[4,1],[4,1],[6,7],[6,7],[6,7],[6,7],[6,5],[6,5],[6,5],[6,5],[6,5],[6,5],[6,3],[6,3],[6,1],[6,3],[6,3],[6,3],[6,3],[6,2],[6,2],[6,2],[26,1],[26,1],[26,1],[26,1],[26,1],[26,1],[18,1],[18,1],[20,1],[20,1],[20,1],[20,1],[20,2],[20,2],[20,1],[23,6],[23,6],[38,5],[38,5],[38,4],[38,4],[32,3],[32,3],[40,5],[40,5],[40,4],[40,4],[31,3],[31,3],[31,3],[31,3],[31,4],[33,3],[46,3],[46,3],[46,1],[7,4],[7,4],[7,7],[7,7],[34,5],[34,1],[49,3],[49,3],[49,2],[49,1],[49,1],[55,3],[55,3],[55,3],[55,3],[55,3],[55,3],[55,1],[48,3],[48,3],[48,3],[48,3],[48,3],[48,3],[48,2],[48,3],[48,1],[48,1],[48,1],[48,4],[48,4],[48,1],[72,3],[72,2],[73,2],[73,2],[73,2],[73,2],[73,2],[73,2],[73,2],[73,2],[73,2],[73,2],[73,1],[73,1],[73,1],[73,1],[73,1],[73,1],[73,1],[73,1],[73,1],[73,1],[73,1],[8,6],[8,5],[8,5],[8,5],[8,3],[76,2],[76,2],[9,5],[9,5],[9,5],[9,3],[79,4],[79,3],[79,2],[79,3],[80,5],[80,5],[80,5],[80,5],[80,4],[80,4],[80,4],[80,4],[80,4],[80,4],[80,3],[80,3],[81,3],[81,3],[81,2],[10,5],[10,5],[10,5],[10,5],[10,3],[11,7],[11,7],[11,7],[11,7],[11,7],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,13],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,12],[12,7],[12,7],[12,7],[12,7],[12,7],[12,7],[12,8],[12,8],[12,8],[12,8],[12,8],[12,8],[12,8],[12,8],[12,7],[12,7],[12,7],[12,7],[12,7],[12,7],[12,7],[12,8],[12,8],[12,8],[12,8],[12,8],[12,8],[12,8],[12,5],[12,3],[74,2],[74,2],[74,2],[74,2],[74,2],[74,2],[74,3],[74,3],[74,2],[14,7],[14,7],[14,7],[14,7],[14,7],[14,7],[14,8],[14,8],[14,8],[14,8],[14,8],[14,8],[93,5],[93,3],[93,1],[35,3],[35,4],[94,3],[94,1],[13,5],[13,5],[13,5],[13,5],[13,4],[13,4],[13,4],[13,4],[13,6],[13,6],[13,6],[13,6],[13,6],[13,5],[13,5],[13,5],[13,5]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
 
@@ -139,7 +139,7 @@ case 7: case 10:
             this.$.trad = $$[$0-1].trad + $$[$0].trad;
           
 break;
-case 12: case 13: case 14: case 15: case 16: case 17: case 18: case 19: case 123: case 124: case 125: case 126: case 127: case 128: case 129: case 130: case 131:
+case 12: case 13: case 14: case 15: case 16: case 17: case 18: case 19: case 122: case 123: case 124: case 125: case 126: case 127: case 128: case 129: case 130:
  this.$ = $$[$0]; this.$.trad = $$[$0].trad; 
 break;
 case 20:
@@ -445,17 +445,11 @@ case 52:
 break;
 case 53:
  
-                  this.$ = $$[$0];
-                  this.$.trad = $$[$0].trad;
-                
-break;
-case 54:
- 
                     this.$ = $$[$0];
                     this.$.trad = $$[$0].trad;
                   
 break;
-case 55:
+case 54:
  
                       var nodo = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-1].first_column+1);
                       var id = new Nodo("ID",$$[$0-1],+yylineno+1,+_$[$0-1].first_column+1)
@@ -464,7 +458,7 @@ case 55:
                       this.$.trad = $$[$0-1] + $$[$0];
                     
 break;
-case 56:
+case 55:
  
                       var nodo = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-1].first_column+1);
                       var id = new Nodo("ID",$$[$0-1],+yylineno+1,+_$[$0-1].first_column+1)
@@ -473,7 +467,7 @@ case 56:
                       this.$.trad = $$[$0-1] + $$[$0];
                     
 break;
-case 57:
+case 56:
 
               console.error("Error sintactico: "+$$[$0]+" error valor");
               var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> un valor o operacion",+yylineno+1,+_$[$0].last_column+1);
@@ -482,7 +476,7 @@ case 57:
               this.$.trad = "";
             
 break;
-case 58:
+case 57:
 
                                                               var nodo = new Nodo("DECLARACION","TYPE",+yylineno+1,+_$[$0-5].first_column+1);
                                                               var id = new Nodo("ID",$$[$0-4],+yylineno+1,+_$[$0-5].first_column+1);
@@ -492,7 +486,7 @@ case 58:
                                                               this.$.trad = $$[$0-5] + " " + $$[$0-4] + $$[$0-3] + "\n" + $$[$0-2].trad + $$[$0-1] + $$[$0] + "\n";  
                                                             
 break;
-case 59:
+case 58:
 
                                                       console.error("Error sintantico: "+$$[$0]+" error types");
                                                       var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> ;",+yylineno+1,+_$[$0].last_column+1)
@@ -506,7 +500,7 @@ case 59:
                                                       this.$.trad = $$[$0-5] + " " + $$[$0-4] + $$[$0-3] + "\n" + $$[$0-2].trad + $$[$0-1] + ";\n";
                                                     
 break;
-case 60:
+case 59:
 
                                                       var nodo = new Nodo("LISTATIPO","LISTATIPO",+yylineno+1,+_$[$0-4].first_column+1);
                                                       nodo.addHijo($$[$0-4]);
@@ -517,7 +511,7 @@ case 60:
                                                       this.$.trad = $$[$0-4].trad + $$[$0-3].trad + $$[$0-2] + " " + $$[$0-1] + $$[$0] + "\n";
                                                     
 break;
-case 61:
+case 60:
 
                                                 console.error("Error sintantico: "+$$[$0]+" error types");
                                                 var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> ;",+yylineno+1,+_$[$0].last_column+1)
@@ -532,7 +526,7 @@ case 61:
                                                 this.$.trad = $$[$0-4].trad + $$[$0-3].trad + $$[$0-2] + " " + $$[$0-1] + ";\n";
                                               
 break;
-case 62:
+case 61:
 
                                                   var nodo = new Nodo("LISTATIPO","LISTATIPO",+yylineno+1,+_$[$0-3].first_column+1);
                                                   nodo.addHijo($$[$0-3]);
@@ -542,7 +536,7 @@ case 62:
                                                   this.$.trad = $$[$0-3].trad + $$[$0-2] + " " + $$[$0-1] + $$[$0] + "\n";
                                                 
 break;
-case 63:
+case 62:
 
                                           console.error("Error sintantico: "+$$[$0]+" error types");
                                           var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> ;",+yylineno+1,+_$[$0].last_column+1)
@@ -556,7 +550,7 @@ case 63:
                                           this.$.trad = $$[$0-3].trad + $$[$0-2] + " " + $$[$0-1] + ";\n";
                                         
 break;
-case 64:
+case 63:
 
                                           var nodo = new Nodo("VALOR","ASIGNACION_TIPO",+yylineno+1,+_$[$0-2].first_column+1);
                                           nodo.addHijo($$[$0-1]);
@@ -564,7 +558,7 @@ case 64:
                                           this.$.trad = $$[$0-2] + "\n" + $$[$0-1].trad + $$[$0];
                                         
 break;
-case 65:
+case 64:
 
                                       console.error("Error sintactico: "+$$[$0-1]+" error valor");
                                       var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> una lista de valores",+yylineno+1,+_$[$0-1].last_column+1);
@@ -575,7 +569,7 @@ case 65:
                                       this.$.trad = $$[$0-2] + "\n" + $$[$0];
                                     
 break;
-case 66:
+case 65:
 
                                                               var nodo = new Nodo("LISTATYPE","LISTATYPE",+yylineno+1,+_$[$0-4].first_column+1);
                                                               var id = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].first_column+1);
@@ -586,7 +580,7 @@ case 66:
                                                               this.$.trad = $$[$0-4].trad + $$[$0-3] + $$[$0-2] + " " + $$[$0-1].trad + $$[$0] + "\n";
                                                             
 break;
-case 67:
+case 66:
 
                                                       console.error("Error sintactico: "+$$[$0]+" error valor");
                                                       var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> ;",+yylineno+1,+_$[$0].last_column+1);
@@ -601,7 +595,7 @@ case 67:
                                                       this.$.trad = $$[$0-4].trad + $$[$0-3] + $$[$0-2] + " " + $$[$0-1].trad +";\n";
                                                     
 break;
-case 68:
+case 67:
 
                                                     var nodo = new Nodo("LISTATYPE","LISTATYPE",+yylineno+1,+_$[$0-3].first_column+1);
                                                     var id = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].first_column+1);
@@ -611,7 +605,7 @@ case 68:
                                                     this.$.trad = $$[$0-3] + $$[$0-2] + $$[$0-1].trad + $$[$0] + "\n";
                                                   
 break;
-case 69:
+case 68:
 
                                             console.error("Error sintactico: "+$$[$0]+" error valor");
                                             var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> ;",+yylineno+1,+_$[$0].last_column+1);
@@ -625,28 +619,28 @@ case 69:
                                             this.$.trad = $$[$0-3] + $$[$0-2] + $$[$0-1].trad +";\n";
                                           
 break;
-case 70:
+case 69:
 
                                           var nodo = new Nodo("TIPO","ARRAY_STRING",+yylineno+1,+_$[$0-2].first_column+1);
                                           this.$ = nodo;
                                           this.$.trad = $$[$0-2]+$$[$0-1]+$$[$0];
                                        
 break;
-case 71:
+case 70:
 
                                         var nodo = new Nodo("TIPO","ARRAY_NUMBER",+yylineno+1,+_$[$0-2].first_column+1);
                                         this.$ = nodo;
                                         this.$.trad = $$[$0-2]+$$[$0-1]+$$[$0];
                                       
 break;
-case 72:
+case 71:
 
                                         var nodo = new Nodo("TIPO","ARRAY_BOOLEAN",+yylineno+1,+_$[$0-2].first_column+1);
                                         this.$ = nodo;
                                         this.$.trad = $$[$0-2]+$$[$0-1]+$$[$0];
                                        
 break;
-case 73:
+case 72:
 
                                     var nodo = new Nodo("TIPO","ARRAY_ID",+yylineno+1,+_$[$0-2].first_column+1);
                                     var id = new Nodo("ID",$$[$0-2],+yylineno+1,+_$[$0-2].first_column+1);
@@ -655,7 +649,7 @@ case 73:
                                     this.$.trad = $$[$0-2]+$$[$0-1]+$$[$0];
                                   
 break;
-case 74:
+case 73:
 
                                           var nodo = new Nodo("TIPO","ARRAY_TIPO",+yylineno+1,+_$[$0-3].first_column+1);
                                           nodo.addHijo($$[$0-1])
@@ -663,16 +657,15 @@ case 74:
                                           this.$.trad = $$[$0-3]+$$[$0-2]+$$[$0-1].trad+$$[$0];
                                         
 break;
-case 75:
+case 74:
 
-                                          var nodo = new Nodo("VALOR","ASIGNACION_ARRAY",+yylineno+1,+_$[$0-2].first_column+1);
-                                          var larray = $$[$0-1];
-                                          nodo.addHijo(larray);
+                                          var nodo = new Nodo("VARRAY","VARRAY",+yylineno+1,+_$[$0-2].first_column+1);
+                                          nodo.addHijo($$[$0-1]);
                                           this.$ = nodo;
                                           this.$.trad = $$[$0-2] + $$[$0-1].trad + $$[$0];
                                         
 break;
-case 76:
+case 75:
 
                                       var nodo = new Nodo("LISTA_ARRAY","LISTA_ARRAY",+yylineno+1,+_$[$0-2].first_column+1);
                                       nodo.addHijo($$[$0-2]);
@@ -681,7 +674,7 @@ case 76:
                                       this.$.trad = $$[$0-2].trad + $$[$0-1] + " " + $$[$0].trad;
                                    
 break;
-case 77:
+case 76:
 
                                   console.error("Error sintactico: "+$$[$0-1]+" error valor");
                                   var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> ,",+yylineno+1,+_$[$0-1].last_column+1);
@@ -694,36 +687,13 @@ case 77:
                                   this.$.trad = $$[$0-2].trad + ", " + $$[$0].trad;
                                 
 break;
-case 78:
+case 77:
 
                   this.$ = $$[$0];
                   this.$.trad = $$[$0].trad;
                 
 break;
-case 79:
-
-                                          var nodo = new Nodo("VALOR","ARRAY_ITEM",+yylineno+1,+_$[$0-3].first_column+1);
-                                          var id = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].first_column+1);
-                                          nodo.addHijo(id);
-                                          nodo.addHijo($$[$0-1]);
-                                          this.$ = nodo;
-                                          this.$.trad = $$[$0-3] + $$[$0-2] + $$[$0-1].trad + $$[$0];
-                                        
-break;
-case 80:
-
-                                              console.error("Error sintactico: "+$$[$0-2]+" error valor");
-                                              var error = new Error("Sintactico","Encontrado: "+$$[$0-2]+" Se esperaba -> Operacion aritmetica || primitivo",+yylineno+1,+_$[$0-2].last_column+1);
-                                              errores.addError(error);
-
-                                              var nodo = new Nodo("VALOR","ARRAY_ITEM",+yylineno+1,+_$[$0-3].first_column+1);
-                                              var id = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].first_column+1);
-                                              nodo.addHijo(id);
-                                              this.$ = nodo;
-                                              this.$.trad = $$[$0-3] + $$[$0-2] + " " + $$[$0];
-                                            
-break;
-case 81:
+case 78:
  
                                                 var nodo = new Nodo("ASIGNACION","ASIGNACION",+yylineno+1,+_$[$0-3].first_column+1);
                                                 var id = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].first_column+1);
@@ -733,7 +703,7 @@ case 81:
                                                 this.$.trad = $$[$0-3]+" "+$$[$0-2]+" "+$$[$0-1].trad+$$[$0]+"\n";
                                               
 break;
-case 82:
+case 79:
 
                                         console.log("Error Sintactico "+$$[$0]+"Error falto punto y coma");
                                         var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> ;",+yylineno+1,+_$[$0].last_column+1);
@@ -747,29 +717,37 @@ case 82:
                                         this.$.trad = $$[$0-3]+" "+$$[$0-2]+" "+$$[$0-1].trad+";\n";
                                       
 break;
-case 83:
+case 80:
 
-                                                    var nodo = new Nodo("ASIGNACION","ASIGNACION",+yylineno+1,+_$[$0-3].first_column+1);
-                                                    nodo.addHijo($$[$0-3]);
-                                                    nodo.addHijo($$[$0-1]);
-                                                    this.$ = nodo;
-                                                    this.$.trad = $$[$0-3].trad+" "+$$[$0-2]+" "+$$[$0-1].trad+$$[$0]+"\n";
-                                                  
+                                                                        var nodo = new Nodo("ASIGNACION","ASIGNACION",+yylineno+1,+_$[$0-6].first_column+1);
+                                                                        var arr = new Nodo("ARRAY","ARRAY",+yylineno+1,+_$[$0-6].first_column+1);
+                                                                        var id = new Nodo("ID",$$[$0-6],+yylineno+1,+_$[$0-6].first_column+1);
+                                                                        arr.addHijo(id);
+                                                                        arr.addHijo($$[$0-4]);
+                                                                        nodo.addHijo(arr);
+                                                                        nodo.addHijo($$[$0-1]);
+                                                                        this.$ = nodo;
+                                                                        this.$.trad = $$[$0-6]+$$[$0-5]+$$[$0-4].trad+$$[$0-3]+" "+$$[$0-2]+" "+$$[$0-1].trad+$$[$0]+"\n";
+                                                                      
 break;
-case 84:
+case 81:
 
-                                            console.log("Error Sintactico "+$$[$0]+"Error falto punto y coma");
-                                            var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> ;",+yylineno+1,+_$[$0].last_column+1);
-                                            errores.addError(error);
+                                                                console.log("Error Sintactico "+$$[$0-3]+"Error falto punto y coma");
+                                                                var error = new Error("Sintactico","Encontrado: "+$$[$0-3]+" Se esperaba -> ;",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                errores.addError(error);
 
-                                            var nodo = new Nodo("ASIGNACION","ASIGNACION",+yylineno+1,+_$[$0-3].first_column+1);
-                                            nodo.addHijo($$[$0-3]);
-                                            nodo.addHijo($$[$0-1]);
-                                            this.$ = nodo;
-                                            this.$.trad = $$[$0-3].trad+" "+$$[$0-2]+" "+$$[$0-1].trad+";\n";
-                                          
+                                                                var nodo = new Nodo("ASIGNACION","ASIGNACION",+yylineno+1,+_$[$0-6].first_column+1);
+                                                                var arr = new Nodo("ARRAY","ARRAY",+yylineno+1,+_$[$0-6].first_column+1);
+                                                                var id = new Nodo("ID",$$[$0-6],+yylineno+1,+_$[$0-6].first_column+1);
+                                                                arr.addHijo(id);
+                                                                arr.addHijo($$[$0-4]);
+                                                                nodo.addHijo(arr);
+                                                                nodo.addHijo($$[$0-1]);
+                                                                this.$ = nodo;
+                                                                this.$.trad = $$[$0-6]+$$[$0-5]+$$[$0-4].trad+$$[$0-3]+" "+$$[$0-2]+" "+$$[$0-1].trad+";\n";
+                                                              
 break;
-case 85:
+case 82:
 
                                     var nodo = new Nodo("T","T",+yylineno+1,+_$[$0-4].first_column+1);
                                     nodo.addHijo($$[$0-4]);
@@ -779,13 +757,13 @@ case 85:
                                     this.$.trad = $$[$0-4].trad + " " + $$[$0-3] + " " + $$[$0-2].trad +$$[$0-1]+$$[$0].trad;
                                   
 break;
-case 86:
+case 83:
  
       this.$ = $$[$0]; 
       this.$.trad = $$[$0].trad; 
     
 break;
-case 87:
+case 84:
 
                 var nodo = new Nodo("L","AND",+yylineno+1,+_$[$0-2].first_column+1);
                 nodo.addHijo($$[$0-2]);
@@ -794,7 +772,7 @@ case 87:
                 this.$.trad = $$[$0-2].trad + " " + $$[$0-1] + " " + $$[$0].trad;
               
 break;
-case 88:
+case 85:
 
               var nodo = new Nodo("L","OR",+yylineno+1,+_$[$0-2].first_column+1);
               nodo.addHijo($$[$0-2]);
@@ -803,7 +781,7 @@ case 88:
               this.$.trad = $$[$0-2].trad + " " + $$[$0-1] + " " + $$[$0].trad;
             
 break;
-case 89:
+case 86:
 
               var nodo = new Nodo("L","NOT",+yylineno+1,+_$[$0-1].first_column+1);
               nodo.addHijo($$[$0]);
@@ -811,20 +789,20 @@ case 89:
               this.$.trad = $$[$0-1] + " " + $$[$0].trad;
             
 break;
-case 90:
+case 87:
 
                   var nodo = new Nodo("BOOLEAN",$$[$0],+yylineno+1,+_$[$0].first_column+1);
                   this.$ = nodo;
                   this.$.trad = $$[$0]
                 
 break;
-case 91:
+case 88:
 
        this.$=$$[$0];
        this.$.trad = $$[$0].trad;
      
 break;
-case 92:
+case 89:
 
                   var nodo = new Nodo("R","MAYOR",+yylineno+1,+_$[$0-2].first_column+1);
                   nodo.addHijo($$[$0-2]);
@@ -833,7 +811,7 @@ case 92:
                   this.$.trad = $$[$0-2].trad + " " + $$[$0-1] + " " + $$[$0].trad;
                 
 break;
-case 93:
+case 90:
 
                   var nodo = new Nodo("R","MENOR",+yylineno+1,+_$[$0-2].first_column+1);
                   nodo.addHijo($$[$0-2]);
@@ -842,7 +820,7 @@ case 93:
                   this.$.trad = $$[$0-2].trad + " " + $$[$0-1] + " " + $$[$0].trad;
                 
 break;
-case 94:
+case 91:
 
                       var nodo = new Nodo("R","MAYORIGUAL",+yylineno+1,+_$[$0-2].first_column+1);
                       nodo.addHijo($$[$0-2]);
@@ -851,7 +829,7 @@ case 94:
                       this.$.trad = $$[$0-2].trad + " " + $$[$0-1] + " " + $$[$0].trad;
                     
 break;
-case 95:
+case 92:
 
                       var nodo = new Nodo("R","MENORIGUAL",+yylineno+1,+_$[$0-2].first_column+1);
                       nodo.addHijo($$[$0-2]);
@@ -860,7 +838,7 @@ case 95:
                       this.$.trad = $$[$0-2].trad + " " + $$[$0-1] + " " + $$[$0].trad;
                     
 break;
-case 96:
+case 93:
 
                       var nodo = new Nodo("R","IGUALDAD",+yylineno+1,+_$[$0-2].first_column+1);
                       nodo.addHijo($$[$0-2]);
@@ -869,7 +847,7 @@ case 96:
                       this.$.trad = $$[$0-2].trad + " " + $$[$0-1] + " " + $$[$0].trad;
                    
 break;
-case 97:
+case 94:
 
                       var nodo = new Nodo("R","DESIGUALDAD",+yylineno+1,+_$[$0-2].first_column+1);
                       nodo.addHijo($$[$0-2]);
@@ -878,13 +856,13 @@ case 97:
                       this.$.trad = $$[$0-2].trad + " " + $$[$0-1] + " " + $$[$0].trad;
                     
 break;
-case 98:
+case 95:
 
       this.$ = $$[$0];
       this.$.trad = $$[$0].trad;
     
 break;
-case 99:
+case 96:
 
                 var nodo = new Nodo("A","SUMA",+yylineno+1,+_$[$0-2].first_column+1);
                 nodo.addHijo($$[$0-2]);
@@ -893,7 +871,7 @@ case 99:
                 this.$.trad = $$[$0-2].trad + " " + $$[$0-1] + " " + $$[$0].trad;
               
 break;
-case 100:
+case 97:
 
                 var nodo = new Nodo("A","RESTA",+yylineno+1,+_$[$0-2].first_column+1);
                 nodo.addHijo($$[$0-2]);
@@ -902,7 +880,7 @@ case 100:
                 this.$.trad = $$[$0-2].trad + " " + $$[$0-1] + " " + $$[$0].trad;
               
 break;
-case 101:
+case 98:
 
                 var nodo = new Nodo("A","MULTI",+yylineno+1,+_$[$0-2].first_column+1);
                 nodo.addHijo($$[$0-2]);
@@ -911,7 +889,7 @@ case 101:
                 this.$.trad = $$[$0-2].trad + " " + $$[$0-1] + " " + $$[$0].trad;
               
 break;
-case 102:
+case 99:
 
               var nodo = new Nodo("A","DIV",+yylineno+1,+_$[$0-2].first_column+1);
               nodo.addHijo($$[$0-2]);
@@ -920,7 +898,7 @@ case 102:
               this.$.trad = $$[$0-2].trad + " " + $$[$0-1] + " " + $$[$0].trad;
             
 break;
-case 103:
+case 100:
 
               var nodo = new Nodo("A","EXP",+yylineno+1,+_$[$0-2].first_column+1);
               nodo.addHijo($$[$0-2]);
@@ -929,7 +907,7 @@ case 103:
               this.$.trad = $$[$0-2].trad + " " + $$[$0-1] + " " + $$[$0].trad;
             
 break;
-case 104:
+case 101:
 
               var nodo = new Nodo("A","MOD",+yylineno+1,+_$[$0-2].first_column+1);
               nodo.addHijo($$[$0-2]);
@@ -938,7 +916,7 @@ case 104:
               this.$.trad = $$[$0-2].trad + " " + $$[$0-1] + " " + $$[$0].trad;
             
 break;
-case 105:
+case 102:
 
                 var nodo = new Nodo("NEGATIVO","NEGATIVO",+yylineno+1,+_$[$0-1].first_column+1);
                 nodo.addHijo($$[$0])
@@ -946,41 +924,60 @@ case 105:
                 this.$.trad = $$[$0-1] + $$[$0].trad;
              
 break;
-case 106:
+case 103:
 
                               this.$ = $$[$0-1];
                               this.$.trad = $$[$0-2]+" "+$$[$0-1].trad+" "+$$[$0];
                            
 break;
-case 107:
+case 104:
 
                 var nodo = new Nodo("STRING",$$[$0],+yylineno+1,+_$[$0].first_column+1);
                 this.$ = nodo;
                 this.$.trad = "\""+$$[$0]+"\"";
               
 break;
-case 108:
+case 105:
 
                 var nodo = new Nodo("ENTERO",$$[$0],+yylineno+1,+_$[$0].first_column+1);
                 this.$ = nodo;
                 this.$.trad = $$[$0];
               
 break;
-case 109:
+case 106:
 
                 var nodo = new Nodo("DECIMAL",$$[$0],+yylineno+1,+_$[$0].first_column+1);
                 this.$ = nodo;
                 this.$.trad = $$[$0];
               
 break;
-case 110:
+case 107:
 
-          var nodo = new Nodo("ID",$$[$0],+yylineno+1,+_$[$0].first_column+1);
-          this.$ = nodo;
-          this.$.trad = $$[$0];
-        
+                                  var nodo = new Nodo("ARRAY","ARRAY",+yylineno+1,+_$[$0-3].first_column+1);
+                                  var id = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].first_column+1);
+                                  nodo.addHijo(id);
+                                  nodo.addHijo($$[$0-1]);
+                                  this.$ = nodo;
+                                  this.$.trad = $$[$0-3]+$$[$0-2]+$$[$0-1].trad+$$[$0];
+                                
 break;
-case 111:
+case 108:
+
+                                              var nodo = new Nodo("LENGTH","LENGTH",+yylineno+1,+_$[$0-3].last_column+1);
+                                              var id = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
+                                              nodo.addHijo(id);
+                                              this.$ = nodo;
+                                              this.$.trad = $$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0];
+                                            
+break;
+case 109:
+
+            var nodo = new Nodo("ID",$$[$0],+yylineno+1,+_$[$0].first_column+1);
+            this.$ = nodo;
+            this.$.trad = $$[$0];
+          
+break;
+case 110:
 
                                               //console.log("BSENTENCIAS-----------------")
                                               //var s =  eval('$$');
@@ -993,7 +990,7 @@ case 111:
                                               }
                                             
 break;
-case 112:
+case 111:
 
                                   //console.log("BSENTENCIAS-----------------")
                                   //var s =  eval('$$');
@@ -1002,7 +999,7 @@ case 112:
                                   this.$.trad = $$[$0-1]+$$[$0]+"\n";
                                 
 break;
-case 113:
+case 112:
 
                                       var nodo = new Nodo("SENTENCIAS","SENTENCIAS",+yylineno+1,+_$[$0-1].first_column+1);
                                       nodo.addHijo($$[$0-1]);
@@ -1011,7 +1008,7 @@ case 113:
                                       this.$.trad = $$[$0-1].trad + $$[$0].trad;
                                    
 break;
-case 114:
+case 113:
 
                                     var nodo = new Nodo("SENTENCIAS","SENTENCIAS",+yylineno+1,+_$[$0-1].first_column+1);
                                     nodo.addHijo($$[$0-1]);
@@ -1020,7 +1017,7 @@ case 114:
                                     this.$.trad = $$[$0-1].trad + $$[$0].trad;
                                   
 break;
-case 115: case 119:
+case 114: case 118:
 
                             var nodo = new Nodo("SENTENCIAS","SENTENCIAS",+yylineno+1,+_$[$0-1].first_column+1);
                             nodo.addHijo($$[$0-1]);
@@ -1029,7 +1026,7 @@ case 115: case 119:
                             this.$.trad = $$[$0-1].trad + $$[$0].trad;
                           
 break;
-case 116: case 118:
+case 115: case 117:
 
                                 var nodo = new Nodo("SENTENCIAS","SENTENCIAS",+yylineno+1,+_$[$0-1].first_column+1);
                                 nodo.addHijo($$[$0-1]);
@@ -1038,7 +1035,7 @@ case 116: case 118:
                                 this.$.trad = $$[$0-1].trad + $$[$0].trad;
                               
 break;
-case 117:
+case 116:
 
                               var nodo = new Nodo("SENTENCIAS","SENTENCIAS",+yylineno+1,+_$[$0-1].first_column+1);
                               nodo.addHijo($$[$0-1]);
@@ -1047,7 +1044,7 @@ case 117:
                               this.$.trad = $$[$0-1].trad + $$[$0].trad;
                             
 break;
-case 120:
+case 119:
   
                             var nodo = new Nodo("SENTENCIAS","SENTENCIAS",+yylineno+1,+_$[$0-1].first_column+1);
                             nodo.addHijo($$[$0-1]);
@@ -1056,7 +1053,7 @@ case 120:
                             this.$.trad = $$[$0-1].trad + $$[$0].trad;
                           
 break;
-case 121:
+case 120:
   
                               var nodo = new Nodo("SENTENCIAS","SENTENCIAS",+yylineno+1,+_$[$0-1].first_column+1);
                               nodo.addHijo($$[$0-1]);
@@ -1065,7 +1062,7 @@ case 121:
                               this.$.trad = $$[$0-1].trad + $$[$0].trad;
                             
 break;
-case 122:
+case 121:
   
                                 var nodo = new Nodo("SENTENCIAS","SENTENCIAS",+yylineno+1,+_$[$0-1].first_column+1);
                                 nodo.addHijo($$[$0-1]);
@@ -1075,14 +1072,14 @@ case 122:
                                 this.$.func = $$[$0].trad;
                               
 break;
-case 132:
+case 131:
  
                      this.$ = $$[$0]; 
                      this.$.trad = ""; 
                      this.$.func = $$[$0].func;
                     
 break;
-case 133:
+case 132:
 
                     console.error("Error sintactico: "+$$[$0]+" Desconocido Sentencias");
                     var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> DECLARACION||ASIGNACION||IF||SWITCH||WHILE||DO WHILE||SENTENCIAS DE TRANSFARENCIA||console.log()||graficar_ts()",+yylineno+1,+_$[$0].last_column+1);
@@ -1091,7 +1088,7 @@ case 133:
                     this.$.trad = "";
                   
 break;
-case 134:
+case 133:
 
                                                       var nodo = new Nodo("IF","IF",+yylineno+1,+_$[$0-5].first_column+1);
                                                       nodo.addHijo($$[$0-3]); //condicion
@@ -1101,7 +1098,7 @@ case 134:
                                                       this.$.trad = $$[$0-5]+$$[$0-4]+$$[$0-3].trad+$$[$0-2]+$$[$0-1].trad+$$[$0].trad;
                                                     
 break;
-case 135:
+case 134:
 
                                                   var nodo = new Nodo("IF","IF",+yylineno+1,+_$[$0-4].first_column+1);
                                                   nodo.addHijo($$[$0-2]); //condicion
@@ -1110,7 +1107,7 @@ case 135:
                                                   this.$.trad = $$[$0-4]+$$[$0-3]+$$[$0-2].trad+$$[$0-1]+$$[$0].trad;
                                                 
 break;
-case 136:
+case 135:
 
                                             console.error("Error Sintactico: "+$$[$0-3]+" Error parametros en if")
                                             var error = new Error("Sintactico","Encontrado: "+$$[$0-3]+" Se esperaba -> (",+yylineno+1,+_$[$0-3].last_column+1);
@@ -1123,7 +1120,7 @@ case 136:
                                             this.$.trad = $$[$0-4]+"("+$$[$0-2].trad+$$[$0-1]+$$[$0].trad;
                                           
 break;
-case 137:
+case 136:
 
                                             console.error("Error Sintactico: "+$$[$0-1]+" Error parametros en if")
                                             var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> )",+yylineno+1,+_$[$0-1].last_column+1);
@@ -1136,7 +1133,7 @@ case 137:
                                             this.$.trad = $$[$0-4]+$$[$0-3]+$$[$0-2].trad+")"+$$[$0].trad;
                                           
 break;
-case 138:
+case 137:
 
                               console.error("Error Sintactico: "+$$[$0-1]+" Error parametros en if")
                               var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> Condicion en if",+yylineno+1,+_$[$0-1].last_column+1);
@@ -1146,7 +1143,7 @@ case 138:
                               this.$.trad = "";
                             
 break;
-case 139:
+case 138:
 
                             var nodo = new Nodo("ELSE","ELSE",+yylineno+1,+_$[$0-1].first_column+1)
                             nodo.addHijo($$[$0]);
@@ -1155,7 +1152,7 @@ case 139:
                             this.$.trad = $$[$0-1]+" "+$$[$0].trad;
                           
 break;
-case 140:
+case 139:
 
                   var nodo = new Nodo("ELSE","ELSE",+yylineno+1,+_$[$0-1].first_column+1)
                   nodo.addHijo($$[$0]);
@@ -1164,7 +1161,7 @@ case 140:
                   this.$.trad = $$[$0-1]+" "+$$[$0].trad;
                 
 break;
-case 141:
+case 140:
 
                                                       var nodo = new Nodo("SWITCH","SWITCH",+yylineno+1,+_$[$0-4].first_column+1);
                                                       nodo.addHijo($$[$0-2]);
@@ -1173,7 +1170,7 @@ case 141:
                                                       this.$.trad = $$[$0-4]+" "+$$[$0-3]+$$[$0-2].trad+$$[$0-1]+$$[$0].trad;
                                                     
 break;
-case 142:
+case 141:
 
                                                 console.error("Error Sintactico: "+$$[$0-3]+" Error parametros en switch")
                                                 var error = new Error("Sintactico","Encontrado: "+$$[$0-3]+" Se esperaba -> (",+yylineno+1,+_$[$0-3].last_column+1);
@@ -1186,7 +1183,7 @@ case 142:
                                                 this.$.trad = $$[$0-4]+" ("+$$[$0-2].trad+$$[$0-1]+$$[$0].trad;
                                               
 break;
-case 143:
+case 142:
 
                                                 console.error("Error Sintactico: "+$$[$0-1]+" Error parametros en switch")
                                                 var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> )",+yylineno+1,+_$[$0-1].last_column+1);
@@ -1199,7 +1196,7 @@ case 143:
                                                 this.$.trad = $$[$0-4]+" "+$$[$0-3]+$$[$0-2].trad+")"+$$[$0].trad;
                                               
 break;
-case 144:
+case 143:
  
                                   console.error("Error Sintactico: "+$$[$0-1]+" Error parametros en switch")
                                   var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> condicion del switch",+yylineno+1,+_$[$0-1].last_column+1);
@@ -1209,7 +1206,7 @@ case 144:
                                   this.$.trad = "";
                                 
 break;
-case 145:
+case 144:
 
                                             var nodo = new Nodo("BSWITCH","BSWITCH",+yylineno+1,+_$[$0-3].first_column+1);
                                             nodo.addHijo($$[$0-2]);
@@ -1218,7 +1215,7 @@ case 145:
                                             this.$.trad = $$[$0-3]+"\n"+$$[$0-2].trad+$$[$0-1].trad+$$[$0]+"\n";
                                           
 break;
-case 146:
+case 145:
 
                                   var nodo = new Nodo("BSWITCH","BSWITCH",+yylineno+1,+_$[$0-2].first_column+1);
                                   nodo.addHijo($$[$0-1]);
@@ -1226,14 +1223,14 @@ case 146:
                                   this.$.trad = $$[$0-2]+"\n"+$$[$0-1].trad+$$[$0]+"\n";
                                 
 break;
-case 147:
+case 146:
 
                             var nodo = new Nodo("BSWITCH","BSWITCH",+yylineno+1,+_$[$0-1].first_column+1);
                             this.$ = nodo;
                             this.$.trad = $$[$0-1]+"\n"+$$[$0]+"\n";
                           
 break;
-case 148:
+case 147:
  
                                   console.error("Error Sintactico: "+$$[$0-1]+" Error Cases en switch");
                                   var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> CASE o DEFAULT",+yylineno+1,+_$[$0-1].last_column+1);
@@ -1244,7 +1241,7 @@ case 148:
                                   this.$.trad = $$[$0-2]+"\n"+$$[$0]+"\n";
                                 
 break;
-case 149:
+case 148:
 
                                               var nodo = new Nodo("CASE","CASE",+yylineno+1,+_$[$0-4].first_column+1);
                                               nodo.addHijo($$[$0-4]);
@@ -1254,7 +1251,7 @@ case 149:
                                               this.$.trad = $$[$0-4].trad+$$[$0-3]+" "+$$[$0-2].trad+$$[$0-1]+"\n"+$$[$0].trad;
                                             
 break;
-case 150:
+case 149:
 
                                                   console.error("Error Sintactico: "+$$[$0-2]+" Error Cases en switch");
                                                   var error = new Error("Sintactico","Encontrado: "+$$[$0-2]+" Se esperaba -> Parametro case",+yylineno+1,+_$[$0-2].last_column+1);
@@ -1264,7 +1261,7 @@ case 150:
                                                   this.$.trad = $$[$0-4].trad;
                                                 
 break;
-case 151:
+case 150:
 
                                                 var nodo = new Nodo("CASE","CASE",+yylineno+1,+_$[$0-4].first_column+1);
                                                 nodo.addHijo($$[$0-4]);
@@ -1274,7 +1271,7 @@ case 151:
                                                 this.$.trad = $$[$0-4].trad+$$[$0-3]+" "+$$[$0-2].trad+$$[$0-1]+$$[$0].trad;
                                               
 break;
-case 152:
+case 151:
 
                                                     console.error("Error Sintactico: "+$$[$0-2]+" Error Cases en switch");
                                                     var error = new Error("Sintactico","Encontrado: "+$$[$0-2]+" Se esperaba -> Parametro case",+yylineno+1,+_$[$0-2].last_column+1);
@@ -1284,7 +1281,7 @@ case 152:
                                                     this.$.trad = $$[$0-4].trad;
                                                  
 break;
-case 153:
+case 152:
 
                                     var nodo = new Nodo("CASE","CASE",+yylineno+1,+_$[$0-3].first_column+1);
                                     nodo.addHijo($$[$0-3]);
@@ -1293,7 +1290,7 @@ case 153:
                                     this.$.trad = $$[$0-3].trad+$$[$0-2]+" "+$$[$0-1].trad+$$[$0]+"\n";
                                   
 break;
-case 154:
+case 153:
 
                                         console.error("Error Sintactico: "+$$[$0-1]+" Error Cases en switch");
                                         var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> Parametro case",+yylineno+1,+_$[$0-1].last_column+1);
@@ -1303,7 +1300,7 @@ case 154:
                                         this.$.trad = $$[$0-3].trad;
                                       
 break;
-case 155:
+case 154:
 
                                           var nodo = new Nodo("CASE","CASE",+yylineno+1,+_$[$0-3].first_column+1);
                                           nodo.addHijo($$[$0-2]);
@@ -1312,7 +1309,7 @@ case 155:
                                           this.$.trad = $$[$0-3]+" "+$$[$0-2].trad+$$[$0-1]+"\n"+$$[$0].trad;
                                         
 break;
-case 156: case 158:
+case 155: case 157:
 
                                               console.error("Error Sintactico: "+$$[$0-2]+" Error Cases en switch");
                                               var error = new Error("Sintactico","Encontrado: "+$$[$0-2]+" Se esperaba -> Parametro case",+yylineno+1,+_$[$0-2].last_column+1);
@@ -1322,7 +1319,7 @@ case 156: case 158:
                                               this.$.trad = "";
                                             
 break;
-case 157:
+case 156:
 
                                           var nodo = new Nodo("CASE","CASE",+yylineno+1,+_$[$0-3].first_column+1);
                                           nodo.addHijo($$[$0-2]);
@@ -1331,7 +1328,7 @@ case 157:
                                           this.$.trad = $$[$0-3]+" "+$$[$0-2].trad+$$[$0-1]+$$[$0].trad;
                                         
 break;
-case 159:
+case 158:
 
                               var nodo = new Nodo("CASE","CASE",+yylineno+1,+_$[$0-2].first_column+1);
                               nodo.addHijo($$[$0-1]);
@@ -1339,7 +1336,7 @@ case 159:
                               this.$.trad = $$[$0-2]+" "+$$[$0-1].trad+$$[$0]+"\n";
                             
 break;
-case 160:
+case 159:
  
                                   console.error("Error Sintactico: "+$$[$0-1]+" Error Cases en switch");
                                   var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> Parametro case",+yylineno+1,+_$[$0-1].last_column+1);
@@ -1349,7 +1346,7 @@ case 160:
                                   this.$.trad = "";
                                 
 break;
-case 161:
+case 160:
 
                                               var nodo = new Nodo("DEFAULT","DEFAULT",+yylineno+1,+_$[$0-2].last_column+1);
                                               nodo.addHijo($$[$0]);
@@ -1357,7 +1354,7 @@ case 161:
                                               this.$.trad = $$[$0-2]+$$[$0-1]+"\n"+$$[$0].trad;
                                             
 break;
-case 162:
+case 161:
 
                                               var nodo = new Nodo("DEFAULT","DEFAULT",+yylineno+1,+_$[$0-2].last_column+1);
                                               nodo.addHijo($$[$0]);
@@ -1365,14 +1362,14 @@ case 162:
                                               this.$.trad = $$[$0-2]+$$[$0-1]+$$[$0].trad;
                                             
 break;
-case 163:
+case 162:
 
                                   var nodo = new Nodo("DEFAULT","DEFAULT",+yylineno+1,+_$[$0-1].last_column+1);
                                   this.$ = nodo;
                                   this.$.trad = $$[$0-1]+$$[$0]+"\n";
                                 
 break;
-case 164:
+case 163:
 
                                                         var nodo = new Nodo("WHILE","WHILE",+yylineno+1,+_$[$0-4].last_column+1);
                                                         nodo.addHijo($$[$0-2]);
@@ -1381,7 +1378,7 @@ case 164:
                                                         this.$.trad = $$[$0-4]+$$[$0-3]+$$[$0-2].trad+$$[$0-1]+$$[$0].trad;
                                                       
 break;
-case 165:
+case 164:
 
                                                   console.error("Error Sintactico: "+$$[$0-3]+" Error en While");
                                                   var error = new Error("Sintactico","Encontrado: "+$$[$0-3]+" Se esperaba -> (",+yylineno+1,+_$[$0-3].last_column+1);
@@ -1394,7 +1391,7 @@ case 165:
                                                   this.$.trad = $$[$0-4]+"("+$$[$0-2].trad+$$[$0-1]+$$[$0].trad;
                                                 
 break;
-case 166:
+case 165:
 
                                                             console.error("Error Sintactico: "+$$[$0-2]+" Error en While");
                                                             var error = new Error("Sintactico","Encontrado: "+$$[$0-2]+" Se esperaba -> (",+yylineno+1,+_$[$0-2].last_column+1);
@@ -1404,7 +1401,7 @@ case 166:
                                                             this.$.trad = "";
                                                           
 break;
-case 167:
+case 166:
 
                                                   console.error("Error Sintactico: "+$$[$0-1]+" Error en While");
                                                   var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> (",+yylineno+1,+_$[$0-1].last_column+1);
@@ -1417,7 +1414,7 @@ case 167:
                                                   this.$.trad = $$[$0-4]+$$[$0-3]+$$[$0-2].trad+")"+$$[$0].trad;
                                                 
 break;
-case 168:
+case 167:
 
                                     console.error("Error Sintactico: "+$$[$0]+" Error en While");
                                     var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> Parametros While",+yylineno+1,+_$[$0].last_column+1);
@@ -1427,7 +1424,7 @@ case 168:
                                     this.$.trad = "";
                                   
 break;
-case 169:
+case 168:
 
                                                                               var nodo = new Nodo("DOWHILE","DOWHILE",+yylineno+1,+_$[$0-6].last_column+1);
                                                                               nodo.addHijo($$[$0-5]);
@@ -1436,7 +1433,7 @@ case 169:
                                                                               this.$.trad = $$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2].trad+$$[$0-1]+$$[$0]+"\n";
                                                                             
 break;
-case 170:
+case 169:
 
                                                                         console.error("Error Sintactico: "+$$[$0-3]+" Error en do While");
                                                                         var error = new Error("Sintactico","Encontrado: "+$$[$0-3]+" Se esperaba -> (",+yylineno+1,+_$[$0-3].last_column+1);
@@ -1449,7 +1446,7 @@ case 170:
                                                                         this.$.trad = $$[$0-6]+$$[$0-5].trad+"("+$$[$0-3]+$$[$0-2].trad+$$[$0-1]+$$[$0]+"\n";
                                                                       
 break;
-case 171:
+case 170:
 
                                                                                   console.error("Error Sintactico: "+$$[$0-2]+" Error en do While");
                                                                                   var error = new Error("Sintactico","Encontrado: "+$$[$0-2]+" Se esperaba -> Parametros do While",+yylineno+1,+_$[$0-2].last_column+1);
@@ -1459,7 +1456,7 @@ case 171:
                                                                                   this.$.trad = "";
                                                                                 
 break;
-case 172:
+case 171:
 
                                                                         console.error("Error Sintactico: "+$$[$0-1]+" Error en do While");
                                                                         var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> )",+yylineno+1,+_$[$0-1].last_column+1);
@@ -1472,7 +1469,7 @@ case 172:
                                                                         this.$.trad = $$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2].trad+")"+$$[$0]+"\n";
                                                                       
 break;
-case 173:
+case 172:
 
                                                                       console.error("Error Sintactico: "+$$[$0]+" Error en do While");
                                                                       var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> ;",+yylineno+1,+_$[$0].last_column+1);
@@ -1485,7 +1482,7 @@ case 173:
                                                                       this.$.trad = $$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2].trad+$$[$0-1]+";\n";
                                                                     
 break;
-case 174:
+case 173:
 
                                                                                                                         var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
                                                                                                                         var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
@@ -1501,7 +1498,7 @@ case 174:
                                                                                                                         this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                                       
 break;
-case 175:
+case 174:
   
                                                                                                                   console.error("Error Sintactico: "+$$[$0-11]+" Error en for");
                                                                                                                   var error = new Error("Sintactico","Encontrado: "+$$[$0-11]+" Se esperaba -> (",+yylineno+1,+_$[$0-11].last_column+1);
@@ -1521,7 +1518,7 @@ case 175:
                                                                                                                   this.$.trad = $$[$0-12]+"("+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                                 
 break;
-case 176:
+case 175:
 
                                                                                                                       console.error("Error Sintactico: "+$$[$0-10]+" Error en do While");
                                                                                                                       var error = new Error("Sintactico","Encontrado: "+$$[$0-10]+" Se esperaba -> let",+yylineno+1,+_$[$0-10].last_column+1);
@@ -1541,7 +1538,7 @@ case 176:
                                                                                                                       this.$.trad = $$[$0-12]+$$[$0-11]+"let"+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;    
                                                                                                                     
 break;
-case 177: case 189:
+case 176: case 188:
 
                                                                                                                         console.error("Error Sintactico: "+$$[$0-9]+" Error en do While");
                                                                                                                         var error = new Error("Sintactico","Encontrado: "+$$[$0-9]+" Se esperaba -> id",+yylineno+1,+_$[$0-9].last_column+1);
@@ -1551,7 +1548,7 @@ case 177: case 189:
                                                                                                                         this.$.trad = "";
                                                                                                                       
 break;
-case 178:
+case 177:
 
                                                                                                                     console.error("Error Sintactico: "+$$[$0-8]+" Error en do While");
                                                                                                                     var error = new Error("Sintactico","Encontrado: "+$$[$0-8]+" Se esperaba -> =",+yylineno+1,+_$[$0-8].last_column+1);
@@ -1571,7 +1568,7 @@ case 178:
                                                                                                                     this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+"="+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                                   
 break;
-case 179:
+case 178:
 
                                                                                                                 console.error("Error Sintactico: "+$$[$0-6]+" Error en do While");
                                                                                                                 var error = new Error("Sintactico","Encontrado: "+$$[$0-6]+" Se esperaba -> ;",+yylineno+1,+_$[$0-6].last_column+1);
@@ -1591,7 +1588,7 @@ case 179:
                                                                                                                 this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+";"+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                               
 break;
-case 180: case 192:
+case 179: case 191:
 
                                                                                                                             console.error("Error Sintactico: "+$$[$0-5]+" Error en do While");
                                                                                                                             var error = new Error("Sintactico","Encontrado: "+$$[$0-5]+" Se esperaba -> Condicion For",+yylineno+1,+_$[$0-5].last_column+1);
@@ -1601,7 +1598,7 @@ case 180: case 192:
                                                                                                                             this.$.trad = "";
                                                                                                                           
 break;
-case 181:
+case 180:
 
                                                                                                                 console.error("Error Sintactico: "+$$[$0-4]+" Error en do While");
                                                                                                                 var error = new Error("Sintactico","Encontrado: "+$$[$0-4]+" Se esperaba -> ;",+yylineno+1,+_$[$0-4].last_column+1);
@@ -1621,7 +1618,7 @@ case 181:
                                                                                                                 this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+";"+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                               
 break;
-case 182:
+case 181:
 
                                                                                                                         console.error("Error Sintactico: "+$$[$0-3]+" Error en do While");
                                                                                                                         var error = new Error("Sintactico","Encontrado: "+$$[$0-3]+" Se esperaba -> id",+yylineno+1,+_$[$0-11].last_column+1);
@@ -1641,7 +1638,7 @@ case 182:
                                                                                                                         this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-9]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                                       
 break;
-case 183:
+case 182:
 
                                                                                                                       console.error("Error Sintactico: "+$$[$0-2]+" Error en do While");
                                                                                                                       var error = new Error("Sintactico","Encontrado: "+$$[$0-2]+" Se esperaba -> ++||--",+yylineno+1,+_$[$0-2].last_column+1);
@@ -1661,7 +1658,7 @@ case 183:
                                                                                                                       this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+"++"+$$[$0-1]+$$[$0].trad;
                                                                                                                     
 break;
-case 184:
+case 183:
 
                                                                                                                   console.error("Error Sintactico: "+$$[$0-1]+" Error en do While");
                                                                                                                   var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> )",+yylineno+1,+_$[$0-1].last_column+1);
@@ -1681,7 +1678,7 @@ case 184:
                                                                                                                   this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                                 
 break;
-case 185:
+case 184:
 
                                                                                                                   console.error("Error Sintactico: "+$$[$0]+" Error en do While");
                                                                                                                   var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> SENTENCIAS",+yylineno+1,+_$[$0].last_column+1);
@@ -1700,7 +1697,7 @@ case 185:
                                                                                                                   this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+"{}\n";
                                                                                                                 
 break;
-case 186:
+case 185:
 
                                                                                                                         var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
                                                                                                                         var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
@@ -1716,7 +1713,7 @@ case 186:
                                                                                                                         this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                                       
 break;
-case 187:
+case 186:
   
                                                                                                                   console.error("Error Sintactico: "+$$[$0-11]+" Error en for");
                                                                                                                   var error = new Error("Sintactico","Encontrado: "+$$[$0-11]+" Se esperaba -> (",+yylineno+1,+_$[$0-11].last_column+1);
@@ -1736,7 +1733,7 @@ case 187:
                                                                                                                   this.$.trad = $$[$0-12]+"("+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                                 
 break;
-case 188:
+case 187:
 
                                                                                                                       console.error("Error Sintactico: "+$$[$0-10]+" Error en do While");
                                                                                                                       var error = new Error("Sintactico","Encontrado: "+$$[$0-10]+" Se esperaba -> let",+yylineno+1,+_$[$0-10].last_column+1);
@@ -1756,7 +1753,7 @@ case 188:
                                                                                                                       this.$.trad = $$[$0-12]+$$[$0-11]+"let"+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;    
                                                                                                                     
 break;
-case 190:
+case 189:
 
                                                                                                                     console.error("Error Sintactico: "+$$[$0-8]+" Error en do While");
                                                                                                                     var error = new Error("Sintactico","Encontrado: "+$$[$0-8]+" Se esperaba -> =",+yylineno+1,+_$[$0-8].last_column+1);
@@ -1776,7 +1773,7 @@ case 190:
                                                                                                                     this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+"="+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                                   
 break;
-case 191:
+case 190:
 
                                                                                                                 console.error("Error Sintactico: "+$$[$0-6]+" Error en do While");
                                                                                                                 var error = new Error("Sintactico","Encontrado: "+$$[$0-6]+" Se esperaba -> ;",+yylineno+1,+_$[$0-6].last_column+1);
@@ -1796,7 +1793,7 @@ case 191:
                                                                                                                 this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+";"+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                               
 break;
-case 193:
+case 192:
 
                                                                                                                         console.error("Error Sintactico: "+$$[$0-4]+" Error en do While");
                                                                                                                         var error = new Error("Sintactico","Encontrado: "+$$[$0-4]+" Se esperaba -> ;",+yylineno+1,+_$[$0-4].last_column+1);
@@ -1816,7 +1813,7 @@ case 193:
                                                                                                                         this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+";"+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                                       
 break;
-case 194:
+case 193:
 
                                                                                                                         console.error("Error Sintactico: "+$$[$0-3]+" Error en do While");
                                                                                                                         var error = new Error("Sintactico","Encontrado: "+$$[$0-3]+" Se esperaba -> id",+yylineno+1,+_$[$0-11].last_column+1);
@@ -1836,7 +1833,7 @@ case 194:
                                                                                                                         this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-9]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                                       
 break;
-case 195:
+case 194:
 
                                                                                                                   console.error("Error Sintactico: "+$$[$0-1]+" Error en do While");
                                                                                                                   var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> )",+yylineno+1,+_$[$0-1].last_column+1);
@@ -1856,7 +1853,7 @@ case 195:
                                                                                                                   this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                                 
 break;
-case 196:
+case 195:
 
                                                                                                                   console.error("Error Sintactico: "+$$[$0]+" Error en do While");
                                                                                                                   var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> SENTENCIAS",+yylineno+1,+_$[$0].last_column+1);
@@ -1875,7 +1872,7 @@ case 196:
                                                                                                                   this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+"{}\n";
                                                                                                                 
 break;
-case 197:
+case 196:
 
                                                                                                                 var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-11].last_column+1);
                                                                                                                 var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
@@ -1891,7 +1888,7 @@ case 197:
                                                                                                                 this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                               
 break;
-case 198:
+case 197:
 
                                                                                                           console.error("Error Sintactico: "+$$[$0-10]+" Error en for");
                                                                                                           var error = new Error("Sintactico","Encontrado: "+$$[$0-10]+" Se esperaba -> (",+yylineno+1,+_$[$0-10].last_column+1);
@@ -1911,7 +1908,7 @@ case 198:
                                                                                                           this.$.trad = $$[$0-11]+"("+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                         
 break;
-case 199: case 210:
+case 198: case 209:
 
                                                                                                                 console.error("Error Sintactico: "+$$[$0-9]+" Error en for");
                                                                                                                 var error = new Error("Sintactico","Encontrado: "+$$[$0-9]+" Se esperaba -> id",+yylineno+1,+_$[$0-10].last_column+1);
@@ -1921,7 +1918,7 @@ case 199: case 210:
                                                                                                                 this.$.trad = "";
                                                                                                               
 break;
-case 200:
+case 199:
 
                                                                                                               console.error("Error Sintactico: "+$$[$0-8]+" Error en for");
                                                                                                               var error = new Error("Sintactico","Encontrado: "+$$[$0-8]+" Se esperaba -> =",+yylineno+1,+_$[$0-8].last_column+1);
@@ -1941,7 +1938,7 @@ case 200:
                                                                                                               this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+"="+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                             
 break;
-case 201:
+case 200:
 
                                                                                                         console.error("Error Sintactico: "+$$[$0-6]+" Error en for");
                                                                                                         var error = new Error("Sintactico","Encontrado: "+$$[$0-6]+" Se esperaba -> ;",+yylineno+1,+_$[$0-6].last_column+1);
@@ -1961,7 +1958,7 @@ case 201:
                                                                                                         this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+";"+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                       
 break;
-case 202: case 213:
+case 201: case 212:
 
                                                                                                                     console.error("Error Sintactico: "+$$[$0-5]+" Error en for");
                                                                                                                     var error = new Error("Sintactico","Encontrado: "+$$[$0-5]+" Se esperaba -> condicion for",+yylineno+1,+_$[$0-6].last_column+1);
@@ -1971,7 +1968,7 @@ case 202: case 213:
                                                                                                                     this.$.trad = "";
                                                                                                                   
 break;
-case 203:
+case 202:
 
                                                                                                         console.error("Error Sintactico: "+$$[$0-4]+" Error en for");
                                                                                                         var error = new Error("Sintactico","Encontrado: "+$$[$0-4]+" Se esperaba -> ;",+yylineno+1,+_$[$0-4].last_column+1);
@@ -1991,7 +1988,7 @@ case 203:
                                                                                                         this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+";"+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                       
 break;
-case 204:
+case 203:
 
                                                                                                                 console.error("Error Sintactico: "+$$[$0-3]+" Error en for");
                                                                                                                 var error = new Error("Sintactico","Encontrado: "+$$[$0-3]+" Se esperaba -> id",+yylineno+1,+_$[$0-3].last_column+1);
@@ -2011,7 +2008,7 @@ case 204:
                                                                                                                 this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-9]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                               
 break;
-case 205:
+case 204:
   
                                                                                                                 console.error("Error Sintactico: "+$$[$0-2]+" Error en for");
                                                                                                                 var error = new Error("Sintactico","Encontrado: "+$$[$0-2]+" Se esperaba -> ++||--",+yylineno+1,+_$[$0-2].last_column+1);
@@ -2031,7 +2028,7 @@ case 205:
                                                                                                                 this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+"++"+$$[$0-1]+$$[$0].trad;
                                                                                                               
 break;
-case 206:
+case 205:
   
                                                                                                           console.error("Error Sintactico: "+$$[$0-1]+" Error en for");
                                                                                                           var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> )",+yylineno+1,+_$[$0-1].last_column+1);
@@ -2051,7 +2048,7 @@ case 206:
                                                                                                           this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+")"+$$[$0].trad;
                                                                                                         
 break;
-case 207:
+case 206:
   
                                                                                                           console.error("Error Sintactico: "+$$[$0]+" Error en for");
                                                                                                           var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> Sentencias",+yylineno+1,+_$[$0-1].last_column+1);
@@ -2070,7 +2067,7 @@ case 207:
                                                                                                           this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+"{}\n";
                                                                                                         
 break;
-case 208:
+case 207:
 
                                                                                                                 var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-11].last_column+1);
                                                                                                                 var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
@@ -2086,7 +2083,7 @@ case 208:
                                                                                                                 this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                               
 break;
-case 209:
+case 208:
 
                                                                                                           console.error("Error Sintactico: "+$$[$0-10]+" Error en for");
                                                                                                           var error = new Error("Sintactico","Encontrado: "+$$[$0-10]+" Se esperaba -> (",+yylineno+1,+_$[$0-10].last_column+1);
@@ -2106,7 +2103,7 @@ case 209:
                                                                                                           this.$.trad = $$[$0-11]+"("+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                         
 break;
-case 211:
+case 210:
 
                                                                                                               console.error("Error Sintactico: "+$$[$0-8]+" Error en for");
                                                                                                               var error = new Error("Sintactico","Encontrado: "+$$[$0-8]+" Se esperaba -> =",+yylineno+1,+_$[$0-8].last_column+1);
@@ -2126,7 +2123,7 @@ case 211:
                                                                                                               this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+"="+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                             
 break;
-case 212:
+case 211:
 
                                                                                                         console.error("Error Sintactico: "+$$[$0-6]+" Error en for");
                                                                                                         var error = new Error("Sintactico","Encontrado: "+$$[$0-6]+" Se esperaba -> ;",+yylineno+1,+_$[$0-6].last_column+1);
@@ -2146,7 +2143,7 @@ case 212:
                                                                                                         this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+";"+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                       
 break;
-case 214:
+case 213:
 
                                                                                                         console.error("Error Sintactico: "+$$[$0-4]+" Error en for");
                                                                                                         var error = new Error("Sintactico","Encontrado: "+$$[$0-4]+" Se esperaba -> ;",+yylineno+1,+_$[$0-4].last_column+1);
@@ -2166,7 +2163,7 @@ case 214:
                                                                                                         this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+";"+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                       
 break;
-case 215:
+case 214:
 
                                                                                                                 console.error("Error Sintactico: "+$$[$0-3]+" Error en for");
                                                                                                                 var error = new Error("Sintactico","Encontrado: "+$$[$0-3]+" Se esperaba -> id",+yylineno+1,+_$[$0-3].last_column+1);
@@ -2186,7 +2183,7 @@ case 215:
                                                                                                                 this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-9]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                               
 break;
-case 216:
+case 215:
   
                                                                                                           console.error("Error Sintactico: "+$$[$0-1]+" Error en for");
                                                                                                           var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> )",+yylineno+1,+_$[$0-1].last_column+1);
@@ -2206,7 +2203,7 @@ case 216:
                                                                                                           this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+")"+$$[$0].trad;
                                                                                                         
 break;
-case 217:
+case 216:
   
                                                                                                           console.error("Error Sintactico: "+$$[$0]+" Error en for");
                                                                                                           var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> Sentencias",+yylineno+1,+_$[$0-1].last_column+1);
@@ -2225,7 +2222,7 @@ case 217:
                                                                                                           this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+"{}\n";
                                                                                                         
 break;
-case 218:
+case 217:
 
                                                                   var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-6].last_column+1);
                                                                   var fin = new Nodo("IN","IN",+yylineno+1,+_$[$0-3].last_column+1);
@@ -2239,7 +2236,7 @@ case 218:
                                                                   this.$.trad = $$[$0-6]+$$[$0-5]+$$[$0-4]+" "+$$[$0-3]+" "+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                 
 break;
-case 219:
+case 218:
 
                                                             console.error("Error Sintactico: "+$$[$0-5]+" Error en for");
                                                             var error = new Error("Sintactico","Encontrado: "+$$[$0-5]+" Se esperaba -> (",+yylineno+1,+_$[$0-5].last_column+1);
@@ -2257,7 +2254,7 @@ case 219:
                                                             this.$.trad = $$[$0-6]+"("+$$[$0-4]+" "+$$[$0-3]+" "+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                           
 break;
-case 220: case 234:
+case 219: case 233:
 
                                                                   console.error("Error Sintactico: "+$$[$0-4]+" Error en for");
                                                                   var error = new Error("Sintactico","Encontrado: "+$$[$0-4]+" Se esperaba -> id",+yylineno+1,+_$[$0-4].last_column+1);
@@ -2267,7 +2264,7 @@ case 220: case 234:
                                                                   this.$.trad = "";
                                                                 
 break;
-case 221: case 236:
+case 220: case 235:
 
                                                                   console.error("Error Sintactico: "+$$[$0-2]+" Error en for");
                                                                   var error = new Error("Sintactico","Encontrado: "+$$[$0-2]+" Se esperaba -> id",+yylineno+1,+_$[$0-2].last_column+1);
@@ -2277,7 +2274,7 @@ case 221: case 236:
                                                                   this.$.trad = "";
                                                                 
 break;
-case 222:
+case 221:
 
                                                             console.error("Error Sintactico: "+$$[$0-1]+" Error en for");
                                                             var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> )",+yylineno+1,+_$[$0-1].last_column+1);
@@ -2295,7 +2292,7 @@ case 222:
                                                             this.$.trad = $$[$0-6]+$$[$0-5]+$$[$0-4]+" "+$$[$0-3]+" "+$$[$0-2]+")"+$$[$0].trad;
                                                           
 break;
-case 223: case 238:
+case 222: case 237:
 
                                                             console.error("Error Sintactico: "+$$[$0-1]+" Error en for");
                                                             var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> Sentencias",+yylineno+1,+_$[$0-1].last_column+1);
@@ -2313,7 +2310,7 @@ case 223: case 238:
                                                             this.$.trad = $$[$0-6]+$$[$0-5]+$$[$0-4]+" "+$$[$0-3]+" "+$$[$0-2]+")"+$$[$0].trad;
                                                           
 break;
-case 224:
+case 223:
 
                                                                           var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-7].last_column+1);
                                                                           var fin = new Nodo("IN","IN",+yylineno+1,+_$[$0-4].last_column+1);
@@ -2329,7 +2326,7 @@ case 224:
                                                                           this.$.trad = $$[$0-7]+$$[$0-6]+$$[$0-5]+" "+$$[$0-4]+" "+$$[$0-3]+" "+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                         
 break;
-case 225:
+case 224:
 
                                                                     console.error("Error Sintactico: "+$$[$0-6]+" Error en for");
                                                                     var error = new Error("Sintactico","Encontrado: "+$$[$0-6]+" Se esperaba -> (",+yylineno+1,+_$[$0-6].last_column+1);
@@ -2349,7 +2346,7 @@ case 225:
                                                                     this.$.trad = $$[$0-7]+"("+$$[$0-5]+" "+$$[$0-4]+" "+$$[$0-3]+" "+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                   
 break;
-case 226:
+case 225:
 
                                                                         console.error("Error Sintactico: "+$$[$0-5]+" Error en for");
                                                                         var error = new Error("Sintactico","Encontrado: "+$$[$0-5]+" Se esperaba -> let",+yylineno+1,+_$[$0-5].last_column+1);
@@ -2369,7 +2366,7 @@ case 226:
                                                                         this.$.trad = $$[$0-7]+$$[$0-6]+"let"+" "+$$[$0-4]+" "+$$[$0-3]+" "+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                       
 break;
-case 227:
+case 226:
 
                                                                           console.error("Error Sintactico: "+$$[$0-4]+" Error en for");
                                                                           var error = new Error("Sintactico","Encontrado: "+$$[$0-4]+" Se esperaba -> id",+yylineno+1,+_$[$0-5].last_column+1);
@@ -2379,7 +2376,7 @@ case 227:
                                                                           this.$.trad = "";
                                                                         
 break;
-case 228:
+case 227:
 
                                                                           console.error("Error Sintactico: "+$$[$0-3]+" Error en for");
                                                                           var error = new Error("Sintactico","Encontrado: "+$$[$0-3]+" Se esperaba -> in, of",+yylineno+1,+_$[$0-3].last_column+1);
@@ -2389,7 +2386,7 @@ case 228:
                                                                           this.$.trad = "";
                                                                         
 break;
-case 229: case 243:
+case 228: case 242:
 
                                                                           console.error("Error Sintactico: "+$$[$0-2]+" Error en for");
                                                                           var error = new Error("Sintactico","Encontrado: "+$$[$0-2]+" Se esperaba -> id",+yylineno+1,+_$[$0-2].last_column+1);
@@ -2399,7 +2396,7 @@ case 229: case 243:
                                                                           this.$.trad = "";
                                                                         
 break;
-case 230:
+case 229:
 
                                                                     console.error("Error Sintactico: "+$$[$0-1]+" Error en for");
                                                                     var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> )",+yylineno+1,+_$[$0-1].last_column+1);
@@ -2419,7 +2416,7 @@ case 230:
                                                                     this.$.trad = $$[$0-7]+$$[$0-6]+$$[$0-5]+" "+$$[$0-4]+" "+$$[$0-3]+" "+$$[$0-2]+")"+$$[$0].trad;
                                                                   
 break;
-case 231:
+case 230:
 
                                                                     console.error("Error Sintactico: "+$$[$0]+" Error en for");
                                                                     var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> Sentencias",+yylineno+1,+_$[$0].last_column+1);
@@ -2438,7 +2435,7 @@ case 231:
                                                                     this.$.trad = $$[$0-7]+$$[$0-6]+$$[$0-5]+" "+$$[$0-4]+" "+$$[$0-3]+" "+$$[$0-2]+$$[$0-1]+"{}\n";
                                                                   
 break;
-case 232:
+case 231:
 
                                                                   var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-6].last_column+1);
                                                                   var fin = new Nodo("OF","OF",+yylineno+1,+_$[$0-3].last_column+1);
@@ -2452,7 +2449,7 @@ case 232:
                                                                   this.$.trad = $$[$0-6]+$$[$0-5]+$$[$0-4]+" "+$$[$0-3]+" "+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                 
 break;
-case 233:
+case 232:
 
                                                             console.error("Error Sintactico: "+$$[$0-5]+" Error en for");
                                                             var error = new Error("Sintactico","Encontrado: "+$$[$0-5]+" Se esperaba -> (",+yylineno+1,+_$[$0-5].last_column+1);
@@ -2470,7 +2467,7 @@ case 233:
                                                             this.$.trad = $$[$0-6]+"("+$$[$0-4]+" "+$$[$0-3]+" "+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                           
 break;
-case 235:
+case 234:
 
                                                                   console.error("Error Sintactico: "+$$[$0-3]+" Error en for");
                                                                   var error = new Error("Sintactico","Encontrado: "+$$[$0-3]+" Se esperaba -> in||of",+yylineno+1,+_$[$0-3].last_column+1);
@@ -2480,7 +2477,7 @@ case 235:
                                                                   this.$.trad = "";
                                                                 
 break;
-case 237:
+case 236:
 
                                                             console.error("Error Sintactico: "+$$[$0-1]+" Error en for");
                                                             var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> )",+yylineno+1,+_$[$0-1].last_column+1);
@@ -2498,7 +2495,7 @@ case 237:
                                                             this.$.trad = $$[$0-6]+$$[$0-5]+$$[$0-4]+" "+$$[$0-3]+" "+$$[$0-2]+")"+$$[$0].trad;
                                                           
 break;
-case 239:
+case 238:
 
                                                                           var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-7].last_column+1);
                                                                           var fin = new Nodo("OF","OF",+yylineno+1,+_$[$0-4].last_column+1);
@@ -2514,7 +2511,7 @@ case 239:
                                                                           this.$.trad = $$[$0-7]+$$[$0-6]+$$[$0-5]+" "+$$[$0-4]+" "+$$[$0-3]+" "+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                         
 break;
-case 240:
+case 239:
 
                                                                     console.error("Error Sintactico: "+$$[$0-6]+" Error en for");
                                                                     var error = new Error("Sintactico","Encontrado: "+$$[$0-6]+" Se esperaba -> (",+yylineno+1,+_$[$0-6].last_column+1);
@@ -2534,7 +2531,7 @@ case 240:
                                                                     this.$.trad = $$[$0-7]+"("+$$[$0-5]+" "+$$[$0-4]+" "+$$[$0-3]+" "+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                   
 break;
-case 241:
+case 240:
 
                                                                         console.error("Error Sintactico: "+$$[$0-5]+" Error en for");
                                                                         var error = new Error("Sintactico","Encontrado: "+$$[$0-5]+" Se esperaba -> let",+yylineno+1,+_$[$0-5].last_column+1);
@@ -2554,7 +2551,7 @@ case 241:
                                                                         this.$.trad = $$[$0-7]+$$[$0-6]+"let"+" "+$$[$0-4]+" "+$$[$0-3]+" "+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                       
 break;
-case 242:
+case 241:
 
                                                                           console.error("Error Sintactico: "+$$[$0-4]+" Error en for");
                                                                           var error = new Error("Sintactico","Encontrado: "+$$[$0-4]+" Se esperaba -> id",+yylineno+1,+_$[$0-4].last_column+1);
@@ -2564,7 +2561,7 @@ case 242:
                                                                           this.$.trad = "";
                                                                         
 break;
-case 244:
+case 243:
 
                                                                     console.error("Error Sintactico: "+$$[$0-1]+" Error en for");
                                                                     var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> )",+yylineno+1,+_$[$0-1].last_column+1);
@@ -2584,7 +2581,7 @@ case 244:
                                                                     this.$.trad = $$[$0-7]+$$[$0-6]+$$[$0-5]+" "+$$[$0-4]+" "+$$[$0-3]+" "+$$[$0-2]+")"+$$[$0].trad;
                                                                   
 break;
-case 245:
+case 244:
 
                                                                     console.error("Error Sintactico: "+$$[$0]+" Error en for");
                                                                     var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> Sentencias",+yylineno+1,+_$[$0].last_column+1);
@@ -2603,7 +2600,7 @@ case 245:
                                                                     this.$.trad = $$[$0-7]+$$[$0-6]+$$[$0-5]+" "+$$[$0-4]+" "+$$[$0-3]+" "+$$[$0-2]+$$[$0-1]+"{}\n";
                                                                   
 break;
-case 246:
+case 245:
  
                                                       console.error("Error Sintactico: "+$$[$0-2]+" Error en for");
                                                       var error = new Error("Sintactico","Encontrado: "+$$[$0-2]+" Se esperaba -> Sentencias",+yylineno+1,+_$[$0-2].last_column+1);
@@ -2613,7 +2610,7 @@ case 246:
                                                       this.$.trad = "";
                                                     
 break;
-case 247:
+case 246:
 
                               console.error("Error Sintactico: "+$$[$0-1]+" Error parametros for");
                               var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> Sentencias",+yylineno+1,+_$[$0-1].last_column+1);
@@ -2623,14 +2620,14 @@ case 247:
                               this.$.trad = "";
                             
 break;
-case 248:
+case 247:
 
                             var nodo = new Nodo("BREAK","BREAK",+yylineno+1,+_$[$0-1].last_column+1);
                             this.$ = nodo;
                             this.$.trad = $$[$0-1]+$$[$0]+"\n";
                           
 break;
-case 249:
+case 248:
 
                     console.error("Error Sintactico: "+$$[$0]+" Error break");
                     var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> ;",+yylineno+1,+_$[$0].last_column+1);
@@ -2641,14 +2638,14 @@ case 249:
                     this.$.trad = $$[$0-1]+";\n";
                   
 break;
-case 250:
+case 249:
 
                                 var nodo = new Nodo("CONTINUE","CONTINUE",+yylineno+1,+_$[$0-1].last_column+1);
                                 this.$ = nodo;
                                 this.$.trad = $$[$0-1]+$$[$0]+"\n";
                               
 break;
-case 251:
+case 250:
 
                         console.error("Error Sintactico: "+$$[$0]+" Error continue");
                         var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> ;",+yylineno+1,+_$[$0].last_column+1);
@@ -2659,14 +2656,14 @@ case 251:
                         this.$.trad = $$[$0-1]+";\n";
                       
 break;
-case 252:
+case 251:
 
                               var nodo = new Nodo("RETURN","RETURN",+yylineno+1,+_$[$0-1].last_column+1);
                               this.$ = nodo;
                               this.$.trad = $$[$0-1]+$$[$0]+"\n";
                             
 break;
-case 253:
+case 252:
 
                       console.error("Error Sintactico: "+$$[$0]+" Error return");
                       var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> ;",+yylineno+1,+_$[$0].last_column+1);
@@ -2677,7 +2674,7 @@ case 253:
                       this.$.trad = $$[$0-1]+";\n";
                     
 break;
-case 254:
+case 253:
 
                                     var nodo = new Nodo("RETURN","RETURN",+yylineno+1,+_$[$0-2].last_column+1);
                                     nodo.addHijo($$[$0-1]);
@@ -2685,7 +2682,7 @@ case 254:
                                     this.$.trad = $$[$0-2]+" "+$$[$0-1].trad+$$[$0]+"\n";
                                   
 break;
-case 255:
+case 254:
 
                             console.error("Error Sintactico: "+$$[$0]+" Error return");
                             var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> ;",+yylineno+1,+_$[$0].last_column+1);
@@ -2697,7 +2694,7 @@ case 255:
                             this.$.trad = $$[$0-2]+" "+$$[$0-1].trad+";\n";
                           
 break;
-case 256:
+case 255:
 
                           var nodo = new Nodo("RETURN","RETURN",+yylineno+1,+_$[$0-1].last_column+1);
                           nodo.addHijo($$[$0]);
@@ -2705,7 +2702,7 @@ case 256:
                           this.$.trad = $$[$0-1]+" "+$$[$0].trad;
                         
 break;
-case 257:
+case 256:
  
                                                                               var s =  eval('$$');
                                                                               var ids = "";
@@ -2724,7 +2721,7 @@ case 257:
                                                                               this.$.func = $$[$0-6]+" "+ids.replace(/.$/,"")+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1].trad+$$[$0].trad;
                                                                             
 break;
-case 258:
+case 257:
 
                                                                               console.error("Error sintactico: "+$$[$0-5]+" Desconocido Sentencias");
                                                                               var error = new Error("Sintactico","Encontrado: "+$$[$0-5]+" Se esperaba -> id"+yylineno+1,+_$[$0-5].last_column+1);
@@ -2734,7 +2731,7 @@ case 258:
                                                                               this.$.trad = "";
                                                                             
 break;
-case 259:
+case 258:
 
                                                                         console.error("Error sintactico: "+$$[$0-4]+" Desconocido Sentencias");
                                                                         var error = new Error("Sintactico","Encontrado: "+$$[$0-4]+" Se esperaba -> ("+yylineno+1,+_$[$0-4].last_column+1);
@@ -2744,7 +2741,7 @@ case 259:
                                                                         this.$.trad = "";
                                                                       
 break;
-case 260:
+case 259:
 
                                                                         console.error("Error sintactico: "+$$[$0-3]+" Desconocido Sentencias");
                                                                         var error = new Error("Sintactico","Encontrado: "+$$[$0-3]+" Se esperaba -> )"+yylineno+1,+_$[$0-3].last_column+1);
@@ -2754,7 +2751,7 @@ case 260:
                                                                         this.$.trad = "";
                                                                       
 break;
-case 261:
+case 260:
 
                                                                       console.error("Error sintactico: "+$$[$0-2]+" Desconocido Sentencias");
                                                                       var error = new Error("Sintactico","Encontrado: "+$$[$0-2]+" Se esperaba -> :"+yylineno+1,+_$[$0-2].last_column+1);
@@ -2764,7 +2761,7 @@ case 261:
                                                                       this.$.trad = "";
                                                                     
 break;
-case 262:
+case 261:
 
                                                                       console.error("Error sintactico: "+$$[$0]+" Desconocido Sentencias");
                                                                       var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> {"+yylineno+1,+_$[$0].last_column+1);
@@ -2774,7 +2771,7 @@ case 262:
                                                                       this.$.trad = "";
                                                                     
 break;
-case 263:
+case 262:
 
                                                                                       var s =  eval('$$');
                                                                                       var ids = "";
@@ -2794,7 +2791,7 @@ case 263:
                                                                                       this.$.func = $$[$0-7]+" "+ids.replace(/.$/,"")+$$[$0-5]+$$[$0-4].trad+$$[$0-3]+$$[$0-2]+$$[$0-1].trad+$$[$0].trad;
                                                                                     
 break;
-case 264:
+case 263:
 
                                                                                       console.error("Error sintactico: "+$$[$0-6]+" Desconocido Sentencias");
                                                                                       var error = new Error("Sintactico","Encontrado: "+$$[$0-6]+" Se esperaba -> id"+yylineno+1,+_$[$0-6].last_column+1);
@@ -2804,7 +2801,7 @@ case 264:
                                                                                       this.$.trad = "";
                                                                                     
 break;
-case 265:
+case 264:
 
                                                                                 console.error("Error sintactico: "+$$[$0-5]+" Desconocido Sentencias");
                                                                                 var error = new Error("Sintactico","Encontrado: "+$$[$0-5]+" Se esperaba -> ("+yylineno+1,+_$[$0-5].last_column+1);
@@ -2814,7 +2811,7 @@ case 265:
                                                                                 this.$.trad = "";
                                                                               
 break;
-case 266:
+case 265:
 
                                                                                 console.error("Error sintactico: "+$$[$0-3]+" Desconocido Sentencias");
                                                                                 var error = new Error("Sintactico","Encontrado: "+$$[$0-3]+" Se esperaba -> )"+yylineno+1,+_$[$0-3].last_column+1);
@@ -2824,7 +2821,7 @@ case 266:
                                                                                 this.$.trad = "";
                                                                               
 break;
-case 267:
+case 266:
 
                                                                               console.error("Error sintactico: "+$$[$0-2]+" Desconocido Sentencias");
                                                                               var error = new Error("Sintactico","Encontrado: "+$$[$0-2]+" Se esperaba -> :"+yylineno+1,+_$[$0-2].last_column+1);
@@ -2834,7 +2831,7 @@ case 267:
                                                                               this.$.trad = "";
                                                                             
 break;
-case 268:
+case 267:
 
                                                                               console.error("Error sintactico: "+$$[$0-1]+" Desconocido Sentencias");
                                                                               var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> {"+yylineno+1,+_$[$0-1].last_column+1);
@@ -2844,7 +2841,7 @@ case 268:
                                                                               this.$.trad = "";
                                                                             
 break;
-case 269:
+case 268:
 
                                                     var nodo = new Nodo("PARFUNC","PARFUNC",+yylineno+1,+_$[$0-4].first_column+1);
                                                     var id = new Nodo("ID",$$[$0-2],+yylineno+1,+_$[$0-2].first_column+1);
@@ -2856,7 +2853,7 @@ case 269:
                                                     this.$.trad = $$[$0-4].trad+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                   
 break;
-case 270:
+case 269:
 
                                       var nodo = new Nodo("PARFUNC","PARFUNC",+yylineno+1,+_$[$0-2].first_column+1);
                                       var id = new Nodo("ID",$$[$0-2],+yylineno+1,+_$[$0-2].first_column+1);
@@ -2867,7 +2864,7 @@ case 270:
                                       this.$.trad = $$[$0-2]+$$[$0-1]+$$[$0].trad;
                                     
 break;
-case 271:
+case 270:
 
                   console.error("Error sintactico: "+$$[$0]+" Desconocido Sentencias");
                   var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> Parametro de funcion(id)"+yylineno+1,+_$[$0].last_column+1);
@@ -2877,7 +2874,7 @@ case 271:
                   this.$.trad = "";
                 
 break;
-case 272:
+case 271:
  
                                             var nodo = new Nodo("VALOR","VALFUNCION",+yylineno+1,+_$[$0-2].first_column+1);
                                             var id = new Nodo("ID",$$[$0-2],+yylineno+1,+_$[$0-2].first_column+1);
@@ -2886,7 +2883,7 @@ case 272:
                                             this.$.trad = $$[$0-2]+$$[$0-1]+$$[$0];
                                           
 break;
-case 273:
+case 272:
 
                                                 var nodo = new Nodo("VALOR","VALFUNCION",+yylineno+1,+_$[$0-3].first_column+1);
                                                 var id = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].first_column+1);
@@ -2896,7 +2893,7 @@ case 273:
                                                 this.$.trad = $$[$0-3]+$$[$0-2]+$$[$0-1].trad+$$[$0];
                                               
 break;
-case 274:
+case 273:
 
                           var nodo = new Nodo("LPAR","LPAR",+yylineno+1,+_$[$0-2].first_column+1);
                           nodo.addHijo($$[$0-2]);
@@ -2905,13 +2902,13 @@ case 274:
                           this.$.trad = $$[$0-2].trad+$$[$0-1]+$$[$0].trad;
                         
 break;
-case 275:
+case 274:
 
               this.$ = $$[$0];
               this.$.trad = $$[$0].trad;
             
 break;
-case 276:
+case 275:
 
                                                               var nodo = new Nodo("CONSOLE","CONSOLE",+yylineno+1,+_$[$0-4].last_column+1);
                                                               nodo.addHijo($$[$0-2]);
@@ -2919,7 +2916,7 @@ case 276:
                                                               this.$.trad = $$[$0-4]+$$[$0-3]+$$[$0-2].trad+$$[$0-1]+$$[$0]+"\n";
                                                             
 break;
-case 277:
+case 276:
 
                                                         console.error("Error sintactico: "+$$[$0-3]+" Desconocido Sentencias");
                                                         var error = new Error("Sintactico","Encontrado: "+$$[$0-3]+" Se esperaba -> ("+yylineno+1,+_$[$0-3].last_column+1);
@@ -2929,7 +2926,7 @@ case 277:
                                                         this.$.trad = "";
                                                       
 break;
-case 278:
+case 277:
 
                                                         console.error("Error sintactico: "+$$[$0-1]+" Desconocido Sentencias");
                                                         var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> ("+yylineno+1,+_$[$0-1].last_column+1);
@@ -2939,7 +2936,7 @@ case 278:
                                                         this.$.trad = "";
                                                       
 break;
-case 279:
+case 278:
 
                                                       console.error("Error Sintactico: "+$$[$0]+" Error console");
                                                       var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> ;",+yylineno+1,+_$[$0].last_column+1);
@@ -2951,14 +2948,14 @@ case 279:
                                                       this.$.trad = $$[$0-4]+$$[$0-3]+$$[$0-2].trad+$$[$0-1]+";\n";
                                                     
 break;
-case 280:
+case 279:
 
                                                           var nodo = new Nodo("GRAFICAR","GRAFICAR",+yylineno+1,+_$[$0-3].last_column+1);
                                                           this.$ = nodo;
                                                           this.$.trad = $$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0]+"\n";
                                                         
 break;
-case 281:
+case 280:
 
                                                     console.error("Error sintactico: "+$$[$0-2]+" Desconocido Sentencias");
                                                     var error = new Error("Sintactico","Encontrado: "+$$[$0-2]+" Se esperaba -> ("+yylineno+1,+_$[$0-2].last_column+1);
@@ -2968,7 +2965,7 @@ case 281:
                                                     this.$.trad = "";
                                                   
 break;
-case 282:
+case 281:
 
                                                     console.error("Error sintactico: "+$$[$0-1]+" Desconocido Sentencias");
                                                     var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> )"+yylineno+1,+_$[$0-1].last_column+1);
@@ -2978,7 +2975,7 @@ case 282:
                                                     this.$.trad = "";
                                                   
 break;
-case 283:
+case 282:
  
                                                   console.error("Error Sintactico: "+$$[$0]+" Error graficar");
                                                   var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> ;",+yylineno+1,+_$[$0].last_column+1);
@@ -2989,62 +2986,7 @@ case 283:
                                                   this.$.trad = $$[$0-3]+$$[$0-2]+$$[$0-1]+";\n";
                                                 
 break;
-case 284:
-
-                                                              var nodo = new Nodo("LENGTH","LENGTH",+yylineno+1,+_$[$0-4].last_column+1);
-                                                              var id = new Nodo("ID",$$[$0-4],+yylineno+1,+_$[$0-4].last_column+1);
-                                                              nodo.addHijo(id);
-                                                              this.$ = nodo;
-                                                              this.$.trad = $$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0]+"\n";
-                                                            
-break;
-case 285:
- 
-                                                          console.error("Error Sintactico: "+$$[$0-3]+" Error graficar");
-                                                          var error = new Error("Sintactico","Encontrado: "+$$[$0-3]+" Se esperaba -> .lenght",+yylineno+1,+_$[$0-3].last_column+1);
-                                                          errores.addError(error);
-
-                                                          errores.addError(error);
-                                                          this.$ = new Nodo("","");
-                                                          this.$.trad = "";
-                                                        
-break;
-case 286:
- 
-                                                        console.error("Error Sintactico: "+$$[$0-2]+" Error graficar");
-                                                        var error = new Error("Sintactico","Encontrado: "+$$[$0-2]+" Se esperaba -> (",+yylineno+1,+_$[$0-2].last_column+1);
-                                                        errores.addError(error);
-
-                                                        errores.addError(error);
-                                                        this.$ = new Nodo("","");
-                                                        this.$.trad = "";
-                                                      
-break;
-case 287:
- 
-                                                        console.error("Error Sintactico: "+$$[$0-1]+" Error graficar");
-                                                        var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> )",+yylineno+1,+_$[$0-1].last_column+1);
-                                                        errores.addError(error);
-
-                                                        errores.addError(error);
-                                                        this.$ = new Nodo("","");
-                                                        this.$.trad = "";
-                                                      
-break;
-case 288:
- 
-                                                      console.error("Error Sintactico: "+$$[$0]+" Error graficar");
-                                                      var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> ;",+yylineno+1,+_$[$0].last_column+1);
-                                                      errores.addError(error);
-
-                                                      var nodo = new Nodo("LENGTH","LENGTH",+yylineno+1,+_$[$0-4].last_column+1);
-                                                      var id = new Nodo("ID",$$[$0-4],+yylineno+1,+_$[$0-4].last_column+1);
-                                                      nodo.addHijo(id);
-                                                      this.$ = nodo;
-                                                      this.$.trad = $$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+";\n";
-                                                    
-break;
-case 289:
+case 283:
 
                                                                   var nodo = new Nodo("PUSH","PUSH",+yylineno+1,+_$[$0-5].last_column+1);
                                                                   var id = new Nodo("ID",$$[$0-5],+yylineno+1,+_$[$0-5].last_column+1);
@@ -3054,7 +2996,7 @@ case 289:
                                                                   this.$.trad = $$[$0-5]+$$[$0-4]+$$[$0-3]+$$[$0-2].trad+$$[$0-1]+$$[$0]+"\n";
                                                                 
 break;
-case 290:
+case 284:
  
                                                                 console.error("Error Sintactico: "+$$[$0-4]+" Error graficar");
                                                                 var error = new Error("Sintactico","Encontrado: "+$$[$0-4]+" Se esperaba -> .push",+yylineno+1,+_$[$0-4].last_column+1);
@@ -3065,7 +3007,7 @@ case 290:
                                                                 this.$.trad = "";
                                                               
 break;
-case 291:
+case 285:
  
                                                             console.error("Error Sintactico: "+$$[$0-3]+" Error graficar");
                                                             var error = new Error("Sintactico","Encontrado: "+$$[$0-3]+" Se esperaba -> (",+yylineno+1,+_$[$0-3].last_column+1);
@@ -3076,7 +3018,7 @@ case 291:
                                                             this.$.trad = "";
                                                           
 break;
-case 292:
+case 286:
  
                                                             console.error("Error Sintactico: "+$$[$0-1]+" Error graficar");
                                                             var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> )",+yylineno+1,+_$[$0-1].last_column+1);
@@ -3087,7 +3029,7 @@ case 292:
                                                             this.$.trad = "";
                                                           
 break;
-case 293:
+case 287:
  
                                                           console.error("Error Sintactico: "+$$[$0]+" Error graficar");
                                                           var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> )",+yylineno+1,+_$[$0].last_column+1);
@@ -3101,7 +3043,7 @@ case 293:
                                                           this.$.trad = $$[$0-5]+$$[$0-4]+$$[$0-3]+$$[$0-2].trad+$$[$0-1]+";\n";
                                                         
 break;
-case 294:
+case 288:
 
                                                           var nodo = new Nodo("POP","POP",+yylineno+1,+_$[$0-4].last_column+1);
                                                           var id = new Nodo("ID",$$[$0-4],+yylineno+1,+_$[$0-4].last_column+1);
@@ -3110,7 +3052,7 @@ case 294:
                                                           this.$.trad = $$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0]+"\n";
                                                         
 break;
-case 295:
+case 289:
  
                                                     console.error("Error Sintactico: "+$$[$0-2]+" Error graficar");
                                                     var error = new Error("Sintactico","Encontrado: "+$$[$0-2]+" Se esperaba -> (",+yylineno+1,+_$[$0-2].last_column+1);
@@ -3121,7 +3063,7 @@ case 295:
                                                     this.$.trad = "";
                                                   
 break;
-case 296:
+case 290:
  
                                                     console.error("Error Sintactico: "+$$[$0-1]+" Error graficar");
                                                     var error = new Error("Sintactico","Encontrado: "+$$[$0-1]+" Se esperaba -> )",+yylineno+1,+_$[$0-1].last_column+1);
@@ -3132,7 +3074,7 @@ case 296:
                                                     this.$.trad = "";
                                                   
 break;
-case 297:
+case 291:
  
                                                   console.error("Error Sintactico: "+$$[$0]+" Error graficar");
                                                   var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> ;",+yylineno+1,+_$[$0].last_column+1);
@@ -3147,8 +3089,8 @@ case 297:
 break;
 }
 },
-table: [{2:[1,13],3:1,4:2,5:[1,3],6:4,7:5,8:6,9:7,10:8,11:9,12:10,13:11,14:12,15:$V0,16:$V1,22:$V2,23:16,35:18,37:$V3,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,92:$V9,95:$Va,96:$Vb},{1:[3]},{5:[1,28],6:29,7:30,8:31,9:32,10:33,11:34,12:35,13:36,14:37,15:$V0,16:$V1,22:$V2,23:16,35:18,37:$V3,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,92:$V9,95:$Va,96:$Vb},{1:[2,2]},o($Vc,[2,12]),o($Vc,[2,13]),o($Vc,[2,14]),o($Vc,[2,15]),o($Vc,[2,16]),o($Vc,[2,17]),o($Vc,[2,18]),o($Vc,[2,19]),o($Vc,[2,20]),o($Vc,$Vd),{2:[1,39],16:[1,38]},{2:[1,41],16:[1,40]},o($Ve,[2,34]),{2:[1,44],19:$Vf,24:[1,42],25:[1,43],42:$Vg,97:[1,46],98:[1,47],99:[1,48]},{19:$Vh},{2:[1,52],67:[1,51]},{2:[1,54],67:[1,53]},{2:[1,56],67:[1,55]},{38:$Vi,72:57},{2:[1,60],67:[1,59]},{2:[1,62],67:[1,61]},{2:[1,64],67:[1,63]},{2:[1,66],16:[1,65]},{16:[1,67]},{1:[2,1]},o($Vc,[2,3]),o($Vc,[2,4]),o($Vc,[2,5]),o($Vc,[2,6]),o($Vc,[2,7]),o($Vc,[2,8]),o($Vc,[2,9]),o($Vc,[2,10]),o($Vc,[2,11]),{2:[1,71],17:[1,68],19:[1,69],21:[1,70]},o($Ve,[2,39]),{17:[1,72],19:[1,73]},o($Ve,[2,40]),{2:[1,75],21:[1,74]},{2:[1,77],21:[1,76]},o($Ve,[2,41],{67:[1,78]}),{2:$Vj,16:$Vk,20:79,32:80,33:81,34:82,35:83,36:84,38:$Vl,42:$Vm,49:93,50:89,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{2:[1,100],67:[1,99]},{2:[1,102],67:[1,101]},{2:[1,104],67:[1,103]},{2:[1,106],16:$Vu,49:105,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{2:$Vj,16:$Vk,20:108,32:80,33:81,34:82,35:83,36:84,38:$Vl,42:$Vm,49:93,50:89,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{16:$Vu,49:93,50:109,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{16:$Vu,38:$Vi,49:93,50:110,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt,72:111},{16:$Vu,49:93,50:112,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{16:$Vu,38:$Vv,49:93,50:113,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt,79:114},{2:[1,117],16:$Vu,49:93,50:116,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{16:$Vu,38:$Vi,49:93,50:118,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt,72:119},{84:[1,120]},{2:$Vw,6:123,7:124,8:125,9:126,10:127,11:128,12:129,13:131,14:132,15:$V0,16:$V1,22:$V2,23:16,35:18,37:$V3,40:[1,122],73:121,74:130,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,89:$Vx,90:$Vy,91:$Vz,92:$V9,95:$Va,96:$Vb},{2:[1,138],15:[1,137],16:[1,139]},{15:[1,140],16:[1,141],38:$Vi,72:142},{2:$Vj,16:$Vk,20:143,32:80,33:81,34:82,35:83,36:84,38:$Vl,42:$Vm,49:93,50:89,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{2:$Vj,16:$Vk,20:144,32:80,33:81,34:82,35:83,36:84,38:$Vl,42:$Vm,49:93,50:89,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{2:[1,146],68:[1,145]},{68:[1,147]},{2:[1,149],67:[1,148]},{67:[1,150]},{38:[1,151]},{2:$VA,16:$VB,18:152,26:153,27:$VC,28:$VD,29:$VE,30:$VF,31:154,44:$VG},{2:$Vj,16:$Vk,20:162,32:80,33:81,34:82,35:83,36:84,38:$Vl,42:$Vm,49:93,50:89,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},o($Ve,[2,32]),o($Ve,[2,33]),{2:$VA,16:$VB,18:163,26:153,27:$VC,28:$VD,29:$VE,30:$VF,31:154,44:$VG},{2:$Vj,16:$Vk,20:164,32:80,33:81,34:82,35:83,36:84,38:$Vl,42:$Vm,49:93,50:89,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},o($Ve,[2,35]),o($Ve,[2,36]),o($Ve,[2,37]),o($Ve,[2,38]),{2:$Vj,16:$Vk,20:166,32:80,33:81,34:82,35:83,36:84,38:$Vl,42:$Vm,49:93,50:89,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,68:[1,165],69:$Vr,70:$Vs,71:$Vt},{2:[1,168],21:[1,167]},o($VH,[2,50]),o($VH,[2,51]),o($VH,[2,52]),o($VH,$VI),o($VH,[2,54]),o([2,21,43,45,46,48,51,52,53,57,58,59,60,61,62,63,64,65,66,68],$VJ,{24:$VK,25:$VL,42:$Vg,67:$VM}),o($VH,$VN),{2:[1,173],16:[1,174],41:172},{2:$Vj,16:$Vk,20:176,32:80,33:81,34:82,35:83,36:84,38:$Vl,42:$Vm,47:175,49:93,50:89,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},o($VH,[2,86],{51:[1,177],52:$VO,53:$VP}),{16:$Vu,49:93,50:180,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},o($VQ,[2,90]),o($VQ,[2,91]),o($VQ,[2,98],{45:[1,182],46:[1,181],57:[1,183],58:[1,184],59:[1,185],60:[1,186],61:$VR,62:$VS,63:$VT,64:$VU,65:$VV,66:$VW}),{16:$Vu,49:193,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{16:$Vu,34:194,49:93,50:89,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},o($VX,[2,107]),o($VX,[2,108]),o($VX,[2,109]),{2:[1,196],68:[1,195]},{68:[1,197]},{2:$Vj,16:$Vk,20:198,32:80,33:81,34:82,35:83,36:84,38:$Vl,42:$Vm,49:93,50:89,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{2:$Vj,16:$Vk,20:199,32:80,33:81,34:82,35:83,36:84,38:$Vl,42:$Vm,49:93,50:89,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{2:[1,201],68:[1,200]},{68:[1,202]},{43:[1,203],61:$VR,62:$VS,63:$VT,64:$VU,65:$VV,66:$VW},{43:[1,204]},o($VX,$VJ),{2:[1,206],21:[1,205]},{2:[1,208],52:$VO,53:$VP,68:[1,207]},{52:$VO,53:$VP,68:[1,209]},o($Ve,[2,138]),{2:[1,211],52:$VO,53:$VP,68:[1,210]},{52:$VO,53:$VP,68:[1,212]},o($Ve,[2,144]),{2:[1,215],40:[1,214],80:213,82:[1,216]},{2:[1,218],52:$VO,53:$VP,68:[1,217]},{68:[1,219]},{52:$VO,53:$VP,68:[1,220]},o($Ve,[2,168]),{2:[1,222],67:[1,221]},{6:224,7:225,8:226,9:227,10:228,11:229,12:230,13:232,14:233,15:$V0,16:$V1,22:$V2,23:16,35:18,37:$V3,40:[1,223],74:231,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,89:$Vx,90:$Vy,91:$Vz,92:$V9,95:$Va,96:$Vb},o($VY,[2,112]),o($VZ,[2,123]),o($VZ,[2,124]),o($VZ,[2,125]),o($VZ,[2,126]),o($VZ,[2,127]),o($VZ,[2,128]),o($VZ,[2,129]),o($VZ,[2,130]),o($VZ,[2,131]),o($VZ,[2,132]),o($VZ,[2,133]),{2:[1,235],21:[1,234]},{2:[1,237],21:[1,236]},{2:[1,239],7:241,16:[1,243],20:240,21:[1,238],32:80,33:81,34:82,35:242,36:84,38:$Vl,42:$Vm,49:93,50:89,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{2:[1,245],16:[1,244]},{16:[1,246],19:[1,247],68:[1,250],87:[1,248],88:[1,249]},{2:[1,252],19:[1,251],87:[1,253],88:[1,254]},{16:[1,255]},{19:[1,256],87:[1,257],88:[1,258]},o($Ve,[2,247]),{2:[1,260],68:[1,259]},{68:[1,261]},{2:[1,263],21:[1,262]},{21:[1,264]},{21:[1,265]},{2:[1,267],16:$V_,68:[1,266],93:268},{2:$V$,16:$V_,68:[1,270],93:271},{2:$V$,16:$V_,68:[1,273],93:274},{2:$VA,16:$VB,18:276,26:153,27:$VC,28:$VD,29:$VE,30:$VF,31:154,39:275,44:$VG},{2:[1,279],19:[1,277],21:[1,278]},o($V01,[2,48]),o($V01,[2,49]),o($V01,$V11,{42:[1,280]}),o($V01,$V21,{42:[1,281]}),o($V01,$V31,{42:[1,282]}),o($V41,[2,45]),o($V01,$V51,{42:[1,283]}),o($V41,[2,47]),{45:[1,284]},{2:[1,286],21:[1,285]},{19:[1,287]},{2:[1,289],21:[1,288]},{21:[1,290]},{68:[1,291]},o($Ve,[2,81]),o($Ve,[2,82]),o($VH,[2,55]),o($VH,[2,56]),{2:$Vj,16:$Vk,20:294,32:80,33:81,34:82,35:83,36:84,38:$Vl,42:$Vm,49:93,50:89,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,68:[1,292],69:$Vr,70:$Vs,71:$Vt,94:293},{16:[1,296],40:[1,295]},{40:[1,297]},{17:[1,298]},{2:[1,301],43:[1,299],48:[1,300]},o($V61,[2,78]),{16:$Vu,49:93,50:302,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{16:$Vu,49:93,50:303,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{16:$Vu,49:93,50:304,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},o($VQ,[2,89]),{16:$Vu,49:305,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{16:$Vu,49:306,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{16:$Vu,49:307,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{16:$Vu,49:308,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{16:$Vu,49:309,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{16:$Vu,49:310,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{16:$Vu,49:311,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{16:$Vu,49:312,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{16:$Vu,49:313,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{16:$Vu,49:314,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{16:$Vu,49:315,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{16:$Vu,49:316,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},o($V71,[2,105],{63:$VT,64:$VU,65:$VV,66:$VW}),{68:[1,317]},{2:[1,319],21:[1,318]},{21:[1,320]},{21:[1,321]},{2:[1,323],68:[1,322]},{68:[1,324]},{2:[1,326],21:[1,325]},{21:[1,327]},{21:[1,328]},o($V81,[2,79]),o($V81,[2,80]),o($Ve,[2,83]),o($Ve,[2,84]),{38:$Vi,72:329},{38:$Vi,72:330},{38:$Vi,72:331},{38:$Vv,79:332},{38:$Vv,79:333},{38:$Vv,79:334},{40:[1,336],81:335,82:[1,337],83:[1,338]},o($Ve,[2,147]),{40:[1,339]},{2:[1,341],16:$Vu,49:93,50:340,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{38:$Vi,72:342},{38:$Vi,72:343},{38:$Vi,72:344},{38:$Vi,72:345},{2:[1,347],16:$Vu,49:93,50:346,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{16:$Vu,49:93,50:348,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},o($VY,[2,111]),o($VZ,[2,113]),o($VZ,[2,114]),o($VZ,[2,115]),o($VZ,[2,116]),o($VZ,[2,117]),o($VZ,[2,118]),o($VZ,[2,119]),o($VZ,[2,120]),o($VZ,[2,121]),o($VZ,[2,122]),o($VZ,[2,248]),o($VZ,[2,249]),o($VZ,[2,250]),o($VZ,[2,251]),o($VZ,[2,252]),o($VZ,[2,253],{2:$VN,21:$VN}),{2:[1,350],21:[1,349]},o($VZ,[2,256]),o($Vd,$VI,{19:$Vh}),o([2,21,45,46,51,52,53,57,58,59,60,61,62,63,64,65,66],$VJ,{19:$Vf,24:$VK,25:$VL,42:$Vg,67:$VM}),{2:[1,352],19:[1,351],87:[1,353],88:[1,354]},{19:[1,355],87:[1,356],88:[1,357]},{19:[1,358],87:[1,359],88:[1,360]},{2:$Vj,16:$Vk,20:361,32:80,33:81,34:82,35:83,36:84,38:$Vl,42:$Vm,49:93,50:89,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{16:[1,362]},{16:[1,363]},{38:$Vi,72:364},{2:$Vj,16:$Vk,20:365,32:80,33:81,34:82,35:83,36:84,38:$Vl,42:$Vm,49:93,50:89,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{2:$Vj,16:[1,367],20:366,32:80,33:81,34:82,35:83,36:84,38:$Vl,42:$Vm,49:93,50:89,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{2:[1,369],16:[1,368]},{2:[1,371],16:[1,370]},{19:[1,372],87:[1,373],88:[1,374]},{2:$Vj,16:$Vk,20:375,32:80,33:81,34:82,35:83,36:84,38:$Vl,42:$Vm,49:93,50:89,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{16:[1,376]},{16:[1,377]},{2:[1,379],21:[1,378]},{21:[1,380]},{21:[1,381]},o($Ve,[2,280]),o($Ve,[2,283]),o($Ve,[2,282]),o($Ve,[2,281]),{2:[1,383],17:[1,382]},o($V91,$Va1,{17:[1,384]}),{2:[1,386],48:$Vb1,68:[1,385]},{17:[1,388]},{17:[1,389]},{48:$Vb1,68:[1,390]},o($Vc1,$Va1),{17:[1,391]},{48:$Vb1,68:[1,392]},{2:$VA,16:$VB,18:394,26:153,27:$VC,28:$VD,29:$VE,30:$VF,31:154,40:[1,393],44:$VG},{17:[1,395]},{2:$Vj,16:$Vk,20:396,32:80,33:81,34:82,35:83,36:84,38:$Vl,42:$Vm,49:93,50:89,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},o($Ve,[2,30]),o($Ve,[2,31]),{43:[1,397]},{43:[1,398]},{43:[1,399]},{43:[1,400]},{2:$VA,16:[1,405],26:401,27:[1,402],28:[1,403],29:[1,404],30:$VF},o($Ve,[2,26]),o($Ve,[2,27]),{2:$Vj,16:$Vk,20:406,32:80,33:81,34:82,35:83,36:84,38:$Vl,42:$Vm,49:93,50:89,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},o($Ve,[2,28]),o($Ve,[2,29]),o($Ve,[2,285]),{21:[1,407]},o($VH,[2,272]),{48:[1,409],68:[1,408]},o($Vc1,[2,275]),o($VH,[2,64]),{17:[1,410]},o($VH,[2,65]),{2:$Vj,16:$Vk,20:411,32:80,33:81,34:82,35:83,36:84,38:$Vl,42:$Vm,49:93,50:89,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},o($VH,[2,75]),{2:$Vj,16:$Vk,20:412,32:80,33:81,34:82,35:83,36:84,38:$Vl,42:$Vm,49:93,50:89,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{2:$Vj,16:$Vk,20:413,32:80,33:81,34:82,35:83,36:84,38:$Vl,42:$Vm,49:93,50:89,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{17:[1,414],52:$VO,53:$VP},o($VQ,[2,87]),o([2,17,21,43,48,51,53,68],[2,88],{52:$VO}),o($VQ,[2,92],{61:$VR,62:$VS,63:$VT,64:$VU,65:$VV,66:$VW}),o($VQ,[2,93],{61:$VR,62:$VS,63:$VT,64:$VU,65:$VV,66:$VW}),o($VQ,[2,94],{61:$VR,62:$VS,63:$VT,64:$VU,65:$VV,66:$VW}),o($VQ,[2,95],{61:$VR,62:$VS,63:$VT,64:$VU,65:$VV,66:$VW}),o($VQ,[2,96],{61:$VR,62:$VS,63:$VT,64:$VU,65:$VV,66:$VW}),o($VQ,[2,97],{61:$VR,62:$VS,63:$VT,64:$VU,65:$VV,66:$VW}),o($V71,[2,99],{63:$VT,64:$VU,65:$VV,66:$VW}),o($V71,[2,100],{63:$VT,64:$VU,65:$VV,66:$VW}),o($Vd1,[2,101],{65:$VV}),o($Vd1,[2,102],{65:$VV}),o($VX,[2,103]),o($Vd1,[2,104],{65:$VV}),o($VX,[2,106]),o($Ve,[2,284]),o($Ve,[2,288]),o($Ve,[2,287]),o($Ve,[2,286]),{2:[1,416],21:[1,415]},{21:[1,417]},{21:[1,418]},o($Ve,[2,294]),o($Ve,[2,297]),o($Ve,[2,296]),o($Ve,[2,295]),o($Ve,[2,135],{76:419,77:[1,420]}),o($Ve,[2,137]),o($Ve,[2,136]),o($Ve,[2,141]),o($Ve,[2,143]),o($Ve,[2,142]),{40:[1,421]},o($Ve,[2,146]),{2:[1,423],16:$Vu,49:93,50:422,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{17:[1,424]},o($Ve,[2,148]),{17:[1,425],52:$VO,53:$VP},{17:[1,426]},o($Ve,[2,164]),o($Ve,[2,167]),o($Ve,[2,166]),o($Ve,[2,165]),{2:[1,428],52:$VO,53:$VP,68:[1,427]},{68:[1,429]},{52:$VO,53:$VP,68:[1,430]},o($VZ,[2,254]),o($VZ,[2,255]),{2:$Vj,16:$Vk,20:431,32:80,33:81,34:82,35:83,36:84,38:$Vl,42:$Vm,49:93,50:89,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{2:$Vj,16:[1,433],20:432,32:80,33:81,34:82,35:83,36:84,38:$Vl,42:$Vm,49:93,50:89,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{2:[1,435],16:[1,434]},{2:[1,437],16:[1,436]},{2:$Vj,16:$Vk,20:438,32:80,33:81,34:82,35:83,36:84,38:$Vl,42:$Vm,49:93,50:89,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{16:[1,439]},{16:[1,440]},{2:$Vj,16:$Vk,20:441,32:80,33:81,34:82,35:83,36:84,38:$Vl,42:$Vm,49:93,50:89,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{16:[1,442]},{16:[1,443]},{21:[1,444]},{68:[1,445]},{68:[1,446]},o($Ve,[2,246]),{2:[1,448],21:[1,447]},{21:[1,449]},o($Ve1,$VJ,{24:$VK,25:$VL,42:$Vg,67:$VM,68:[1,450]}),{2:[1,452],68:[1,451]},{68:[1,453]},{2:[1,455],68:[1,454]},{68:[1,456]},{2:$Vj,16:$Vk,20:457,32:80,33:81,34:82,35:83,36:84,38:$Vl,42:$Vm,49:93,50:89,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{16:[1,458]},{16:[1,459]},{21:[1,460]},{68:[1,461]},{68:[1,462]},o($Ve,[2,276]),o($Ve,[2,279]),o($Ve,[2,278]),o($Ve,[2,277]),{2:$VA,16:$VB,18:463,26:153,27:$VC,28:$VD,29:$VE,30:$VF,31:154,44:$VG},{2:$VA,16:$VB,18:464,26:153,27:$VC,28:$VD,29:$VE,30:$VF,31:154,44:$VG},{2:$VA,16:$VB,18:465,26:153,27:$VC,28:$VD,29:$VE,30:$VF,31:154,44:$VG},{2:[1,467],17:[1,466]},{17:[1,468]},{16:[1,469]},{2:$VA,16:$VB,18:470,26:153,27:$VC,28:$VD,29:$VE,30:$VF,31:154,44:$VG},{2:$VA,16:$VB,18:471,26:153,27:$VC,28:$VD,29:$VE,30:$VF,31:154,44:$VG},{17:[1,472]},{2:$VA,16:$VB,18:473,26:153,27:$VC,28:$VD,29:$VE,30:$VF,31:154,44:$VG},{17:[1,474]},{2:[1,476],21:[1,475]},{17:[1,477]},{16:[1,478]},{2:[1,480],21:[1,479]},o($V01,[2,70]),o($V01,[2,71]),o($V01,[2,72]),o($V01,[2,73]),{46:[1,481]},{46:$V11},{46:$V21},{46:$V31},{46:$V51},{2:[1,483],21:[1,482]},o($Ve,[2,290]),o($VH,[2,273]),{2:$Vj,16:$Vk,20:484,32:80,33:81,34:82,35:83,36:84,38:$Vl,42:$Vm,49:93,50:89,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{2:$Vj,16:$Vk,20:485,32:80,33:81,34:82,35:83,36:84,38:$Vl,42:$Vm,49:93,50:89,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{2:[1,487],21:[1,486]},o($V61,[2,76]),o($V61,[2,77]),{16:$Vu,49:93,50:488,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},o($Ve,[2,289]),o($Ve,[2,293]),o($Ve,[2,292]),o($Ve,[2,291]),o($Ve,[2,134]),{8:490,38:$Vi,72:489,75:$V4},o($Ve,[2,145]),{17:[1,491],52:$VO,53:$VP},{17:[1,492]},{2:$Vw,6:123,7:124,8:125,9:126,10:127,11:128,12:129,13:131,14:132,15:$V0,16:$V1,22:$V2,23:16,35:18,37:$V3,38:$Vi,40:[2,163],72:494,73:493,74:130,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,89:$Vx,90:$Vy,91:$Vz,92:$V9,95:$Va,96:$Vb},o($Vf1,[2,159],{23:16,35:18,6:123,7:124,8:125,9:126,10:127,11:128,12:129,74:130,13:131,14:132,73:495,72:496,2:$Vw,15:$V0,16:$V1,22:$V2,37:$V3,38:$Vi,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,89:$Vx,90:$Vy,91:$Vz,92:$V9,95:$Va,96:$Vb}),o($Vf1,[2,160],{23:16,35:18,6:123,7:124,8:125,9:126,10:127,11:128,12:129,74:130,13:131,14:132,73:497,72:498,2:$Vw,15:$V0,16:$V1,22:$V2,37:$V3,38:$Vi,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,89:$Vx,90:$Vy,91:$Vz,92:$V9,95:$Va,96:$Vb}),{2:[1,500],21:[1,499]},{21:[1,501]},{21:[1,502]},{21:[1,503]},{2:[1,505],21:[1,504]},{21:[1,506]},o($Ve1,$VJ,{24:$VK,25:$VL,42:$Vg,67:$VM,68:[1,507]}),{2:[1,509],68:[1,508]},{68:[1,510]},{2:[1,512],68:[1,511]},{68:[1,513]},{21:[1,514]},{68:[1,515]},{68:[1,516]},{21:[1,517]},{68:[1,518]},{68:[1,519]},{16:$Vu,49:93,50:520,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{38:$Vi,72:521},{38:$Vi,72:522},{2:[1,524],16:$Vu,49:93,50:523,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{16:$Vu,49:93,50:525,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{16:$Vu,49:93,50:526,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{38:$Vi,72:527},{2:[1,529],38:$Vi,72:528},{38:$Vi,72:530},{38:$Vi,72:531},{2:[1,533],38:$Vi,72:532},{38:$Vi,72:534},{38:$Vi,72:535},{21:[1,536]},{68:[1,537]},{68:[1,538]},{16:$Vu,49:93,50:539,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{38:$Vi,72:540},{38:$Vi,72:541},{2:[1,543],38:$Vi,72:542},{38:$Vi,72:544},{38:$Vi,72:545},{2:$VA,16:$VB,18:546,26:153,27:$VC,28:$VD,29:$VE,30:$VF,31:154,44:$VG},{2:$VA,16:$VB,18:547,26:153,27:$VC,28:$VD,29:$VE,30:$VF,31:154,44:$VG},{2:$VA,16:$VB,18:548,26:153,27:$VC,28:$VD,29:$VE,30:$VF,31:154,44:$VG},{17:[1,549]},o($V91,[2,270]),{38:$Vi,72:550},{2:$VA,16:$VB,18:551,26:153,27:$VC,28:$VD,29:$VE,30:$VF,31:154,44:$VG},{38:$Vi,72:552},{2:$VA,16:$VB,18:553,26:153,27:$VC,28:$VD,29:$VE,30:$VF,31:154,44:$VG},o($Ve,[2,58]),o($Ve,[2,59]),{16:[1,554]},{2:[1,556],21:[1,555]},o($Ve,[2,22]),o($Ve,[2,23]),o($V01,[2,74]),o($Ve,[2,24]),o($Ve,[2,25]),o($Vc1,[2,274]),{2:[1,558],21:[1,557]},o($Vg1,[2,68]),o($Vg1,[2,69]),o($VH,[2,85],{52:$VO,53:$VP}),o($Ve,[2,139]),o($Ve,[2,140]),o($Vf1,[2,153],{23:16,35:18,6:123,7:124,8:125,9:126,10:127,11:128,12:129,74:130,13:131,14:132,73:559,72:560,2:$Vw,15:$V0,16:$V1,22:$V2,37:$V3,38:$Vi,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,89:$Vx,90:$Vy,91:$Vz,92:$V9,95:$Va,96:$Vb}),o($Vf1,[2,154],{23:16,35:18,6:123,7:124,8:125,9:126,10:127,11:128,12:129,74:130,13:131,14:132,73:561,72:562,2:$Vw,15:$V0,16:$V1,22:$V2,37:$V3,38:$Vi,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,89:$Vx,90:$Vy,91:$Vz,92:$V9,95:$Va,96:$Vb}),{6:224,7:225,8:226,9:227,10:228,11:229,12:230,13:232,14:233,15:$V0,16:$V1,22:$V2,23:16,35:18,37:$V3,40:[2,161],74:231,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,89:$Vx,90:$Vy,91:$Vz,92:$V9,95:$Va,96:$Vb},{40:[2,162]},o($Vf1,[2,155],{23:16,35:18,6:224,7:225,8:226,9:227,10:228,11:229,12:230,74:231,13:232,14:233,15:$V0,16:$V1,22:$V2,37:$V3,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,89:$Vx,90:$Vy,91:$Vz,92:$V9,95:$Va,96:$Vb}),o($Vf1,[2,157]),o($Vf1,[2,156],{23:16,35:18,6:224,7:225,8:226,9:227,10:228,11:229,12:230,74:231,13:232,14:233,15:$V0,16:$V1,22:$V2,37:$V3,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,89:$Vx,90:$Vy,91:$Vz,92:$V9,95:$Va,96:$Vb}),o($Vf1,[2,158]),o($Ve,[2,169]),o($Ve,[2,173]),o($Ve,[2,172]),o($Ve,[2,171]),o($Ve,[2,170]),{2:[1,564],16:$Vu,49:93,50:563,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{16:$Vu,49:93,50:565,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{16:$Vu,49:93,50:566,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{38:$Vi,72:567},{2:[1,569],38:$Vi,72:568},{38:$Vi,72:570},{38:$Vi,72:571},{2:[1,573],38:$Vi,72:572},{38:$Vi,72:574},{38:$Vi,72:575},{16:$Vu,49:93,50:576,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{38:$Vi,72:577},{38:$Vi,72:578},{16:$Vu,49:93,50:579,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{38:$Vi,72:580},{38:$Vi,72:581},{21:[1,582],52:$VO,53:$VP},o($Ve,[2,220]),o($Ve,[2,234]),{2:[1,584],21:[1,583],52:$VO,53:$VP},{21:[1,585]},{21:[1,586],52:$VO,53:$VP},{21:[1,587],52:$VO,53:$VP},o($Ve,[2,235]),o($Ve,[2,218]),o($Ve,[2,223]),o($Ve,[2,222]),o($Ve,[2,221]),o($Ve,[2,232]),o($Ve,[2,238]),o($Ve,[2,237]),o($Ve,[2,236]),{16:$Vu,49:93,50:588,54:$Vn,55:$Vo,56:92,62:$Vp,67:$Vq,69:$Vr,70:$Vs,71:$Vt},{38:$Vi,72:589},{38:$Vi,72:590},{21:[1,591],52:$VO,53:$VP},o($Ve,[2,219]),o($Ve,[2,233]),o($Ve,[2,257]),o($Ve,[2,262]),o($Ve,[2,261]),o($Ve,[2,260]),{2:[1,593],38:$Vi,72:592},{38:$Vi,72:594},{38:$Vi,72:595},{2:$VA,16:$VB,18:596,26:153,27:$VC,28:$VD,29:$VE,30:$VF,31:154,44:$VG},o($Ve,[2,259]),{38:$Vi,72:597},o($Ve,[2,258]),{38:$Vi,72:598},{2:[1,600],21:[1,599]},o($Vh1,[2,62]),o($Vh1,[2,63]),o($Vg1,[2,66]),o($Vg1,[2,67]),o($Vf1,[2,149],{23:16,35:18,6:224,7:225,8:226,9:227,10:228,11:229,12:230,74:231,13:232,14:233,15:$V0,16:$V1,22:$V2,37:$V3,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,89:$Vx,90:$Vy,91:$Vz,92:$V9,95:$Va,96:$Vb}),o($Vf1,[2,151]),o($Vf1,[2,150],{23:16,35:18,6:224,7:225,8:226,9:227,10:228,11:229,12:230,74:231,13:232,14:233,15:$V0,16:$V1,22:$V2,37:$V3,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,89:$Vx,90:$Vy,91:$Vz,92:$V9,95:$Va,96:$Vb}),o($Vf1,[2,152]),{2:[1,602],21:[1,601],52:$VO,53:$VP},{21:[1,603]},{21:[1,604],52:$VO,53:$VP},{21:[1,605],52:$VO,53:$VP},o($Ve,[2,228]),o($Ve,[2,224]),o($Ve,[2,231]),o($Ve,[2,230]),o($Ve,[2,229]),o($Ve,[2,239]),o($Ve,[2,245]),o($Ve,[2,244]),o($Ve,[2,243]),{21:[1,606],52:$VO,53:$VP},o($Ve,[2,227]),o($Ve,[2,242]),{21:[1,607],52:$VO,53:$VP},o($Ve,[2,226]),o($Ve,[2,241]),{16:[1,608]},{2:[1,610],16:[1,609]},{16:[1,611]},{16:[1,612]},{16:[1,613]},{16:[1,614]},{21:[1,615],52:$VO,53:$VP},o($Ve,[2,225]),o($Ve,[2,240]),{16:[1,616]},o($Ve,[2,263]),o($Ve,[2,268]),o($Ve,[2,267]),o($Ve,[2,266]),o($V91,[2,269]),o($Ve,[2,265]),o($Ve,[2,264]),o($Vh1,[2,60]),o($Vh1,[2,61]),{2:[1,618],16:[1,617]},{16:[1,619]},{16:[1,620]},{16:[1,621]},{16:[1,622]},{16:[1,623]},{16:[1,624]},{24:[1,625],25:[1,626]},{2:[1,628],24:[1,627],25:[1,629]},{24:[1,630],25:[1,631]},{24:[1,632],25:[1,633]},{24:[1,634],25:[1,635]},{24:[1,636],25:[1,637]},{24:[1,638],25:[1,639]},{16:[1,640]},{24:[1,641],25:[1,642]},{2:[1,644],24:[1,643],25:[1,645]},{24:[1,646],25:[1,647]},{24:[1,648],25:[1,649]},{24:[1,650],25:[1,651]},{24:[1,652],25:[1,653]},{24:[1,654],25:[1,655]},{24:[1,656],25:[1,657]},{24:[1,658],25:[1,659]},{68:[1,660]},{68:[1,661]},{2:[1,663],68:[1,662]},{68:[1,664]},{2:[1,666],68:[1,665]},{68:[1,667]},{68:[1,668]},{68:[1,669]},{68:[1,670]},{68:[1,671]},{68:[1,672]},{68:[1,673]},{68:[1,674]},{68:[1,675]},{68:[1,676]},{24:[1,677],25:[1,678]},{68:[1,679]},{68:[1,680]},{2:[1,682],68:[1,681]},{68:[1,683]},{2:[1,685],68:[1,684]},{68:[1,686]},{68:[1,687]},{68:[1,688]},{68:[1,689]},{68:[1,690]},{68:[1,691]},{68:[1,692]},{68:[1,693]},{68:[1,694]},{68:[1,695]},{68:[1,696]},{68:[1,697]},{68:[1,698]},{68:[1,699]},{38:$Vi,72:700},{38:$Vi,72:701},{2:[1,703],38:$Vi,72:702},{38:$Vi,72:704},{38:$Vi,72:705},{2:[1,707],38:$Vi,72:706},{38:$Vi,72:708},{38:$Vi,72:709},{38:$Vi,72:710},{38:$Vi,72:711},{38:$Vi,72:712},{38:$Vi,72:713},{38:$Vi,72:714},{38:$Vi,72:715},{38:$Vi,72:716},{38:$Vi,72:717},{38:$Vi,72:718},{68:[1,719]},{68:[1,720]},{38:$Vi,72:721},{38:$Vi,72:722},{2:[1,724],38:$Vi,72:723},{38:$Vi,72:725},{38:$Vi,72:726},{2:[1,728],38:$Vi,72:727},{38:$Vi,72:729},{38:$Vi,72:730},{38:$Vi,72:731},{38:$Vi,72:732},{38:$Vi,72:733},{38:$Vi,72:734},{38:$Vi,72:735},{38:$Vi,72:736},{38:$Vi,72:737},{38:$Vi,72:738},{38:$Vi,72:739},{38:$Vi,72:740},{38:$Vi,72:741},{38:$Vi,72:742},{38:$Vi,72:743},o($Ve,[2,199]),o($Ve,[2,210]),o($Ve,[2,197]),o($Ve,[2,207]),o($Ve,[2,206]),o($Ve,[2,205]),o($Ve,[2,208]),o($Ve,[2,217]),o($Ve,[2,216]),o($Ve,[2,204]),o($Ve,[2,215]),o($Ve,[2,203]),o($Ve,[2,214]),o($Ve,[2,202]),o($Ve,[2,213]),o($Ve,[2,201]),o($Ve,[2,212]),o($Ve,[2,200]),o($Ve,[2,211]),{38:$Vi,72:744},{38:$Vi,72:745},o($Ve,[2,198]),o($Ve,[2,209]),o($Ve,[2,174]),o($Ve,[2,185]),o($Ve,[2,184]),o($Ve,[2,183]),o($Ve,[2,186]),o($Ve,[2,196]),o($Ve,[2,195]),o($Ve,[2,182]),o($Ve,[2,194]),o($Ve,[2,181]),o($Ve,[2,193]),o($Ve,[2,180]),o($Ve,[2,192]),o($Ve,[2,179]),o($Ve,[2,191]),o($Ve,[2,178]),o($Ve,[2,190]),o($Ve,[2,177]),o($Ve,[2,189]),o($Ve,[2,176]),o($Ve,[2,188]),o($Ve,[2,175]),o($Ve,[2,187])],
-defaultActions: {3:[2,2],28:[2,1],402:[2,42],403:[2,43],404:[2,44],405:[2,46],494:[2,162]},
+table: [{2:[1,13],3:1,4:2,5:[1,3],6:4,7:5,8:6,9:7,10:8,11:9,12:10,13:11,14:12,15:$V0,16:$V1,22:$V2,23:16,36:$V3,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,92:$V9,95:$Va,96:$Vb},{1:[3]},{5:[1,27],6:28,7:29,8:30,9:31,10:32,11:33,12:34,13:35,14:36,15:$V0,16:$V1,22:$V2,23:16,36:$V3,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,92:$V9,95:$Va,96:$Vb},{1:[2,2]},o($Vc,[2,12]),o($Vc,[2,13]),o($Vc,[2,14]),o($Vc,[2,15]),o($Vc,[2,16]),o($Vc,[2,17]),o($Vc,[2,18]),o($Vc,[2,19]),o($Vc,[2,20]),o($Vc,[2,21]),{2:[1,38],16:[1,37]},{2:[1,40],16:[1,39]},o($Vd,[2,34]),{2:[1,43],19:$Ve,24:[1,41],25:[1,42],41:[1,45],97:[1,46],98:[1,47]},{2:[1,49],66:[1,48]},{2:[1,51],66:[1,50]},{2:[1,53],66:[1,52]},{37:$Vf,72:54},{2:[1,57],66:[1,56]},{2:[1,59],66:[1,58]},{2:[1,61],66:[1,60]},{2:[1,63],16:[1,62]},{16:[1,64]},{1:[2,1]},o($Vc,[2,3]),o($Vc,[2,4]),o($Vc,[2,5]),o($Vc,[2,6]),o($Vc,[2,7]),o($Vc,[2,8]),o($Vc,[2,9]),o($Vc,[2,10]),o($Vc,[2,11]),{2:[1,68],17:[1,65],19:[1,66],21:[1,67]},o($Vd,[2,39]),{17:[1,69],19:[1,70]},o($Vd,[2,40]),{2:[1,72],21:[1,71]},{2:[1,74],21:[1,73]},o($Vd,[2,41],{66:[1,75]}),{2:$Vg,16:$Vh,20:76,32:77,33:78,34:79,35:80,37:$Vi,41:$Vj,48:89,49:85,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{16:$Vr,48:95,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{2:[1,98],66:[1,97]},{2:[1,100],66:[1,99]},{16:$Vr,48:89,49:101,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{16:$Vr,37:$Vf,48:89,49:102,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq,72:103},{16:$Vr,48:89,49:104,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{16:$Vr,37:$Vs,48:89,49:105,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq,79:106},{2:[1,109],16:$Vr,48:89,49:108,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{16:$Vr,37:$Vf,48:89,49:110,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq,72:111},{84:[1,112]},{2:$Vt,6:115,7:116,8:117,9:118,10:119,11:120,12:121,13:123,14:124,15:$V0,16:$V1,22:$V2,23:16,36:$V3,39:[1,114],73:113,74:122,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,89:$Vu,90:$Vv,91:$Vw,92:$V9,95:$Va,96:$Vb},{2:[1,130],15:[1,129],16:[1,131]},{15:[1,132],16:[1,133],37:$Vf,72:134},{2:$Vg,16:$Vh,20:135,32:77,33:78,34:79,35:80,37:$Vi,41:$Vj,48:89,49:85,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{2:$Vg,16:$Vh,20:136,32:77,33:78,34:79,35:80,37:$Vi,41:$Vj,48:89,49:85,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{2:[1,138],67:[1,137]},{67:[1,139]},{2:[1,141],66:[1,140]},{66:[1,142]},{37:[1,143]},{2:$Vx,16:$Vy,18:144,26:145,27:$Vz,28:$VA,29:$VB,30:$VC,31:146,43:$VD},{2:$Vg,16:$Vh,20:154,32:77,33:78,34:79,35:80,37:$Vi,41:$Vj,48:89,49:85,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},o($Vd,[2,32]),o($Vd,[2,33]),{2:$Vx,16:$Vy,18:155,26:145,27:$Vz,28:$VA,29:$VB,30:$VC,31:146,43:$VD},{2:$Vg,16:$Vh,20:156,32:77,33:78,34:79,35:80,37:$Vi,41:$Vj,48:89,49:85,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},o($Vd,[2,35]),o($Vd,[2,36]),o($Vd,[2,37]),o($Vd,[2,38]),{2:$Vg,16:$Vh,20:157,32:77,33:78,34:79,35:80,37:$Vi,41:$Vj,48:89,49:85,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{2:[1,159],21:[1,158]},o($VE,[2,50]),o($VE,[2,51]),o($VE,[2,52]),o($VE,[2,53]),o([2,21,42,44,45,47,50,51,52,56,57,58,59,60,61,62,63,64,65,67],$VF,{24:$VG,25:$VH,41:$VI,66:$VJ,71:$VK}),o($VE,$VL),{2:[1,166],16:[1,167],40:165},{2:$Vg,16:$Vh,20:169,32:77,33:78,34:79,35:80,37:$Vi,41:$Vj,46:168,48:89,49:85,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},o($VE,[2,83],{50:[1,170],51:$VM,52:$VN}),{16:$Vr,48:89,49:173,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},o($VO,[2,87]),o($VO,[2,88]),o($VO,[2,95],{44:[1,175],45:[1,174],56:[1,176],57:[1,177],58:[1,178],59:[1,179],60:$VP,61:$VQ,62:$VR,63:$VS,64:$VT,65:$VU}),{16:$Vr,48:186,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{16:$Vr,34:187,48:89,49:85,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},o($VV,[2,104]),o($VV,[2,105]),o($VV,[2,106]),{42:[1,188],60:$VP,61:$VQ,62:$VR,63:$VS,64:$VT,65:$VU},o($VV,$VF,{41:$VI,71:$VK}),{2:$Vg,16:$Vh,20:189,32:77,33:78,34:79,35:80,37:$Vi,41:$Vj,48:89,49:85,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{2:$Vg,16:$Vh,20:190,32:77,33:78,34:79,35:80,37:$Vi,41:$Vj,48:89,49:85,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{2:[1,192],67:[1,191]},{67:[1,193]},{2:[1,195],51:$VM,52:$VN,67:[1,194]},{51:$VM,52:$VN,67:[1,196]},o($Vd,[2,137]),{2:[1,198],51:$VM,52:$VN,67:[1,197]},{51:$VM,52:$VN,67:[1,199]},o($Vd,[2,143]),{2:[1,202],39:[1,201],80:200,82:[1,203]},{2:[1,205],51:$VM,52:$VN,67:[1,204]},{67:[1,206]},{51:$VM,52:$VN,67:[1,207]},o($Vd,[2,167]),{2:[1,209],66:[1,208]},{6:211,7:212,8:213,9:214,10:215,11:216,12:217,13:219,14:220,15:$V0,16:$V1,22:$V2,23:16,36:$V3,39:[1,210],74:218,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,89:$Vu,90:$Vv,91:$Vw,92:$V9,95:$Va,96:$Vb},o($VW,[2,111]),o($VX,[2,122]),o($VX,[2,123]),o($VX,[2,124]),o($VX,[2,125]),o($VX,[2,126]),o($VX,[2,127]),o($VX,[2,128]),o($VX,[2,129]),o($VX,[2,130]),o($VX,[2,131]),o($VX,[2,132]),{2:[1,222],21:[1,221]},{2:[1,224],21:[1,223]},{2:[1,226],7:228,16:[1,229],20:227,21:[1,225],32:77,33:78,34:79,35:80,37:$Vi,41:$Vj,48:89,49:85,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{2:[1,231],16:[1,230]},{16:[1,232],19:[1,233],67:[1,236],87:[1,234],88:[1,235]},{2:[1,238],19:[1,237],87:[1,239],88:[1,240]},{16:[1,241]},{19:[1,242],87:[1,243],88:[1,244]},o($Vd,[2,246]),{2:[1,246],67:[1,245]},{67:[1,247]},{2:[1,249],21:[1,248]},{21:[1,250]},{21:[1,251]},{2:[1,253],16:$VY,67:[1,252],93:254},{2:$VZ,16:$VY,67:[1,256],93:257},{2:$VZ,16:$VY,67:[1,259],93:260},{2:$Vx,16:$Vy,18:262,26:145,27:$Vz,28:$VA,29:$VB,30:$VC,31:146,38:261,43:$VD},{2:[1,265],19:[1,263],21:[1,264]},o($V_,[2,48]),o($V_,[2,49]),o($V_,$V$,{41:[1,266]}),o($V_,$V01,{41:[1,267]}),o($V_,$V11,{41:[1,268]}),o($V21,[2,45]),o($V_,$V31,{41:[1,269]}),o($V21,[2,47]),{44:[1,270]},{2:[1,272],21:[1,271]},{19:[1,273]},{2:[1,275],21:[1,274]},{67:[1,276]},o($Vd,[2,78]),o($Vd,[2,79]),o($VE,[2,54]),o($VE,[2,55]),{2:$Vg,16:$Vh,20:279,32:77,33:78,34:79,35:80,37:$Vi,41:$Vj,48:89,49:85,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,67:[1,277],68:$Vo,69:$Vp,70:$Vq,94:278},{16:$Vr,48:280,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{66:[1,281]},{16:[1,283],39:[1,282]},{39:[1,284]},{17:[1,285]},{2:[1,288],42:[1,286],47:[1,287]},o($V41,[2,77]),{16:$Vr,48:89,49:289,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{16:$Vr,48:89,49:290,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{16:$Vr,48:89,49:291,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},o($VO,[2,86]),{16:$Vr,48:292,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{16:$Vr,48:293,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{16:$Vr,48:294,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{16:$Vr,48:295,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{16:$Vr,48:296,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{16:$Vr,48:297,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{16:$Vr,48:298,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{16:$Vr,48:299,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{16:$Vr,48:300,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{16:$Vr,48:301,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{16:$Vr,48:302,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{16:$Vr,48:303,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},o($V51,[2,102],{62:$VR,63:$VS,64:$VT,65:$VU}),{67:[1,304]},{19:$V61},{2:[1,307],67:[1,306]},{67:[1,308]},{2:[1,310],21:[1,309]},{21:[1,311]},{21:[1,312]},{37:$Vf,72:313},{37:$Vf,72:314},{37:$Vf,72:315},{37:$Vs,79:316},{37:$Vs,79:317},{37:$Vs,79:318},{39:[1,320],81:319,82:[1,321],83:[1,322]},o($Vd,[2,146]),{39:[1,323]},{2:[1,325],16:$Vr,48:89,49:324,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{37:$Vf,72:326},{37:$Vf,72:327},{37:$Vf,72:328},{37:$Vf,72:329},{2:[1,331],16:$Vr,48:89,49:330,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{16:$Vr,48:89,49:332,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},o($VW,[2,110]),o($VX,[2,112]),o($VX,[2,113]),o($VX,[2,114]),o($VX,[2,115]),o($VX,[2,116]),o($VX,[2,117]),o($VX,[2,118]),o($VX,[2,119]),o($VX,[2,120]),o($VX,[2,121]),o($VX,[2,247]),o($VX,[2,248]),o($VX,[2,249]),o($VX,[2,250]),o($VX,[2,251]),o($VX,[2,252],{2:$VL,21:$VL}),{2:[1,334],21:[1,333]},o($VX,[2,255]),o($V71,$VF,{19:$Ve,24:$VG,25:$VH,41:[1,335],66:$VJ,71:$VK}),{2:[1,337],19:[1,336],87:[1,338],88:[1,339]},{19:[1,340],87:[1,341],88:[1,342]},{19:[1,343],87:[1,344],88:[1,345]},{2:$Vg,16:$Vh,20:346,32:77,33:78,34:79,35:80,37:$Vi,41:$Vj,48:89,49:85,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{16:[1,347]},{16:[1,348]},{37:$Vf,72:349},{2:$Vg,16:$Vh,20:350,32:77,33:78,34:79,35:80,37:$Vi,41:$Vj,48:89,49:85,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{2:$Vg,16:[1,352],20:351,32:77,33:78,34:79,35:80,37:$Vi,41:$Vj,48:89,49:85,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{2:[1,354],16:[1,353]},{2:[1,356],16:[1,355]},{19:[1,357],87:[1,358],88:[1,359]},{2:$Vg,16:$Vh,20:360,32:77,33:78,34:79,35:80,37:$Vi,41:$Vj,48:89,49:85,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{16:[1,361]},{16:[1,362]},{2:[1,364],21:[1,363]},{21:[1,365]},{21:[1,366]},o($Vd,[2,279]),o($Vd,[2,282]),o($Vd,[2,281]),o($Vd,[2,280]),{2:[1,368],17:[1,367]},o($V81,$V91,{17:[1,369]}),{2:[1,371],47:$Va1,67:[1,370]},{17:[1,373]},{17:[1,374]},{47:$Va1,67:[1,375]},o($Vb1,$V91),{17:[1,376]},{47:$Va1,67:[1,377]},{2:$Vx,16:$Vy,18:379,26:145,27:$Vz,28:$VA,29:$VB,30:$VC,31:146,39:[1,378],43:$VD},{17:[1,380]},{2:$Vg,16:$Vh,20:381,32:77,33:78,34:79,35:80,37:$Vi,41:$Vj,48:89,49:85,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},o($Vd,[2,30]),o($Vd,[2,31]),{42:[1,382]},{42:[1,383]},{42:[1,384]},{42:[1,385]},{2:$Vx,16:[1,390],26:386,27:[1,387],28:[1,388],29:[1,389],30:$VC},o($Vd,[2,26]),o($Vd,[2,27]),{2:$Vg,16:$Vh,20:391,32:77,33:78,34:79,35:80,37:$Vi,41:$Vj,48:89,49:85,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},o($Vd,[2,28]),o($Vd,[2,29]),{21:[1,392]},o($VE,[2,271]),{47:[1,394],67:[1,393]},o($Vb1,[2,274]),{42:[1,395],60:$VP,61:$VQ,62:$VR,63:$VS,64:$VT,65:$VU},{67:[1,396]},o($VE,[2,63]),{17:[1,397]},o($VE,[2,64]),{2:$Vg,16:$Vh,20:398,32:77,33:78,34:79,35:80,37:$Vi,41:$Vj,48:89,49:85,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},o($VE,[2,74]),{2:$Vg,16:$Vh,20:399,32:77,33:78,34:79,35:80,37:$Vi,41:$Vj,48:89,49:85,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{2:$Vg,16:$Vh,20:400,32:77,33:78,34:79,35:80,37:$Vi,41:$Vj,48:89,49:85,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{17:[1,401],51:$VM,52:$VN},o($VO,[2,84]),o([2,17,21,42,47,50,52,67],[2,85],{51:$VM}),o($VO,[2,89],{60:$VP,61:$VQ,62:$VR,63:$VS,64:$VT,65:$VU}),o($VO,[2,90],{60:$VP,61:$VQ,62:$VR,63:$VS,64:$VT,65:$VU}),o($VO,[2,91],{60:$VP,61:$VQ,62:$VR,63:$VS,64:$VT,65:$VU}),o($VO,[2,92],{60:$VP,61:$VQ,62:$VR,63:$VS,64:$VT,65:$VU}),o($VO,[2,93],{60:$VP,61:$VQ,62:$VR,63:$VS,64:$VT,65:$VU}),o($VO,[2,94],{60:$VP,61:$VQ,62:$VR,63:$VS,64:$VT,65:$VU}),o($V51,[2,96],{62:$VR,63:$VS,64:$VT,65:$VU}),o($V51,[2,97],{62:$VR,63:$VS,64:$VT,65:$VU}),o($Vc1,[2,98],{64:$VT}),o($Vc1,[2,99],{64:$VT}),o($VV,[2,100]),o($Vc1,[2,101],{64:$VT}),o($VV,[2,103]),{2:$Vg,16:$Vh,20:402,32:77,33:78,34:79,35:80,37:$Vi,41:$Vj,48:89,49:85,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{2:[1,404],21:[1,403]},{21:[1,405]},{21:[1,406]},o($Vd,[2,288]),o($Vd,[2,291]),o($Vd,[2,290]),o($Vd,[2,289]),o($Vd,[2,134],{76:407,77:[1,408]}),o($Vd,[2,136]),o($Vd,[2,135]),o($Vd,[2,140]),o($Vd,[2,142]),o($Vd,[2,141]),{39:[1,409]},o($Vd,[2,145]),{2:[1,411],16:$Vr,48:89,49:410,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{17:[1,412]},o($Vd,[2,147]),{17:[1,413],51:$VM,52:$VN},{17:[1,414]},o($Vd,[2,163]),o($Vd,[2,166]),o($Vd,[2,165]),o($Vd,[2,164]),{2:[1,416],51:$VM,52:$VN,67:[1,415]},{67:[1,417]},{51:$VM,52:$VN,67:[1,418]},o($VX,[2,253]),o($VX,[2,254]),{16:$Vr,48:419,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{2:$Vg,16:$Vh,20:420,32:77,33:78,34:79,35:80,37:$Vi,41:$Vj,48:89,49:85,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{2:$Vg,16:[1,422],20:421,32:77,33:78,34:79,35:80,37:$Vi,41:$Vj,48:89,49:85,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{2:[1,424],16:[1,423]},{2:[1,426],16:[1,425]},{2:$Vg,16:$Vh,20:427,32:77,33:78,34:79,35:80,37:$Vi,41:$Vj,48:89,49:85,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{16:[1,428]},{16:[1,429]},{2:$Vg,16:$Vh,20:430,32:77,33:78,34:79,35:80,37:$Vi,41:$Vj,48:89,49:85,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{16:[1,431]},{16:[1,432]},{21:[1,433]},{67:[1,434]},{67:[1,435]},o($Vd,[2,245]),{2:[1,437],21:[1,436]},{21:[1,438]},o($Vd1,$VF,{24:$VG,25:$VH,41:$VI,66:$VJ,67:[1,439],71:$VK}),{2:[1,441],67:[1,440]},{67:[1,442]},{2:[1,444],67:[1,443]},{67:[1,445]},{2:$Vg,16:$Vh,20:446,32:77,33:78,34:79,35:80,37:$Vi,41:$Vj,48:89,49:85,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{16:[1,447]},{16:[1,448]},{21:[1,449]},{67:[1,450]},{67:[1,451]},o($Vd,[2,275]),o($Vd,[2,278]),o($Vd,[2,277]),o($Vd,[2,276]),{2:$Vx,16:$Vy,18:452,26:145,27:$Vz,28:$VA,29:$VB,30:$VC,31:146,43:$VD},{2:$Vx,16:$Vy,18:453,26:145,27:$Vz,28:$VA,29:$VB,30:$VC,31:146,43:$VD},{2:$Vx,16:$Vy,18:454,26:145,27:$Vz,28:$VA,29:$VB,30:$VC,31:146,43:$VD},{2:[1,456],17:[1,455]},{17:[1,457]},{16:[1,458]},{2:$Vx,16:$Vy,18:459,26:145,27:$Vz,28:$VA,29:$VB,30:$VC,31:146,43:$VD},{2:$Vx,16:$Vy,18:460,26:145,27:$Vz,28:$VA,29:$VB,30:$VC,31:146,43:$VD},{17:[1,461]},{2:$Vx,16:$Vy,18:462,26:145,27:$Vz,28:$VA,29:$VB,30:$VC,31:146,43:$VD},{17:[1,463]},{2:[1,465],21:[1,464]},{17:[1,466]},{16:[1,467]},{2:[1,469],21:[1,468]},o($V_,[2,69]),o($V_,[2,70]),o($V_,[2,71]),o($V_,[2,72]),{45:[1,470]},{45:$V$},{45:$V01},{45:$V11},{45:$V31},{2:[1,472],21:[1,471]},o($Vd,[2,284]),o($VE,[2,272]),{2:$Vg,16:$Vh,20:473,32:77,33:78,34:79,35:80,37:$Vi,41:$Vj,48:89,49:85,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},o($VV,$Ve1),o($VV,[2,108]),{2:$Vg,16:$Vh,20:474,32:77,33:78,34:79,35:80,37:$Vi,41:$Vj,48:89,49:85,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{2:[1,476],21:[1,475]},o($V41,[2,75]),o($V41,[2,76]),{16:$Vr,48:89,49:477,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{2:[1,479],21:[1,478]},o($Vd,[2,283]),o($Vd,[2,287]),o($Vd,[2,286]),o($Vd,[2,285]),o($Vd,[2,133]),{8:481,37:$Vf,72:480,75:$V4},o($Vd,[2,144]),{17:[1,482],51:$VM,52:$VN},{17:[1,483]},{2:$Vt,6:115,7:116,8:117,9:118,10:119,11:120,12:121,13:123,14:124,15:$V0,16:$V1,22:$V2,23:16,36:$V3,37:$Vf,39:[2,162],72:485,73:484,74:122,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,89:$Vu,90:$Vv,91:$Vw,92:$V9,95:$Va,96:$Vb},o($Vf1,[2,158],{23:16,6:115,7:116,8:117,9:118,10:119,11:120,12:121,74:122,13:123,14:124,73:486,72:487,2:$Vt,15:$V0,16:$V1,22:$V2,36:$V3,37:$Vf,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,89:$Vu,90:$Vv,91:$Vw,92:$V9,95:$Va,96:$Vb}),o($Vf1,[2,159],{23:16,6:115,7:116,8:117,9:118,10:119,11:120,12:121,74:122,13:123,14:124,73:488,72:489,2:$Vt,15:$V0,16:$V1,22:$V2,36:$V3,37:$Vf,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,89:$Vu,90:$Vv,91:$Vw,92:$V9,95:$Va,96:$Vb}),{2:[1,491],21:[1,490]},{21:[1,492]},{21:[1,493]},{21:[1,494]},{42:[1,495],60:$VP,61:$VQ,62:$VR,63:$VS,64:$VT,65:$VU},{2:[1,497],21:[1,496]},{21:[1,498]},o($Vd1,$VF,{24:$VG,25:$VH,41:$VI,66:$VJ,67:[1,499],71:$VK}),{2:[1,501],67:[1,500]},{67:[1,502]},{2:[1,504],67:[1,503]},{67:[1,505]},{21:[1,506]},{67:[1,507]},{67:[1,508]},{21:[1,509]},{67:[1,510]},{67:[1,511]},{16:$Vr,48:89,49:512,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{37:$Vf,72:513},{37:$Vf,72:514},{2:[1,516],16:$Vr,48:89,49:515,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{16:$Vr,48:89,49:517,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{16:$Vr,48:89,49:518,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{37:$Vf,72:519},{2:[1,521],37:$Vf,72:520},{37:$Vf,72:522},{37:$Vf,72:523},{2:[1,525],37:$Vf,72:524},{37:$Vf,72:526},{37:$Vf,72:527},{21:[1,528]},{67:[1,529]},{67:[1,530]},{16:$Vr,48:89,49:531,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{37:$Vf,72:532},{37:$Vf,72:533},{2:[1,535],37:$Vf,72:534},{37:$Vf,72:536},{37:$Vf,72:537},{2:$Vx,16:$Vy,18:538,26:145,27:$Vz,28:$VA,29:$VB,30:$VC,31:146,43:$VD},{2:$Vx,16:$Vy,18:539,26:145,27:$Vz,28:$VA,29:$VB,30:$VC,31:146,43:$VD},{2:$Vx,16:$Vy,18:540,26:145,27:$Vz,28:$VA,29:$VB,30:$VC,31:146,43:$VD},{17:[1,541]},o($V81,[2,269]),{37:$Vf,72:542},{2:$Vx,16:$Vy,18:543,26:145,27:$Vz,28:$VA,29:$VB,30:$VC,31:146,43:$VD},{37:$Vf,72:544},{2:$Vx,16:$Vy,18:545,26:145,27:$Vz,28:$VA,29:$VB,30:$VC,31:146,43:$VD},o($Vd,[2,57]),o($Vd,[2,58]),{16:[1,546]},{2:[1,548],21:[1,547]},o($Vd,[2,22]),o($Vd,[2,23]),o($V_,[2,73]),o($Vd,[2,24]),o($Vd,[2,25]),o($Vb1,[2,273]),{2:[1,550],21:[1,549]},o($Vg1,[2,67]),o($Vg1,[2,68]),o($VE,[2,82],{51:$VM,52:$VN}),o($Vd,[2,80]),o($Vd,[2,81]),o($Vd,[2,138]),o($Vd,[2,139]),o($Vf1,[2,152],{23:16,6:115,7:116,8:117,9:118,10:119,11:120,12:121,74:122,13:123,14:124,73:551,72:552,2:$Vt,15:$V0,16:$V1,22:$V2,36:$V3,37:$Vf,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,89:$Vu,90:$Vv,91:$Vw,92:$V9,95:$Va,96:$Vb}),o($Vf1,[2,153],{23:16,6:115,7:116,8:117,9:118,10:119,11:120,12:121,74:122,13:123,14:124,73:553,72:554,2:$Vt,15:$V0,16:$V1,22:$V2,36:$V3,37:$Vf,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,89:$Vu,90:$Vv,91:$Vw,92:$V9,95:$Va,96:$Vb}),{6:211,7:212,8:213,9:214,10:215,11:216,12:217,13:219,14:220,15:$V0,16:$V1,22:$V2,23:16,36:$V3,39:[2,160],74:218,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,89:$Vu,90:$Vv,91:$Vw,92:$V9,95:$Va,96:$Vb},{39:[2,161]},o($Vf1,[2,154],{23:16,6:211,7:212,8:213,9:214,10:215,11:216,12:217,74:218,13:219,14:220,15:$V0,16:$V1,22:$V2,36:$V3,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,89:$Vu,90:$Vv,91:$Vw,92:$V9,95:$Va,96:$Vb}),o($Vf1,[2,156]),o($Vf1,[2,155],{23:16,6:211,7:212,8:213,9:214,10:215,11:216,12:217,74:218,13:219,14:220,15:$V0,16:$V1,22:$V2,36:$V3,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,89:$Vu,90:$Vv,91:$Vw,92:$V9,95:$Va,96:$Vb}),o($Vf1,[2,157]),o($Vd,[2,168]),o($Vd,[2,172]),o($Vd,[2,171]),o($Vd,[2,170]),o($Vd,[2,169]),o($V71,$Ve1,{19:$V61}),{2:[1,556],16:$Vr,48:89,49:555,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{16:$Vr,48:89,49:557,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{16:$Vr,48:89,49:558,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{37:$Vf,72:559},{2:[1,561],37:$Vf,72:560},{37:$Vf,72:562},{37:$Vf,72:563},{2:[1,565],37:$Vf,72:564},{37:$Vf,72:566},{37:$Vf,72:567},{16:$Vr,48:89,49:568,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{37:$Vf,72:569},{37:$Vf,72:570},{16:$Vr,48:89,49:571,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{37:$Vf,72:572},{37:$Vf,72:573},{21:[1,574],51:$VM,52:$VN},o($Vd,[2,219]),o($Vd,[2,233]),{2:[1,576],21:[1,575],51:$VM,52:$VN},{21:[1,577]},{21:[1,578],51:$VM,52:$VN},{21:[1,579],51:$VM,52:$VN},o($Vd,[2,234]),o($Vd,[2,217]),o($Vd,[2,222]),o($Vd,[2,221]),o($Vd,[2,220]),o($Vd,[2,231]),o($Vd,[2,237]),o($Vd,[2,236]),o($Vd,[2,235]),{16:$Vr,48:89,49:580,53:$Vk,54:$Vl,55:88,61:$Vm,66:$Vn,68:$Vo,69:$Vp,70:$Vq},{37:$Vf,72:581},{37:$Vf,72:582},{21:[1,583],51:$VM,52:$VN},o($Vd,[2,218]),o($Vd,[2,232]),o($Vd,[2,256]),o($Vd,[2,261]),o($Vd,[2,260]),o($Vd,[2,259]),{2:[1,585],37:$Vf,72:584},{37:$Vf,72:586},{37:$Vf,72:587},{2:$Vx,16:$Vy,18:588,26:145,27:$Vz,28:$VA,29:$VB,30:$VC,31:146,43:$VD},o($Vd,[2,258]),{37:$Vf,72:589},o($Vd,[2,257]),{37:$Vf,72:590},{2:[1,592],21:[1,591]},o($Vh1,[2,61]),o($Vh1,[2,62]),o($Vg1,[2,65]),o($Vg1,[2,66]),o($Vf1,[2,148],{23:16,6:211,7:212,8:213,9:214,10:215,11:216,12:217,74:218,13:219,14:220,15:$V0,16:$V1,22:$V2,36:$V3,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,89:$Vu,90:$Vv,91:$Vw,92:$V9,95:$Va,96:$Vb}),o($Vf1,[2,150]),o($Vf1,[2,149],{23:16,6:211,7:212,8:213,9:214,10:215,11:216,12:217,74:218,13:219,14:220,15:$V0,16:$V1,22:$V2,36:$V3,75:$V4,78:$V5,84:$V6,85:$V7,86:$V8,89:$Vu,90:$Vv,91:$Vw,92:$V9,95:$Va,96:$Vb}),o($Vf1,[2,151]),{2:[1,594],21:[1,593],51:$VM,52:$VN},{21:[1,595]},{21:[1,596],51:$VM,52:$VN},{21:[1,597],51:$VM,52:$VN},o($Vd,[2,227]),o($Vd,[2,223]),o($Vd,[2,230]),o($Vd,[2,229]),o($Vd,[2,228]),o($Vd,[2,238]),o($Vd,[2,244]),o($Vd,[2,243]),o($Vd,[2,242]),{21:[1,598],51:$VM,52:$VN},o($Vd,[2,226]),o($Vd,[2,241]),{21:[1,599],51:$VM,52:$VN},o($Vd,[2,225]),o($Vd,[2,240]),{16:[1,600]},{2:[1,602],16:[1,601]},{16:[1,603]},{16:[1,604]},{16:[1,605]},{16:[1,606]},{21:[1,607],51:$VM,52:$VN},o($Vd,[2,224]),o($Vd,[2,239]),{16:[1,608]},o($Vd,[2,262]),o($Vd,[2,267]),o($Vd,[2,266]),o($Vd,[2,265]),o($V81,[2,268]),o($Vd,[2,264]),o($Vd,[2,263]),o($Vh1,[2,59]),o($Vh1,[2,60]),{2:[1,610],16:[1,609]},{16:[1,611]},{16:[1,612]},{16:[1,613]},{16:[1,614]},{16:[1,615]},{16:[1,616]},{24:[1,617],25:[1,618]},{2:[1,620],24:[1,619],25:[1,621]},{24:[1,622],25:[1,623]},{24:[1,624],25:[1,625]},{24:[1,626],25:[1,627]},{24:[1,628],25:[1,629]},{24:[1,630],25:[1,631]},{16:[1,632]},{24:[1,633],25:[1,634]},{2:[1,636],24:[1,635],25:[1,637]},{24:[1,638],25:[1,639]},{24:[1,640],25:[1,641]},{24:[1,642],25:[1,643]},{24:[1,644],25:[1,645]},{24:[1,646],25:[1,647]},{24:[1,648],25:[1,649]},{24:[1,650],25:[1,651]},{67:[1,652]},{67:[1,653]},{2:[1,655],67:[1,654]},{67:[1,656]},{2:[1,658],67:[1,657]},{67:[1,659]},{67:[1,660]},{67:[1,661]},{67:[1,662]},{67:[1,663]},{67:[1,664]},{67:[1,665]},{67:[1,666]},{67:[1,667]},{67:[1,668]},{24:[1,669],25:[1,670]},{67:[1,671]},{67:[1,672]},{2:[1,674],67:[1,673]},{67:[1,675]},{2:[1,677],67:[1,676]},{67:[1,678]},{67:[1,679]},{67:[1,680]},{67:[1,681]},{67:[1,682]},{67:[1,683]},{67:[1,684]},{67:[1,685]},{67:[1,686]},{67:[1,687]},{67:[1,688]},{67:[1,689]},{67:[1,690]},{67:[1,691]},{37:$Vf,72:692},{37:$Vf,72:693},{2:[1,695],37:$Vf,72:694},{37:$Vf,72:696},{37:$Vf,72:697},{2:[1,699],37:$Vf,72:698},{37:$Vf,72:700},{37:$Vf,72:701},{37:$Vf,72:702},{37:$Vf,72:703},{37:$Vf,72:704},{37:$Vf,72:705},{37:$Vf,72:706},{37:$Vf,72:707},{37:$Vf,72:708},{37:$Vf,72:709},{37:$Vf,72:710},{67:[1,711]},{67:[1,712]},{37:$Vf,72:713},{37:$Vf,72:714},{2:[1,716],37:$Vf,72:715},{37:$Vf,72:717},{37:$Vf,72:718},{2:[1,720],37:$Vf,72:719},{37:$Vf,72:721},{37:$Vf,72:722},{37:$Vf,72:723},{37:$Vf,72:724},{37:$Vf,72:725},{37:$Vf,72:726},{37:$Vf,72:727},{37:$Vf,72:728},{37:$Vf,72:729},{37:$Vf,72:730},{37:$Vf,72:731},{37:$Vf,72:732},{37:$Vf,72:733},{37:$Vf,72:734},{37:$Vf,72:735},o($Vd,[2,198]),o($Vd,[2,209]),o($Vd,[2,196]),o($Vd,[2,206]),o($Vd,[2,205]),o($Vd,[2,204]),o($Vd,[2,207]),o($Vd,[2,216]),o($Vd,[2,215]),o($Vd,[2,203]),o($Vd,[2,214]),o($Vd,[2,202]),o($Vd,[2,213]),o($Vd,[2,201]),o($Vd,[2,212]),o($Vd,[2,200]),o($Vd,[2,211]),o($Vd,[2,199]),o($Vd,[2,210]),{37:$Vf,72:736},{37:$Vf,72:737},o($Vd,[2,197]),o($Vd,[2,208]),o($Vd,[2,173]),o($Vd,[2,184]),o($Vd,[2,183]),o($Vd,[2,182]),o($Vd,[2,185]),o($Vd,[2,195]),o($Vd,[2,194]),o($Vd,[2,181]),o($Vd,[2,193]),o($Vd,[2,180]),o($Vd,[2,192]),o($Vd,[2,179]),o($Vd,[2,191]),o($Vd,[2,178]),o($Vd,[2,190]),o($Vd,[2,177]),o($Vd,[2,189]),o($Vd,[2,176]),o($Vd,[2,188]),o($Vd,[2,175]),o($Vd,[2,187]),o($Vd,[2,174]),o($Vd,[2,186])],
+defaultActions: {3:[2,2],27:[2,1],387:[2,42],388:[2,43],389:[2,44],390:[2,46],485:[2,161]},
 parseError: function parseError (str, hash) {
     if (hash.recoverable) {
         this.trace(str);
@@ -3753,7 +3695,7 @@ case 9:
                                     this.popState(); 
                                     console.log("cadena: "+valcadena); 
                                     yy_.yytext=valcadena; valcadena=""; 
-                                    return 69;
+                                    return 68;
                                 
 break;
 case 10: valcadena +='\n'; 
@@ -3774,7 +3716,7 @@ case 17:
                                     this.popState(); 
                                     console.log("cadena: "+valcadena); 
                                     yy_.yytext=valcadena; valcadena=""; 
-                                    return 69;
+                                    return 68;
                                 
 break;
 case 18: valcadena +='\n'; 
@@ -3795,7 +3737,7 @@ case 25:
                                     this.popState(); 
                                     console.log("cadena: "+valcadena); 
                                     yy_.yytext=valcadena; valcadena=""; 
-                                    return 69;
+                                    return 68;
                                 
 break;
 case 26: valcadena +='\n'; 
@@ -3828,17 +3770,17 @@ case 39: console.log("tipo de dato:"+yy_.yytext);  return 29;
 break;
 case 40: console.log("tipo de dato:"+yy_.yytext);  return 30; 
 break;
-case 41: console.log("tipo de dato:"+yy_.yytext);  return 37; 
+case 41: console.log("tipo de dato:"+yy_.yytext);  return 36; 
 break;
-case 42: console.log("inicio array:"+yy_.yytext);  return 44; 
+case 42: console.log("inicio array:"+yy_.yytext);  return 43; 
 break;
 case 43: console.log("declaracion:"+yy_.yytext);  return 15; 
 break;
 case 44: console.log("declaracion:"+yy_.yytext);  return 22; 
 break;
-case 45: console.log("boolean:"+yy_.yytext);  return 55; 
+case 45: console.log("boolean:"+yy_.yytext);  return 54; 
 break;
-case 46: console.log("boolean:"+yy_.yytext);  return 55; 
+case 46: console.log("boolean:"+yy_.yytext);  return 54; 
 break;
 case 47: console.log("sentencias:"+yy_.yytext);  return 75; 
 break;
@@ -3872,51 +3814,51 @@ case 61: console.log("funcion:"+yy_.yytext);  return 95;
 break;
 case 62: console.log("funcion:"+yy_.yytext);  return 96; 
 break;
-case 63: console.log("funcion:"+yy_.yytext);  return 97; 
+case 63: console.log("funcion:"+yy_.yytext);  return 71; 
 break;
-case 64: console.log("funcion:"+yy_.yytext);  return 98; 
+case 64: console.log("funcion:"+yy_.yytext);  return 97; 
 break;
-case 65: console.log("funcion:"+yy_.yytext);  return 99; 
+case 65: console.log("funcion:"+yy_.yytext);  return 98; 
 break;
-case 66: console.log("arimetica:"+yy_.yytext); return 65; 
+case 66: console.log("arimetica:"+yy_.yytext); return 64; 
 break;
 case 67: console.log("arimetica:"+yy_.yytext); return 24; 
 break;
 case 68: console.log("arimetica:"+yy_.yytext); return 25; 
 break;
-case 69: console.log("arimetica:"+yy_.yytext); return 61; 
+case 69: console.log("arimetica:"+yy_.yytext); return 60; 
 break;
-case 70: console.log("arimetica:"+yy_.yytext); return 62; 
+case 70: console.log("arimetica:"+yy_.yytext); return 61; 
 break;
-case 71: console.log("arimetica:"+yy_.yytext); return 63; 
+case 71: console.log("arimetica:"+yy_.yytext); return 62; 
 break;
-case 72: console.log("arimetica:"+yy_.yytext); return 64; 
+case 72: console.log("arimetica:"+yy_.yytext); return 63; 
 break;
-case 73: console.log("arimetica:"+yy_.yytext); return 66; 
+case 73: console.log("arimetica:"+yy_.yytext); return 65; 
 break;
-case 74: console.log("relacional:"+yy_.yytext); return 57; 
+case 74: console.log("relacional:"+yy_.yytext); return 56; 
 break;
-case 75: console.log("relacional:"+yy_.yytext); return 58; 
+case 75: console.log("relacional:"+yy_.yytext); return 57; 
 break;
-case 76: console.log("relacional:"+yy_.yytext); return 59; 
+case 76: console.log("relacional:"+yy_.yytext); return 58; 
 break;
-case 77: console.log("relacional:"+yy_.yytext); return 60; 
+case 77: console.log("relacional:"+yy_.yytext); return 59; 
 break;
-case 78: console.log("relacional:"+yy_.yytext); return 46; 
+case 78: console.log("relacional:"+yy_.yytext); return 45; 
 break;
-case 79: console.log("relacional:"+yy_.yytext); return 45; 
+case 79: console.log("relacional:"+yy_.yytext); return 44; 
 break;
-case 80: console.log("Logica:"+yy_.yytext); return 52; 
+case 80: console.log("Logica:"+yy_.yytext); return 51; 
 break;
-case 81: console.log("Logica:"+yy_.yytext); return 53; 
+case 81: console.log("Logica:"+yy_.yytext); return 52; 
 break;
-case 82: console.log("Logica:"+yy_.yytext); return 54; 
+case 82: console.log("Logica:"+yy_.yytext); return 53; 
 break;
-case 83: console.log("ternario:"+yy_.yytext); return 51; 
+case 83: console.log("ternario:"+yy_.yytext); return 50; 
 break;
-case 84: console.log("simbolo:"+yy_.yytext); return 42; 
+case 84: console.log("simbolo:"+yy_.yytext); return 41; 
 break;
-case 85: console.log("simbolo:"+yy_.yytext); return 43; 
+case 85: console.log("simbolo:"+yy_.yytext); return 42; 
 break;
 case 86: console.log("simbolo:"+yy_.yytext); return 17; 
 break;
@@ -3924,19 +3866,19 @@ case 87: console.log("simbolo:"+yy_.yytext); return 19;
 break;
 case 88: console.log("simbolo:"+yy_.yytext); return 21; 
 break;
-case 89: console.log("simbolo:"+yy_.yytext); return 38; 
+case 89: console.log("simbolo:"+yy_.yytext); return 37; 
 break;
-case 90: console.log("simbolo:"+yy_.yytext); return 40; 
+case 90: console.log("simbolo:"+yy_.yytext); return 39; 
 break;
-case 91: console.log("simbolo:"+yy_.yytext); return 48; 
+case 91: console.log("simbolo:"+yy_.yytext); return 47; 
 break;
-case 92: console.log("simbolo:"+yy_.yytext); return 67; 
+case 92: console.log("simbolo:"+yy_.yytext); return 66; 
 break;
-case 93: console.log("simbolo:"+yy_.yytext); return 68; 
+case 93: console.log("simbolo:"+yy_.yytext); return 67; 
 break;
-case 94: console.log("numero decimal:"+yy_.yytext);  return 71; 
+case 94: console.log("numero decimal:"+yy_.yytext);  return 70; 
 break;
-case 95: console.log("numero entero:"+yy_.yytext);  return 70; 
+case 95: console.log("numero entero:"+yy_.yytext);  return 69; 
 break;
 case 96:  console.log("id:"+yy_.yytext); return 16; 
 break;

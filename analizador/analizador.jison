@@ -520,10 +520,6 @@ VALOR: ASIGTYPE {
           $$ = $1;
           $$.trad = $1.trad;
         }
-      |VALARRAY { 
-                  $$ = $1;
-                  $$.trad = $1.trad;
-                }
       |VALFUNCION { 
                     $$ = $1;
                     $$.trad = $1.trad;
@@ -703,9 +699,8 @@ ARRAY: tk_string tk_llaveca tk_llavecc {
                                         };
 
 VARRAY: tk_llaveca LVALARRAY tk_llavecc {
-                                          var nodo = new Nodo("VALOR","ASIGNACION_ARRAY",+yylineno+1,+@1.first_column+1);
-                                          var larray = $2;
-                                          nodo.addHijo(larray);
+                                          var nodo = new Nodo("VARRAY","VARRAY",+yylineno+1,+@1.first_column+1);
+                                          nodo.addHijo($2);
                                           $$ = nodo;
                                           $$.trad = $1 + $2.trad + $3;
                                         };
@@ -733,26 +728,6 @@ LVALARRAY: LVALARRAY tk_coma VALOR {
                   $$.trad = $1.trad;
                 };
 
-VALARRAY: tk_id tk_llaveca A tk_llavecc {
-                                          var nodo = new Nodo("VALOR","ARRAY_ITEM",+yylineno+1,+@1.first_column+1);
-                                          var id = new Nodo("ID",$1,+yylineno+1,+@1.first_column+1);
-                                          nodo.addHijo(id);
-                                          nodo.addHijo($3);
-                                          $$ = nodo;
-                                          $$.trad = $1 + $2 + $3.trad + $4;
-                                        }
-          |tk_id tk_llaveca error tk_llavecc{
-                                              console.error("Error sintactico: "+$2+" error valor");
-                                              var error = new Error("Sintactico","Encontrado: "+$2+" Se esperaba -> Operacion aritmetica || primitivo",+yylineno+1,+@2.last_column+1);
-                                              errores.addError(error);
-
-                                              var nodo = new Nodo("VALOR","ARRAY_ITEM",+yylineno+1,+@1.first_column+1);
-                                              var id = new Nodo("ID",$1,+yylineno+1,+@1.first_column+1);
-                                              nodo.addHijo(id);
-                                              $$ = nodo;
-                                              $$.trad = $1 + $2 + " " + $4;
-                                            };
-
 ASIGNACION: tk_id tk_igual VALOR tk_puntoycoma{ 
                                                 var nodo = new Nodo("ASIGNACION","ASIGNACION",+yylineno+1,+@1.first_column+1);
                                                 var id = new Nodo("ID",$1,+yylineno+1,+@1.first_column+1);
@@ -773,24 +748,32 @@ ASIGNACION: tk_id tk_igual VALOR tk_puntoycoma{
                                         $$ = nodo;
                                         $$.trad = $1+" "+$2+" "+$3.trad+";\n";
                                       }
-          | VALARRAY tk_igual VALOR tk_puntoycoma {
-                                                    var nodo = new Nodo("ASIGNACION","ASIGNACION",+yylineno+1,+@1.first_column+1);
-                                                    nodo.addHijo($1);
-                                                    nodo.addHijo($3);
-                                                    $$ = nodo;
-                                                    $$.trad = $1.trad+" "+$2+" "+$3.trad+$4+"\n";
-                                                  }
-          | VALARRAY tk_igual VALOR error {
-                                            console.log("Error Sintactico "+$4+"Error falto punto y coma");
-                                            var error = new Error("Sintactico","Encontrado: "+$4+" Se esperaba -> ;",+yylineno+1,+@4.last_column+1);
-                                            errores.addError(error);
+          | tk_id tk_llaveca A tk_llavecc tk_igual VALOR tk_puntoycoma {
+                                                                        var nodo = new Nodo("ASIGNACION","ASIGNACION",+yylineno+1,+@1.first_column+1);
+                                                                        var arr = new Nodo("ARRAY","ARRAY",+yylineno+1,+@1.first_column+1);
+                                                                        var id = new Nodo("ID",$1,+yylineno+1,+@1.first_column+1);
+                                                                        arr.addHijo(id);
+                                                                        arr.addHijo($3);
+                                                                        nodo.addHijo(arr);
+                                                                        nodo.addHijo($6);
+                                                                        $$ = nodo;
+                                                                        $$.trad = $1+$2+$3.trad+$4+" "+$5+" "+$6.trad+$7+"\n";
+                                                                      }
+          | tk_id tk_llaveca A tk_llavecc tk_igual VALOR error{
+                                                                console.log("Error Sintactico "+$4+"Error falto punto y coma");
+                                                                var error = new Error("Sintactico","Encontrado: "+$4+" Se esperaba -> ;",+yylineno+1,+@4.last_column+1);
+                                                                errores.addError(error);
 
-                                            var nodo = new Nodo("ASIGNACION","ASIGNACION",+yylineno+1,+@1.first_column+1);
-                                            nodo.addHijo($1);
-                                            nodo.addHijo($3);
-                                            $$ = nodo;
-                                            $$.trad = $1.trad+" "+$2+" "+$3.trad+";\n";
-                                          };
+                                                                var nodo = new Nodo("ASIGNACION","ASIGNACION",+yylineno+1,+@1.first_column+1);
+                                                                var arr = new Nodo("ARRAY","ARRAY",+yylineno+1,+@1.first_column+1);
+                                                                var id = new Nodo("ID",$1,+yylineno+1,+@1.first_column+1);
+                                                                arr.addHijo(id);
+                                                                arr.addHijo($3);
+                                                                nodo.addHijo(arr);
+                                                                nodo.addHijo($6);
+                                                                $$ = nodo;
+                                                                $$.trad = $1+$2+$3.trad+$4+" "+$5+" "+$6.trad+";\n";
+                                                              };
 
 T: L tk_ternario L tk_dospuntos L {
                                     var nodo = new Nodo("T","T",+yylineno+1,+@1.first_column+1);
@@ -949,11 +932,26 @@ A:A tk_suma A {
                 $$ = nodo;
                 $$.trad = $1;
               }
- |tk_id {
-          var nodo = new Nodo("ID",$1,+yylineno+1,+@1.first_column+1);
-          $$ = nodo;
-          $$.trad = $1;
-        };
+ |tk_id tk_llaveca A tk_llavecc {
+                                  var nodo = new Nodo("ARRAY","ARRAY",+yylineno+1,+@1.first_column+1);
+                                  var id = new Nodo("ID",$1,+yylineno+1,+@1.first_column+1);
+                                  nodo.addHijo(id);
+                                  nodo.addHijo($3);
+                                  $$ = nodo;
+                                  $$.trad = $1+$2+$3.trad+$4;
+                                }
+  |tk_id tk_lenght tk_pabierto tk_pcerrado  {
+                                              var nodo = new Nodo("LENGTH","LENGTH",+yylineno+1,+@1.last_column+1);
+                                              var id = new Nodo("ID",$1,+yylineno+1,+@1.last_column+1);
+                                              nodo.addHijo(id);
+                                              $$ = nodo;
+                                              $$.trad = $1+$2+$3+$4;
+                                            }
+  |tk_id  {
+            var nodo = new Nodo("ID",$1,+yylineno+1,+@1.first_column+1);
+            $$ = nodo;
+            $$.trad = $1;
+          };
 
 BSENTENCIAS: tk_llavea SENTENCIAS tk_llavec {
                                               //console.log("BSENTENCIAS-----------------")
@@ -2785,51 +2783,6 @@ FESP: tk_console tk_pabierto VALOR tk_pcerrado tk_puntoycoma{
                                                   $$ = nodo;
                                                   $$.trad = $1+$2+$3+";\n";
                                                 }
-    | tk_id tk_lenght tk_pabierto tk_pcerrado tk_puntoycoma {
-                                                              var nodo = new Nodo("LENGTH","LENGTH",+yylineno+1,+@1.last_column+1);
-                                                              var id = new Nodo("ID",$1,+yylineno+1,+@1.last_column+1);
-                                                              nodo.addHijo(id);
-                                                              $$ = nodo;
-                                                              $$.trad = $1+$2+$3+$4+$5+"\n";
-                                                            }
-    | tk_id error tk_pabierto tk_pcerrado tk_puntoycoma { 
-                                                          console.error("Error Sintactico: "+$2+" Error graficar");
-                                                          var error = new Error("Sintactico","Encontrado: "+$2+" Se esperaba -> .lenght",+yylineno+1,+@2.last_column+1);
-                                                          errores.addError(error);
-
-                                                          errores.addError(error);
-                                                          $$ = new Nodo("","");
-                                                          $$.trad = "";
-                                                        }
-    | tk_id tk_lenght error tk_pcerrado tk_puntoycoma { 
-                                                        console.error("Error Sintactico: "+$3+" Error graficar");
-                                                        var error = new Error("Sintactico","Encontrado: "+$3+" Se esperaba -> (",+yylineno+1,+@3.last_column+1);
-                                                        errores.addError(error);
-
-                                                        errores.addError(error);
-                                                        $$ = new Nodo("","");
-                                                        $$.trad = "";
-                                                      }
-    | tk_id tk_lenght tk_pabierto error tk_puntoycoma{ 
-                                                        console.error("Error Sintactico: "+$4+" Error graficar");
-                                                        var error = new Error("Sintactico","Encontrado: "+$4+" Se esperaba -> )",+yylineno+1,+@4.last_column+1);
-                                                        errores.addError(error);
-
-                                                        errores.addError(error);
-                                                        $$ = new Nodo("","");
-                                                        $$.trad = "";
-                                                      }
-    | tk_id tk_lenght tk_pabierto tk_pcerrado error{ 
-                                                      console.error("Error Sintactico: "+$5+" Error graficar");
-                                                      var error = new Error("Sintactico","Encontrado: "+$5+" Se esperaba -> ;",+yylineno+1,+@5.last_column+1);
-                                                      errores.addError(error);
-
-                                                      var nodo = new Nodo("LENGTH","LENGTH",+yylineno+1,+@1.last_column+1);
-                                                      var id = new Nodo("ID",$1,+yylineno+1,+@1.last_column+1);
-                                                      nodo.addHijo(id);
-                                                      $$ = nodo;
-                                                      $$.trad = $1+$2+$3+$4+";\n";
-                                                    }
     | tk_id tk_push tk_pabierto VALOR tk_pcerrado tk_puntoycoma {
                                                                   var nodo = new Nodo("PUSH","PUSH",+yylineno+1,+@1.last_column+1);
                                                                   var id = new Nodo("ID",$1,+yylineno+1,+@1.last_column+1);

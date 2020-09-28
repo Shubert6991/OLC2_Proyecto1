@@ -87,6 +87,14 @@ var ejecutar = function ejecutar(ast, entorno, errores) {
         graphts(entorno);
         break;
 
+      case "PUSH":
+        arrPush(ast, entorno, errores);
+        break;
+
+      case "POP":
+        arrPop(ast, entorno, errores);
+        break;
+
       default:
         console.error("todavia no he programado eso -> " + tipo);
         break;
