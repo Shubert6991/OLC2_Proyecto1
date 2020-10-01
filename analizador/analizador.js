@@ -1485,15 +1485,21 @@ break;
 case 173:
 
                                                                                                                         var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
+                                                                                                                        
+                                                                                                                        var dec = new Nodo("DECLARACION","LET",+yylineno+3,+_$[$0-10].first_column+1);
                                                                                                                         var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
-                                                                                                                        var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                        dec.addHijo(id1);
+                                                                                                                        dec.addHijo($$[$0-7]);
+
                                                                                                                         var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                        var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
                                                                                                                         inc.addHijo(id2);
-                                                                                                                        nodo.addHijo(id1);
-                                                                                                                        nodo.addHijo($$[$0-7]);
-                                                                                                                        nodo.addHijo($$[$0-5]);
-                                                                                                                        nodo.addHijo(inc);
-                                                                                                                        nodo.addHijo($$[$0]);
+
+                                                                                                                        nodo.addHijo(dec); //declaracion
+                                                                                                                        nodo.addHijo($$[$0-5]); //condicion
+                                                                                                                        nodo.addHijo(inc); //incremento
+                                                                                                                        nodo.addHijo($$[$0]); //sentencias
+
                                                                                                                         this.$ = nodo;
                                                                                                                         this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                                       
@@ -1505,15 +1511,21 @@ case 174:
                                                                                                                   errores.addError(error);
 
                                                                                                                   var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
+
+                                                                                                                  var dec = new Nodo("DECLARACION","LET",+yylineno+3,+_$[$0-10].first_column+1);
                                                                                                                   var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
-                                                                                                                  var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                  dec.addHijo(id1);
+                                                                                                                  dec.addHijo($$[$0-7]);
+
                                                                                                                   var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                  var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
                                                                                                                   inc.addHijo(id2);
-                                                                                                                  nodo.addHijo(id1);
-                                                                                                                  nodo.addHijo($$[$0-7]);
-                                                                                                                  nodo.addHijo($$[$0-5]);
-                                                                                                                  nodo.addHijo(inc);
-                                                                                                                  nodo.addHijo($$[$0]);
+
+                                                                                                                  nodo.addHijo(dec); //declaracion
+                                                                                                                  nodo.addHijo($$[$0-5]); //condicion
+                                                                                                                  nodo.addHijo(inc); //incremento
+                                                                                                                  nodo.addHijo($$[$0]); //sentencias
+
                                                                                                                   this.$ = nodo;
                                                                                                                   this.$.trad = $$[$0-12]+"("+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                                 
@@ -1525,15 +1537,21 @@ case 175:
                                                                                                                       errores.addError(error);
 
                                                                                                                       var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
+
+                                                                                                                      var dec = new Nodo("DECLARACION","LET",+yylineno+3,+_$[$0-10].first_column+1);
                                                                                                                       var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
-                                                                                                                      var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                      dec.addHijo(id1);
+                                                                                                                      dec.addHijo($$[$0-7]);
+
                                                                                                                       var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                      var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
                                                                                                                       inc.addHijo(id2);
-                                                                                                                      nodo.addHijo(id1);
-                                                                                                                      nodo.addHijo($$[$0-7]);
-                                                                                                                      nodo.addHijo($$[$0-5]);
-                                                                                                                      nodo.addHijo(inc);
-                                                                                                                      nodo.addHijo($$[$0]);
+
+                                                                                                                      nodo.addHijo(dec); //declaracion
+                                                                                                                      nodo.addHijo($$[$0-5]); //condicion
+                                                                                                                      nodo.addHijo(inc); //incremento
+                                                                                                                      nodo.addHijo($$[$0]); //sentencias
+
                                                                                                                       this.$ = nodo;
                                                                                                                       this.$.trad = $$[$0-12]+$$[$0-11]+"let"+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;    
                                                                                                                     
@@ -1555,15 +1573,21 @@ case 177:
                                                                                                                     errores.addError(error);
 
                                                                                                                     var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
+
+                                                                                                                    var dec = new Nodo("DECLARACION","LET",+yylineno+3,+_$[$0-10].first_column+1);
                                                                                                                     var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
-                                                                                                                    var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                    dec.addHijo(id1);
+                                                                                                                    dec.addHijo($$[$0-7]);
+
                                                                                                                     var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                    var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
                                                                                                                     inc.addHijo(id2);
-                                                                                                                    nodo.addHijo(id1);
-                                                                                                                    nodo.addHijo($$[$0-7]);
-                                                                                                                    nodo.addHijo($$[$0-5]);
-                                                                                                                    nodo.addHijo(inc);
-                                                                                                                    nodo.addHijo($$[$0]);
+
+                                                                                                                    nodo.addHijo(dec); //declaracion
+                                                                                                                    nodo.addHijo($$[$0-5]); //condicion
+                                                                                                                    nodo.addHijo(inc); //incremento
+                                                                                                                    nodo.addHijo($$[$0]); //sentencias
+
                                                                                                                     this.$ = nodo;
                                                                                                                     this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+"="+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                                   
@@ -1575,15 +1599,21 @@ case 178:
                                                                                                                 errores.addError(error);
 
                                                                                                                 var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
+
+                                                                                                                var dec = new Nodo("DECLARACION","LET",+yylineno+3,+_$[$0-10].first_column+1);
                                                                                                                 var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
-                                                                                                                var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                dec.addHijo(id1);
+                                                                                                                dec.addHijo($$[$0-7]);
+
                                                                                                                 var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
                                                                                                                 inc.addHijo(id2);
-                                                                                                                nodo.addHijo(id1);
-                                                                                                                nodo.addHijo($$[$0-7]);
-                                                                                                                nodo.addHijo($$[$0-5]);
-                                                                                                                nodo.addHijo(inc);
-                                                                                                                nodo.addHijo($$[$0]);
+
+                                                                                                                nodo.addHijo(dec); //declaracion
+                                                                                                                nodo.addHijo($$[$0-5]); //condicion
+                                                                                                                nodo.addHijo(inc); //incremento
+                                                                                                                nodo.addHijo($$[$0]); //sentencias
+
                                                                                                                 this.$ = nodo;
                                                                                                                 this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+";"+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                               
@@ -1605,15 +1635,21 @@ case 180:
                                                                                                                 errores.addError(error);
 
                                                                                                                 var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
+
+                                                                                                                var dec = new Nodo("DECLARACION","LET",+yylineno+3,+_$[$0-10].first_column+1);
                                                                                                                 var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
-                                                                                                                var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                dec.addHijo(id1);
+                                                                                                                dec.addHijo($$[$0-7]);
+
                                                                                                                 var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
                                                                                                                 inc.addHijo(id2);
-                                                                                                                nodo.addHijo(id1);
-                                                                                                                nodo.addHijo($$[$0-7]);
-                                                                                                                nodo.addHijo($$[$0-5]);
-                                                                                                                nodo.addHijo(inc);
-                                                                                                                nodo.addHijo($$[$0]);
+
+                                                                                                                nodo.addHijo(dec); //declaracion
+                                                                                                                nodo.addHijo($$[$0-5]); //condicion
+                                                                                                                nodo.addHijo(inc); //incremento
+                                                                                                                nodo.addHijo($$[$0]); //sentencias
+                                                                                                                
                                                                                                                 this.$ = nodo;
                                                                                                                 this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+";"+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                               
@@ -1625,15 +1661,21 @@ case 181:
                                                                                                                         errores.addError(error);
 
                                                                                                                         var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
+    
+                                                                                                                        var dec = new Nodo("DECLARACION","LET",+yylineno+3,+_$[$0-10].first_column+1);
                                                                                                                         var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
-                                                                                                                        var id2 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                        dec.addHijo(id1);
+                                                                                                                        dec.addHijo($$[$0-7]);
+
                                                                                                                         var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                        var id2 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-3].last_column+1);
                                                                                                                         inc.addHijo(id2);
-                                                                                                                        nodo.addHijo(id1);
-                                                                                                                        nodo.addHijo($$[$0-7]);
-                                                                                                                        nodo.addHijo($$[$0-5]);
-                                                                                                                        nodo.addHijo(inc);
-                                                                                                                        nodo.addHijo($$[$0]);
+
+                                                                                                                        nodo.addHijo(dec); //declaracion
+                                                                                                                        nodo.addHijo($$[$0-5]); //condicion
+                                                                                                                        nodo.addHijo(inc); //incremento
+                                                                                                                        nodo.addHijo($$[$0]); //sentencias
+
                                                                                                                         this.$ = nodo;
                                                                                                                         this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-9]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                                       
@@ -1645,15 +1687,21 @@ case 182:
                                                                                                                       errores.addError(error);
 
                                                                                                                       var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
+
+                                                                                                                      var dec = new Nodo("DECLARACION","LET",+yylineno+3,+_$[$0-10].first_column+1);
                                                                                                                       var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
-                                                                                                                      var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                      dec.addHijo(id1);
+                                                                                                                      dec.addHijo($$[$0-7]);
+
                                                                                                                       var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                      var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
                                                                                                                       inc.addHijo(id2);
-                                                                                                                      nodo.addHijo(id1);
-                                                                                                                      nodo.addHijo($$[$0-7]);
-                                                                                                                      nodo.addHijo($$[$0-5]);
-                                                                                                                      nodo.addHijo(inc);
-                                                                                                                      nodo.addHijo($$[$0]);
+
+                                                                                                                      nodo.addHijo(dec); //declaracion
+                                                                                                                      nodo.addHijo($$[$0-5]); //condicion
+                                                                                                                      nodo.addHijo(inc); //incremento
+                                                                                                                      nodo.addHijo($$[$0]); //sentencias
+
                                                                                                                       this.$ = nodo;
                                                                                                                       this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+"++"+$$[$0-1]+$$[$0].trad;
                                                                                                                     
@@ -1665,15 +1713,21 @@ case 183:
                                                                                                                   errores.addError(error);
 
                                                                                                                   var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
+
+                                                                                                                  var dec = new Nodo("DECLARACION","LET",+yylineno+3,+_$[$0-10].first_column+1);
                                                                                                                   var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
-                                                                                                                  var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                  dec.addHijo(id1);
+                                                                                                                  dec.addHijo($$[$0-7]);
+
                                                                                                                   var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                  var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
                                                                                                                   inc.addHijo(id2);
-                                                                                                                  nodo.addHijo(id1);
-                                                                                                                  nodo.addHijo($$[$0-7]);
-                                                                                                                  nodo.addHijo($$[$0-5]);
-                                                                                                                  nodo.addHijo(inc);
-                                                                                                                  nodo.addHijo($$[$0]);
+
+                                                                                                                  nodo.addHijo(dec); //declaracion
+                                                                                                                  nodo.addHijo($$[$0-5]); //condicion
+                                                                                                                  nodo.addHijo(inc); //incremento
+                                                                                                                  nodo.addHijo($$[$0]); //sentencias
+
                                                                                                                   this.$ = nodo;
                                                                                                                   this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                                 
@@ -1685,14 +1739,20 @@ case 184:
                                                                                                                   errores.addError(error);
 
                                                                                                                   var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
+
+                                                                                                                  var dec = new Nodo("DECLARACION","LET",+yylineno+3,+_$[$0-10].first_column+1);
                                                                                                                   var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
-                                                                                                                  var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                  dec.addHijo(id1);
+                                                                                                                  dec.addHijo($$[$0-7]);
+
                                                                                                                   var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                  var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
                                                                                                                   inc.addHijo(id2);
-                                                                                                                  nodo.addHijo(id1);
-                                                                                                                  nodo.addHijo($$[$0-7]);
-                                                                                                                  nodo.addHijo($$[$0-5]);
-                                                                                                                  nodo.addHijo(inc);
+
+                                                                                                                  nodo.addHijo(dec); //declaracion
+                                                                                                                  nodo.addHijo($$[$0-5]); //condicion
+                                                                                                                  nodo.addHijo(inc); //incremento
+
                                                                                                                   this.$ = nodo;
                                                                                                                   this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+"{}\n";
                                                                                                                 
@@ -1700,15 +1760,21 @@ break;
 case 185:
 
                                                                                                                         var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
+
+                                                                                                                        var dec = new Nodo("DECLARACION","LET",+yylineno+3,+_$[$0-10].first_column+1);
                                                                                                                         var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
-                                                                                                                        var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                        dec.addHijo(id1);
+                                                                                                                        dec.addHijo($$[$0-7]);
+
                                                                                                                         var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                        var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
                                                                                                                         inc.addHijo(id2);
-                                                                                                                        nodo.addHijo(id1);
-                                                                                                                        nodo.addHijo($$[$0-7]);
-                                                                                                                        nodo.addHijo($$[$0-5]);
-                                                                                                                        nodo.addHijo(inc);
-                                                                                                                        nodo.addHijo($$[$0]);
+
+                                                                                                                        nodo.addHijo(dec); //declaracion
+                                                                                                                        nodo.addHijo($$[$0-5]); //condicion
+                                                                                                                        nodo.addHijo(inc); //incremento
+                                                                                                                        nodo.addHijo($$[$0]); //sentencias
+
                                                                                                                         this.$ = nodo;
                                                                                                                         this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                                       
@@ -1720,15 +1786,21 @@ case 186:
                                                                                                                   errores.addError(error);
 
                                                                                                                   var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
+
+                                                                                                                  var dec = new Nodo("DECLARACION","LET",+yylineno+3,+_$[$0-10].first_column+1);
                                                                                                                   var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
-                                                                                                                  var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                  dec.addHijo(id1);
+                                                                                                                  dec.addHijo($$[$0-7]);
+
                                                                                                                   var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                  var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
                                                                                                                   inc.addHijo(id2);
-                                                                                                                  nodo.addHijo(id1);
-                                                                                                                  nodo.addHijo($$[$0-7]);
-                                                                                                                  nodo.addHijo($$[$0-5]);
-                                                                                                                  nodo.addHijo(inc);
-                                                                                                                  nodo.addHijo($$[$0]);
+
+                                                                                                                  nodo.addHijo(dec); //declaracion
+                                                                                                                  nodo.addHijo($$[$0-5]); //condicion
+                                                                                                                  nodo.addHijo(inc); //incremento
+                                                                                                                  nodo.addHijo($$[$0]); //sentencias
+
                                                                                                                   this.$ = nodo;
                                                                                                                   this.$.trad = $$[$0-12]+"("+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                                 
@@ -1740,15 +1812,21 @@ case 187:
                                                                                                                       errores.addError(error);
 
                                                                                                                       var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
+
+                                                                                                                      var dec = new Nodo("DECLARACION","LET",+yylineno+3,+_$[$0-10].first_column+1);
                                                                                                                       var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
-                                                                                                                      var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                      dec.addHijo(id1);
+                                                                                                                      dec.addHijo($$[$0-7]);
+
                                                                                                                       var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                      var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
                                                                                                                       inc.addHijo(id2);
-                                                                                                                      nodo.addHijo(id1);
-                                                                                                                      nodo.addHijo($$[$0-7]);
-                                                                                                                      nodo.addHijo($$[$0-5]);
-                                                                                                                      nodo.addHijo(inc);
-                                                                                                                      nodo.addHijo($$[$0]);
+
+                                                                                                                      nodo.addHijo(dec); //declaracion
+                                                                                                                      nodo.addHijo($$[$0-5]); //condicion
+                                                                                                                      nodo.addHijo(inc); //incremento
+                                                                                                                      nodo.addHijo($$[$0]); //sentencias
+
                                                                                                                       this.$ = nodo;
                                                                                                                       this.$.trad = $$[$0-12]+$$[$0-11]+"let"+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;    
                                                                                                                     
@@ -1760,15 +1838,21 @@ case 189:
                                                                                                                     errores.addError(error);
 
                                                                                                                     var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
+
+                                                                                                                    var dec = new Nodo("DECLARACION","LET",+yylineno+3,+_$[$0-10].first_column+1);
                                                                                                                     var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
-                                                                                                                    var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                    dec.addHijo(id1);
+                                                                                                                    dec.addHijo($$[$0-7]);
+
                                                                                                                     var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                    var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
                                                                                                                     inc.addHijo(id2);
-                                                                                                                    nodo.addHijo(id1);
-                                                                                                                    nodo.addHijo($$[$0-7]);
-                                                                                                                    nodo.addHijo($$[$0-5]);
-                                                                                                                    nodo.addHijo(inc);
-                                                                                                                    nodo.addHijo($$[$0]);
+
+                                                                                                                    nodo.addHijo(dec); //declaracion
+                                                                                                                    nodo.addHijo($$[$0-5]); //condicion
+                                                                                                                    nodo.addHijo(inc); //incremento
+                                                                                                                    nodo.addHijo($$[$0]); //sentencias
+
                                                                                                                     this.$ = nodo;
                                                                                                                     this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+"="+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                                   
@@ -1780,38 +1864,50 @@ case 190:
                                                                                                                 errores.addError(error);
 
                                                                                                                 var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
+
+                                                                                                                var dec = new Nodo("DECLARACION","LET",+yylineno+3,+_$[$0-10].first_column+1);
                                                                                                                 var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
-                                                                                                                var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                dec.addHijo(id1);
+                                                                                                                dec.addHijo($$[$0-7]);
+
                                                                                                                 var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
                                                                                                                 inc.addHijo(id2);
-                                                                                                                nodo.addHijo(id1);
-                                                                                                                nodo.addHijo($$[$0-7]);
-                                                                                                                nodo.addHijo($$[$0-5]);
-                                                                                                                nodo.addHijo(inc);
-                                                                                                                nodo.addHijo($$[$0]);
+
+                                                                                                                nodo.addHijo(dec); //declaracion
+                                                                                                                nodo.addHijo($$[$0-5]); //condicion
+                                                                                                                nodo.addHijo(inc); //incremento
+                                                                                                                nodo.addHijo($$[$0]); //sentencias
+
                                                                                                                 this.$ = nodo;
                                                                                                                 this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+";"+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                               
 break;
 case 192:
 
-                                                                                                                        console.error("Error Sintactico: "+$$[$0-4]+" Error en do While");
-                                                                                                                        var error = new Error("Sintactico","Encontrado: "+$$[$0-4]+" Se esperaba -> ;",+yylineno+1,+_$[$0-4].last_column+1);
-                                                                                                                        errores.addError(error);
+                                                                                                                console.error("Error Sintactico: "+$$[$0-4]+" Error en do While");
+                                                                                                                var error = new Error("Sintactico","Encontrado: "+$$[$0-4]+" Se esperaba -> ;",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                errores.addError(error);
 
-                                                                                                                        var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
-                                                                                                                        var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
-                                                                                                                        var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
-                                                                                                                        var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
-                                                                                                                        inc.addHijo(id2);
-                                                                                                                        nodo.addHijo(id1);
-                                                                                                                        nodo.addHijo($$[$0-7]);
-                                                                                                                        nodo.addHijo($$[$0-5]);
-                                                                                                                        nodo.addHijo(inc);
-                                                                                                                        nodo.addHijo($$[$0]);
-                                                                                                                        this.$ = nodo;
-                                                                                                                        this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+";"+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
-                                                                                                                      
+                                                                                                                var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
+
+                                                                                                                var dec = new Nodo("DECLARACION","LET",+yylineno+3,+_$[$0-10].first_column+1);
+                                                                                                                var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
+                                                                                                                dec.addHijo(id1);
+                                                                                                                dec.addHijo($$[$0-7]);
+
+                                                                                                                var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                inc.addHijo(id2);
+
+                                                                                                                nodo.addHijo(dec); //declaracion
+                                                                                                                nodo.addHijo($$[$0-5]); //condicion
+                                                                                                                nodo.addHijo(inc); //incremento
+                                                                                                                nodo.addHijo($$[$0]); //sentencias
+                                                                                                                
+                                                                                                                this.$ = nodo;
+                                                                                                                this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+";"+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
+                                                                                                              
 break;
 case 193:
 
@@ -1820,15 +1916,21 @@ case 193:
                                                                                                                         errores.addError(error);
 
                                                                                                                         var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
+
+                                                                                                                        var dec = new Nodo("DECLARACION","LET",+yylineno+3,+_$[$0-10].first_column+1);
                                                                                                                         var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
-                                                                                                                        var id2 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                        dec.addHijo(id1);
+                                                                                                                        dec.addHijo($$[$0-7]);
+
                                                                                                                         var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                        var id2 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-3].last_column+1);
                                                                                                                         inc.addHijo(id2);
-                                                                                                                        nodo.addHijo(id1);
-                                                                                                                        nodo.addHijo($$[$0-7]);
-                                                                                                                        nodo.addHijo($$[$0-5]);
-                                                                                                                        nodo.addHijo(inc);
-                                                                                                                        nodo.addHijo($$[$0]);
+
+                                                                                                                        nodo.addHijo(dec); //declaracion
+                                                                                                                        nodo.addHijo($$[$0-5]); //condicion
+                                                                                                                        nodo.addHijo(inc); //incremento
+                                                                                                                        nodo.addHijo($$[$0]); //sentencias
+
                                                                                                                         this.$ = nodo;
                                                                                                                         this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-9]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                                       
@@ -1840,15 +1942,21 @@ case 194:
                                                                                                                   errores.addError(error);
 
                                                                                                                   var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
+
+                                                                                                                  var dec = new Nodo("DECLARACION","LET",+yylineno+3,+_$[$0-10].first_column+1);
                                                                                                                   var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
-                                                                                                                  var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                  dec.addHijo(id1);
+                                                                                                                  dec.addHijo($$[$0-7]);
+
                                                                                                                   var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                  var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
                                                                                                                   inc.addHijo(id2);
-                                                                                                                  nodo.addHijo(id1);
-                                                                                                                  nodo.addHijo($$[$0-7]);
-                                                                                                                  nodo.addHijo($$[$0-5]);
-                                                                                                                  nodo.addHijo(inc);
-                                                                                                                  nodo.addHijo($$[$0]);
+
+                                                                                                                  nodo.addHijo(dec); //declaracion
+                                                                                                                  nodo.addHijo($$[$0-5]); //condicion
+                                                                                                                  nodo.addHijo(inc); //incremento
+                                                                                                                  nodo.addHijo($$[$0]); //sentencias
+
                                                                                                                   this.$ = nodo;
                                                                                                                   this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                                 
@@ -1860,14 +1968,21 @@ case 195:
                                                                                                                   errores.addError(error);
 
                                                                                                                   var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-12].last_column+1);
+
+                                                                                                                  var dec = new Nodo("DECLARACION","LET",+yylineno+3,+_$[$0-10].first_column+1);
                                                                                                                   var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
-                                                                                                                  var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                  dec.addHijo(id1);
+                                                                                                                  dec.addHijo($$[$0-7]);
+
                                                                                                                   var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                  var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
                                                                                                                   inc.addHijo(id2);
-                                                                                                                  nodo.addHijo(id1);
-                                                                                                                  nodo.addHijo($$[$0-7]);
-                                                                                                                  nodo.addHijo($$[$0-5]);
-                                                                                                                  nodo.addHijo(inc);
+
+                                                                                                                  nodo.addHijo(dec); //declaracion
+                                                                                                                  nodo.addHijo($$[$0-5]); //condicion
+                                                                                                                  nodo.addHijo(inc); //incremento
+                                                                                                                  nodo.addHijo($$[$0]); //sentencias
+
                                                                                                                   this.$ = nodo;
                                                                                                                   this.$.trad = $$[$0-12]+$$[$0-11]+$$[$0-10]+" "+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+"{}\n";
                                                                                                                 
@@ -1875,15 +1990,21 @@ break;
 case 196:
 
                                                                                                                 var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-11].last_column+1);
+
+                                                                                                                var dec = new Nodo("ASIGNACION","ASIGNACION",+yylineno+1,+_$[$0-11].last_column+1);
                                                                                                                 var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
-                                                                                                                var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-2].last_column+1);
-                                                                                                                var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                dec.addHijo(id1);
+                                                                                                                dec.addHijo($$[$0-7]);
+
+                                                                                                                var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
                                                                                                                 inc.addHijo(id2);
-                                                                                                                nodo.addHijo(id1);
-                                                                                                                nodo.addHijo($$[$0-7]);
-                                                                                                                nodo.addHijo($$[$0-5]);
-                                                                                                                nodo.addHijo(inc);
-                                                                                                                nodo.addHijo($$[$0]);
+
+                                                                                                                nodo.addHijo(dec); //declaracion
+                                                                                                                nodo.addHijo($$[$0-5]); //condicion
+                                                                                                                nodo.addHijo(inc); //incremento
+                                                                                                                nodo.addHijo($$[$0]); //sentencias
+
                                                                                                                 this.$ = nodo;
                                                                                                                 this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                               
@@ -1895,15 +2016,21 @@ case 197:
                                                                                                           errores.addError(error);
 
                                                                                                           var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-11].last_column+1);
+
+                                                                                                          var dec = new Nodo("ASIGNACION","ASIGNACION",+yylineno+1,+_$[$0-11].last_column+1);
                                                                                                           var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
-                                                                                                          var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-2].last_column+1);
-                                                                                                          var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                          dec.addHijo(id1);
+                                                                                                          dec.addHijo($$[$0-7]);
+
+                                                                                                          var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                          var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
                                                                                                           inc.addHijo(id2);
-                                                                                                          nodo.addHijo(id1);
-                                                                                                          nodo.addHijo($$[$0-7]);
-                                                                                                          nodo.addHijo($$[$0-5]);
-                                                                                                          nodo.addHijo(inc);
-                                                                                                          nodo.addHijo($$[$0]);
+
+                                                                                                          nodo.addHijo(dec); //declaracion
+                                                                                                          nodo.addHijo($$[$0-5]); //condicion
+                                                                                                          nodo.addHijo(inc); //incremento
+                                                                                                          nodo.addHijo($$[$0]); //sentencias
+
                                                                                                           this.$ = nodo;
                                                                                                           this.$.trad = $$[$0-11]+"("+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                         
@@ -1925,15 +2052,21 @@ case 199:
                                                                                                               errores.addError(error);
 
                                                                                                               var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-11].last_column+1);
+
+                                                                                                              var dec = new Nodo("ASIGNACION","ASIGNACION",+yylineno+1,+_$[$0-11].last_column+1);
                                                                                                               var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
-                                                                                                              var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-2].last_column+1);
-                                                                                                              var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                              dec.addHijo(id1);
+                                                                                                              dec.addHijo($$[$0-7]);
+
+                                                                                                              var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                              var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
                                                                                                               inc.addHijo(id2);
-                                                                                                              nodo.addHijo(id1);
-                                                                                                              nodo.addHijo($$[$0-7]);
-                                                                                                              nodo.addHijo($$[$0-5]);
-                                                                                                              nodo.addHijo(inc);
-                                                                                                              nodo.addHijo($$[$0]);
+
+                                                                                                              nodo.addHijo(dec); //declaracion
+                                                                                                              nodo.addHijo($$[$0-5]); //condicion
+                                                                                                              nodo.addHijo(inc); //incremento
+                                                                                                              nodo.addHijo($$[$0]); //sentencias
+
                                                                                                               this.$ = nodo;
                                                                                                               this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+"="+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                             
@@ -1945,15 +2078,21 @@ case 200:
                                                                                                         errores.addError(error);
 
                                                                                                         var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-11].last_column+1);
+
+                                                                                                        var dec = new Nodo("ASIGNACION","ASIGNACION",+yylineno+1,+_$[$0-11].last_column+1);
                                                                                                         var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
-                                                                                                        var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-2].last_column+1);
-                                                                                                        var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                        dec.addHijo(id1);
+                                                                                                        dec.addHijo($$[$0-7]);
+
+                                                                                                        var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                        var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
                                                                                                         inc.addHijo(id2);
-                                                                                                        nodo.addHijo(id1);
-                                                                                                        nodo.addHijo($$[$0-7]);
-                                                                                                        nodo.addHijo($$[$0-5]);
-                                                                                                        nodo.addHijo(inc);
-                                                                                                        nodo.addHijo($$[$0]);
+
+                                                                                                        nodo.addHijo(dec); //declaracion
+                                                                                                        nodo.addHijo($$[$0-5]); //condicion
+                                                                                                        nodo.addHijo(inc); //incremento
+                                                                                                        nodo.addHijo($$[$0]); //sentencias
+
                                                                                                         this.$ = nodo;
                                                                                                         this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+";"+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                       
@@ -1975,15 +2114,21 @@ case 202:
                                                                                                         errores.addError(error);
 
                                                                                                         var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-11].last_column+1);
+
+                                                                                                        var dec = new Nodo("ASIGNACION","ASIGNACION",+yylineno+1,+_$[$0-11].last_column+1);
                                                                                                         var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
-                                                                                                        var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-2].last_column+1);
-                                                                                                        var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                        dec.addHijo(id1);
+                                                                                                        dec.addHijo($$[$0-7]);
+
+                                                                                                        var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                        var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
                                                                                                         inc.addHijo(id2);
-                                                                                                        nodo.addHijo(id1);
-                                                                                                        nodo.addHijo($$[$0-7]);
-                                                                                                        nodo.addHijo($$[$0-5]);
-                                                                                                        nodo.addHijo(inc);
-                                                                                                        nodo.addHijo($$[$0]);
+
+                                                                                                        nodo.addHijo(dec); //declaracion
+                                                                                                        nodo.addHijo($$[$0-5]); //condicion
+                                                                                                        nodo.addHijo(inc); //incremento
+                                                                                                        nodo.addHijo($$[$0]); //sentencias
+
                                                                                                         this.$ = nodo;
                                                                                                         this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+";"+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                       
@@ -1995,15 +2140,21 @@ case 203:
                                                                                                                 errores.addError(error);
 
                                                                                                                 var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-11].last_column+1);
+
+                                                                                                                var dec = new Nodo("ASIGNACION","ASIGNACION",+yylineno+1,+_$[$0-11].last_column+1);
                                                                                                                 var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
-                                                                                                                var id2 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-2].last_column+1);
-                                                                                                                var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                dec.addHijo(id1);
+                                                                                                                dec.addHijo($$[$0-7]);
+
+                                                                                                                var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
                                                                                                                 inc.addHijo(id2);
-                                                                                                                nodo.addHijo(id1);
-                                                                                                                nodo.addHijo($$[$0-7]);
-                                                                                                                nodo.addHijo($$[$0-5]);
-                                                                                                                nodo.addHijo(inc);
-                                                                                                                nodo.addHijo($$[$0]);
+
+                                                                                                                nodo.addHijo(dec); //declaracion
+                                                                                                                nodo.addHijo($$[$0-5]); //condicion
+                                                                                                                nodo.addHijo(inc); //incremento
+                                                                                                                nodo.addHijo($$[$0]); //sentencias
+
                                                                                                                 this.$ = nodo;
                                                                                                                 this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-9]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                               
@@ -2015,15 +2166,21 @@ case 204:
                                                                                                                 errores.addError(error);
 
                                                                                                                 var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-11].last_column+1);
+
+                                                                                                                var dec = new Nodo("ASIGNACION","ASIGNACION",+yylineno+1,+_$[$0-11].last_column+1);
                                                                                                                 var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
-                                                                                                                var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-2].last_column+1);
-                                                                                                                var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                dec.addHijo(id1);
+                                                                                                                dec.addHijo($$[$0-7]);
+
+                                                                                                                var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
                                                                                                                 inc.addHijo(id2);
-                                                                                                                nodo.addHijo(id1);
-                                                                                                                nodo.addHijo($$[$0-7]);
-                                                                                                                nodo.addHijo($$[$0-5]);
-                                                                                                                nodo.addHijo(inc);
-                                                                                                                nodo.addHijo($$[$0]);
+
+                                                                                                                nodo.addHijo(dec); //declaracion
+                                                                                                                nodo.addHijo($$[$0-5]); //condicion
+                                                                                                                nodo.addHijo(inc); //incremento
+                                                                                                                nodo.addHijo($$[$0]); //sentencias
+
                                                                                                                 this.$ = nodo;
                                                                                                                 this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+"++"+$$[$0-1]+$$[$0].trad;
                                                                                                               
@@ -2035,15 +2192,21 @@ case 205:
                                                                                                           errores.addError(error);
 
                                                                                                           var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-11].last_column+1);
+
+                                                                                                          var dec = new Nodo("ASIGNACION","ASIGNACION",+yylineno+1,+_$[$0-11].last_column+1);
                                                                                                           var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
-                                                                                                          var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-2].last_column+1);
-                                                                                                          var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                          dec.addHijo(id1);
+                                                                                                          dec.addHijo($$[$0-7]);
+
+                                                                                                          var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                          var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
                                                                                                           inc.addHijo(id2);
-                                                                                                          nodo.addHijo(id1);
-                                                                                                          nodo.addHijo($$[$0-7]);
-                                                                                                          nodo.addHijo($$[$0-5]);
-                                                                                                          nodo.addHijo(inc);
-                                                                                                          nodo.addHijo($$[$0]);
+
+                                                                                                          nodo.addHijo(dec); //declaracion
+                                                                                                          nodo.addHijo($$[$0-5]); //condicion
+                                                                                                          nodo.addHijo(inc); //incremento
+                                                                                                          nodo.addHijo($$[$0]); //sentencias
+
                                                                                                           this.$ = nodo;
                                                                                                           this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+")"+$$[$0].trad;
                                                                                                         
@@ -2055,14 +2218,19 @@ case 206:
                                                                                                           errores.addError(error);
 
                                                                                                           var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-11].last_column+1);
+
+                                                                                                          var dec = new Nodo("ASIGNACION","ASIGNACION",+yylineno+1,+_$[$0-11].last_column+1);
                                                                                                           var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
-                                                                                                          var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-2].last_column+1);
-                                                                                                          var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                          dec.addHijo(id1);
+                                                                                                          dec.addHijo($$[$0-7]);
+
+                                                                                                          var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                          var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
                                                                                                           inc.addHijo(id2);
-                                                                                                          nodo.addHijo(id1);
-                                                                                                          nodo.addHijo($$[$0-7]);
-                                                                                                          nodo.addHijo($$[$0-5]);
-                                                                                                          nodo.addHijo(inc);
+
+                                                                                                          nodo.addHijo(dec); //declaracion
+                                                                                                          nodo.addHijo($$[$0-5]); //condicion
+                                                                                                          nodo.addHijo(inc); //incremento
                                                                                                           this.$ = nodo;
                                                                                                           this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+"{}\n";
                                                                                                         
@@ -2070,15 +2238,21 @@ break;
 case 207:
 
                                                                                                                 var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-11].last_column+1);
+
+                                                                                                                var dec = new Nodo("ASIGNACION","ASIGNACION",+yylineno+1,+_$[$0-11].last_column+1);
                                                                                                                 var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
-                                                                                                                var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-2].last_column+1);
-                                                                                                                var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                dec.addHijo(id1);
+                                                                                                                dec.addHijo($$[$0-7]);
+
+                                                                                                                var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
                                                                                                                 inc.addHijo(id2);
-                                                                                                                nodo.addHijo(id1);
-                                                                                                                nodo.addHijo($$[$0-7]);
-                                                                                                                nodo.addHijo($$[$0-5]);
-                                                                                                                nodo.addHijo(inc);
-                                                                                                                nodo.addHijo($$[$0]);
+
+                                                                                                                nodo.addHijo(dec); //declaracion
+                                                                                                                nodo.addHijo($$[$0-5]); //condicion
+                                                                                                                nodo.addHijo(inc); //decremento
+                                                                                                                nodo.addHijo($$[$0]); //sentencias
+
                                                                                                                 this.$ = nodo;
                                                                                                                 this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                               
@@ -2090,15 +2264,21 @@ case 208:
                                                                                                           errores.addError(error);
 
                                                                                                           var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-11].last_column+1);
+
+                                                                                                          var dec = new Nodo("ASIGNACION","ASIGNACION");
                                                                                                           var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
-                                                                                                          var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-2].last_column+1);
-                                                                                                          var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                          dec.addHijo(id1);
+                                                                                                          dec.addHijo($$[$0-7]);
+
+                                                                                                          var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                          var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
                                                                                                           inc.addHijo(id2);
-                                                                                                          nodo.addHijo(id1);
-                                                                                                          nodo.addHijo($$[$0-7]);
-                                                                                                          nodo.addHijo($$[$0-5]);
-                                                                                                          nodo.addHijo(inc);
-                                                                                                          nodo.addHijo($$[$0]);
+
+                                                                                                          nodo.addHijo(dec); //declaracion
+                                                                                                          nodo.addHijo($$[$0-5]); //condicion
+                                                                                                          nodo.addHijo(inc); //decremento
+                                                                                                          nodo.addHijo($$[$0]); //sentencias
+
                                                                                                           this.$ = nodo;
                                                                                                           this.$.trad = $$[$0-11]+"("+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                         
@@ -2110,15 +2290,21 @@ case 210:
                                                                                                               errores.addError(error);
 
                                                                                                               var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-11].last_column+1);
+
+                                                                                                              var dec = new Nodo("ASIGNACION","ASIGNACION");
                                                                                                               var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
-                                                                                                              var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-2].last_column+1);
-                                                                                                              var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                              dec.addHijo(id1);
+                                                                                                              dec.addHijo($$[$0-7]);
+
+                                                                                                              var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                              var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
                                                                                                               inc.addHijo(id2);
-                                                                                                              nodo.addHijo(id1);
-                                                                                                              nodo.addHijo($$[$0-7]);
-                                                                                                              nodo.addHijo($$[$0-5]);
-                                                                                                              nodo.addHijo(inc);
-                                                                                                              nodo.addHijo($$[$0]);
+
+                                                                                                              nodo.addHijo(dec); //declaracion
+                                                                                                              nodo.addHijo($$[$0-5]); //condicion
+                                                                                                              nodo.addHijo(inc); //decremento
+                                                                                                              nodo.addHijo($$[$0]); //sentencias
+
                                                                                                               this.$ = nodo;
                                                                                                               this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+"="+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                             
@@ -2130,15 +2316,21 @@ case 211:
                                                                                                         errores.addError(error);
 
                                                                                                         var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-11].last_column+1);
+
+                                                                                                        var dec = new Nodo("ASIGNACION","ASIGNACION");
                                                                                                         var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
-                                                                                                        var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-2].last_column+1);
-                                                                                                        var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                        dec.addHijo(id1);
+                                                                                                        dec.addHijo($$[$0-7]);
+
+                                                                                                        var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                        var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
                                                                                                         inc.addHijo(id2);
-                                                                                                        nodo.addHijo(id1);
-                                                                                                        nodo.addHijo($$[$0-7]);
-                                                                                                        nodo.addHijo($$[$0-5]);
-                                                                                                        nodo.addHijo(inc);
-                                                                                                        nodo.addHijo($$[$0]);
+
+                                                                                                        nodo.addHijo(dec); //declaracion
+                                                                                                        nodo.addHijo($$[$0-5]); //condicion
+                                                                                                        nodo.addHijo(inc); //decremento
+                                                                                                        nodo.addHijo($$[$0]); //sentencias
+
                                                                                                         this.$ = nodo;
                                                                                                         this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+";"+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                       
@@ -2150,15 +2342,21 @@ case 213:
                                                                                                         errores.addError(error);
 
                                                                                                         var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-11].last_column+1);
+
+                                                                                                        var dec = new Nodo("ASIGNACION","ASIGNACION");
                                                                                                         var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
-                                                                                                        var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-2].last_column+1);
-                                                                                                        var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                        dec.addHijo(id1);
+                                                                                                        dec.addHijo($$[$0-7]);
+
+                                                                                                        var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                        var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
                                                                                                         inc.addHijo(id2);
-                                                                                                        nodo.addHijo(id1);
-                                                                                                        nodo.addHijo($$[$0-7]);
-                                                                                                        nodo.addHijo($$[$0-5]);
-                                                                                                        nodo.addHijo(inc);
-                                                                                                        nodo.addHijo($$[$0]);
+
+                                                                                                        nodo.addHijo(dec); //declaracion
+                                                                                                        nodo.addHijo($$[$0-5]); //condicion
+                                                                                                        nodo.addHijo(inc); //decremento
+                                                                                                        nodo.addHijo($$[$0]); //sentencias
+
                                                                                                         this.$ = nodo;
                                                                                                         this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+";"+$$[$0-3]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                       
@@ -2170,15 +2368,21 @@ case 214:
                                                                                                                 errores.addError(error);
 
                                                                                                                 var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-11].last_column+1);
+
+                                                                                                                var dec = new Nodo("ASIGNACION","ASIGNACION");
                                                                                                                 var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
-                                                                                                                var id2 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-2].last_column+1);
-                                                                                                                var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                                dec.addHijo(id1);
+                                                                                                                dec.addHijo($$[$0-7]);
+
+                                                                                                                var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                                var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
                                                                                                                 inc.addHijo(id2);
-                                                                                                                nodo.addHijo(id1);
-                                                                                                                nodo.addHijo($$[$0-7]);
-                                                                                                                nodo.addHijo($$[$0-5]);
-                                                                                                                nodo.addHijo(inc);
-                                                                                                                nodo.addHijo($$[$0]);
+
+                                                                                                                nodo.addHijo(dec); //declaracion
+                                                                                                                nodo.addHijo($$[$0-5]); //condicion
+                                                                                                                nodo.addHijo(inc); //decremento
+                                                                                                                nodo.addHijo($$[$0]); //sentencias
+
                                                                                                                 this.$ = nodo;
                                                                                                                 this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-9]+$$[$0-2]+$$[$0-1]+$$[$0].trad;
                                                                                                               
@@ -2190,15 +2394,21 @@ case 215:
                                                                                                           errores.addError(error);
 
                                                                                                           var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-11].last_column+1);
+
+                                                                                                          var dec = new Nodo("ASIGNACION","ASIGNACION");
                                                                                                           var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
-                                                                                                          var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-2].last_column+1);
-                                                                                                          var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                          dec.addHijo(id1);
+                                                                                                          dec.addHijo($$[$0-7]);
+
+                                                                                                          var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                          var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
                                                                                                           inc.addHijo(id2);
-                                                                                                          nodo.addHijo(id1);
-                                                                                                          nodo.addHijo($$[$0-7]);
-                                                                                                          nodo.addHijo($$[$0-5]);
-                                                                                                          nodo.addHijo(inc);
-                                                                                                          nodo.addHijo($$[$0]);
+
+                                                                                                          nodo.addHijo(dec); //declaracion
+                                                                                                          nodo.addHijo($$[$0-5]); //condicion
+                                                                                                          nodo.addHijo(inc); //decremento
+                                                                                                          nodo.addHijo($$[$0]); //sentencias
+
                                                                                                           this.$ = nodo;
                                                                                                           this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+")"+$$[$0].trad;
                                                                                                         
@@ -2210,14 +2420,20 @@ case 216:
                                                                                                           errores.addError(error);
 
                                                                                                           var nodo = new Nodo("FOR","FOR",+yylineno+1,+_$[$0-11].last_column+1);
+
+                                                                                                          var dec = new Nodo("ASIGNACION","ASIGNACION");
                                                                                                           var id1 = new Nodo("ID",$$[$0-9],+yylineno+1,+_$[$0-9].last_column+1);
-                                                                                                          var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-2].last_column+1);
-                                                                                                          var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-3].last_column+1);
+                                                                                                          dec.addHijo(id1);
+                                                                                                          dec.addHijo($$[$0-7]);
+
+                                                                                                          var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+_$[$0-4].last_column+1);
+                                                                                                          var id2 = new Nodo("ID",$$[$0-3],+yylineno+1,+_$[$0-3].last_column+1);
                                                                                                           inc.addHijo(id2);
-                                                                                                          nodo.addHijo(id1);
-                                                                                                          nodo.addHijo($$[$0-7]);
-                                                                                                          nodo.addHijo($$[$0-5]);
-                                                                                                          nodo.addHijo(inc);
+
+                                                                                                          nodo.addHijo(dec); //declaracion
+                                                                                                          nodo.addHijo($$[$0-5]); //condicion
+                                                                                                          nodo.addHijo(inc); //decremento
+
                                                                                                           this.$ = nodo;
                                                                                                           this.$.trad = $$[$0-11]+$$[$0-10]+$$[$0-9]+$$[$0-8]+$$[$0-7].trad+$$[$0-6]+$$[$0-5].trad+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1]+"{}\n";
                                                                                                         

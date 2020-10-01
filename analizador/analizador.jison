@@ -1400,14 +1400,20 @@ DOWHILE: tk_do BSENTENCIAS tk_while tk_pabierto L tk_pcerrado tk_puntoycoma {
 FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycoma tk_id tk_inc tk_pcerrado BSENTENCIAS{
                                                                                                                         var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
                                                                                                                         
-                                                                                                                        var dec = new Nodo("DECLARACION","LET");
+                                                                                                                        var dec = new Nodo("DECLARACION","LET",+yylineno+3,+@3.first_column+1);
                                                                                                                         var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
                                                                                                                         dec.addHijo(id1);
                                                                                                                         dec.addHijo($6);
 
                                                                                                                         var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
                                                                                                                         var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
-                                                                                                                        
+                                                                                                                        inc.addHijo(id2);
+
+                                                                                                                        nodo.addHijo(dec); //declaracion
+                                                                                                                        nodo.addHijo($8); //condicion
+                                                                                                                        nodo.addHijo(inc); //incremento
+                                                                                                                        nodo.addHijo($13); //sentencias
+
                                                                                                                         $$ = nodo;
                                                                                                                         $$.trad = $1+$2+$3+" "+$4+$5+$6.trad+$7+$8.trad+$9+$10+$11+$12+$13.trad;
                                                                                                                       }
@@ -1417,15 +1423,21 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                                                                   errores.addError(error);
 
                                                                                                                   var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+
+                                                                                                                  var dec = new Nodo("DECLARACION","LET",+yylineno+3,+@3.first_column+1);
                                                                                                                   var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
-                                                                                                                  var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
+                                                                                                                  dec.addHijo(id1);
+                                                                                                                  dec.addHijo($6);
+
                                                                                                                   var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                  var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
                                                                                                                   inc.addHijo(id2);
-                                                                                                                  nodo.addHijo(id1);
-                                                                                                                  nodo.addHijo($6);
-                                                                                                                  nodo.addHijo($8);
-                                                                                                                  nodo.addHijo(inc);
-                                                                                                                  nodo.addHijo($13);
+
+                                                                                                                  nodo.addHijo(dec); //declaracion
+                                                                                                                  nodo.addHijo($8); //condicion
+                                                                                                                  nodo.addHijo(inc); //incremento
+                                                                                                                  nodo.addHijo($13); //sentencias
+
                                                                                                                   $$ = nodo;
                                                                                                                   $$.trad = $1+"("+$3+" "+$4+$5+$6.trad+$7+$8.trad+$9+$10+$11+$12+$13.trad;
                                                                                                                 }
@@ -1435,15 +1447,21 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                                                                       errores.addError(error);
 
                                                                                                                       var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+
+                                                                                                                      var dec = new Nodo("DECLARACION","LET",+yylineno+3,+@3.first_column+1);
                                                                                                                       var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
-                                                                                                                      var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
+                                                                                                                      dec.addHijo(id1);
+                                                                                                                      dec.addHijo($6);
+
                                                                                                                       var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                      var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
                                                                                                                       inc.addHijo(id2);
-                                                                                                                      nodo.addHijo(id1);
-                                                                                                                      nodo.addHijo($6);
-                                                                                                                      nodo.addHijo($8);
-                                                                                                                      nodo.addHijo(inc);
-                                                                                                                      nodo.addHijo($13);
+
+                                                                                                                      nodo.addHijo(dec); //declaracion
+                                                                                                                      nodo.addHijo($8); //condicion
+                                                                                                                      nodo.addHijo(inc); //incremento
+                                                                                                                      nodo.addHijo($13); //sentencias
+
                                                                                                                       $$ = nodo;
                                                                                                                       $$.trad = $1+$2+"let"+" "+$4+$5+$6.trad+$7+$8.trad+$9+$10+$11+$12+$13.trad;    
                                                                                                                     }
@@ -1461,15 +1479,21 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                                                                     errores.addError(error);
 
                                                                                                                     var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+
+                                                                                                                    var dec = new Nodo("DECLARACION","LET",+yylineno+3,+@3.first_column+1);
                                                                                                                     var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
-                                                                                                                    var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
+                                                                                                                    dec.addHijo(id1);
+                                                                                                                    dec.addHijo($6);
+
                                                                                                                     var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                    var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
                                                                                                                     inc.addHijo(id2);
-                                                                                                                    nodo.addHijo(id1);
-                                                                                                                    nodo.addHijo($6);
-                                                                                                                    nodo.addHijo($8);
-                                                                                                                    nodo.addHijo(inc);
-                                                                                                                    nodo.addHijo($13);
+
+                                                                                                                    nodo.addHijo(dec); //declaracion
+                                                                                                                    nodo.addHijo($8); //condicion
+                                                                                                                    nodo.addHijo(inc); //incremento
+                                                                                                                    nodo.addHijo($13); //sentencias
+
                                                                                                                     $$ = nodo;
                                                                                                                     $$.trad = $1+$2+$3+" "+$4+"="+$6.trad+$7+$8.trad+$9+$10+$11+$12+$13.trad;
                                                                                                                   }
@@ -1479,15 +1503,21 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                                                                 errores.addError(error);
 
                                                                                                                 var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+
+                                                                                                                var dec = new Nodo("DECLARACION","LET",+yylineno+3,+@3.first_column+1);
                                                                                                                 var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
-                                                                                                                var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
+                                                                                                                dec.addHijo(id1);
+                                                                                                                dec.addHijo($6);
+
                                                                                                                 var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
                                                                                                                 inc.addHijo(id2);
-                                                                                                                nodo.addHijo(id1);
-                                                                                                                nodo.addHijo($6);
-                                                                                                                nodo.addHijo($8);
-                                                                                                                nodo.addHijo(inc);
-                                                                                                                nodo.addHijo($13);
+
+                                                                                                                nodo.addHijo(dec); //declaracion
+                                                                                                                nodo.addHijo($8); //condicion
+                                                                                                                nodo.addHijo(inc); //incremento
+                                                                                                                nodo.addHijo($13); //sentencias
+
                                                                                                                 $$ = nodo;
                                                                                                                 $$.trad = $1+$2+$3+" "+$4+$5+$6.trad+";"+$8.trad+$9+$10+$11+$12+$13.trad;
                                                                                                               }
@@ -1505,15 +1535,21 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                                                                 errores.addError(error);
 
                                                                                                                 var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+
+                                                                                                                var dec = new Nodo("DECLARACION","LET",+yylineno+3,+@3.first_column+1);
                                                                                                                 var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
-                                                                                                                var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
+                                                                                                                dec.addHijo(id1);
+                                                                                                                dec.addHijo($6);
+
                                                                                                                 var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
                                                                                                                 inc.addHijo(id2);
-                                                                                                                nodo.addHijo(id1);
-                                                                                                                nodo.addHijo($6);
-                                                                                                                nodo.addHijo($8);
-                                                                                                                nodo.addHijo(inc);
-                                                                                                                nodo.addHijo($13);
+
+                                                                                                                nodo.addHijo(dec); //declaracion
+                                                                                                                nodo.addHijo($8); //condicion
+                                                                                                                nodo.addHijo(inc); //incremento
+                                                                                                                nodo.addHijo($13); //sentencias
+                                                                                                                
                                                                                                                 $$ = nodo;
                                                                                                                 $$.trad = $1+$2+$3+" "+$4+$5+$6.trad+$7+$8.trad+";"+$10+$11+$12+$13.trad;
                                                                                                               }
@@ -1523,15 +1559,21 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                                                                         errores.addError(error);
 
                                                                                                                         var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+    
+                                                                                                                        var dec = new Nodo("DECLARACION","LET",+yylineno+3,+@3.first_column+1);
                                                                                                                         var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
-                                                                                                                        var id2 = new Nodo("ID",$4,+yylineno+1,+@10.last_column+1);
+                                                                                                                        dec.addHijo(id1);
+                                                                                                                        dec.addHijo($6);
+
                                                                                                                         var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                        var id2 = new Nodo("ID",$4,+yylineno+1,+@10.last_column+1);
                                                                                                                         inc.addHijo(id2);
-                                                                                                                        nodo.addHijo(id1);
-                                                                                                                        nodo.addHijo($6);
-                                                                                                                        nodo.addHijo($8);
-                                                                                                                        nodo.addHijo(inc);
-                                                                                                                        nodo.addHijo($13);
+
+                                                                                                                        nodo.addHijo(dec); //declaracion
+                                                                                                                        nodo.addHijo($8); //condicion
+                                                                                                                        nodo.addHijo(inc); //incremento
+                                                                                                                        nodo.addHijo($13); //sentencias
+
                                                                                                                         $$ = nodo;
                                                                                                                         $$.trad = $1+$2+$3+" "+$4+$5+$6.trad+$7+$8.trad+$9+$4+$11+$12+$13.trad;
                                                                                                                       }
@@ -1541,15 +1583,21 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                                                                       errores.addError(error);
 
                                                                                                                       var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+
+                                                                                                                      var dec = new Nodo("DECLARACION","LET",+yylineno+3,+@3.first_column+1);
                                                                                                                       var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
-                                                                                                                      var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
+                                                                                                                      dec.addHijo(id1);
+                                                                                                                      dec.addHijo($6);
+
                                                                                                                       var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                      var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
                                                                                                                       inc.addHijo(id2);
-                                                                                                                      nodo.addHijo(id1);
-                                                                                                                      nodo.addHijo($6);
-                                                                                                                      nodo.addHijo($8);
-                                                                                                                      nodo.addHijo(inc);
-                                                                                                                      nodo.addHijo($13);
+
+                                                                                                                      nodo.addHijo(dec); //declaracion
+                                                                                                                      nodo.addHijo($8); //condicion
+                                                                                                                      nodo.addHijo(inc); //incremento
+                                                                                                                      nodo.addHijo($13); //sentencias
+
                                                                                                                       $$ = nodo;
                                                                                                                       $$.trad = $1+$2+$3+" "+$4+$5+$6.trad+$7+$8.trad+$9+$10+"++"+$12+$13.trad;
                                                                                                                     }
@@ -1559,15 +1607,21 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                                                                   errores.addError(error);
 
                                                                                                                   var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+
+                                                                                                                  var dec = new Nodo("DECLARACION","LET",+yylineno+3,+@3.first_column+1);
                                                                                                                   var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
-                                                                                                                  var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
+                                                                                                                  dec.addHijo(id1);
+                                                                                                                  dec.addHijo($6);
+
                                                                                                                   var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                  var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
                                                                                                                   inc.addHijo(id2);
-                                                                                                                  nodo.addHijo(id1);
-                                                                                                                  nodo.addHijo($6);
-                                                                                                                  nodo.addHijo($8);
-                                                                                                                  nodo.addHijo(inc);
-                                                                                                                  nodo.addHijo($13);
+
+                                                                                                                  nodo.addHijo(dec); //declaracion
+                                                                                                                  nodo.addHijo($8); //condicion
+                                                                                                                  nodo.addHijo(inc); //incremento
+                                                                                                                  nodo.addHijo($13); //sentencias
+
                                                                                                                   $$ = nodo;
                                                                                                                   $$.trad = $1+$2+$3+" "+$4+$5+$6.trad+$7+$8.trad+$9+$10+$11+$12+$13.trad;
                                                                                                                 }
@@ -1577,29 +1631,41 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                                                                   errores.addError(error);
 
                                                                                                                   var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+
+                                                                                                                  var dec = new Nodo("DECLARACION","LET",+yylineno+3,+@3.first_column+1);
                                                                                                                   var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
-                                                                                                                  var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
+                                                                                                                  dec.addHijo(id1);
+                                                                                                                  dec.addHijo($6);
+
                                                                                                                   var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                  var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
                                                                                                                   inc.addHijo(id2);
-                                                                                                                  nodo.addHijo(id1);
-                                                                                                                  nodo.addHijo($6);
-                                                                                                                  nodo.addHijo($8);
-                                                                                                                  nodo.addHijo(inc);
+
+                                                                                                                  nodo.addHijo(dec); //declaracion
+                                                                                                                  nodo.addHijo($8); //condicion
+                                                                                                                  nodo.addHijo(inc); //incremento
+
                                                                                                                   $$ = nodo;
                                                                                                                   $$.trad = $1+$2+$3+" "+$4+$5+$6.trad+$7+$8.trad+$9+$10+$11+$12+"{}\n";
                                                                                                                 }
 
   | tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycoma tk_id tk_dec tk_pcerrado BSENTENCIAS {
                                                                                                                         var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+
+                                                                                                                        var dec = new Nodo("DECLARACION","LET",+yylineno+3,+@3.first_column+1);
                                                                                                                         var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
-                                                                                                                        var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
+                                                                                                                        dec.addHijo(id1);
+                                                                                                                        dec.addHijo($6);
+
                                                                                                                         var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                        var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
                                                                                                                         inc.addHijo(id2);
-                                                                                                                        nodo.addHijo(id1);
-                                                                                                                        nodo.addHijo($6);
-                                                                                                                        nodo.addHijo($8);
-                                                                                                                        nodo.addHijo(inc);
-                                                                                                                        nodo.addHijo($13);
+
+                                                                                                                        nodo.addHijo(dec); //declaracion
+                                                                                                                        nodo.addHijo($8); //condicion
+                                                                                                                        nodo.addHijo(inc); //incremento
+                                                                                                                        nodo.addHijo($13); //sentencias
+
                                                                                                                         $$ = nodo;
                                                                                                                         $$.trad = $1+$2+$3+" "+$4+$5+$6.trad+$7+$8.trad+$9+$10+$11+$12+$13.trad;
                                                                                                                       }
@@ -1609,15 +1675,21 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                                                                   errores.addError(error);
 
                                                                                                                   var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+
+                                                                                                                  var dec = new Nodo("DECLARACION","LET",+yylineno+3,+@3.first_column+1);
                                                                                                                   var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
-                                                                                                                  var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
+                                                                                                                  dec.addHijo(id1);
+                                                                                                                  dec.addHijo($6);
+
                                                                                                                   var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                  var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
                                                                                                                   inc.addHijo(id2);
-                                                                                                                  nodo.addHijo(id1);
-                                                                                                                  nodo.addHijo($6);
-                                                                                                                  nodo.addHijo($8);
-                                                                                                                  nodo.addHijo(inc);
-                                                                                                                  nodo.addHijo($13);
+
+                                                                                                                  nodo.addHijo(dec); //declaracion
+                                                                                                                  nodo.addHijo($8); //condicion
+                                                                                                                  nodo.addHijo(inc); //incremento
+                                                                                                                  nodo.addHijo($13); //sentencias
+
                                                                                                                   $$ = nodo;
                                                                                                                   $$.trad = $1+"("+$3+" "+$4+$5+$6.trad+$7+$8.trad+$9+$10+$11+$12+$13.trad;
                                                                                                                 }
@@ -1627,15 +1699,21 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                                                                       errores.addError(error);
 
                                                                                                                       var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+
+                                                                                                                      var dec = new Nodo("DECLARACION","LET",+yylineno+3,+@3.first_column+1);
                                                                                                                       var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
-                                                                                                                      var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
+                                                                                                                      dec.addHijo(id1);
+                                                                                                                      dec.addHijo($6);
+
                                                                                                                       var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                      var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
                                                                                                                       inc.addHijo(id2);
-                                                                                                                      nodo.addHijo(id1);
-                                                                                                                      nodo.addHijo($6);
-                                                                                                                      nodo.addHijo($8);
-                                                                                                                      nodo.addHijo(inc);
-                                                                                                                      nodo.addHijo($13);
+
+                                                                                                                      nodo.addHijo(dec); //declaracion
+                                                                                                                      nodo.addHijo($8); //condicion
+                                                                                                                      nodo.addHijo(inc); //incremento
+                                                                                                                      nodo.addHijo($13); //sentencias
+
                                                                                                                       $$ = nodo;
                                                                                                                       $$.trad = $1+$2+"let"+" "+$4+$5+$6.trad+$7+$8.trad+$9+$10+$11+$12+$13.trad;    
                                                                                                                     }
@@ -1653,15 +1731,21 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                                                                     errores.addError(error);
 
                                                                                                                     var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+
+                                                                                                                    var dec = new Nodo("DECLARACION","LET",+yylineno+3,+@3.first_column+1);
                                                                                                                     var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
-                                                                                                                    var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
+                                                                                                                    dec.addHijo(id1);
+                                                                                                                    dec.addHijo($6);
+
                                                                                                                     var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                    var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
                                                                                                                     inc.addHijo(id2);
-                                                                                                                    nodo.addHijo(id1);
-                                                                                                                    nodo.addHijo($6);
-                                                                                                                    nodo.addHijo($8);
-                                                                                                                    nodo.addHijo(inc);
-                                                                                                                    nodo.addHijo($13);
+
+                                                                                                                    nodo.addHijo(dec); //declaracion
+                                                                                                                    nodo.addHijo($8); //condicion
+                                                                                                                    nodo.addHijo(inc); //incremento
+                                                                                                                    nodo.addHijo($13); //sentencias
+
                                                                                                                     $$ = nodo;
                                                                                                                     $$.trad = $1+$2+$3+" "+$4+"="+$6.trad+$7+$8.trad+$9+$10+$11+$12+$13.trad;
                                                                                                                   }
@@ -1671,15 +1755,21 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                                                                 errores.addError(error);
 
                                                                                                                 var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+
+                                                                                                                var dec = new Nodo("DECLARACION","LET",+yylineno+3,+@3.first_column+1);
                                                                                                                 var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
-                                                                                                                var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
+                                                                                                                dec.addHijo(id1);
+                                                                                                                dec.addHijo($6);
+
                                                                                                                 var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
                                                                                                                 inc.addHijo(id2);
-                                                                                                                nodo.addHijo(id1);
-                                                                                                                nodo.addHijo($6);
-                                                                                                                nodo.addHijo($8);
-                                                                                                                nodo.addHijo(inc);
-                                                                                                                nodo.addHijo($13);
+
+                                                                                                                nodo.addHijo(dec); //declaracion
+                                                                                                                nodo.addHijo($8); //condicion
+                                                                                                                nodo.addHijo(inc); //incremento
+                                                                                                                nodo.addHijo($13); //sentencias
+
                                                                                                                 $$ = nodo;
                                                                                                                 $$.trad = $1+$2+$3+" "+$4+$5+$6.trad+";"+$8.trad+$9+$10+$11+$12+$13.trad;
                                                                                                               }
@@ -1692,38 +1782,50 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                                                                             $$.trad = "";
                                                                                                                           } 
   | tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L error tk_id tk_dec tk_pcerrado BSENTENCIAS {
-                                                                                                                        console.error("Error Sintactico: "+$9+" Error en do While");
-                                                                                                                        var error = new Error("Sintactico","Encontrado: "+$9+" Se esperaba -> ;",+yylineno+1,+@9.last_column+1);
-                                                                                                                        errores.addError(error);
+                                                                                                                console.error("Error Sintactico: "+$9+" Error en do While");
+                                                                                                                var error = new Error("Sintactico","Encontrado: "+$9+" Se esperaba -> ;",+yylineno+1,+@9.last_column+1);
+                                                                                                                errores.addError(error);
 
-                                                                                                                        var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
-                                                                                                                        var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
-                                                                                                                        var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
-                                                                                                                        var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@9.last_column+1);
-                                                                                                                        inc.addHijo(id2);
-                                                                                                                        nodo.addHijo(id1);
-                                                                                                                        nodo.addHijo($6);
-                                                                                                                        nodo.addHijo($8);
-                                                                                                                        nodo.addHijo(inc);
-                                                                                                                        nodo.addHijo($13);
-                                                                                                                        $$ = nodo;
-                                                                                                                        $$.trad = $1+$2+$3+" "+$4+$5+$6.trad+$7+$8.trad+";"+$10+$11+$12+$13.trad;
-                                                                                                                      } 
+                                                                                                                var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+
+                                                                                                                var dec = new Nodo("DECLARACION","LET",+yylineno+3,+@3.first_column+1);
+                                                                                                                var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
+                                                                                                                dec.addHijo(id1);
+                                                                                                                dec.addHijo($6);
+
+                                                                                                                var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
+                                                                                                                inc.addHijo(id2);
+
+                                                                                                                nodo.addHijo(dec); //declaracion
+                                                                                                                nodo.addHijo($8); //condicion
+                                                                                                                nodo.addHijo(inc); //incremento
+                                                                                                                nodo.addHijo($13); //sentencias
+                                                                                                                
+                                                                                                                $$ = nodo;
+                                                                                                                $$.trad = $1+$2+$3+" "+$4+$5+$6.trad+$7+$8.trad+";"+$10+$11+$12+$13.trad;
+                                                                                                              } 
   | tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycoma error tk_dec tk_pcerrado BSENTENCIAS {
                                                                                                                         console.error("Error Sintactico: "+$10+" Error en do While");
                                                                                                                         var error = new Error("Sintactico","Encontrado: "+$10+" Se esperaba -> id",+yylineno+1,+@2.last_column+1);
                                                                                                                         errores.addError(error);
 
                                                                                                                         var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+
+                                                                                                                        var dec = new Nodo("DECLARACION","LET",+yylineno+3,+@3.first_column+1);
                                                                                                                         var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
-                                                                                                                        var id2 = new Nodo("ID",$4,+yylineno+1,+@10.last_column+1);
+                                                                                                                        dec.addHijo(id1);
+                                                                                                                        dec.addHijo($6);
+
                                                                                                                         var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                        var id2 = new Nodo("ID",$4,+yylineno+1,+@10.last_column+1);
                                                                                                                         inc.addHijo(id2);
-                                                                                                                        nodo.addHijo(id1);
-                                                                                                                        nodo.addHijo($6);
-                                                                                                                        nodo.addHijo($8);
-                                                                                                                        nodo.addHijo(inc);
-                                                                                                                        nodo.addHijo($13);
+
+                                                                                                                        nodo.addHijo(dec); //declaracion
+                                                                                                                        nodo.addHijo($8); //condicion
+                                                                                                                        nodo.addHijo(inc); //incremento
+                                                                                                                        nodo.addHijo($13); //sentencias
+
                                                                                                                         $$ = nodo;
                                                                                                                         $$.trad = $1+$2+$3+" "+$4+$5+$6.trad+$7+$8.trad+$9+$4+$11+$12+$13.trad;
                                                                                                                       }
@@ -1733,15 +1835,21 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                                                                   errores.addError(error);
 
                                                                                                                   var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+
+                                                                                                                  var dec = new Nodo("DECLARACION","LET",+yylineno+3,+@3.first_column+1);
                                                                                                                   var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
-                                                                                                                  var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
+                                                                                                                  dec.addHijo(id1);
+                                                                                                                  dec.addHijo($6);
+
                                                                                                                   var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                  var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
                                                                                                                   inc.addHijo(id2);
-                                                                                                                  nodo.addHijo(id1);
-                                                                                                                  nodo.addHijo($6);
-                                                                                                                  nodo.addHijo($8);
-                                                                                                                  nodo.addHijo(inc);
-                                                                                                                  nodo.addHijo($13);
+
+                                                                                                                  nodo.addHijo(dec); //declaracion
+                                                                                                                  nodo.addHijo($8); //condicion
+                                                                                                                  nodo.addHijo(inc); //incremento
+                                                                                                                  nodo.addHijo($13); //sentencias
+
                                                                                                                   $$ = nodo;
                                                                                                                   $$.trad = $1+$2+$3+" "+$4+$5+$6.trad+$7+$8.trad+$9+$10+$11+$12+$13.trad;
                                                                                                                 }
@@ -1751,29 +1859,42 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                                                                   errores.addError(error);
 
                                                                                                                   var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+
+                                                                                                                  var dec = new Nodo("DECLARACION","LET",+yylineno+3,+@3.first_column+1);
                                                                                                                   var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
-                                                                                                                  var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
+                                                                                                                  dec.addHijo(id1);
+                                                                                                                  dec.addHijo($6);
+
                                                                                                                   var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                  var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
                                                                                                                   inc.addHijo(id2);
-                                                                                                                  nodo.addHijo(id1);
-                                                                                                                  nodo.addHijo($6);
-                                                                                                                  nodo.addHijo($8);
-                                                                                                                  nodo.addHijo(inc);
+
+                                                                                                                  nodo.addHijo(dec); //declaracion
+                                                                                                                  nodo.addHijo($8); //condicion
+                                                                                                                  nodo.addHijo(inc); //incremento
+                                                                                                                  nodo.addHijo($13); //sentencias
+
                                                                                                                   $$ = nodo;
                                                                                                                   $$.trad = $1+$2+$3+" "+$4+$5+$6.trad+$7+$8.trad+$9+$10+$11+$12+"{}\n";
                                                                                                                 }
 
   | tk_for tk_pabierto tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycoma tk_id tk_inc tk_pcerrado BSENTENCIAS{
                                                                                                                 var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+
+                                                                                                                var dec = new Nodo("ASIGNACION","ASIGNACION",+yylineno+1,+@1.last_column+1);
                                                                                                                 var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
-                                                                                                                var id2 = new Nodo("ID",$9,+yylineno+1,+@10.last_column+1);
-                                                                                                                var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                dec.addHijo(id1);
+                                                                                                                dec.addHijo($5);
+
+                                                                                                                var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@8.last_column+1);
+                                                                                                                var id2 = new Nodo("ID",$9,+yylineno+1,+@9.last_column+1);
                                                                                                                 inc.addHijo(id2);
-                                                                                                                nodo.addHijo(id1);
-                                                                                                                nodo.addHijo($5);
-                                                                                                                nodo.addHijo($7);
-                                                                                                                nodo.addHijo(inc);
-                                                                                                                nodo.addHijo($12);
+
+                                                                                                                nodo.addHijo(dec); //declaracion
+                                                                                                                nodo.addHijo($7); //condicion
+                                                                                                                nodo.addHijo(inc); //incremento
+                                                                                                                nodo.addHijo($12); //sentencias
+
                                                                                                                 $$ = nodo;
                                                                                                                 $$.trad = $1+$2+$3+$4+$5.trad+$6+$7.trad+$8+$9+$10+$11+$12.trad;
                                                                                                               }
@@ -1783,15 +1904,21 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                                                           errores.addError(error);
 
                                                                                                           var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+
+                                                                                                          var dec = new Nodo("ASIGNACION","ASIGNACION",+yylineno+1,+@1.last_column+1);
                                                                                                           var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
-                                                                                                          var id2 = new Nodo("ID",$9,+yylineno+1,+@10.last_column+1);
-                                                                                                          var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                          dec.addHijo(id1);
+                                                                                                          dec.addHijo($5);
+
+                                                                                                          var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@8.last_column+1);
+                                                                                                          var id2 = new Nodo("ID",$9,+yylineno+1,+@9.last_column+1);
                                                                                                           inc.addHijo(id2);
-                                                                                                          nodo.addHijo(id1);
-                                                                                                          nodo.addHijo($5);
-                                                                                                          nodo.addHijo($7);
-                                                                                                          nodo.addHijo(inc);
-                                                                                                          nodo.addHijo($12);
+
+                                                                                                          nodo.addHijo(dec); //declaracion
+                                                                                                          nodo.addHijo($7); //condicion
+                                                                                                          nodo.addHijo(inc); //incremento
+                                                                                                          nodo.addHijo($12); //sentencias
+
                                                                                                           $$ = nodo;
                                                                                                           $$.trad = $1+"("+$3+$4+$5.trad+$6+$7.trad+$8+$9+$10+$11+$12.trad;
                                                                                                         }
@@ -1809,15 +1936,21 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                                                               errores.addError(error);
 
                                                                                                               var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+
+                                                                                                              var dec = new Nodo("ASIGNACION","ASIGNACION",+yylineno+1,+@1.last_column+1);
                                                                                                               var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
-                                                                                                              var id2 = new Nodo("ID",$9,+yylineno+1,+@10.last_column+1);
-                                                                                                              var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                              dec.addHijo(id1);
+                                                                                                              dec.addHijo($5);
+
+                                                                                                              var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@8.last_column+1);
+                                                                                                              var id2 = new Nodo("ID",$9,+yylineno+1,+@9.last_column+1);
                                                                                                               inc.addHijo(id2);
-                                                                                                              nodo.addHijo(id1);
-                                                                                                              nodo.addHijo($5);
-                                                                                                              nodo.addHijo($7);
-                                                                                                              nodo.addHijo(inc);
-                                                                                                              nodo.addHijo($12);
+
+                                                                                                              nodo.addHijo(dec); //declaracion
+                                                                                                              nodo.addHijo($7); //condicion
+                                                                                                              nodo.addHijo(inc); //incremento
+                                                                                                              nodo.addHijo($12); //sentencias
+
                                                                                                               $$ = nodo;
                                                                                                               $$.trad = $1+$2+$3+"="+$5.trad+$6+$7.trad+$8+$9+$10+$11+$12.trad;
                                                                                                             }
@@ -1827,15 +1960,21 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                                                         errores.addError(error);
 
                                                                                                         var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+
+                                                                                                        var dec = new Nodo("ASIGNACION","ASIGNACION",+yylineno+1,+@1.last_column+1);
                                                                                                         var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
-                                                                                                        var id2 = new Nodo("ID",$9,+yylineno+1,+@10.last_column+1);
-                                                                                                        var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                        dec.addHijo(id1);
+                                                                                                        dec.addHijo($5);
+
+                                                                                                        var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@8.last_column+1);
+                                                                                                        var id2 = new Nodo("ID",$9,+yylineno+1,+@9.last_column+1);
                                                                                                         inc.addHijo(id2);
-                                                                                                        nodo.addHijo(id1);
-                                                                                                        nodo.addHijo($5);
-                                                                                                        nodo.addHijo($7);
-                                                                                                        nodo.addHijo(inc);
-                                                                                                        nodo.addHijo($12);
+
+                                                                                                        nodo.addHijo(dec); //declaracion
+                                                                                                        nodo.addHijo($7); //condicion
+                                                                                                        nodo.addHijo(inc); //incremento
+                                                                                                        nodo.addHijo($12); //sentencias
+
                                                                                                         $$ = nodo;
                                                                                                         $$.trad = $1+$2+$3+$4+$5.trad+";"+$7.trad+$8+$9+$10+$11+$12.trad;
                                                                                                       }
@@ -1853,15 +1992,21 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                                                         errores.addError(error);
 
                                                                                                         var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+
+                                                                                                        var dec = new Nodo("ASIGNACION","ASIGNACION",+yylineno+1,+@1.last_column+1);
                                                                                                         var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
-                                                                                                        var id2 = new Nodo("ID",$9,+yylineno+1,+@10.last_column+1);
-                                                                                                        var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                        dec.addHijo(id1);
+                                                                                                        dec.addHijo($5);
+
+                                                                                                        var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@8.last_column+1);
+                                                                                                        var id2 = new Nodo("ID",$9,+yylineno+1,+@9.last_column+1);
                                                                                                         inc.addHijo(id2);
-                                                                                                        nodo.addHijo(id1);
-                                                                                                        nodo.addHijo($5);
-                                                                                                        nodo.addHijo($7);
-                                                                                                        nodo.addHijo(inc);
-                                                                                                        nodo.addHijo($12);
+
+                                                                                                        nodo.addHijo(dec); //declaracion
+                                                                                                        nodo.addHijo($7); //condicion
+                                                                                                        nodo.addHijo(inc); //incremento
+                                                                                                        nodo.addHijo($12); //sentencias
+
                                                                                                         $$ = nodo;
                                                                                                         $$.trad = $1+$2+$3+$4+$5.trad+$6+$7.trad+";"+$9+$10+$11+$12.trad;
                                                                                                       }
@@ -1871,15 +2016,21 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                                                                 errores.addError(error);
 
                                                                                                                 var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+
+                                                                                                                var dec = new Nodo("ASIGNACION","ASIGNACION",+yylineno+1,+@1.last_column+1);
                                                                                                                 var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
-                                                                                                                var id2 = new Nodo("ID",$3,+yylineno+1,+@10.last_column+1);
-                                                                                                                var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                dec.addHijo(id1);
+                                                                                                                dec.addHijo($5);
+
+                                                                                                                var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@8.last_column+1);
+                                                                                                                var id2 = new Nodo("ID",$9,+yylineno+1,+@9.last_column+1);
                                                                                                                 inc.addHijo(id2);
-                                                                                                                nodo.addHijo(id1);
-                                                                                                                nodo.addHijo($5);
-                                                                                                                nodo.addHijo($7);
-                                                                                                                nodo.addHijo(inc);
-                                                                                                                nodo.addHijo($12);
+
+                                                                                                                nodo.addHijo(dec); //declaracion
+                                                                                                                nodo.addHijo($7); //condicion
+                                                                                                                nodo.addHijo(inc); //incremento
+                                                                                                                nodo.addHijo($12); //sentencias
+
                                                                                                                 $$ = nodo;
                                                                                                                 $$.trad = $1+$2+$3+$4+$5.trad+$6+$7.trad+$8+$3+$10+$11+$12.trad;
                                                                                                               }
@@ -1889,15 +2040,21 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                                                                 errores.addError(error);
 
                                                                                                                 var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+
+                                                                                                                var dec = new Nodo("ASIGNACION","ASIGNACION",+yylineno+1,+@1.last_column+1);
                                                                                                                 var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
-                                                                                                                var id2 = new Nodo("ID",$9,+yylineno+1,+@10.last_column+1);
-                                                                                                                var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                dec.addHijo(id1);
+                                                                                                                dec.addHijo($5);
+
+                                                                                                                var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@8.last_column+1);
+                                                                                                                var id2 = new Nodo("ID",$9,+yylineno+1,+@9.last_column+1);
                                                                                                                 inc.addHijo(id2);
-                                                                                                                nodo.addHijo(id1);
-                                                                                                                nodo.addHijo($5);
-                                                                                                                nodo.addHijo($7);
-                                                                                                                nodo.addHijo(inc);
-                                                                                                                nodo.addHijo($12);
+
+                                                                                                                nodo.addHijo(dec); //declaracion
+                                                                                                                nodo.addHijo($7); //condicion
+                                                                                                                nodo.addHijo(inc); //incremento
+                                                                                                                nodo.addHijo($12); //sentencias
+
                                                                                                                 $$ = nodo;
                                                                                                                 $$.trad = $1+$2+$3+$4+$5.trad+$6+$7.trad+$8+$9+"++"+$11+$12.trad;
                                                                                                               }
@@ -1907,15 +2064,21 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                                                           errores.addError(error);
 
                                                                                                           var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+
+                                                                                                          var dec = new Nodo("ASIGNACION","ASIGNACION",+yylineno+1,+@1.last_column+1);
                                                                                                           var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
-                                                                                                          var id2 = new Nodo("ID",$9,+yylineno+1,+@10.last_column+1);
-                                                                                                          var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                          dec.addHijo(id1);
+                                                                                                          dec.addHijo($5);
+
+                                                                                                          var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@8.last_column+1);
+                                                                                                          var id2 = new Nodo("ID",$9,+yylineno+1,+@9.last_column+1);
                                                                                                           inc.addHijo(id2);
-                                                                                                          nodo.addHijo(id1);
-                                                                                                          nodo.addHijo($5);
-                                                                                                          nodo.addHijo($7);
-                                                                                                          nodo.addHijo(inc);
-                                                                                                          nodo.addHijo($12);
+
+                                                                                                          nodo.addHijo(dec); //declaracion
+                                                                                                          nodo.addHijo($7); //condicion
+                                                                                                          nodo.addHijo(inc); //incremento
+                                                                                                          nodo.addHijo($12); //sentencias
+
                                                                                                           $$ = nodo;
                                                                                                           $$.trad = $1+$2+$3+$4+$5.trad+$6+$7.trad+$8+$9+$10+")"+$12.trad;
                                                                                                         }
@@ -1925,29 +2088,40 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                                                           errores.addError(error);
 
                                                                                                           var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+
+                                                                                                          var dec = new Nodo("ASIGNACION","ASIGNACION",+yylineno+1,+@1.last_column+1);
                                                                                                           var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
-                                                                                                          var id2 = new Nodo("ID",$9,+yylineno+1,+@10.last_column+1);
-                                                                                                          var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                          dec.addHijo(id1);
+                                                                                                          dec.addHijo($5);
+
+                                                                                                          var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@8.last_column+1);
+                                                                                                          var id2 = new Nodo("ID",$9,+yylineno+1,+@9.last_column+1);
                                                                                                           inc.addHijo(id2);
-                                                                                                          nodo.addHijo(id1);
-                                                                                                          nodo.addHijo($5);
-                                                                                                          nodo.addHijo($7);
-                                                                                                          nodo.addHijo(inc);
+
+                                                                                                          nodo.addHijo(dec); //declaracion
+                                                                                                          nodo.addHijo($7); //condicion
+                                                                                                          nodo.addHijo(inc); //incremento
                                                                                                           $$ = nodo;
                                                                                                           $$.trad = $1+$2+$3+$4+$5.trad+$6+$7.trad+$8+$9+$10+$11+"{}\n";
                                                                                                         }
 
   | tk_for tk_pabierto tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycoma tk_id tk_dec tk_pcerrado BSENTENCIAS{
                                                                                                                 var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+
+                                                                                                                var dec = new Nodo("ASIGNACION","ASIGNACION",+yylineno+1,+@1.last_column+1);
                                                                                                                 var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
-                                                                                                                var id2 = new Nodo("ID",$9,+yylineno+1,+@10.last_column+1);
-                                                                                                                var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                dec.addHijo(id1);
+                                                                                                                dec.addHijo($5);
+
+                                                                                                                var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@8.last_column+1);
+                                                                                                                var id2 = new Nodo("ID",$9,+yylineno+1,+@9.last_column+1);
                                                                                                                 inc.addHijo(id2);
-                                                                                                                nodo.addHijo(id1);
-                                                                                                                nodo.addHijo($5);
-                                                                                                                nodo.addHijo($7);
-                                                                                                                nodo.addHijo(inc);
-                                                                                                                nodo.addHijo($12);
+
+                                                                                                                nodo.addHijo(dec); //declaracion
+                                                                                                                nodo.addHijo($7); //condicion
+                                                                                                                nodo.addHijo(inc); //decremento
+                                                                                                                nodo.addHijo($12); //sentencias
+
                                                                                                                 $$ = nodo;
                                                                                                                 $$.trad = $1+$2+$3+$4+$5.trad+$6+$7.trad+$8+$9+$10+$11+$12.trad;
                                                                                                               }
@@ -1957,15 +2131,21 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                                                           errores.addError(error);
 
                                                                                                           var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+
+                                                                                                          var dec = new Nodo("ASIGNACION","ASIGNACION");
                                                                                                           var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
-                                                                                                          var id2 = new Nodo("ID",$9,+yylineno+1,+@10.last_column+1);
-                                                                                                          var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                          dec.addHijo(id1);
+                                                                                                          dec.addHijo($5);
+
+                                                                                                          var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@8.last_column+1);
+                                                                                                          var id2 = new Nodo("ID",$9,+yylineno+1,+@9.last_column+1);
                                                                                                           inc.addHijo(id2);
-                                                                                                          nodo.addHijo(id1);
-                                                                                                          nodo.addHijo($5);
-                                                                                                          nodo.addHijo($7);
-                                                                                                          nodo.addHijo(inc);
-                                                                                                          nodo.addHijo($12);
+
+                                                                                                          nodo.addHijo(dec); //declaracion
+                                                                                                          nodo.addHijo($7); //condicion
+                                                                                                          nodo.addHijo(inc); //decremento
+                                                                                                          nodo.addHijo($12); //sentencias
+
                                                                                                           $$ = nodo;
                                                                                                           $$.trad = $1+"("+$3+$4+$5.trad+$6+$7.trad+$8+$9+$10+$11+$12.trad;
                                                                                                         }
@@ -1983,15 +2163,21 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                                                               errores.addError(error);
 
                                                                                                               var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+
+                                                                                                              var dec = new Nodo("ASIGNACION","ASIGNACION");
                                                                                                               var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
-                                                                                                              var id2 = new Nodo("ID",$9,+yylineno+1,+@10.last_column+1);
-                                                                                                              var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                              dec.addHijo(id1);
+                                                                                                              dec.addHijo($5);
+
+                                                                                                              var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@8.last_column+1);
+                                                                                                              var id2 = new Nodo("ID",$9,+yylineno+1,+@9.last_column+1);
                                                                                                               inc.addHijo(id2);
-                                                                                                              nodo.addHijo(id1);
-                                                                                                              nodo.addHijo($5);
-                                                                                                              nodo.addHijo($7);
-                                                                                                              nodo.addHijo(inc);
-                                                                                                              nodo.addHijo($12);
+
+                                                                                                              nodo.addHijo(dec); //declaracion
+                                                                                                              nodo.addHijo($7); //condicion
+                                                                                                              nodo.addHijo(inc); //decremento
+                                                                                                              nodo.addHijo($12); //sentencias
+
                                                                                                               $$ = nodo;
                                                                                                               $$.trad = $1+$2+$3+"="+$5.trad+$6+$7.trad+$8+$9+$10+$11+$12.trad;
                                                                                                             }
@@ -2001,15 +2187,21 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                                                         errores.addError(error);
 
                                                                                                         var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+
+                                                                                                        var dec = new Nodo("ASIGNACION","ASIGNACION");
                                                                                                         var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
-                                                                                                        var id2 = new Nodo("ID",$9,+yylineno+1,+@10.last_column+1);
-                                                                                                        var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                        dec.addHijo(id1);
+                                                                                                        dec.addHijo($5);
+
+                                                                                                        var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@8.last_column+1);
+                                                                                                        var id2 = new Nodo("ID",$9,+yylineno+1,+@9.last_column+1);
                                                                                                         inc.addHijo(id2);
-                                                                                                        nodo.addHijo(id1);
-                                                                                                        nodo.addHijo($5);
-                                                                                                        nodo.addHijo($7);
-                                                                                                        nodo.addHijo(inc);
-                                                                                                        nodo.addHijo($12);
+
+                                                                                                        nodo.addHijo(dec); //declaracion
+                                                                                                        nodo.addHijo($7); //condicion
+                                                                                                        nodo.addHijo(inc); //decremento
+                                                                                                        nodo.addHijo($12); //sentencias
+
                                                                                                         $$ = nodo;
                                                                                                         $$.trad = $1+$2+$3+$4+$5.trad+";"+$7.trad+$8+$9+$10+$11+$12.trad;
                                                                                                       }
@@ -2027,15 +2219,21 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                                                         errores.addError(error);
 
                                                                                                         var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+
+                                                                                                        var dec = new Nodo("ASIGNACION","ASIGNACION");
                                                                                                         var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
-                                                                                                        var id2 = new Nodo("ID",$9,+yylineno+1,+@10.last_column+1);
-                                                                                                        var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                        dec.addHijo(id1);
+                                                                                                        dec.addHijo($5);
+
+                                                                                                        var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@8.last_column+1);
+                                                                                                        var id2 = new Nodo("ID",$9,+yylineno+1,+@9.last_column+1);
                                                                                                         inc.addHijo(id2);
-                                                                                                        nodo.addHijo(id1);
-                                                                                                        nodo.addHijo($5);
-                                                                                                        nodo.addHijo($7);
-                                                                                                        nodo.addHijo(inc);
-                                                                                                        nodo.addHijo($12);
+
+                                                                                                        nodo.addHijo(dec); //declaracion
+                                                                                                        nodo.addHijo($7); //condicion
+                                                                                                        nodo.addHijo(inc); //decremento
+                                                                                                        nodo.addHijo($12); //sentencias
+
                                                                                                         $$ = nodo;
                                                                                                         $$.trad = $1+$2+$3+$4+$5.trad+$6+$7.trad+";"+$9+$10+$11+$12.trad;
                                                                                                       }
@@ -2045,15 +2243,21 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                                                                 errores.addError(error);
 
                                                                                                                 var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+
+                                                                                                                var dec = new Nodo("ASIGNACION","ASIGNACION");
                                                                                                                 var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
-                                                                                                                var id2 = new Nodo("ID",$3,+yylineno+1,+@10.last_column+1);
-                                                                                                                var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                                dec.addHijo(id1);
+                                                                                                                dec.addHijo($5);
+
+                                                                                                                var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@8.last_column+1);
+                                                                                                                var id2 = new Nodo("ID",$9,+yylineno+1,+@9.last_column+1);
                                                                                                                 inc.addHijo(id2);
-                                                                                                                nodo.addHijo(id1);
-                                                                                                                nodo.addHijo($5);
-                                                                                                                nodo.addHijo($7);
-                                                                                                                nodo.addHijo(inc);
-                                                                                                                nodo.addHijo($12);
+
+                                                                                                                nodo.addHijo(dec); //declaracion
+                                                                                                                nodo.addHijo($7); //condicion
+                                                                                                                nodo.addHijo(inc); //decremento
+                                                                                                                nodo.addHijo($12); //sentencias
+
                                                                                                                 $$ = nodo;
                                                                                                                 $$.trad = $1+$2+$3+$4+$5.trad+$6+$7.trad+$8+$3+$10+$11+$12.trad;
                                                                                                               }
@@ -2063,15 +2267,21 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                                                           errores.addError(error);
 
                                                                                                           var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+
+                                                                                                          var dec = new Nodo("ASIGNACION","ASIGNACION");
                                                                                                           var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
-                                                                                                          var id2 = new Nodo("ID",$9,+yylineno+1,+@10.last_column+1);
-                                                                                                          var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                          dec.addHijo(id1);
+                                                                                                          dec.addHijo($5);
+
+                                                                                                          var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@8.last_column+1);
+                                                                                                          var id2 = new Nodo("ID",$9,+yylineno+1,+@9.last_column+1);
                                                                                                           inc.addHijo(id2);
-                                                                                                          nodo.addHijo(id1);
-                                                                                                          nodo.addHijo($5);
-                                                                                                          nodo.addHijo($7);
-                                                                                                          nodo.addHijo(inc);
-                                                                                                          nodo.addHijo($12);
+
+                                                                                                          nodo.addHijo(dec); //declaracion
+                                                                                                          nodo.addHijo($7); //condicion
+                                                                                                          nodo.addHijo(inc); //decremento
+                                                                                                          nodo.addHijo($12); //sentencias
+
                                                                                                           $$ = nodo;
                                                                                                           $$.trad = $1+$2+$3+$4+$5.trad+$6+$7.trad+$8+$9+$10+")"+$12.trad;
                                                                                                         }
@@ -2081,14 +2291,20 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                                                           errores.addError(error);
 
                                                                                                           var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+
+                                                                                                          var dec = new Nodo("ASIGNACION","ASIGNACION");
                                                                                                           var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
-                                                                                                          var id2 = new Nodo("ID",$9,+yylineno+1,+@10.last_column+1);
-                                                                                                          var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@9.last_column+1);
+                                                                                                          dec.addHijo(id1);
+                                                                                                          dec.addHijo($5);
+
+                                                                                                          var inc = new Nodo("DECREMENTO","DECREMENTO",+yylineno+1,+@8.last_column+1);
+                                                                                                          var id2 = new Nodo("ID",$9,+yylineno+1,+@9.last_column+1);
                                                                                                           inc.addHijo(id2);
-                                                                                                          nodo.addHijo(id1);
-                                                                                                          nodo.addHijo($5);
-                                                                                                          nodo.addHijo($7);
-                                                                                                          nodo.addHijo(inc);
+
+                                                                                                          nodo.addHijo(dec); //declaracion
+                                                                                                          nodo.addHijo($7); //condicion
+                                                                                                          nodo.addHijo(inc); //decremento
+
                                                                                                           $$ = nodo;
                                                                                                           $$.trad = $1+$2+$3+$4+$5.trad+$6+$7.trad+$8+$9+$10+$11+"{}\n";
                                                                                                         }

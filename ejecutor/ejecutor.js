@@ -101,6 +101,9 @@ const ejecutar = (ast,entorno,errores) => {
       case "DOWHILE":
         ejecutarDoWhile(ast,new Entorno("DOWHILE",entorno),errores);
         break;
+      case "FOR":
+        ejecutarFor(ast,new Entorno("FOR",entorno),errores);
+        break;
       default:
         console.error("todavia no he programado eso -> "+tipo);
         break;
