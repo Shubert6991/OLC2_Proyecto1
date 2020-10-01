@@ -1399,15 +1399,15 @@ DOWHILE: tk_do BSENTENCIAS tk_while tk_pabierto L tk_pcerrado tk_puntoycoma {
 
 FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycoma tk_id tk_inc tk_pcerrado BSENTENCIAS{
                                                                                                                         var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
+                                                                                                                        
+                                                                                                                        var dec = new Nodo("DECLARACION","LET");
                                                                                                                         var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
-                                                                                                                        var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
+                                                                                                                        dec.addHijo(id1);
+                                                                                                                        dec.addHijo($6);
+
                                                                                                                         var inc = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@9.last_column+1);
-                                                                                                                        inc.addHijo(id2);
-                                                                                                                        nodo.addHijo(id1);
-                                                                                                                        nodo.addHijo($6);
-                                                                                                                        nodo.addHijo($8);
-                                                                                                                        nodo.addHijo(inc);
-                                                                                                                        nodo.addHijo($13);
+                                                                                                                        var id2 = new Nodo("ID",$10,+yylineno+1,+@10.last_column+1);
+                                                                                                                        
                                                                                                                         $$ = nodo;
                                                                                                                         $$.trad = $1+$2+$3+" "+$4+$5+$6.trad+$7+$8.trad+$9+$10+$11+$12+$13.trad;
                                                                                                                       }
