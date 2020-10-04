@@ -54,6 +54,16 @@ const declaracion = (nodo,entorno,errores) => {
             return
           }
           break;
+        default:
+          if(type.contains("ARRAY")){
+            if(typeof valor != object){
+              console.error("Error Semantico");
+              var err = new Error("Semantico","El valor de la variable no es tipo array",nodo.getFila(),nodo.getColumna());
+              errores.push(err);
+              return
+            }
+          }
+          break;
       }
       var nuevo = new Simbolo(tipo,id,type,valor,entorno.nombre,nodo.getFila(),nodo.getColumna());
       var result = entorno.addSimbolo(nuevo);
@@ -88,6 +98,7 @@ const declaracion = (nodo,entorno,errores) => {
         nuevo = new Simbolo(tipo,id,type,valor,entorno.nombre,nodo.getFila(),nodo.getColumna());
       } else {
         //es con valor
+        console.log(typeof valor)
         switch (typeof valor) {
           case "string":
               type = "STRING";
@@ -98,6 +109,8 @@ const declaracion = (nodo,entorno,errores) => {
           case "boolean":
             type = "BOOLEAN";
           break;
+          case "object":
+            type = "ARRAY";
           default:
             break;
         }
@@ -402,7 +415,7 @@ const getValor = (nodo,entorno,errores) =>{
     //hijo2 == pos
     //buscar valor en la tabla de simbolos
     var id = getID(nodo.getListaNodos()[0]);
-    var pos = getValor(nodo.getListaNodos()[1]);
+    var pos = getValor(nodo.getListaNodos()[1],entorno,errores);
     var sim = entorno.getSimbolo(id);
     if(sim.getTipo() === "ARRAY_STRING"){
       return sim.getValor()[pos];

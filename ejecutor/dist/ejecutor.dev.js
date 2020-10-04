@@ -26,21 +26,26 @@ var ejecutar = function ejecutar(ast, entorno, errores) {
 
         if (tid === false) {
           //error semantico
-          var err = new Error("Semantico", "No se puede incrementar ->" + id + " no esta declarado", nodo.getFila(), nodo.getColumna());
+          var err = new Error("Semantico", "No se puede incrementar ->" + id + " no esta declarado", ast.getFila(), ast.getColumna());
           errores.push(err);
+          break;
         } else {
+          if (tid.getTipo() == null) {
+            tid.tipo = "NUMBER";
+          }
+
           if (tid.getTipo() !== "NUMBER") {
-            var err = new Error("Semantico", "No se puede incrementar ->" + id + " no es tipo numero", nodo.getFila(), nodo.getColumna());
+            var err = new Error("Semantico", "No se puede incrementar ->" + id + " no es tipo numero", ast.getFila(), ast.getColumna());
             errores.push(err);
+            break;
           }
         } // sumarle 1
         // regresar nuevo valor
 
 
-        var result = entorno.getSimbolo(id);
-        var nval = +result.getValor() + 1;
-        result.valor = nval;
-        entorno.updateSimbolo(result);
+        var nval = +tid.getValor() + 1;
+        tid.valor = nval;
+        entorno.updateSimbolo(tid);
         break;
 
       case "DECREMENTO":
@@ -53,19 +58,24 @@ var ejecutar = function ejecutar(ast, entorno, errores) {
           //error semantico
           var err = new Error("Semantico", "No se puede incrementar ->" + id + " no esta declarado", nodo.getFila(), nodo.getColumna());
           errores.push(err);
+          break;
         } else {
+          if (tid.getTipo() == null) {
+            tid.tipo = "NUMBER";
+          }
+
           if (tid.getTipo() !== "NUMBER") {
             var err = new Error("Semantico", "No se puede incrementar ->" + id + " no es tipo numero", nodo.getFila(), nodo.getColumna());
             errores.push(err);
+            break;
           }
         } // sumarle 1
         // regresar nuevo valor
 
 
-        var result = entorno.getSimbolo(id);
-        var nval = +result.getValor() - 1;
-        result.valor = nval;
-        entorno.updateSimbolo(result);
+        var nval = +tid.getValor() - 1;
+        tid.valor = nval;
+        entorno.updateSimbolo(tid);
         break;
 
       case "ASIGNACION":
@@ -120,6 +130,14 @@ var ejecutar = function ejecutar(ast, entorno, errores) {
 
       case "DOWHILE":
         ejecutarDoWhile(ast, new Entorno("DOWHILE", entorno), errores);
+        break;
+
+      case "FOR":
+        ejecutarFor(ast, new Entorno("FOR", entorno), errores);
+        break;
+
+      case "FOROF":
+        ejecutarForOf(ast, new Entorno("FOROF", entorno), errores);
         break;
 
       default:

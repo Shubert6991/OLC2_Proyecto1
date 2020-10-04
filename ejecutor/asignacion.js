@@ -13,8 +13,9 @@ const asignacion = (nodo,entorno,errores) => {
     }
     //verificar el tipo
     var tval = typeof(valor);
+    console.log(tval);
     switch (sim.getTipo()) {
-      case "":
+      case null:
         var tip = "";
         if(tval == "string"){
           tip = "STRING";
@@ -27,6 +28,8 @@ const asignacion = (nodo,entorno,errores) => {
         } 
         sim.tipo = tip;
         sim.valor = valor;
+        //console.log("simbolo case null");
+        //console.log(sim);
         break;
       case "STRING":
         if(tval != "string"){
@@ -57,9 +60,11 @@ const asignacion = (nodo,entorno,errores) => {
           return;
         }
         sim.valor = valor;
-      break;
+        break;
     }
     //actualizar simbolo
+    //console.log("simbolo actualizado");
+    //console.log(sim);
     entorno.updateSimbolo(sim);
   }
 }

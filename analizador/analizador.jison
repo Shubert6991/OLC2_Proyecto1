@@ -107,7 +107,7 @@
 "function"                      %{ console.log("funcion:"+yytext);  return 'tk_fn'; %}
 "console.log"                   %{ console.log("funcion:"+yytext);  return 'tk_console'; %}
 "graficar_ts"                   %{ console.log("funcion:"+yytext);  return 'tk_graficar'; %}
-".Lenght"                       %{ console.log("funcion:"+yytext);  return 'tk_lenght'; %}
+".Length"                       %{ console.log("funcion:"+yytext);  return 'tk_lenght'; %}
 ".Push"                         %{ console.log("funcion:"+yytext);  return 'tk_push'; %}
 ".Pop"                          %{ console.log("funcion:"+yytext);  return 'tk_pop'; %}
 
@@ -2310,13 +2310,11 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                                                         }
 
   | tk_for tk_pabierto tk_id tk_in tk_id tk_pcerrado BSENTENCIAS{
-                                                                  var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
-                                                                  var fin = new Nodo("IN","IN",+yylineno+1,+@4.last_column+1);
-                                                                  var id1 = new Nodo("ID",$3);
-                                                                  var id2 = new Nodo("ID",$5);
-                                                                  fin.addHijo(id1);
-                                                                  fin.addHijo(id2);
-                                                                  nodo.addHijo(fin);
+                                                                  var nodo = new Nodo("FORIN","FORIN",+yylineno+1,+@1.last_column+1);
+                                                                  var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
+                                                                  var id2 = new Nodo("ID",$5,+yylineno+1,+@5.last_column+1);
+                                                                  nodo.addHijo(id1);
+                                                                  nodo.addHijo(id2);
                                                                   nodo.addHijo($7);
                                                                   $$ = nodo;
                                                                   $$.trad = $1+$2+$3+" "+$4+" "+$5+$6+$7.trad;
@@ -2326,13 +2324,11 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                             var error = new Error("Sintactico","Encontrado: "+$2+" Se esperaba -> (",+yylineno+1,+@2.last_column+1);
                                                             errores.addError(error);
 
-                                                            var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
-                                                            var fin = new Nodo("IN","IN",+yylineno+1,+@4.last_column+1);
-                                                            var id1 = new Nodo("ID",$3);
-                                                            var id2 = new Nodo("ID",$5);
-                                                            fin.addHijo(id1);
-                                                            fin.addHijo(id2);
-                                                            nodo.addHijo(fin);
+                                                            var nodo = new Nodo("FORIN","FORIN",+yylineno+1,+@1.last_column+1);
+                                                            var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
+                                                            var id2 = new Nodo("ID",$5,+yylineno+1,+@5.last_column+1);
+                                                            nodo.addHijo(id1);
+                                                            nodo.addHijo(id2);
                                                             nodo.addHijo($7);
                                                             $$ = nodo;
                                                             $$.trad = $1+"("+$3+" "+$4+" "+$5+$6+$7.trad;
@@ -2354,18 +2350,13 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                   $$.trad = "";
                                                                 }
   | tk_for tk_pabierto tk_id tk_in tk_id error BSENTENCIAS{
-                                                            console.error("Error Sintactico: "+$6+" Error en for");
-                                                            var error = new Error("Sintactico","Encontrado: "+$6+" Se esperaba -> )",+yylineno+1,+@6.last_column+1);
-                                                            errores.addError(error);
-
-                                                            var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
-                                                            var fin = new Nodo("IN","IN",+yylineno+1,+@4.last_column+1);
-                                                            var id1 = new Nodo("ID",$3);
-                                                            var id2 = new Nodo("ID",$5);
-                                                            fin.addHijo(id1);
-                                                            fin.addHijo(id2);
-                                                            nodo.addHijo(fin);
+                                                            var nodo = new Nodo("FORIN","FORIN",+yylineno+1,+@1.last_column+1);
+                                                            var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
+                                                            var id2 = new Nodo("ID",$5,+yylineno+1,+@5.last_column+1);
+                                                            nodo.addHijo(id1);
+                                                            nodo.addHijo(id2);
                                                             nodo.addHijo($7);
+
                                                             $$ = nodo;
                                                             $$.trad = $1+$2+$3+" "+$4+" "+$5+")"+$7.trad;
                                                           }
@@ -2374,28 +2365,24 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                             var error = new Error("Sintactico","Encontrado: "+$6+" Se esperaba -> Sentencias",+yylineno+1,+@6.last_column+1);
                                                             errores.addError(error);
 
-                                                            var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
-                                                            var fin = new Nodo("IN","IN",+yylineno+1,+@4.last_column+1);
-                                                            var id1 = new Nodo("ID",$3);
-                                                            var id2 = new Nodo("ID",$5);
-                                                            fin.addHijo(id1);
-                                                            fin.addHijo(id2);
-                                                            nodo.addHijo(fin);
-                                                            nodo.addHijo($7);
+                                                            var nodo = new Nodo("FORIN","FORIN",+yylineno+1,+@1.last_column+1);
+                                                            var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
+                                                            var id2 = new Nodo("ID",$5,+yylineno+1,+@5.last_column+1);
+                                                            nodo.addHijo(id1);
+                                                            nodo.addHijo(id2);
+
                                                             $$ = nodo;
-                                                            $$.trad = $1+$2+$3+" "+$4+" "+$5+")"+$7.trad;
+                                                            $$.trad = $1+$2+$3+" "+$4+" "+$5+$6+"{}\n";
                                                           }
 
   | tk_for tk_pabierto tk_let tk_id tk_in tk_id tk_pcerrado BSENTENCIAS {
-                                                                          var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
-                                                                          var fin = new Nodo("IN","IN",+yylineno+1,+@4.last_column+1);
-                                                                          var dec = new Nodo("DECLARACION","LET");
-                                                                          var id1 = new Nodo("ID",$3);
-                                                                          var id2 = new Nodo("ID",$6);
+                                                                          var nodo = new Nodo("FORIN","FORIN",+yylineno+1,+@1.last_column+1);
+                                                                          var dec = new Nodo("DECLARACION","LET",+yylineno+1,+@3.last_column+1)
+                                                                          var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
+                                                                          var id2 = new Nodo("ID",$6,+yylineno+1,+@6.last_column+1);
                                                                           dec.addHijo(id1);
-                                                                          fin.addHijo(dec);
-                                                                          fin.addHijo(id2);
-                                                                          nodo.addHijo(fin);
+                                                                          nodo.addHijo(dec);
+                                                                          nodo.addHijo(id2);
                                                                           nodo.addHijo($8);
                                                                           $$ = nodo;
                                                                           $$.trad = $1+$2+$3+" "+$4+" "+$5+" "+$6+$7+$8.trad;
@@ -2405,34 +2392,32 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                     var error = new Error("Sintactico","Encontrado: "+$2+" Se esperaba -> (",+yylineno+1,+@2.last_column+1);
                                                                     errores.addError(error);
 
-                                                                    var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
-                                                                    var fin = new Nodo("IN","IN",+yylineno+1,+@4.last_column+1);
-                                                                    var dec = new Nodo("DECLARACION","LET");
-                                                                    var id1 = new Nodo("ID",$3);
-                                                                    var id2 = new Nodo("ID",$6);
+                                                                    var nodo = new Nodo("FORIN","FORIN",+yylineno+1,+@1.last_column+1);
+                                                                    var dec = new Nodo("DECLARACION","LET",+yylineno+1,+@3.last_column+1)
+                                                                    var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
+                                                                    var id2 = new Nodo("ID",$6,+yylineno+1,+@6.last_column+1);
                                                                     dec.addHijo(id1);
-                                                                    fin.addHijo(dec);
-                                                                    fin.addHijo(id2);
-                                                                    nodo.addHijo(fin);
+                                                                    nodo.addHijo(dec);
+                                                                    nodo.addHijo(id2);
                                                                     nodo.addHijo($8);
+
                                                                     $$ = nodo;
                                                                     $$.trad = $1+"("+$3+" "+$4+" "+$5+" "+$6+$7+$8.trad;
                                                                   }  
   | tk_for tk_pabierto error tk_id tk_in tk_id tk_pcerrado BSENTENCIAS{
                                                                         console.error("Error Sintactico: "+$3+" Error en for");
-                                                                        var error = new Error("Sintactico","Encontrado: "+$3+" Se esperaba -> let",+yylineno+1,+@3.last_column+1);
+                                                                        var error = new Error("Sintactico","Encontrado: "+$3+" Se esperaba -> let||const",+yylineno+1,+@3.last_column+1);
                                                                         errores.addError(error);
 
-                                                                        var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
-                                                                        var fin = new Nodo("IN","IN",+yylineno+1,+@4.last_column+1);
-                                                                        var dec = new Nodo("DECLARACION","LET");
-                                                                        var id1 = new Nodo("ID",$3);
-                                                                        var id2 = new Nodo("ID",$6);
+                                                                        var nodo = new Nodo("FORIN","FORIN",+yylineno+1,+@1.last_column+1);
+                                                                        var dec = new Nodo("DECLARACION","LET",+yylineno+1,+@3.last_column+1)
+                                                                        var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
+                                                                        var id2 = new Nodo("ID",$6,+yylineno+1,+@6.last_column+1);
                                                                         dec.addHijo(id1);
-                                                                        fin.addHijo(dec);
-                                                                        fin.addHijo(id2);
-                                                                        nodo.addHijo(fin);
+                                                                        nodo.addHijo(dec);
+                                                                        nodo.addHijo(id2);
                                                                         nodo.addHijo($8);
+
                                                                         $$ = nodo;
                                                                         $$.trad = $1+$2+"let"+" "+$4+" "+$5+" "+$6+$7+$8.trad;
                                                                       } 
@@ -2465,16 +2450,15 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                     var error = new Error("Sintactico","Encontrado: "+$7+" Se esperaba -> )",+yylineno+1,+@7.last_column+1);
                                                                     errores.addError(error);
 
-                                                                    var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
-                                                                    var fin = new Nodo("IN","IN",+yylineno+1,+@4.last_column+1);
-                                                                    var dec = new Nodo("DECLARACION","LET");
-                                                                    var id1 = new Nodo("ID",$3);
-                                                                    var id2 = new Nodo("ID",$6);
+                                                                    var nodo = new Nodo("FORIN","FORIN",+yylineno+1,+@1.last_column+1);
+                                                                    var dec = new Nodo("DECLARACION","LET",+yylineno+1,+@3.last_column+1)
+                                                                    var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
+                                                                    var id2 = new Nodo("ID",$6,+yylineno+1,+@6.last_column+1);
                                                                     dec.addHijo(id1);
-                                                                    fin.addHijo(dec);
-                                                                    fin.addHijo(id2);
-                                                                    nodo.addHijo(fin);
+                                                                    nodo.addHijo(dec);
+                                                                    nodo.addHijo(id2);
                                                                     nodo.addHijo($8);
+
                                                                     $$ = nodo;
                                                                     $$.trad = $1+$2+$3+" "+$4+" "+$5+" "+$6+")"+$8.trad;
                                                                   }
@@ -2483,28 +2467,111 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                     var error = new Error("Sintactico","Encontrado: "+$8+" Se esperaba -> Sentencias",+yylineno+1,+@8.last_column+1);
                                                                     errores.addError(error);
 
-                                                                    var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
-                                                                    var fin = new Nodo("IN","IN",+yylineno+1,+@4.last_column+1);
-                                                                    var dec = new Nodo("DECLARACION","LET");
-                                                                    var id1 = new Nodo("ID",$3);
-                                                                    var id2 = new Nodo("ID",$6);
+                                                                    var nodo = new Nodo("FORIN","FORIN",+yylineno+1,+@1.last_column+1);
+                                                                    var dec = new Nodo("DECLARACION","LET",+yylineno+1,+@3.last_column+1)
+                                                                    var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
+                                                                    var id2 = new Nodo("ID",$6,+yylineno+1,+@6.last_column+1);
                                                                     dec.addHijo(id1);
-                                                                    fin.addHijo(dec);
-                                                                    fin.addHijo(id2);
-                                                                    nodo.addHijo(fin);
+                                                                    nodo.addHijo(dec);
+                                                                    nodo.addHijo(id2);
+
                                                                     $$ = nodo;
                                                                     $$.trad = $1+$2+$3+" "+$4+" "+$5+" "+$6+$7+"{}\n";
                                                                   }
+  | tk_for tk_pabierto tk_const tk_id tk_in tk_id tk_pcerrado BSENTENCIAS {
+                                                                          var nodo = new Nodo("FORIN","FORIN",+yylineno+1,+@1.last_column+1);
+                                                                          var dec = new Nodo("DECLARACION","CONST",+yylineno+1,+@3.last_column+1)
+                                                                          var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
+                                                                          var id2 = new Nodo("ID",$6,+yylineno+1,+@6.last_column+1);
+                                                                          dec.addHijo(id1);
+                                                                          nodo.addHijo(dec);
+                                                                          nodo.addHijo(id2);
+                                                                          nodo.addHijo($8);
+                                                                          $$ = nodo;
+                                                                          $$.trad = $1+$2+$3+" "+$4+" "+$5+" "+$6+$7+$8.trad;
+                                                                        }                                                                        
+  | tk_for error tk_const tk_id tk_in tk_id tk_pcerrado BSENTENCIAS {
+                                                                    console.error("Error Sintactico: "+$2+" Error en for");
+                                                                    var error = new Error("Sintactico","Encontrado: "+$2+" Se esperaba -> (",+yylineno+1,+@2.last_column+1);
+                                                                    errores.addError(error);
 
+                                                                    var nodo = new Nodo("FORIN","FORIN",+yylineno+1,+@1.last_column+1);
+                                                                    var dec = new Nodo("DECLARACION","CONST",+yylineno+1,+@3.last_column+1)
+                                                                    var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
+                                                                    var id2 = new Nodo("ID",$6,+yylineno+1,+@6.last_column+1);
+                                                                    dec.addHijo(id1);
+                                                                    nodo.addHijo(dec);
+                                                                    nodo.addHijo(id2);
+                                                                    nodo.addHijo($8);
+
+                                                                    $$ = nodo;
+                                                                    $$.trad = $1+"("+$3+" "+$4+" "+$5+" "+$6+$7+$8.trad;
+                                                                  }  
+  | tk_for tk_pabierto tk_const error tk_in tk_id tk_pcerrado BSENTENCIAS {
+                                                                          console.error("Error Sintactico: "+$4+" Error en for");
+                                                                          var error = new Error("Sintactico","Encontrado: "+$4+" Se esperaba -> id",+yylineno+1,+@3.last_column+1);
+                                                                          errores.addError(error);
+
+                                                                          $$ = new Nodo("","");
+                                                                          $$.trad = "";
+                                                                        }
+  | tk_for tk_pabierto tk_const tk_id error tk_id tk_pcerrado BSENTENCIAS {
+                                                                          console.error("Error Sintactico: "+$5+" Error en for");
+                                                                          var error = new Error("Sintactico","Encontrado: "+$5+" Se esperaba -> in, of",+yylineno+1,+@5.last_column+1);
+                                                                          errores.addError(error);
+
+                                                                          $$ = new Nodo("","");
+                                                                          $$.trad = "";
+                                                                        }
+  | tk_for tk_pabierto tk_const tk_id tk_in error tk_pcerrado BSENTENCIAS {
+                                                                          console.error("Error Sintactico: "+$6+" Error en for");
+                                                                          var error = new Error("Sintactico","Encontrado: "+$6+" Se esperaba -> id",+yylineno+1,+@6.last_column+1);
+                                                                          errores.addError(error);
+
+                                                                          $$ = new Nodo("","");
+                                                                          $$.trad = "";
+                                                                        }
+  | tk_for tk_pabierto tk_const tk_id tk_in tk_id error BSENTENCIAS {
+                                                                    console.error("Error Sintactico: "+$7+" Error en for");
+                                                                    var error = new Error("Sintactico","Encontrado: "+$7+" Se esperaba -> )",+yylineno+1,+@7.last_column+1);
+                                                                    errores.addError(error);
+
+                                                                    var nodo = new Nodo("FORIN","FORIN",+yylineno+1,+@1.last_column+1);
+                                                                    var dec = new Nodo("DECLARACION","CONST",+yylineno+1,+@3.last_column+1)
+                                                                    var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
+                                                                    var id2 = new Nodo("ID",$6,+yylineno+1,+@6.last_column+1);
+                                                                    dec.addHijo(id1);
+                                                                    nodo.addHijo(dec);
+                                                                    nodo.addHijo(id2);
+                                                                    nodo.addHijo($8);
+
+                                                                    $$ = nodo;
+                                                                    $$.trad = $1+$2+$3+" "+$4+" "+$5+" "+$6+")"+$8.trad;
+                                                                  }
+  | tk_for tk_pabierto tk_const tk_id tk_in tk_id tk_pcerrado error {
+                                                                    console.error("Error Sintactico: "+$8+" Error en for");
+                                                                    var error = new Error("Sintactico","Encontrado: "+$8+" Se esperaba -> Sentencias",+yylineno+1,+@8.last_column+1);
+                                                                    errores.addError(error);
+
+                                                                    var nodo = new Nodo("FORIN","FORIN",+yylineno+1,+@1.last_column+1);
+                                                                    var dec = new Nodo("DECLARACION","CONST",+yylineno+1,+@3.last_column+1)
+                                                                    var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
+                                                                    var id2 = new Nodo("ID",$6,+yylineno+1,+@6.last_column+1);
+                                                                    dec.addHijo(id1);
+                                                                    nodo.addHijo(dec);
+                                                                    nodo.addHijo(id2);
+                                                                    
+                                                                    $$ = nodo;
+                                                                    $$.trad = $1+$2+$3+" "+$4+" "+$5+" "+$6+$7+"{}\n";
+                                                                  }
   | tk_for tk_pabierto tk_id tk_of tk_id tk_pcerrado BSENTENCIAS{
-                                                                  var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
-                                                                  var fin = new Nodo("OF","OF",+yylineno+1,+@4.last_column+1);
-                                                                  var id1 = new Nodo("ID",$3);
-                                                                  var id2 = new Nodo("ID",$5);
-                                                                  fin.addHijo(id1);
-                                                                  fin.addHijo(id2);
-                                                                  nodo.addHijo(fin);
+                                                                  var nodo = new Nodo("FOROF","FOROF",+yylineno+1,+@1.last_column+1);
+                                                                  var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
+                                                                  var id2 = new Nodo("ID",$5,+yylineno+1,+@5.last_column+1);
+                                                                  nodo.addHijo(id1);
+                                                                  nodo.addHijo(id2);
                                                                   nodo.addHijo($7);
+
                                                                   $$ = nodo;
                                                                   $$.trad = $1+$2+$3+" "+$4+" "+$5+$6+$7.trad;
                                                                 }
@@ -2513,14 +2580,13 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                             var error = new Error("Sintactico","Encontrado: "+$2+" Se esperaba -> (",+yylineno+1,+@2.last_column+1);
                                                             errores.addError(error);
 
-                                                            var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
-                                                            var fin = new Nodo("OF","OF",+yylineno+1,+@4.last_column+1);
-                                                            var id1 = new Nodo("ID",$3);
-                                                            var id2 = new Nodo("ID",$5);
-                                                            fin.addHijo(id1);
-                                                            fin.addHijo(id2);
-                                                            nodo.addHijo(fin);
+                                                            var nodo = new Nodo("FOROF","FOROF",+yylineno+1,+@1.last_column+1);
+                                                            var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
+                                                            var id2 = new Nodo("ID",$5,+yylineno+1,+@5.last_column+1);
+                                                            nodo.addHijo(id1);
+                                                            nodo.addHijo(id2);
                                                             nodo.addHijo($7);
+
                                                             $$ = nodo;
                                                             $$.trad = $1+"("+$3+" "+$4+" "+$5+$6+$7.trad;
                                                           }
@@ -2553,14 +2619,13 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                             var error = new Error("Sintactico","Encontrado: "+$6+" Se esperaba -> )",+yylineno+1,+@6.last_column+1);
                                                             errores.addError(error);
 
-                                                            var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
-                                                            var fin = new Nodo("OF","OF",+yylineno+1,+@4.last_column+1);
-                                                            var id1 = new Nodo("ID",$3);
-                                                            var id2 = new Nodo("ID",$5);
-                                                            fin.addHijo(id1);
-                                                            fin.addHijo(id2);
-                                                            nodo.addHijo(fin);
+                                                            var nodo = new Nodo("FOROF","FOROF",+yylineno+1,+@1.last_column+1);
+                                                            var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
+                                                            var id2 = new Nodo("ID",$5,+yylineno+1,+@5.last_column+1);
+                                                            nodo.addHijo(id1);
+                                                            nodo.addHijo(id2);
                                                             nodo.addHijo($7);
+
                                                             $$ = nodo;
                                                             $$.trad = $1+$2+$3+" "+$4+" "+$5+")"+$7.trad;
                                                           }
@@ -2569,29 +2634,26 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                             var error = new Error("Sintactico","Encontrado: "+$6+" Se esperaba -> Sentencias",+yylineno+1,+@6.last_column+1);
                                                             errores.addError(error);
 
-                                                            var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
-                                                            var fin = new Nodo("IN","IN",+yylineno+1,+@4.last_column+1);
-                                                            var id1 = new Nodo("ID",$3);
-                                                            var id2 = new Nodo("ID",$5);
-                                                            fin.addHijo(id1);
-                                                            fin.addHijo(id2);
-                                                            nodo.addHijo(fin);
-                                                            nodo.addHijo($7);
+                                                            var nodo = new Nodo("FOROF","FOROF",+yylineno+1,+@1.last_column+1);
+                                                            var id1 = new Nodo("ID",$3,+yylineno+1,+@3.last_column+1);
+                                                            var id2 = new Nodo("ID",$5,+yylineno+1,+@5.last_column+1);
+                                                            nodo.addHijo(id1);
+                                                            nodo.addHijo(id2);
+
                                                             $$ = nodo;
-                                                            $$.trad = $1+$2+$3+" "+$4+" "+$5+")"+$7.trad;
+                                                            $$.trad = $1+$2+$3+" "+$4+" "+$5+$6+"{}\n";
                                                           }
 
   | tk_for tk_pabierto tk_let tk_id tk_of tk_id tk_pcerrado BSENTENCIAS {
-                                                                          var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
-                                                                          var fin = new Nodo("OF","OF",+yylineno+1,+@4.last_column+1);
-                                                                          var dec = new Nodo("DECLARACION","LET");
-                                                                          var id1 = new Nodo("ID",$3);
-                                                                          var id2 = new Nodo("ID",$6);
+                                                                          var nodo = new Nodo("FOROF","FOROF",+yylineno+1,+@1.last_column+1);
+                                                                          var dec = new Nodo("DECLARACION","LET",+yylineno+1,+@3.last_column+1);
+                                                                          var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
+                                                                          var id2 = new Nodo("ID",$6,+yylineno+1,+@6.last_column+1);
                                                                           dec.addHijo(id1);
-                                                                          fin.addHijo(dec);
-                                                                          fin.addHijo(id2);
-                                                                          nodo.addHijo(fin);
+                                                                          nodo.addHijo(dec);
+                                                                          nodo.addHijo(id2);
                                                                           nodo.addHijo($8);
+
                                                                           $$ = nodo;
                                                                           $$.trad = $1+$2+$3+" "+$4+" "+$5+" "+$6+$7+$8.trad;
                                                                         } 
@@ -2600,34 +2662,32 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                     var error = new Error("Sintactico","Encontrado: "+$2+" Se esperaba -> (",+yylineno+1,+@2.last_column+1);
                                                                     errores.addError(error);
 
-                                                                    var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
-                                                                    var fin = new Nodo("OF","OF",+yylineno+1,+@4.last_column+1);
-                                                                    var dec = new Nodo("DECLARACION","LET");
-                                                                    var id1 = new Nodo("ID",$3);
-                                                                    var id2 = new Nodo("ID",$6);
+                                                                    var nodo = new Nodo("FOROF","FOROF",+yylineno+1,+@1.last_column+1);
+                                                                    var dec = new Nodo("DECLARACION","LET",+yylineno+1,+@3.last_column+1);
+                                                                    var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
+                                                                    var id2 = new Nodo("ID",$6,+yylineno+1,+@6.last_column+1);
                                                                     dec.addHijo(id1);
-                                                                    fin.addHijo(dec);
-                                                                    fin.addHijo(id2);
-                                                                    nodo.addHijo(fin);
+                                                                    nodo.addHijo(dec);
+                                                                    nodo.addHijo(id2);
                                                                     nodo.addHijo($8);
+
                                                                     $$ = nodo;
                                                                     $$.trad = $1+"("+$3+" "+$4+" "+$5+" "+$6+$7+$8.trad;
                                                                   } 
   | tk_for tk_pabierto error tk_id tk_of tk_id tk_pcerrado BSENTENCIAS{
                                                                         console.error("Error Sintactico: "+$3+" Error en for");
-                                                                        var error = new Error("Sintactico","Encontrado: "+$3+" Se esperaba -> let",+yylineno+1,+@3.last_column+1);
+                                                                        var error = new Error("Sintactico","Encontrado: "+$3+" Se esperaba -> let|const",+yylineno+1,+@3.last_column+1);
                                                                         errores.addError(error);
 
-                                                                        var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
-                                                                        var fin = new Nodo("OF","OF",+yylineno+1,+@4.last_column+1);
-                                                                        var dec = new Nodo("DECLARACION","LET");
-                                                                        var id1 = new Nodo("ID",$3);
-                                                                        var id2 = new Nodo("ID",$6);
+                                                                        var nodo = new Nodo("FOROF","FOROF",+yylineno+1,+@1.last_column+1);
+                                                                        var dec = new Nodo("DECLARACION","LET",+yylineno+1,+@3.last_column+1);
+                                                                        var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
+                                                                        var id2 = new Nodo("ID",$6,+yylineno+1,+@6.last_column+1);
                                                                         dec.addHijo(id1);
-                                                                        fin.addHijo(dec);
-                                                                        fin.addHijo(id2);
-                                                                        nodo.addHijo(fin);
+                                                                        nodo.addHijo(dec);
+                                                                        nodo.addHijo(id2);
                                                                         nodo.addHijo($8);
+
                                                                         $$ = nodo;
                                                                         $$.trad = $1+$2+"let"+" "+$4+" "+$5+" "+$6+$7+$8.trad;
                                                                       } 
@@ -2652,16 +2712,15 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                     var error = new Error("Sintactico","Encontrado: "+$7+" Se esperaba -> )",+yylineno+1,+@7.last_column+1);
                                                                     errores.addError(error);
 
-                                                                    var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
-                                                                    var fin = new Nodo("OF","OF",+yylineno+1,+@4.last_column+1);
-                                                                    var dec = new Nodo("DECLARACION","LET");
-                                                                    var id1 = new Nodo("ID",$3);
-                                                                    var id2 = new Nodo("ID",$6);
+                                                                    var nodo = new Nodo("FOROF","FOROF",+yylineno+1,+@1.last_column+1);
+                                                                    var dec = new Nodo("DECLARACION","LET",+yylineno+1,+@3.last_column+1);
+                                                                    var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
+                                                                    var id2 = new Nodo("ID",$6,+yylineno+1,+@6.last_column+1);
                                                                     dec.addHijo(id1);
-                                                                    fin.addHijo(dec);
-                                                                    fin.addHijo(id2);
-                                                                    nodo.addHijo(fin);
+                                                                    nodo.addHijo(dec);
+                                                                    nodo.addHijo(id2);
                                                                     nodo.addHijo($8);
+
                                                                     $$ = nodo;
                                                                     $$.trad = $1+$2+$3+" "+$4+" "+$5+" "+$6+")"+$8.trad;
                                                                   }
@@ -2670,19 +2729,92 @@ FOR: tk_for tk_pabierto tk_let tk_id tk_igual VALOR tk_puntoycoma L tk_puntoycom
                                                                     var error = new Error("Sintactico","Encontrado: "+$8+" Se esperaba -> Sentencias",+yylineno+1,+@8.last_column+1);
                                                                     errores.addError(error);
 
-                                                                    var nodo = new Nodo("FOR","FOR",+yylineno+1,+@1.last_column+1);
-                                                                    var fin = new Nodo("OF","OF",+yylineno+1,+@4.last_column+1);
-                                                                    var dec = new Nodo("DECLARACION","LET");
-                                                                    var id1 = new Nodo("ID",$3);
-                                                                    var id2 = new Nodo("ID",$6);
+                                                                    var nodo = new Nodo("FOROF","FOROF",+yylineno+1,+@1.last_column+1);
+                                                                    var dec = new Nodo("DECLARACION","LET",+yylineno+1,+@3.last_column+1);
+                                                                    var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
+                                                                    var id2 = new Nodo("ID",$6,+yylineno+1,+@6.last_column+1);
                                                                     dec.addHijo(id1);
-                                                                    fin.addHijo(dec);
-                                                                    fin.addHijo(id2);
-                                                                    nodo.addHijo(fin);
+                                                                    nodo.addHijo(dec);
+                                                                    nodo.addHijo(id2);
+
                                                                     $$ = nodo;
                                                                     $$.trad = $1+$2+$3+" "+$4+" "+$5+" "+$6+$7+"{}\n";
                                                                   }
+  | tk_for tk_pabierto tk_const tk_id tk_of tk_id tk_pcerrado BSENTENCIAS {
+                                                                          var nodo = new Nodo("FOROF","FOROF",+yylineno+1,+@1.last_column+1);
+                                                                          var dec = new Nodo("DECLARACION","CONST",+yylineno+1,+@3.last_column+1);
+                                                                          var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
+                                                                          var id2 = new Nodo("ID",$6,+yylineno+1,+@6.last_column+1);
+                                                                          dec.addHijo(id1);
+                                                                          nodo.addHijo(dec);
+                                                                          nodo.addHijo(id2);
+                                                                          nodo.addHijo($8);
 
+                                                                          $$ = nodo;
+                                                                          $$.trad = $1+$2+$3+" "+$4+" "+$5+" "+$6+$7+$8.trad;
+                                                                        } 
+  | tk_for error tk_const tk_id tk_of tk_id tk_pcerrado BSENTENCIAS {
+                                                                    console.error("Error Sintactico: "+$2+" Error en for");
+                                                                    var error = new Error("Sintactico","Encontrado: "+$2+" Se esperaba -> (",+yylineno+1,+@2.last_column+1);
+                                                                    errores.addError(error);
+
+                                                                    var nodo = new Nodo("FOROF","FOROF",+yylineno+1,+@1.last_column+1);
+                                                                    var dec = new Nodo("DECLARACION","CONST",+yylineno+1,+@3.last_column+1);
+                                                                    var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
+                                                                    var id2 = new Nodo("ID",$6,+yylineno+1,+@6.last_column+1);
+                                                                    dec.addHijo(id1);
+                                                                    nodo.addHijo(dec);
+                                                                    nodo.addHijo(id2);
+                                                                    nodo.addHijo($8);
+
+                                                                    $$ = nodo;
+                                                                    $$.trad = $1+"("+$3+" "+$4+" "+$5+" "+$6+$7+$8.trad;
+                                                                  } 
+  | tk_for tk_pabierto tk_const error tk_of tk_id tk_pcerrado BSENTENCIAS {
+                                                                          console.error("Error Sintactico: "+$4+" Error en for");
+                                                                          var error = new Error("Sintactico","Encontrado: "+$4+" Se esperaba -> id",+yylineno+1,+@4.last_column+1);
+                                                                          errores.addError(error);
+
+                                                                          $$ = new Nodo("","");
+                                                                          $$.trad = "";
+                                                                        }
+  | tk_for tk_pabierto tk_const tk_id tk_of error tk_pcerrado BSENTENCIAS {
+                                                                          console.error("Error Sintactico: "+$6+" Error en for");
+                                                                          var error = new Error("Sintactico","Encontrado: "+$6+" Se esperaba -> id",+yylineno+1,+@6.last_column+1);
+                                                                          errores.addError(error);
+
+                                                                          $$ = new Nodo("","");
+                                                                          $$.trad = "";
+                                                                        }
+  | tk_for tk_pabierto tk_const tk_id tk_of tk_id error BSENTENCIAS {
+                                                                    var nodo = new Nodo("FOROF","FOROF",+yylineno+1,+@1.last_column+1);
+                                                                    var dec = new Nodo("DECLARACION","CONST",+yylineno+1,+@3.last_column+1);
+                                                                    var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
+                                                                    var id2 = new Nodo("ID",$6,+yylineno+1,+@6.last_column+1);
+                                                                    dec.addHijo(id1);
+                                                                    nodo.addHijo(dec);
+                                                                    nodo.addHijo(id2);
+                                                                    nodo.addHijo($8);
+
+                                                                    $$ = nodo;
+                                                                    $$.trad = $1+$2+$3+" "+$4+" "+$5+" "+$6+")"+$8.trad;
+                                                                  }
+  | tk_for tk_pabierto tk_const tk_id tk_of tk_id tk_pcerrado error {
+                                                                    console.error("Error Sintactico: "+$8+" Error en for");
+                                                                    var error = new Error("Sintactico","Encontrado: "+$8+" Se esperaba -> Sentencias",+yylineno+1,+@8.last_column+1);
+                                                                    errores.addError(error);
+
+                                                                    var nodo = new Nodo("FOROF","FOROF",+yylineno+1,+@1.last_column+1);
+                                                                    var dec = new Nodo("DECLARACION","CONST",+yylineno+1,+@3.last_column+1);
+                                                                    var id1 = new Nodo("ID",$4,+yylineno+1,+@4.last_column+1);
+                                                                    var id2 = new Nodo("ID",$6,+yylineno+1,+@6.last_column+1);
+                                                                    dec.addHijo(id1);
+                                                                    nodo.addHijo(dec);
+                                                                    nodo.addHijo(id2);
+
+                                                                    $$ = nodo;
+                                                                    $$.trad = $1+$2+$3+" "+$4+" "+$5+" "+$6+$7+"{}\n";
+                                                                  }
   | tk_for tk_pabierto error tk_pcerrado BSENTENCIAS{ 
                                                       console.error("Error Sintactico: "+$3+" Error en for");
                                                       var error = new Error("Sintactico","Encontrado: "+$3+" Se esperaba -> Sentencias",+yylineno+1,+@3.last_column+1);
