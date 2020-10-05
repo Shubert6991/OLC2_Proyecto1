@@ -548,127 +548,60 @@ VALOR: ASIGTYPE {
 
 TYPES: tk_type tk_id tk_llavea LTYPE tk_llavec tk_puntoycoma{
                                                               var nodo = new Nodo("DECLARACION","TYPE",+yylineno+1,+@1.first_column+1);
-                                                              var id = new Nodo("ID",$2,+yylineno+1,+@1.first_column+1);
+                                                              var id = new Nodo("ID",$2,+yylineno+1,+@2.first_column+1);
                                                               nodo.addHijo(id);
                                                               nodo.addHijo($4); //lista
                                                               $$ = nodo;
-                                                              $$.trad = $1 + " " + $2 + $3 + "\n" + $4.trad + $5 + $6 + "\n";  
+                                                              $$.trad = $1 + " " + $2 + $3 + "\n" + $4.trad +"\n"+$5 + $6 + "\n";  
                                                             }
-     | tk_type tk_id tk_llavea LTYPE tk_llavec error{
-                                                      console.error("Error sintantico: "+$6+" error types");
-                                                      var error = new Error("Sintactico","Encontrado: "+$6+" Se esperaba -> ;",+yylineno+1,+@6.last_column+1)
-                                                      errores.addError(error);
+      | tk_type error tk_llavea LTYPE tk_llavec tk_puntoycoma
+      | tk_type tk_id error LTYPE tk_llavec tk_puntoycoma
+      | tk_type tk_id tk_llavea error tk_llavec tk_puntoycoma
+      | tk_type tk_id tk_llavea LTYPE error tk_puntoycoma
+      | tk_type tk_id tk_llavea LTYPE tk_llavec error {
+                                                        console.error("Error sintantico: "+$6+" error types");
+                                                        var error = new Error("Sintactico","Encontrado: "+$6+" Se esperaba -> ;",+yylineno+1,+@6.last_column+1)
+                                                        errores.addError(error);
 
-                                                      var nodo = new Nodo("DECLARACION","TYPE",+yylineno+1,+@1.first_column+1);
-                                                      var id = new Nodo("ID",$2,+yylineno+1,+@1.first_column+1);
-                                                      nodo.addHijo(id);
-                                                      nodo.addHijo($4); //lista
-                                                      $$ = nodo;
-                                                      $$.trad = $1 + " " + $2 + $3 + "\n" + $4.trad + $5 + ";\n";
-                                                    };
+                                                        var nodo = new Nodo("DECLARACION","TYPE",+yylineno+1,+@1.first_column+1);
+                                                        var id = new Nodo("ID",$2,+yylineno+1,+@1.first_column+1);
+                                                        nodo.addHijo(id);
+                                                        nodo.addHijo($4); //lista
+                                                        $$ = nodo;
+                                                        $$.trad = $1 + " " + $2 + $3 + "\n" + $4.trad + $5 + ";\n";
+                                                     };
 
-LTYPE: LTYPE TIPOV2 tk_dospuntos tk_id tk_puntoycoma{
-                                                      var nodo = new Nodo("LISTATIPO","LISTATIPO",+yylineno+1,+@1.first_column+1);
-                                                      nodo.addHijo($1);
-                                                      nodo.addHijo($2);
-                                                      var id = new Nodo("ID",$4,+yylineno+1,+@4.first_column+1);
-                                                      nodo.addHijo(id);
-                                                      $$ = nodo;
-                                                      $$.trad = $1.trad + $2.trad + $3 + " " + $4 + $5 + "\n";
-                                                    }
-      | LTYPE TIPOV2 tk_dospuntos tk_id error {
-                                                console.error("Error sintantico: "+$5+" error types");
-                                                var error = new Error("Sintactico","Encontrado: "+$5+" Se esperaba -> ;",+yylineno+1,+@5.last_column+1)
-                                                errores.addError(error);
-                                                
-                                                var nodo = new Nodo("LISTATIPO","LISTATIPO",+yylineno+1,+@1.first_column+1);
+LTYPE: LTYPE tk_coma tk_id tk_dospuntos VALOR {
+                                                var nodo = new Nodo("LTYPE","LTYPE",+yylineno+1,+@1.first_column+1);
+                                                var id = new Nodo("ID",$3,+yylineno+1,+@3.first_column+1);
                                                 nodo.addHijo($1);
-                                                nodo.addHijo($2);
-                                                var id = new Nodo("ID",$4,+yylineno+1,+@4.first_column+1);
                                                 nodo.addHijo(id);
+                                                nodo.addHijo($5);
                                                 $$ = nodo;
-                                                $$.trad = $1.trad + $2.trad + $3 + " " + $4 + ";\n";
+                                                $$.trad = $1.trad+$2+"\n"+$3+$4+" "+$5.trad;
                                               }
-      | TIPOV2 tk_dospuntos tk_id tk_puntoycoma {
-                                                  var nodo = new Nodo("LISTATIPO","LISTATIPO",+yylineno+1,+@1.first_column+1);
-                                                  nodo.addHijo($1);
-                                                  var id = new Nodo("ID",$3,+yylineno+1,+@3.first_column+1);
-                                                  nodo.addHijo(id);
-                                                  $$ = nodo;
-                                                  $$.trad = $1.trad + $2 + " " + $3 + $4 + "\n";
-                                                }
-      | TIPOV2 tk_dospuntos tk_id error {
-                                          console.error("Error sintantico: "+$4+" error types");
-                                          var error = new Error("Sintactico","Encontrado: "+$4+" Se esperaba -> ;",+yylineno+1,+@4.last_column+1)
-                                          errores.addError(error);
+      | tk_id tk_dospuntos VALOR{
+                                  var nodo = new Nodo("LTYPE","LTYPE",+yylineno+1,+@1.first_column+1);
+                                  var id = new Nodo("ID",$1,+yylineno+1,+@3.first_column+1);
+                                  nodo.addHijo(id);
+                                  nodo.addHijo($3);
+                                  $$ = nodo;
+                                  $$.trad = $1+$2+" "+$3.trad;
+                                };
 
-                                          var nodo = new Nodo("LISTATIPO","LISTATIPO",+yylineno+1,+@1.first_column+1);
-                                          nodo.addHijo($1);
-                                          var id = new Nodo("ID",$3,+yylineno+1,+@3.first_column+1);
-                                          nodo.addHijo(id);
-                                          $$ = nodo;
-                                          $$.trad = $1.trad + $2 + " " + $3 + ";\n";
-                                        };
-
-ASIGTYPE: tk_llavea LASIGTYPE tk_llavec {
-                                          var nodo = new Nodo("VALOR","ASIGNACION_TIPO",+yylineno+1,+@1.first_column+1);
-                                          nodo.addHijo($2);
-                                          $$ = nodo;
-                                          $$.trad = $1 + "\n" + $2.trad + $3;
-                                        }
+ASIGTYPE: tk_llavea LTYPE tk_llavec {
+                                      $$ = $2;
+                                      $$.trad = $1 + "\n" + $2.trad +"\n"+ $3;
+                                    }
         | tk_llavea error tk_llavec {
                                       console.error("Error sintactico: "+$2+" error valor");
                                       var error = new Error("Sintactico","Encontrado: "+$2+" Se esperaba -> una lista de valores",+yylineno+1,+@2.last_column+1);
                                       errores.addError(error);
 
-                                      var nodo = new Nodo("VALOR","ASIGNACION_TIPO",+yylineno+1,+@1.first_column+1);
+                                      var nodo = new Nodo("","");
                                       $$ = nodo;
                                       $$.trad = $1 + "\n" + $3;
                                     };
-
-LASIGTYPE: LASIGTYPE tk_id tk_dospuntos VALOR tk_puntoycoma {
-                                                              var nodo = new Nodo("LISTATYPE","LISTATYPE",+yylineno+1,+@1.first_column+1);
-                                                              var id = new Nodo("ID",$2,+yylineno+1,+@2.first_column+1);
-                                                              nodo.addHijo($1);
-                                                              nodo.addHijo(id);
-                                                              nodo.addHijo($4);
-                                                              $$ = nodo;
-                                                              $$.trad = $1.trad + $2 + $3 + " " + $4.trad + $5 + "\n";
-                                                            }
-          | LASIGTYPE tk_id tk_dospuntos VALOR error{
-                                                      console.error("Error sintactico: "+$5+" error valor");
-                                                      var error = new Error("Sintactico","Encontrado: "+$5+" Se esperaba -> ;",+yylineno+1,+@5.last_column+1);
-                                                      errores.addError(error);
-
-                                                      var nodo = new Nodo("LISTATYPE","LISTATYPE",+yylineno+1,+@1.first_column+1);
-                                                      var id = new Nodo("ID",$2,+yylineno+1,+@2.first_column+1);
-                                                      nodo.addHijo($1);
-                                                      nodo.addHijo(id);
-                                                      nodo.addHijo($4);
-                                                      $$ = nodo;
-                                                      $$.trad = $1.trad + $2 + $3 + " " + $4.trad +";\n";
-                                                    }
-          | tk_id tk_dospuntos VALOR tk_puntoycoma{
-                                                    var nodo = new Nodo("LISTATYPE","LISTATYPE",+yylineno+1,+@1.first_column+1);
-                                                    var id = new Nodo("ID",$1,+yylineno+1,+@1.first_column+1);
-                                                    nodo.addHijo(id);
-                                                    nodo.addHijo($3);
-                                                    $$ = nodo;
-                                                    $$.trad = $1 + $2 + $3.trad + $4 + "\n";
-                                                  }
-          | tk_id tk_dospuntos VALOR error{
-                                            console.error("Error sintactico: "+$4+" error valor");
-                                            var error = new Error("Sintactico","Encontrado: "+$4+" Se esperaba -> ;",+yylineno+1,+@4.last_column+1);
-                                            errores.addError(error);
-
-                                            var nodo = new Nodo("LISTATYPE","LISTATYPE",+yylineno+1,+@1.first_column+1);
-                                            var id = new Nodo("ID",$1,+yylineno+1,+@1.first_column+1);
-                                            nodo.addHijo(id);
-                                            nodo.addHijo($3);
-                                            $$ = nodo;
-                                            $$.trad = $1 + $2 + $3.trad +";\n";
-                                          };
-
 ARRAY: tk_string tk_llaveca tk_llavecc {
                                           var nodo = new Nodo("TIPO","ARRAY_STRING",+yylineno+1,+@1.first_column+1);
                                           $$ = nodo;

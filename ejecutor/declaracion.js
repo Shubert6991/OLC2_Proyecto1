@@ -77,44 +77,57 @@ const declaracion = (nodo,entorno,errores) => {
     case 2:
       //hijo 1 id
       var id = getID(nodo.getListaNodos()[0]);
-      //hijo 2 valor
-      var valor = getValor(nodo.getListaNodos()[1],entorno,errores);
-      //hijo 2 tipo
-      var type = getType(nodo.getListaNodos()[1]);
-      var nuevo;
-      if(valor == null){
-        //es con tipo
-        switch (type) {
-          case "STRING":
-            valor = "";
-            break;
-          case "NUMBER":
-            valor = 0;
-            break;
-          case "BOOLEAN":
-            valor = true;
-            break;
-        }
-        nuevo = new Simbolo(tipo,id,type,valor,entorno.nombre,nodo.getFila(),nodo.getColumna());
+      //hijo 2 LTYPE
+      if(nodo.getListaNodos()[1].getTipo() === "LTYPE"){
+        console.log("Es una declaracion de tipo");
+        var valor = getValor(nodo.getListaNodos()[1],entorno,errores);
+        console.log(valor);
+        var valtext = "";
+        for (const [key, value] of Object.entries(valor)) {
+          console.log(`${key}: ${value}`);
+          valtext += `{${key}: ${value}}`;
+        }        
+        nuevo = new Simbolo(tipo,id,"TYPE",valtext,entorno.nombre,nodo.getFila(),nodo.getColumna());
       } else {
-        //es con valor
-        console.log(typeof valor)
-        switch (typeof valor) {
-          case "string":
-              type = "STRING";
+        //hijo 2 valor
+        var valor = getValor(nodo.getListaNodos()[1],entorno,errores);
+        //hijo 2 tipo
+        var type = getType(nodo.getListaNodos()[1]);
+        var nuevo;
+        if(valor == null){
+          //es con tipo
+          switch (type) {
+            case "STRING":
+              valor = "";
+              break;
+            case "NUMBER":
+              valor = 0;
+              break;
+            case "BOOLEAN":
+              valor = true;
+              break;
+          }
+          nuevo = new Simbolo(tipo,id,type,valor,entorno.nombre,nodo.getFila(),nodo.getColumna());
+        } else {
+          //es con valor
+          console.log(typeof valor);
+          switch (typeof valor) {
+            case "string":
+                type = "STRING";
+              break;
+            case "number":
+              type = "NUMBER";
             break;
-          case "number":
-            type = "NUMBER";
-          break;
-          case "boolean":
-            type = "BOOLEAN";
-          break;
-          case "object":
-            type = "ARRAY";
-          default:
+            case "boolean":
+              type = "BOOLEAN";
             break;
+            case "object":
+              type = "ARRAY";
+            default:
+              break;
+          }
+          nuevo = new Simbolo(tipo,id,type,valor,entorno.nombre,nodo.getFila(),nodo.getColumna());
         }
-        nuevo = new Simbolo(tipo,id,type,valor,entorno.nombre,nodo.getFila(),nodo.getColumna());
       }
       var result = entorno.addSimbolo(nuevo);
       // console.log(result)
@@ -417,11 +430,7 @@ const getValor = (nodo,entorno,errores) =>{
     var id = getID(nodo.getListaNodos()[0]);
     var pos = getValor(nodo.getListaNodos()[1],entorno,errores);
     var sim = entorno.getSimbolo(id);
-    if(sim.getTipo() === "ARRAY_STRING"){
-      return sim.getValor()[pos];
-    } else if(sim.getTipo() === "ARRAY_NUMBER"){
-      return sim.getValor()[pos];
-    } else if(sim.getTipo() === "ARRAY_BOOLEAN"){
+    if(sim.getTipo().contains("ARRAY")){
       return sim.getValor()[pos];
     } else {
       //error
@@ -429,7 +438,6 @@ const getValor = (nodo,entorno,errores) =>{
       errores.push(err);
       return 0;
     }
-
   }
   if(nodo.getTipo() === "VARRAY"){
      //arreglo
@@ -471,5 +479,35 @@ const getValor = (nodo,entorno,errores) =>{
       var err = new Error("Semantico","La variable "+id+" no es un array, no se puede utilizar esta funcion",nodo.getFila(),nodo.getColumna());
       errores.push(err);
     }
+  }
+  if(nodo.getTipo() === "LTYPE"){
+    //3 hijos
+    //LTYPE,ID,VALOR
+    //2 hijos
+    //ID,VALOR
+    var ids = new Array();
+    var valores = new Array();
+    var obj = {};
+    switch (nodo.hijosCount()) {
+      case 3:
+        obj = getValor(nodo.getListaNodos()[0],entorno,errores);
+        ids.push(nodo.getListaNodos()[1].getNombre());
+        valores.push(getValor(nodo.getListaNodos()[2],entorno,errores)); 
+        break;
+      case 2:
+        ids.push(nodo.getListaNodos()[0].getNombre());
+        valores.push(getValor(nodo.getListaNodos()[1],entorno,errores)); 
+        break
+      default:
+        break;
+    }
+    for(i = 0;i<ids.length;i++){
+      var o = {
+        [ids[i]]: valores[i]
+      }
+      Object.assign(obj,o);
+    }
+    
+    return obj;
   }
 }

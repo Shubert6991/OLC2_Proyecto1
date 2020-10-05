@@ -1,5 +1,15 @@
 "use strict";
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 //fucion para ejecutar declaracion
@@ -96,55 +106,74 @@ var declaracion = function declaracion(nodo, entorno, errores) {
 
     case 2:
       //hijo 1 id
-      var id = getID(nodo.getListaNodos()[0]); //hijo 2 valor
+      var id = getID(nodo.getListaNodos()[0]); //hijo 2 LTYPE
 
-      var valor = getValor(nodo.getListaNodos()[1], entorno, errores); //hijo 2 tipo
+      if (nodo.getListaNodos()[1].getTipo() === "LTYPE") {
+        console.log("Es una declaracion de tipo");
+        var valor = getValor(nodo.getListaNodos()[1], entorno, errores);
+        console.log(valor);
+        var valtext = "";
 
-      var type = getType(nodo.getListaNodos()[1]);
-      var nuevo;
+        for (var _i = 0, _Object$entries = Object.entries(valor); _i < _Object$entries.length; _i++) {
+          var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
+              key = _Object$entries$_i[0],
+              value = _Object$entries$_i[1];
 
-      if (valor == null) {
-        //es con tipo
-        switch (type) {
-          case "STRING":
-            valor = "";
-            break;
-
-          case "NUMBER":
-            valor = 0;
-            break;
-
-          case "BOOLEAN":
-            valor = true;
-            break;
+          console.log("".concat(key, ": ").concat(value));
+          valtext += "{".concat(key, ": ").concat(value, "}");
         }
 
-        nuevo = new Simbolo(tipo, id, type, valor, entorno.nombre, nodo.getFila(), nodo.getColumna());
+        nuevo = new Simbolo(tipo, id, "TYPE", valtext, entorno.nombre, nodo.getFila(), nodo.getColumna());
       } else {
-        //es con valor
-        console.log(_typeof(valor));
+        //hijo 2 valor
+        var valor = getValor(nodo.getListaNodos()[1], entorno, errores); //hijo 2 tipo
 
-        switch (_typeof(valor)) {
-          case "string":
-            type = "STRING";
-            break;
+        var type = getType(nodo.getListaNodos()[1]);
+        var nuevo;
 
-          case "number":
-            type = "NUMBER";
-            break;
+        if (valor == null) {
+          //es con tipo
+          switch (type) {
+            case "STRING":
+              valor = "";
+              break;
 
-          case "boolean":
-            type = "BOOLEAN";
-            break;
+            case "NUMBER":
+              valor = 0;
+              break;
 
-          case "object":
-            type = "ARRAY";
+            case "BOOLEAN":
+              valor = true;
+              break;
+          }
 
-          default:
-            break;
+          nuevo = new Simbolo(tipo, id, type, valor, entorno.nombre, nodo.getFila(), nodo.getColumna());
+        } else {
+          //es con valor
+          console.log(_typeof(valor));
+
+          switch (_typeof(valor)) {
+            case "string":
+              type = "STRING";
+              break;
+
+            case "number":
+              type = "NUMBER";
+              break;
+
+            case "boolean":
+              type = "BOOLEAN";
+              break;
+
+            case "object":
+              type = "ARRAY";
+
+            default:
+              break;
+          }
+
+          nuevo = new Simbolo(tipo, id, type, valor, entorno.nombre, nodo.getFila(), nodo.getColumna());
         }
-
-        nuevo = new Simbolo(tipo, id, type, valor, entorno.nombre, nodo.getFila(), nodo.getColumna());
       }
 
       var result = entorno.addSimbolo(nuevo); // console.log(result)
@@ -508,11 +537,7 @@ var getValor = function getValor(nodo, entorno, errores) {
     var pos = getValor(nodo.getListaNodos()[1], entorno, errores);
     var sim = entorno.getSimbolo(id);
 
-    if (sim.getTipo() === "ARRAY_STRING") {
-      return sim.getValor()[pos];
-    } else if (sim.getTipo() === "ARRAY_NUMBER") {
-      return sim.getValor()[pos];
-    } else if (sim.getTipo() === "ARRAY_BOOLEAN") {
+    if (sim.getTipo().contains("ARRAY")) {
       return sim.getValor()[pos];
     } else {
       //error
@@ -570,5 +595,39 @@ var getValor = function getValor(nodo, entorno, errores) {
       var err = new Error("Semantico", "La variable " + id + " no es un array, no se puede utilizar esta funcion", nodo.getFila(), nodo.getColumna());
       errores.push(err);
     }
+  }
+
+  if (nodo.getTipo() === "LTYPE") {
+    //3 hijos
+    //LTYPE,ID,VALOR
+    //2 hijos
+    //ID,VALOR
+    var ids = new Array();
+    var valores = new Array();
+    var obj = {};
+
+    switch (nodo.hijosCount()) {
+      case 3:
+        obj = getValor(nodo.getListaNodos()[0], entorno, errores);
+        ids.push(nodo.getListaNodos()[1].getNombre());
+        valores.push(getValor(nodo.getListaNodos()[2], entorno, errores));
+        break;
+
+      case 2:
+        ids.push(nodo.getListaNodos()[0].getNombre());
+        valores.push(getValor(nodo.getListaNodos()[1], entorno, errores));
+        break;
+
+      default:
+        break;
+    }
+
+    for (i = 0; i < ids.length; i++) {
+      var o = _defineProperty({}, ids[i], valores[i]);
+
+      Object.assign(obj, o);
+    }
+
+    return obj;
   }
 };
