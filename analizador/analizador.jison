@@ -74,6 +74,7 @@
 "\\n"                           %{ console.log("secuencia de escape:"+yytext);  return 'tk_salto'; %}
 "\\r"                           %{ console.log("secuencia de escape:"+yytext);  return 'tk_retorno'; %}
 "\\t"                           %{ console.log("secuencia de escape:"+yytext);  return 'tk_tab'; %}
+"."                             %{ console.log("simbolo:"+yytext);  return 'tk_punto'; %}
 
 "string"                        %{ console.log("tipo de dato:"+yytext);  return 'tk_string'; %}
 "number"                        %{ console.log("tipo de dato:"+yytext);  return 'tk_number'; %}
@@ -603,29 +604,29 @@ ASIGTYPE: tk_llavea LTYPE tk_llavec {
                                       $$.trad = $1 + "\n" + $3;
                                     };
 ARRAY: tk_string tk_llaveca tk_llavecc {
-                                          var nodo = new Nodo("TIPO","ARRAY_STRING",+yylineno+1,+@1.first_column+1);
+                                          var nodo = new Nodo("TIPO","ARRAY",+yylineno+1,+@1.first_column+1);
                                           $$ = nodo;
                                           $$.trad = $1+$2+$3;
                                        }
      | tk_number tk_llaveca tk_llavecc{
-                                        var nodo = new Nodo("TIPO","ARRAY_NUMBER",+yylineno+1,+@1.first_column+1);
+                                        var nodo = new Nodo("TIPO","ARRAY",+yylineno+1,+@1.first_column+1);
                                         $$ = nodo;
                                         $$.trad = $1+$2+$3;
                                       }
      | tk_boolean tk_llaveca tk_llavecc{
-                                        var nodo = new Nodo("TIPO","ARRAY_BOOLEAN",+yylineno+1,+@1.first_column+1);
+                                        var nodo = new Nodo("TIPO","ARRAY",+yylineno+1,+@1.first_column+1);
                                         $$ = nodo;
                                         $$.trad = $1+$2+$3;
                                        }
      | tk_id tk_llaveca tk_llavecc{
-                                    var nodo = new Nodo("TIPO","ARRAY_ID",+yylineno+1,+@1.first_column+1);
+                                    var nodo = new Nodo("TIPO","ARRAY",+yylineno+1,+@1.first_column+1);
                                     var id = new Nodo("ID",$1,+yylineno+1,+@1.first_column+1);
                                     nodo.addHijo(id)
                                     $$ = nodo;
                                     $$.trad = $1+$2+$3;
                                   }
      | tk_array tk_menor TIPOV tk_mayor {
-                                          var nodo = new Nodo("TIPO","ARRAY_TIPO",+yylineno+1,+@1.first_column+1);
+                                          var nodo = new Nodo("TIPO","ARRAY",+yylineno+1,+@1.first_column+1);
                                           nodo.addHijo($3)
                                           $$ = nodo;
                                           $$.trad = $1+$2+$3.trad+$4;
@@ -873,6 +874,15 @@ A:A tk_suma A {
                                   $$ = nodo;
                                   $$.trad = $1+$2+$3.trad+$4;
                                 }
+  |tk_id tk_punto tk_id {
+                          var nodo = new Nodo("PROPIEDAD","PROPIEDAD",+yylineno+1,+@1.first_column+1);
+                          var id1 = new Nodo("ID",$1,+yylineno+1,+@1.first_column+1);
+                          var id2 = new Nodo("ID",$3,+yylineno+1,+@3.first_column+1);
+                          nodo.addHijo(id1);
+                          nodo.addHijo(id2);
+                          $$ = nodo;
+                          $$.trad = $1+$2+$3;
+                        }
   |tk_id tk_lenght tk_pabierto tk_pcerrado  {
                                               var nodo = new Nodo("LENGTH","LENGTH",+yylineno+1,+@1.last_column+1);
                                               var id = new Nodo("ID",$1,+yylineno+1,+@1.last_column+1);

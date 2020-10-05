@@ -82,12 +82,15 @@ const declaracion = (nodo,entorno,errores) => {
         console.log("Es una declaracion de tipo");
         var valor = getValor(nodo.getListaNodos()[1],entorno,errores);
         console.log(valor);
-        var valtext = "";
-        for (const [key, value] of Object.entries(valor)) {
-          console.log(`${key}: ${value}`);
-          valtext += `{${key}: ${value}}`;
-        }        
-        nuevo = new Simbolo(tipo,id,"TYPE",valtext,entorno.nombre,nodo.getFila(),nodo.getColumna());
+        // console.log(JSON.stringify(valor))
+        // var valtext = "{";
+        // for (const [key, value] of Object.entries(valor)) {
+        //   console.log(`${key}: ${value}`);
+        //   valtext += `"${key}": ${value},`;
+        // } 
+        // valtext = valtext.slice(0,-1); 
+        // valtext += "}";     
+        nuevo = new Simbolo(tipo,id,"TYPE",JSON.stringify(valor),entorno.nombre,nodo.getFila(),nodo.getColumna());
       } else {
         //hijo 2 valor
         var valor = getValor(nodo.getListaNodos()[1],entorno,errores);
@@ -168,30 +171,8 @@ const getType = (nodo,entorno,errores) => {
       var id = getID(nodo.getListaNodos()[0]);
       return "ID_"+id;
     }
-    if(nodo.getNombre() === "ARRAY_ID"){
-      //array de types
-      var id = getID(nodo.getListaNodos()[0]);
-      //buscar en la tabla de simbolos si el id es tipo type
-      var tid = entorno.getSimbolo(id);
-      //sino error sintactico
-      console.log(tid);
-      if(tid === false){
-        var err = new Error("Semantico","No se puede asignar ->"+id+" como tipo porque no es un type",nodo.getFila(),nodo.getColumna());
-        errores.push(err);
-        return false;
-      } else {
-        //get tipo id
-        if(tid.getTipo() !== "TYPE"){
-          var err = new Error("Semantico","No se puede asignar ->"+id+" como tipo porque no es un type",nodo.getFila(),nodo.getColumna());
-          errores.push(err);
-          return false;
-        }
-      }
-      return "ARRAY_"+id;
-    }
-    if (nodo.getNombre() === "ARRAY_TIPO"){
-      var tipo = getType(nodo.getListaNodos()[0]);
-      return "ARRAY_"+tipo;
+    if (nodo.getNombre() === "ARRAY"){
+      return "ARRAY";
     }
     return nodo.getNombre();
   }
@@ -507,7 +488,26 @@ const getValor = (nodo,entorno,errores) =>{
       }
       Object.assign(obj,o);
     }
-    
     return obj;
+  }
+  if(nodo.getTipo() === "PROPIEDAD"){
+    //id obj
+    //id propiedad
+    var id1 = getID(nodo.getListaNodos()[0]);
+    // var id2 = getID(nodo.getListaNodos()[1]);
+    sim = entorno.getSimbolo(id1);
+    if(sim.getTipo() === "TYPE"){
+      var p = getValor(nodo.getListaNodos()[1],entorno,errores);
+      // console.log(sim.getValor())
+      var obj = JSON.parse(sim.getValor());
+      console.log(obj)
+      console.log(p)
+      console.log(obj[p])
+      return obj[p];
+    } else {
+      console.error("Error Semantico");
+      var err = new Error("Semantico","La variable "+id+" no es un type, no se puede obtener una propiedad",nodo.getFila(),nodo.getColumna());
+      errores.push(err);
+    }
   }
 }

@@ -2,14 +2,6 @@
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
-
-function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 //fucion para ejecutar declaracion
@@ -111,19 +103,16 @@ var declaracion = function declaracion(nodo, entorno, errores) {
       if (nodo.getListaNodos()[1].getTipo() === "LTYPE") {
         console.log("Es una declaracion de tipo");
         var valor = getValor(nodo.getListaNodos()[1], entorno, errores);
-        console.log(valor);
-        var valtext = "";
+        console.log(valor); // console.log(JSON.stringify(valor))
+        // var valtext = "{";
+        // for (const [key, value] of Object.entries(valor)) {
+        //   console.log(`${key}: ${value}`);
+        //   valtext += `"${key}": ${value},`;
+        // } 
+        // valtext = valtext.slice(0,-1); 
+        // valtext += "}";     
 
-        for (var _i = 0, _Object$entries = Object.entries(valor); _i < _Object$entries.length; _i++) {
-          var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
-              key = _Object$entries$_i[0],
-              value = _Object$entries$_i[1];
-
-          console.log("".concat(key, ": ").concat(value));
-          valtext += "{".concat(key, ": ").concat(value, "}");
-        }
-
-        nuevo = new Simbolo(tipo, id, "TYPE", valtext, entorno.nombre, nodo.getFila(), nodo.getColumna());
+        nuevo = new Simbolo(tipo, id, "TYPE", JSON.stringify(valor), entorno.nombre, nodo.getFila(), nodo.getColumna());
       } else {
         //hijo 2 valor
         var valor = getValor(nodo.getListaNodos()[1], entorno, errores); //hijo 2 tipo
@@ -219,33 +208,8 @@ var getType = function getType(nodo, entorno, errores) {
       return "ID_" + id;
     }
 
-    if (nodo.getNombre() === "ARRAY_ID") {
-      //array de types
-      var id = getID(nodo.getListaNodos()[0]); //buscar en la tabla de simbolos si el id es tipo type
-
-      var tid = entorno.getSimbolo(id); //sino error sintactico
-
-      console.log(tid);
-
-      if (tid === false) {
-        var err = new Error("Semantico", "No se puede asignar ->" + id + " como tipo porque no es un type", nodo.getFila(), nodo.getColumna());
-        errores.push(err);
-        return false;
-      } else {
-        //get tipo id
-        if (tid.getTipo() !== "TYPE") {
-          var err = new Error("Semantico", "No se puede asignar ->" + id + " como tipo porque no es un type", nodo.getFila(), nodo.getColumna());
-          errores.push(err);
-          return false;
-        }
-      }
-
-      return "ARRAY_" + id;
-    }
-
-    if (nodo.getNombre() === "ARRAY_TIPO") {
-      var tipo = getType(nodo.getListaNodos()[0]);
-      return "ARRAY_" + tipo;
+    if (nodo.getNombre() === "ARRAY") {
+      return "ARRAY";
     }
 
     return nodo.getNombre();
@@ -629,5 +593,27 @@ var getValor = function getValor(nodo, entorno, errores) {
     }
 
     return obj;
+  }
+
+  if (nodo.getTipo() === "PROPIEDAD") {
+    //id obj
+    //id propiedad
+    var id1 = getID(nodo.getListaNodos()[0]); // var id2 = getID(nodo.getListaNodos()[1]);
+
+    sim = entorno.getSimbolo(id1);
+
+    if (sim.getTipo() === "TYPE") {
+      var p = getValor(nodo.getListaNodos()[1], entorno, errores); // console.log(sim.getValor())
+
+      var obj = JSON.parse(sim.getValor());
+      console.log(obj);
+      console.log(p);
+      console.log(obj[p]);
+      return obj[p];
+    } else {
+      console.error("Error Semantico");
+      var err = new Error("Semantico", "La variable " + id + " no es un type, no se puede obtener una propiedad", nodo.getFila(), nodo.getColumna());
+      errores.push(err);
+    }
   }
 };

@@ -17,6 +17,7 @@ const asignacion = (nodo,entorno,errores) => {
     switch (sim.getTipo()) {
       case null:
         var tip = "";
+        sim.valor = valor;
         if(tval == "string"){
           tip = "STRING";
         }
@@ -26,10 +27,23 @@ const asignacion = (nodo,entorno,errores) => {
         if(tval == "boolean"){
           tip = "BOOLEAN";
         } 
+        if(tval == "object"){
+          if(Array.isArray(valor)){
+            tip = "ARRAY";
+          } else{
+            tip = "TYPE";
+            // var valtext = "{";
+            // for (const [key, value] of Object.entries(valor)) {
+            //   console.log(`${key}: ${value}`);
+            //   valtext += `${key}: ${value},`;
+            // } 
+            // valtext = valtext.slice(0,-1); 
+            // valtext += "}";
+            sim.valor = JSON.stringify(valor);     
+          }
+        }
         sim.tipo = tip;
-        sim.valor = valor;
-        //console.log("simbolo case null");
-        //console.log(sim);
+        
         break;
       case "STRING":
         if(tval != "string"){
@@ -61,6 +75,20 @@ const asignacion = (nodo,entorno,errores) => {
         }
         sim.valor = valor;
         break;
+      case "ARRAY":
+        sim.valor = valor;
+      break;
+      case "TYPE":
+        // var valtext = "{";
+        // for (const [key, value] of Object.entries(valor)) {
+        //   console.log(`${key}: ${value}`);
+        //   valtext += `${key}: ${value},`;
+        // } 
+        // valtext = valtext.slice(0,-1); 
+        // valtext += "}";
+        sim.valor = JSON.stringify(valor);     
+        break;
+      
     }
     //actualizar simbolo
     //console.log("simbolo actualizado");

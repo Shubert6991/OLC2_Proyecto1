@@ -140,6 +140,10 @@ var ejecutar = function ejecutar(ast, entorno, errores) {
         ejecutarForOf(ast, new Entorno("FOROF", entorno), errores);
         break;
 
+      case "FORIN":
+        ejecutarForIn(ast, new Entorno("FORIN", entorno), errores);
+        break;
+
       default:
         console.error("todavia no he programado eso -> " + tipo);
         break;

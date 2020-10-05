@@ -34,7 +34,73 @@ var ejecutarFor = function ejecutarFor(nodo, entorno, errores) {
   }
 };
 
-var ejecutarForIn = function ejecutarForIn(nodo, entorno, errores) {};
+var ejecutarForIn = function ejecutarForIn(nodo, entorno, errores) {
+  //3 hijos
+  //id,declaracion
+  //id
+  //sentencias
+  var h1 = nodo.getListaNodos()[0];
+  var h2 = nodo.getListaNodos()[1];
+  var h3 = nodo.getListaNodos()[2];
+  var id1;
+  var id2 = h2.getNombre();
+  var sim;
+
+  switch (h1.getTipo()) {
+    case "ID":
+      id1 = h1.getNombre();
+      sim = entorno.getSimbolo(id1);
+
+      if (sim === false) {
+        console.error("Error Semantico");
+        var err = new Error("Semantico", "la variable: " + id1 + " no esta declarada", nodo.getFila(), nodo.getColumna());
+        errores.push(err);
+        return;
+      }
+
+      break;
+
+    case "DECLARACION":
+      declaracion(h1, entorno, errores);
+      id1 = h1.getListaNodos()[0].getNombre();
+      sim = entorno.getSimbolo(id1);
+
+      if (sim === false) {
+        console.error("Error Semantico");
+        var err = new Error("Semantico", "La variable: " + id1 + " no esta declarada", nodo.getFila(), nodo.getColumna());
+        errores.push(err);
+        return;
+      }
+
+      break;
+  }
+
+  console.log(sim); //get id hijo 2 en tabla de simbolos
+
+  var sim2 = entorno.getSimbolo(id2);
+  console.log(sim2);
+  console.log(sim2.getTipo());
+
+  if (sim2.getTipo().includes("TYPE")) {
+    var obj = sim2.getValor();
+    var tmp = JSON.parse(obj); //ejecutar sentencias hasta que se acaben los elementos del arreglo
+
+    for (var key in tmp) {
+      console.log(key);
+      sim.valor = key;
+      sim.tipo = sim2.tipo;
+      entorno.updateSimbolo(sim);
+      ejecutar(h3, entorno, errores);
+    }
+
+    return;
+  }
+
+  console.error("Error Semantico");
+  var err = new Error("Semantico", "la variable: " + id2 + " no es un arreglo", nodo.getFila(), nodo.getColumna());
+  errores.push(err);
+  return;
+};
 
 var ejecutarForOf = function ejecutarForOf(nodo, entorno, errores) {
   //3 hijos
@@ -56,7 +122,7 @@ var ejecutarForOf = function ejecutarForOf(nodo, entorno, errores) {
 
       if (sim === false) {
         console.error("Error Semantico");
-        var err = new Error("Semantico", "El id: " + id1 + " no existe en la tabla de simbolos", nodo.getFila(), nodo.getColumna());
+        var err = new Error("Semantico", "la variable: " + id1 + " no esta declarada", nodo.getFila(), nodo.getColumna());
         errores.push(err);
         return;
       }
@@ -71,7 +137,7 @@ var ejecutarForOf = function ejecutarForOf(nodo, entorno, errores) {
 
       if (sim === false) {
         console.error("Error Semantico");
-        var err = new Error("Semantico", "El id: " + id1 + " no existe en la tabla de simbolos", nodo.getFila(), nodo.getColumna());
+        var err = new Error("Semantico", "La variable: " + id1 + " no esta declarada", nodo.getFila(), nodo.getColumna());
         errores.push(err);
         return;
       }
