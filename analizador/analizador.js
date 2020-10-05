@@ -999,7 +999,12 @@ case 120:
                                 nodo.addHijo($$[$0]);
                                 this.$ = nodo;
                                 this.$.trad = $$[$0-1].trad;
-                                this.$.func = $$[$0].trad;
+                                if($$[$0-1].func){
+                                  this.$.func = $$[$0-1].func + $$[$0].func;
+                                } else {
+                                   this.$.func = $$[$0].func;
+                                }
+                                
                               
 break;
 case 130:
@@ -2991,8 +2996,8 @@ case 268:
                                                                               nodo.addHijo($$[$0-1]);
                                                                               nodo.addHijo($$[$0]);
                                                                               this.$ = nodo;
-                                                                              this.$.trad = $$[$0-6]+" "+ids.replace(/.$/,"")+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1].trad+$$[$0].trad;
                                                                               this.$.func = $$[$0-6]+" "+ids.replace(/.$/,"")+$$[$0-4]+$$[$0-3]+$$[$0-2]+$$[$0-1].trad+$$[$0].trad;
+                                                                              this.$.trad = this.$.func;  
                                                                             
 break;
 case 269:

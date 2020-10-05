@@ -984,7 +984,12 @@ SENTENCIAS: SENTENCIAS DECLARACION {
                                 nodo.addHijo($2);
                                 $$ = nodo;
                                 $$.trad = $1.trad;
-                                $$.func = $2.trad;
+                                if($1.func){
+                                  $$.func = $1.func + $2.func;
+                                } else {
+                                   $$.func = $2.func;
+                                }
+                                
                               }
           | DECLARACION { $$ = $1; $$.trad = $1.trad; }
           | ASIGNACION { $$ = $1; $$.trad = $1.trad; }
@@ -2854,8 +2859,8 @@ FUNCION: tk_fn tk_id tk_pabierto tk_pcerrado tk_dospuntos TIPOV2 BSENTENCIAS{
                                                                               nodo.addHijo($6);
                                                                               nodo.addHijo($7);
                                                                               $$ = nodo;
-                                                                              $$.trad = $1+" "+ids.replace(/.$/,"")+$3+$4+$5+$6.trad+$7.trad;
                                                                               $$.func = $1+" "+ids.replace(/.$/,"")+$3+$4+$5+$6.trad+$7.trad;
+                                                                              $$.trad = $$.func;  
                                                                             }
       | tk_fn error tk_pabierto tk_pcerrado tk_dospuntos TIPOV2 BSENTENCIAS {
                                                                               console.error("Error sintactico: "+$2+" Desconocido Sentencias");
