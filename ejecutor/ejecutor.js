@@ -88,42 +88,22 @@ const ejecutar = (ast,entorno,errores) => {
         break;
       case "IF":
         var ent = new Entorno("IF",entorno);
-        ejecutarIF(ast,ent,errores);
-        break;
+        return ejecutarIF(ast,ent,errores);
       case "ELSE":
-        ejecutarElse(ast,entorno,errores);
-        break;
+        return ejecutarElse(ast,entorno,errores);
       case "SENTENCIAS":
         var e1 = ejecutar(ast.getListaNodos()[0],entorno,errores);
         var e2 = ejecutar(ast.getListaNodos()[1],entorno,errores);
         if(e1) return e1;
         else return e2;
       case "SWITCH":
-        ejecutarSwitch(ast,new Entorno("SWITCH",entorno),errores);
-        break;
+        return ejecutarSwitch(ast,new Entorno("SWITCH",entorno),errores);
       case "BREAK":
-        if(entorno.nombre === "SWITCH"){
-          return "BREAK";
-        } 
-        if(entorno.nombre === "WHILE"){
-          return "BREAK";
-        }
-        if(entorno.nombre === "DOWHILE"){
-          return "BREAK";
-        }
-        if(entorno.nombre === "FOR"){
-          return "BREAK";
-        }
-        if(entorno.nombre === "FOROF"){
-          return "BREAK";
-        }
-        if(entorno.nombre === "FORIN"){
-          return "BREAK";
-        }
-        console.error("Error Semantico");
-        var err = new Error("Semantico","La sentencia break solo se puede utilzar en switch",ast.getFila(),ast.getColumna());
-        errores.push(err);
-        break;
+        return "BREAK";
+      case "CONTINUE":
+        return "CONTINUE";
+      case "RETURN":
+        return ejecutarReturn(ast,entorno,errores);
       case "WHILE":
         ejecutarWhile(ast,new Entorno("WHILE",entorno),errores);
         break;

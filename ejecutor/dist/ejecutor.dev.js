@@ -11,7 +11,9 @@ var ejecutar = function ejecutar(ast, entorno, errores) {
         return ejecutar(ast.getListaNodos()[0], entorno, errores);
 
       case "I":
-        return Math.max(ejecutar(ast.getListaNodos()[0], entorno, errores), ejecutar(ast.getListaNodos()[1], entorno, errores));
+        var e1 = ejecutar(ast.getListaNodos()[0], entorno, errores);
+        var e2 = ejecutar(ast.getListaNodos()[1], entorno, errores);
+        if (e1) return e1;else return e2;
 
       case "DECLARACION":
         //ejecutar declaracion;
@@ -100,29 +102,27 @@ var ejecutar = function ejecutar(ast, entorno, errores) {
 
       case "IF":
         var ent = new Entorno("IF", entorno);
-        ejecutarIF(ast, ent, errores);
-        break;
+        return ejecutarIF(ast, ent, errores);
 
       case "ELSE":
-        ejecutarElse(ast, entorno, errores);
-        break;
+        return ejecutarElse(ast, entorno, errores);
 
       case "SENTENCIAS":
-        return Math.max(ejecutar(ast.getListaNodos()[0], entorno, errores), ejecutar(ast.getListaNodos()[1], entorno, errores));
+        var e1 = ejecutar(ast.getListaNodos()[0], entorno, errores);
+        var e2 = ejecutar(ast.getListaNodos()[1], entorno, errores);
+        if (e1) return e1;else return e2;
 
       case "SWITCH":
-        ejecutarSwitch(ast, new Entorno("SWITCH", entorno), errores);
-        break;
+        return ejecutarSwitch(ast, new Entorno("SWITCH", entorno), errores);
 
       case "BREAK":
-        if (entorno.nombre === "SWITCH") {
-          return 1;
-        }
+        return "BREAK";
 
-        console.error("Error Semantico");
-        var err = new Error("Semantico", "La sentencia break solo se puede utilzar en switch", ast.getFila(), ast.getColumna());
-        errores.push(err);
-        break;
+      case "CONTINUE":
+        return "CONTINUE";
+
+      case "RETURN":
+        return ejecutarReturn(ast, entorno, errores);
 
       case "WHILE":
         ejecutarWhile(ast, new Entorno("WHILE", entorno), errores);
@@ -158,5 +158,5 @@ var ejecutar = function ejecutar(ast, entorno, errores) {
     }
   }
 
-  return 0;
+  return null;
 };

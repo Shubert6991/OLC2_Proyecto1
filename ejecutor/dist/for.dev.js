@@ -28,9 +28,13 @@ var ejecutarFor = function ejecutarFor(nodo, entorno, errores) {
   var cond = getValor(nodo.getListaNodos()[1], entorno, errores);
 
   while (cond) {
-    ejecutar(nodo.getListaNodos()[3], entorno, errores);
+    var r = ejecutar(nodo.getListaNodos()[3], entorno, errores);
     ejecutar(nodo.getListaNodos()[2], entorno, errores);
     cond = getValor(nodo.getListaNodos()[1], entorno, errores);
+    if (r == "BREAK") break;
+    if (r == "CONTINUE") continue;
+    if (r == "RETURN") return;
+    if (r != null) return r;
   }
 };
 
@@ -90,7 +94,11 @@ var ejecutarForIn = function ejecutarForIn(nodo, entorno, errores) {
       sim.valor = key;
       sim.tipo = sim2.tipo;
       entorno.updateSimbolo(sim);
-      ejecutar(h3, entorno, errores);
+      var r = ejecutar(h3, entorno, errores);
+      if (r == "BREAK") break;
+      if (r == "CONTINUE") continue;
+      if (r == "RETURN") return;
+      if (r != null) return r;
     }
 
     return;
@@ -165,7 +173,11 @@ var ejecutarForOf = function ejecutarForOf(nodo, entorno, errores) {
         sim.valor = i;
         sim.tipo = sim2.tipo;
         entorno.updateSimbolo(sim);
-        ejecutar(h3, entorno, errores);
+        var r = ejecutar(h3, entorno, errores);
+        if (r == "BREAK") break;
+        if (r == "CONTINUE") continue;
+        if (r == "RETURN") return;
+        if (r != null) return r;
       }
     } catch (err) {
       _didIteratorError = true;

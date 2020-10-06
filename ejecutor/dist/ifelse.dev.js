@@ -15,9 +15,9 @@ var ejecutarIF = function ejecutarIF(nodo, entorno, errores) {
     }
 
     if (cond) {
-      ejecutar(nodo.getListaNodos()[1], entorno, errores);
+      return ejecutar(nodo.getListaNodos()[1], entorno, errores);
     } else {
-      ejecutar(nodo.getListaNodos()[2], entorno, errores);
+      return ejecutar(nodo.getListaNodos()[2], entorno, errores);
     }
   }
 
@@ -32,11 +32,11 @@ var ejecutarIF = function ejecutarIF(nodo, entorno, errores) {
     }
 
     if (cond) {
-      ejecutar(nodo.getListaNodos()[1], entorno, errores);
+      return ejecutar(nodo.getListaNodos()[1], entorno, errores);
     }
   }
 };
 
 var ejecutarElse = function ejecutarElse(nodo, entorno, errores) {
-  ejecutar(nodo.getListaNodos()[0], entorno, errores);
+  return ejecutar(nodo.getListaNodos()[0], entorno, errores);
 };

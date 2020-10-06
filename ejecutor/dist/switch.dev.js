@@ -10,11 +10,16 @@ var ejecutarSwitch = function ejecutarSwitch(nodo, entorno, errores) {
 var ejecutarBSwitch = function ejecutarBSwitch(cond, nodo, entorno, errores) {
   if (nodo.hijosCount() == 2) {
     //case default
-    // if( != "break"){
     // console.log(ejecutarCases(cond,nodo.getListaNodos()[0],entorno,errores))
-    if (ejecutarCases(cond, nodo.getListaNodos()[0], entorno, errores) != 1) {
-      ejecutarDefault(nodo.getListaNodos()[1], entorno, errores);
+    var r = ejecutarCases(cond, nodo.getListaNodos()[0], entorno, errores);
+    var d;
+
+    if (r != "BREAK") {
+      d = ejecutarDefault(nodo.getListaNodos()[1], entorno, errores);
     }
+
+    if (r != 0 && r != 2 && r != "BREAK") return r;
+    if (d != null && d != "BREAK") return d;
   }
 
   if (nodo.hijosCount() == 1) {
@@ -28,19 +33,21 @@ var ejecutarCases = function ejecutarCases(cond, nodo, entorno, errores) {
     var ec = ejecutarCases(cond, nodo.getListaNodos()[0], entorno, errores);
 
     if (ec === 0) {
-      r = ejecutar(nodo.getListaNodos()[2], entorno, errores); // console.log("Retornando: "+r)
-
-      return r;
+      r = ejecutar(nodo.getListaNodos()[2], entorno, errores);
+      if (r === "BREAK") return r;
+      if (r === "CONTINUE") return r;
+      if (r === null) return 0;
     } else {
-      if (ec === 1) return 1;
+      if (ec === "BREAK") return "BREAK";
+      if (ec === "CONTINUE") return "CONTINUE";
       var val = getValor(nodo.getListaNodos()[1], entorno, errores);
 
       if (val === cond) {
-        r = ejecutar(nodo.getListaNodos()[2], entorno, errores); // console.log("Retornando: "+r)
-
-        return r;
-      } // console.log("Retornando: 2")
-
+        r = ejecutar(nodo.getListaNodos()[2], entorno, errores);
+        if (r === "BREAK") return r;
+        if (r === "CONTINUE") return r;
+        if (r === null) return 0;
+      }
 
       return 2;
     }
@@ -51,17 +58,15 @@ var ejecutarCases = function ejecutarCases(cond, nodo, entorno, errores) {
       var ec = ejecutarCases(cond, nodo.getListaNodos()[0], entorno, errores);
 
       if (ec === 0) {
-        // console.log("Retornando: 0")
         return 0;
       } else {
-        if (ec === 1) return 1;
+        if (ec === "BREAK") return "BREAK";
+        if (ec === "CONTINUE") return "CONTINUE";
         var val = getValor(nodo.getListaNodos()[1], entorno, errores);
 
         if (val === cond) {
-          // console.log("Retornando: 0")
           return 0;
-        } // console.log("Retornando: 2")
-
+        }
 
         return 2;
       }
@@ -69,11 +74,11 @@ var ejecutarCases = function ejecutarCases(cond, nodo, entorno, errores) {
       var val = getValor(nodo.getListaNodos()[0], entorno, errores);
 
       if (val === cond) {
-        r = ejecutar(nodo.getListaNodos()[1], entorno, errores); // console.log("Retornando: "+r)
-
-        return r;
-      } // console.log("Retornando: 2")
-
+        r = ejecutar(nodo.getListaNodos()[1], entorno, errores);
+        if (r === "BREAK") return r;
+        if (r === "CONTINUE") return r;
+        if (r === null) return 0;
+      }
 
       return 2;
     }
@@ -83,23 +88,20 @@ var ejecutarCases = function ejecutarCases(cond, nodo, entorno, errores) {
     var val = getValor(nodo.getListaNodos()[0], entorno, errores);
 
     if (val === cond) {
-      console.log("Retornando: 0");
       return 0;
     }
 
-    console.log("Retornando: 2");
     return 2;
   } //no encontro el valor
 
 
-  console.log("Retornando: 2");
   return 2;
 };
 
 var ejecutarDefault = function ejecutarDefault(nodo, entorno, errores, hasBreak) {
   if (!hasBreak) {
     if (nodo.hijosCount() == 1) {
-      ejecutar(nodo.getListaNodos()[0], entorno, errores);
+      return ejecutar(nodo.getListaNodos()[0], entorno, errores);
     }
   }
 };

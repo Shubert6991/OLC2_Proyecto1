@@ -22,9 +22,12 @@ const ejecutarFor = (nodo,entorno,errores) => {
     var cond = getValor(nodo.getListaNodos()[1],entorno,errores);
     while(cond){
         var r = ejecutar(nodo.getListaNodos()[3],entorno,errores);
-        if(r == "BREAK") break;
         ejecutar(nodo.getListaNodos()[2],entorno,errores);
         cond = getValor(nodo.getListaNodos()[1],entorno,errores);
+        if(r == "BREAK") break;
+        if(r == "CONTINUE") continue;
+        if(r == "RETURN") return;
+        if(r != null) return r;
     }
 } 
 
@@ -78,6 +81,9 @@ const ejecutarForIn = (nodo,entorno,errores) => {
           entorno.updateSimbolo(sim);
           var r = ejecutar(h3,entorno,errores);
           if(r == "BREAK") break;
+          if(r == "CONTINUE") continue;
+          if(r == "RETURN") return;
+          if(r != null) return r;
         }
         return;
     }
@@ -139,6 +145,9 @@ const ejecutarForOf = (nodo,entorno,errores) => {
             entorno.updateSimbolo(sim);
             var r = ejecutar(h3,entorno,errores);
             if(r == "BREAK") break;
+            if(r == "CONTINUE") continue;
+            if(r == "RETURN") return;
+            if(r != null) return r;
         }
         return;
     }

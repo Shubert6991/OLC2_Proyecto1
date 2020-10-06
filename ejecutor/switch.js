@@ -9,9 +9,13 @@ const ejecutarBSwitch = (cond,nodo,entorno,errores) => {
   if(nodo.hijosCount() == 2){
     //case default
     // console.log(ejecutarCases(cond,nodo.getListaNodos()[0],entorno,errores))
-    if(ejecutarCases(cond,nodo.getListaNodos()[0],entorno,errores) != "BREAK"){
-      ejecutarDefault(nodo.getListaNodos()[1],entorno,errores);
+    var r = ejecutarCases(cond,nodo.getListaNodos()[0],entorno,errores);
+    var d;
+    if(r != "BREAK"){
+      d = ejecutarDefault(nodo.getListaNodos()[1],entorno,errores);
     }
+    if(r != 0 && r != 2 && r != "BREAK") return r;
+    if(d != null && d != "BREAK") return d;
   }
   if(nodo.hijosCount() == 1){
     //case
@@ -24,15 +28,18 @@ const ejecutarCases = (cond,nodo,entorno,errores) => {
     var ec = ejecutarCases(cond,nodo.getListaNodos()[0],entorno,errores);
     if(ec === 0){
       r = ejecutar(nodo.getListaNodos()[2],entorno,errores)
-      if(r === "BREAK") return r
-      return 0
+      if(r === "BREAK") return r;
+      if(r === "CONTINUE") return r;
+      if(r === null) return 0;
     } else {
       if(ec === "BREAK") return "BREAK"
+      if(ec === "CONTINUE") return "CONTINUE"
       var val = getValor(nodo.getListaNodos()[1],entorno,errores);
       if(val === cond){
         r = ejecutar(nodo.getListaNodos()[2],entorno,errores)
-        if(r === "BREAK") return r
-        return 0
+        if(r === "BREAK") return r;
+        if(r === "CONTINUE") return r;
+        if(r === null) return 0;
       }
       return 2;
     }
@@ -44,6 +51,7 @@ const ejecutarCases = (cond,nodo,entorno,errores) => {
         return 0;
       } else{
         if(ec === "BREAK") return "BREAK";
+        if(ec === "CONTINUE") return "CONTINUE"
         var val = getValor(nodo.getListaNodos()[1],entorno,errores);
         if(val === cond){
           return 0;
@@ -54,8 +62,9 @@ const ejecutarCases = (cond,nodo,entorno,errores) => {
       var val = getValor(nodo.getListaNodos()[0],entorno,errores);
       if(val === cond){
         r = ejecutar(nodo.getListaNodos()[1],entorno,errores)
-        if(r === "BREAK") return r
-        return 0
+        if(r === "BREAK") return r;
+        if(r === "CONTINUE") return r;
+        if(r === null) return 0;
       } 
       return 2;
     }
@@ -74,7 +83,7 @@ const ejecutarCases = (cond,nodo,entorno,errores) => {
 const ejecutarDefault = (nodo,entorno,errores,hasBreak) => {
   if(!hasBreak){
     if(nodo.hijosCount() == 1){
-      ejecutar(nodo.getListaNodos()[0],entorno,errores);
+      return ejecutar(nodo.getListaNodos()[0],entorno,errores);
     }
   }
 }

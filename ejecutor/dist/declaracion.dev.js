@@ -644,8 +644,7 @@ var getValor = function getValor(nodo, entorno, errores) {
     switch (nodo.hijosCount()) {
       case 1:
         //sin parametros
-        ejecutar(func.sentencias, new Entorno("FUNCION", entorno), errores);
-        break;
+        return ejecutar(func.sentencias, new Entorno("FUNCION", entorno), errores);
 
       case 2:
         //asignar parametros
@@ -664,8 +663,7 @@ var getValor = function getValor(nodo, entorno, errores) {
           ent.updateSimbolo(sim);
         }
 
-        ejecutar(func.sentencias, ent, errores);
-        break;
+        return ejecutar(func.sentencias, ent, errores);
     }
 
     return null;

@@ -2849,7 +2849,7 @@ ST: tk_break tk_puntoycoma{
                       $$.trad = $1+";\n";
                     }
   | tk_return VALOR tk_puntoycoma {
-                                    var nodo = new Nodo("RETURN","RETURN",+yylineno+1,+@1.last_column+1);
+                                    var nodo = new Nodo("RETURN","VALOR",+yylineno+1,+@1.last_column+1);
                                     nodo.addHijo($2);
                                     $$ = nodo;
                                     $$.trad = $1+" "+$2.trad+$3+"\n";
@@ -2859,13 +2859,13 @@ ST: tk_break tk_puntoycoma{
                             var error = new Error("Sintactico","Encontrado: "+$3+" Se esperaba -> ;",+yylineno+1,+@3.last_column+1);
                             errores.addError(error);
 
-                            var nodo = new Nodo("RETURN","RETURN",+yylineno+1,+@1.last_column+1);
+                            var nodo = new Nodo("RETURN","VALOR",+yylineno+1,+@1.last_column+1);
                             nodo.addHijo($2);
                             $$ = nodo;
                             $$.trad = $1+" "+$2.trad+";\n";
                           }
   | tk_return ASIGNACION{
-                          var nodo = new Nodo("RETURN","RETURN",+yylineno+1,+@1.last_column+1);
+                          var nodo = new Nodo("RETURN","ASIGNACION",+yylineno+1,+@1.last_column+1);
                           nodo.addHijo($2);
                           $$ = nodo;
                           $$.trad = $1+" "+$2.trad;

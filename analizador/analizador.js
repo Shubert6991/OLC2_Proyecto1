@@ -2973,7 +2973,7 @@ case 268:
 break;
 case 269:
 
-                                    var nodo = new Nodo("RETURN","RETURN",+yylineno+1,+_$[$0-2].last_column+1);
+                                    var nodo = new Nodo("RETURN","VALOR",+yylineno+1,+_$[$0-2].last_column+1);
                                     nodo.addHijo($$[$0-1]);
                                     this.$ = nodo;
                                     this.$.trad = $$[$0-2]+" "+$$[$0-1].trad+$$[$0]+"\n";
@@ -2985,7 +2985,7 @@ case 270:
                             var error = new Error("Sintactico","Encontrado: "+$$[$0]+" Se esperaba -> ;",+yylineno+1,+_$[$0].last_column+1);
                             errores.addError(error);
 
-                            var nodo = new Nodo("RETURN","RETURN",+yylineno+1,+_$[$0-2].last_column+1);
+                            var nodo = new Nodo("RETURN","VALOR",+yylineno+1,+_$[$0-2].last_column+1);
                             nodo.addHijo($$[$0-1]);
                             this.$ = nodo;
                             this.$.trad = $$[$0-2]+" "+$$[$0-1].trad+";\n";
@@ -2993,7 +2993,7 @@ case 270:
 break;
 case 271:
 
-                          var nodo = new Nodo("RETURN","RETURN",+yylineno+1,+_$[$0-1].last_column+1);
+                          var nodo = new Nodo("RETURN","ASIGNACION",+yylineno+1,+_$[$0-1].last_column+1);
                           nodo.addHijo($$[$0]);
                           this.$ = nodo;
                           this.$.trad = $$[$0-1]+" "+$$[$0].trad;

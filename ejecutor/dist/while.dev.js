@@ -6,7 +6,11 @@ var ejecutarWhile = function ejecutarWhile(nodo, entorno, errores) {
   var val = getValor(nodo.getListaNodos()[0], entorno, errores);
 
   while (val) {
-    ejecutar(nodo.getListaNodos()[1], entorno, errores);
+    var r = ejecutar(nodo.getListaNodos()[1], entorno, errores);
+    if (r == "BREAK") break;
+    if (r == "CONTINUE") continue;
+    if (r == "RETURN") return;
+    if (r != null) return r;
     val = getValor(nodo.getListaNodos()[0], entorno, errores);
   }
 };
@@ -17,7 +21,11 @@ var ejecutarDoWhile = function ejecutarDoWhile(nodo, entorno, errores) {
   var cond = getValor(nodo.getListaNodos()[1], entorno, errores);
 
   do {
-    ejecutar(nodo.getListaNodos()[0], entorno, errores);
+    var r = ejecutar(nodo.getListaNodos()[0], entorno, errores);
+    if (r == "BREAK") break;
+    if (r == "CONTINUE") continue;
+    if (r == "RETURN") return;
+    if (r != null) return r;
     cond = getValor(nodo.getListaNodos()[1], entorno, errores);
   } while (cond);
 };
