@@ -258,6 +258,14 @@ I: I DECLARACION{
               $$ = nodo;
               $$.trad = $1.trad + $2.trad;
             }
+  
+  |I USEFUNC {  
+                var nodo = new Nodo("I","I",+yylineno+1,+@1.first_column+1);
+                nodo.addHijo($1);
+                nodo.addHijo($2);
+                $$ = nodo;
+                $$.trad = $1.trad + $2.trad;
+             }
   |DECLARACION { $$ = $1; $$.trad = $1.trad; }
   |ASIGNACION { $$ = $1; $$.trad = $1.trad; }
   |IF { $$ = $1; $$.trad = $1.trad; }
@@ -270,6 +278,10 @@ I: I DECLARACION{
               $$ = $1;
               $$.trad = $1.trad; 
             }
+  |USEFUNC{
+            $$ = $1;
+            $$.trad = $1.trad; 
+          }
   |error{
           console.error("Error sintactico: "+$1+" Desconocido Inicio");
           var error = new Error("Sintactico","Encontrado: "+$1+" Se esperaba -> DECLARACION || ASIGNACION || IF || SWITCH || WHILE || DOWHILE || FOR || console.log || graficar_ts",+yylineno+1,+@1.last_column+1)
@@ -521,10 +533,6 @@ VALOR: ASIGTYPE {
           $$ = $1;
           $$.trad = $1.trad;
         }
-      |VALFUNCION { 
-                    $$ = $1;
-                    $$.trad = $1.trad;
-                  }
       |tk_id tk_inc { 
                       var nodo = new Nodo("INCREMENTO","INCREMENTO",+yylineno+1,+@1.first_column+1);
                       var id = new Nodo("ID",$1,+yylineno+1,+@1.first_column+1)
@@ -874,6 +882,7 @@ A:A tk_suma A {
                                   $$ = nodo;
                                   $$.trad = $1+$2+$3.trad+$4;
                                 }
+  |VALFUNCION { $$ = $1; $$.trad = $1.trad; }
   |tk_id tk_punto tk_id {
                           var nodo = new Nodo("PROPIEDAD","PROPIEDAD",+yylineno+1,+@1.first_column+1);
                           var id1 = new Nodo("ID",$1,+yylineno+1,+@1.first_column+1);
@@ -920,6 +929,7 @@ SENTENCIAS: SENTENCIAS DECLARACION {
                                       nodo.addHijo($1);
                                       nodo.addHijo($2);
                                       $$ = nodo;
+                                      $$.func = $1.func;
                                       $$.trad = $1.trad + $2.trad;
                                    }
           | SENTENCIAS ASIGNACION {
@@ -927,6 +937,7 @@ SENTENCIAS: SENTENCIAS DECLARACION {
                                     nodo.addHijo($1);
                                     nodo.addHijo($2);
                                     $$ = nodo;
+                                    $$.func = $1.func;
                                     $$.trad = $1.trad + $2.trad;
                                   }
           | SENTENCIAS IF {
@@ -934,6 +945,7 @@ SENTENCIAS: SENTENCIAS DECLARACION {
                             nodo.addHijo($1);
                             nodo.addHijo($2);
                             $$ = nodo;
+                            $$.func = $1.func;
                             $$.trad = $1.trad + $2.trad;
                           }
           | SENTENCIAS SWITCH {
@@ -941,6 +953,7 @@ SENTENCIAS: SENTENCIAS DECLARACION {
                                 nodo.addHijo($1);
                                 nodo.addHijo($2);
                                 $$ = nodo;
+                                $$.func = $1.func;
                                 $$.trad = $1.trad + $2.trad;
                               }
           | SENTENCIAS WHILE{
@@ -948,6 +961,7 @@ SENTENCIAS: SENTENCIAS DECLARACION {
                               nodo.addHijo($1);
                               nodo.addHijo($2);
                               $$ = nodo;
+                              $$.func = $1.func;
                               $$.trad = $1.trad + $2.trad;
                             }
           | SENTENCIAS DOWHILE{
@@ -955,6 +969,7 @@ SENTENCIAS: SENTENCIAS DECLARACION {
                                 nodo.addHijo($1);
                                 nodo.addHijo($2);
                                 $$ = nodo;
+                                $$.func = $1.func;
                                 $$.trad = $1.trad + $2.trad;
                               }
           | SENTENCIAS FOR{
@@ -962,6 +977,7 @@ SENTENCIAS: SENTENCIAS DECLARACION {
                             nodo.addHijo($1);
                             nodo.addHijo($2);
                             $$ = nodo;
+                            $$.func = $1.func;
                             $$.trad = $1.trad + $2.trad;
                           }
           | SENTENCIAS ST {  
@@ -969,6 +985,7 @@ SENTENCIAS: SENTENCIAS DECLARACION {
                             nodo.addHijo($1);
                             nodo.addHijo($2);
                             $$ = nodo;
+                            $$.func = $1.func;
                             $$.trad = $1.trad + $2.trad;
                           }
           | SENTENCIAS FESP {  
@@ -976,6 +993,7 @@ SENTENCIAS: SENTENCIAS DECLARACION {
                               nodo.addHijo($1);
                               nodo.addHijo($2);
                               $$ = nodo;
+                              $$.func = $1.func;
                               $$.trad = $1.trad + $2.trad;
                             }
           | SENTENCIAS FUNCION{  
@@ -983,13 +1001,20 @@ SENTENCIAS: SENTENCIAS DECLARACION {
                                 nodo.addHijo($1);
                                 nodo.addHijo($2);
                                 $$ = nodo;
-                                $$.trad = $1.trad;
                                 if($1.func){
                                   $$.func = $1.func + $2.func;
                                 } else {
-                                   $$.func = $2.func;
+                                  $$.func = $2.func;
                                 }
-                                
+                                $$.trad = $1.trad;
+                              }
+          | SENTENCIAS USEFUNC{
+                                var nodo = new Nodo("SENTENCIAS","SENTENCIAS",+yylineno+1,+@1.first_column+1);
+                                nodo.addHijo($1);
+                                nodo.addHijo($2);
+                                $$ = nodo;
+                                $$.func = $1.func;
+                                $$.trad = $1.trad + $2.trad;
                               }
           | DECLARACION { $$ = $1; $$.trad = $1.trad; }
           | ASIGNACION { $$ = $1; $$.trad = $1.trad; }
@@ -1002,9 +1027,10 @@ SENTENCIAS: SENTENCIAS DECLARACION {
           | FESP { $$ = $1; $$.trad = $1.trad; }
           | FUNCION { 
                      $$ = $1; 
-                     $$.trad = ""; 
                      $$.func = $1.func;
+                     $$.trad = ""; 
                     }
+          |USEFUNC {$$ = $1; $$.trad = $1.trad;}
           | error {
                     console.error("Error sintactico: "+$1+" Desconocido Sentencias");
                     var error = new Error("Sintactico","Encontrado: "+$1+" Se esperaba -> DECLARACION||ASIGNACION||IF||SWITCH||WHILE||DO WHILE||SENTENCIAS DE TRANSFARENCIA||console.log()||graficar_ts()",+yylineno+1,+@1.last_column+1);
@@ -2964,9 +2990,9 @@ FUNCION: tk_fn tk_id tk_pabierto tk_pcerrado tk_dospuntos TIPOV2 BSENTENCIAS{
 PARFUNC: PARFUNC tk_coma tk_id tk_dospuntos TIPOV2{
                                                     var nodo = new Nodo("PARFUNC","PARFUNC",+yylineno+1,+@1.first_column+1);
                                                     var id = new Nodo("ID",$3,+yylineno+1,+@3.first_column+1);
-                                                    nodo.add($1);
-                                                    nodo.add(id);
-                                                    noco.add($5);
+                                                    nodo.addHijo($1);
+                                                    nodo.addHijo(id);
+                                                    nodo.addHijo($5);
 
                                                     $$ = nodo;
                                                     $$.trad = $1.trad+$2+$3+$4+$5.trad;
@@ -2974,8 +3000,8 @@ PARFUNC: PARFUNC tk_coma tk_id tk_dospuntos TIPOV2{
         | tk_id tk_dospuntos TIPOV2 {
                                       var nodo = new Nodo("PARFUNC","PARFUNC",+yylineno+1,+@1.first_column+1);
                                       var id = new Nodo("ID",$1,+yylineno+1,+@1.first_column+1);
-                                      nodo.add(id);
-                                      noco.add($3);
+                                      nodo.addHijo(id);
+                                      nodo.addHijo($3);
 
                                       $$ = nodo;
                                       $$.trad = $1+$2+$3.trad;
@@ -2988,16 +3014,25 @@ PARFUNC: PARFUNC tk_coma tk_id tk_dospuntos TIPOV2{
                   $$ = new Nodo("","");
                   $$.trad = "";
                 };
-        
+
+USEFUNC: VALFUNCION tk_puntoycoma {
+                                    $$=$1;
+                                    $$.trad = $1.trad+$2+"\n";
+                                  }
+      |VALFUNCION error {
+                          $$=$1;
+                          $$.trad = $1.trad+";\n";
+                        };
+
 VALFUNCION: tk_id tk_pabierto tk_pcerrado { 
-                                            var nodo = new Nodo("VALOR","VALFUNCION",+yylineno+1,+@1.first_column+1);
+                                            var nodo = new Nodo("VALFUNCION","VALFUNCION",+yylineno+1,+@1.first_column+1);
                                             var id = new Nodo("ID",$1,+yylineno+1,+@1.first_column+1);
                                             nodo.addHijo(id);
                                             $$ = nodo;
                                             $$.trad = $1+$2+$3;
                                           }  
           | tk_id tk_pabierto LPAR tk_pcerrado{
-                                                var nodo = new Nodo("VALOR","VALFUNCION",+yylineno+1,+@1.first_column+1);
+                                                var nodo = new Nodo("VALFUNCION","VALFUNCION",+yylineno+1,+@1.first_column+1);
                                                 var id = new Nodo("ID",$1,+yylineno+1,+@1.first_column+1);
                                                 nodo.addHijo(id);
                                                 nodo.addHijo($3);

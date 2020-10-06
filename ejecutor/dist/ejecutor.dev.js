@@ -144,6 +144,14 @@ var ejecutar = function ejecutar(ast, entorno, errores) {
         ejecutarForIn(ast, new Entorno("FORIN", entorno), errores);
         break;
 
+      case "FUNCION":
+        declararFuncion(ast, entorno, errores);
+        break;
+
+      case "VALFUNCION":
+        getValor(ast, entorno, errores);
+        break;
+
       default:
         console.error("todavia no he programado eso -> " + tipo);
         break;

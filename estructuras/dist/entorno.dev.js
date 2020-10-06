@@ -15,6 +15,7 @@ function () {
     this.nombre = nombre;
     this.anterior = anterior;
     this.tablaSimbolos = new TablaSimbolos();
+    this.listaFunciones = new listaFunciones();
   }
 
   _createClass(Entorno, [{
@@ -35,6 +36,22 @@ function () {
       return true;
     }
   }, {
+    key: "addFuncion",
+    value: function addFuncion(funcion) {
+      var tmp = this.listaFunciones.getLista();
+
+      for (var index = 0; index < tmp.length; index++) {
+        if (tmp[index].id === funcion.id) {
+          console.error("la funcion -> " + funcion.id + " ya fue declarada;"); //error semantico
+
+          return false;
+        }
+      }
+
+      this.listaFunciones.addFuncion(funcion);
+      return true;
+    }
+  }, {
     key: "getSimbolo",
     value: function getSimbolo(nombre) {
       var ent = this;
@@ -44,6 +61,25 @@ function () {
 
         for (var index = 0; index < tmp.length; index++) {
           if (tmp[index].getNombre() === nombre) {
+            return tmp[index];
+          }
+        }
+
+        ent = ent.anterior;
+      }
+
+      return false;
+    }
+  }, {
+    key: "getFuncion",
+    value: function getFuncion(id) {
+      var ent = this;
+
+      while (ent != null) {
+        var tmp = ent.listaFunciones.getLista();
+
+        for (var index = 0; index < tmp.length; index++) {
+          if (tmp[index].id === id) {
             return tmp[index];
           }
         }
@@ -80,6 +116,19 @@ function () {
 
       while (ent != null) {
         var tmp = ent.tablaSimbolos.getTabla();
+        tmp.forEach(function (element) {
+          console.log(element);
+        });
+        ent = ent.anterior;
+      }
+    }
+  }, {
+    key: "printListaFunciones",
+    value: function printListaFunciones() {
+      var ent = this;
+
+      while (ent != null) {
+        var tmp = ent.listaFunciones.tabla;
         tmp.forEach(function (element) {
           console.log(element);
         });

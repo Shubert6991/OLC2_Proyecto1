@@ -3,6 +3,7 @@ class Entorno {
     this.nombre = nombre;
     this.anterior = anterior;
     this.tablaSimbolos = new TablaSimbolos();
+    this.listaFunciones = new listaFunciones();
   }
 
   addSimbolo(simbolo) {
@@ -19,12 +20,39 @@ class Entorno {
     return true;
   }  
 
+  addFuncion(funcion) {
+    var tmp = this.listaFunciones.getLista();
+    for (let index = 0; index < tmp.length; index++) {
+      if(tmp[index].id === funcion.id){
+        console.error("la funcion -> "+funcion.id+" ya fue declarada;");
+        //error semantico
+        return false;
+      } 
+    }
+    this.listaFunciones.addFuncion(funcion);
+    return true;
+  }
+
   getSimbolo(nombre) {
     var ent = this;
     while(ent != null){
       var tmp = ent.tablaSimbolos.getTabla();
       for (let index = 0; index < tmp.length; index++) {
         if(tmp[index].getNombre() === nombre){
+          return tmp[index];
+        } 
+      }
+      ent = ent.anterior;
+    }
+    return false;
+  }
+
+  getFuncion(id) {
+    var ent = this;
+    while(ent != null){
+      var tmp = ent.listaFunciones.getLista();
+      for (let index = 0; index < tmp.length; index++) {
+        if(tmp[index].id === id){
           return tmp[index];
         } 
       }
@@ -52,6 +80,17 @@ class Entorno {
     var ent = this;
     while(ent != null){
       var tmp = ent.tablaSimbolos.getTabla();
+      tmp.forEach(element => {
+        console.log(element)
+      });
+      ent = ent.anterior;
+    }
+  }
+
+  printListaFunciones(){
+    var ent = this;
+    while(ent != null){
+      var tmp = ent.listaFunciones.tabla;
       tmp.forEach(element => {
         console.log(element)
       });

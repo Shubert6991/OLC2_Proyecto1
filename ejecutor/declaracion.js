@@ -55,7 +55,7 @@ const declaracion = (nodo,entorno,errores) => {
           }
           break;
         default:
-          if(type.contains("ARRAY")){
+          if(type.includes("ARRAY")){
             if(typeof valor != object){
               console.error("Error Semantico");
               var err = new Error("Semantico","El valor de la variable no es tipo array",nodo.getFila(),nodo.getColumna());
@@ -96,6 +96,8 @@ const declaracion = (nodo,entorno,errores) => {
         var valor = getValor(nodo.getListaNodos()[1],entorno,errores);
         //hijo 2 tipo
         var type = getType(nodo.getListaNodos()[1]);
+        console.log(valor);
+        console.log(type);
         var nuevo;
         if(valor == null){
           //es con tipo
@@ -108,6 +110,9 @@ const declaracion = (nodo,entorno,errores) => {
               break;
             case "BOOLEAN":
               valor = true;
+              break;
+            case undefined:
+              type = "VOID";
               break;
           }
           nuevo = new Simbolo(tipo,id,type,valor,entorno.nombre,nodo.getFila(),nodo.getColumna());
@@ -126,6 +131,9 @@ const declaracion = (nodo,entorno,errores) => {
             break;
             case "object":
               type = "ARRAY";
+            case null:
+              type = "VOID";
+              break;
             default:
               break;
           }
@@ -411,7 +419,7 @@ const getValor = (nodo,entorno,errores) =>{
     var id = getID(nodo.getListaNodos()[0]);
     var pos = getValor(nodo.getListaNodos()[1],entorno,errores);
     var sim = entorno.getSimbolo(id);
-    if(sim.getTipo().contains("ARRAY")){
+    if(sim.getTipo().includes("ARRAY")){
       return sim.getValor()[pos];
     } else {
       //error
@@ -509,5 +517,30 @@ const getValor = (nodo,entorno,errores) =>{
       var err = new Error("Semantico","La variable "+id+" no es un type, no se puede obtener una propiedad",nodo.getFila(),nodo.getColumna());
       errores.push(err);
     }
+  } 
+  if(nodo.getTipo() === "VALFUNCION"){
+    //ejecutar funcion
+    //1 hijo, sin parametros
+    //ID
+    //2 hijos con parametros
+    //ID,LPAR
+    //buscar funcion en lista de funciones
+    //asignar parametros
+    //ejecutar codigo
+    var id = getID(nodo.getListaNodos()[0]);
+    console.log(entorno.listaFunciones);
+    var func = entorno.getFuncion(id);
+    console.log(func.sentencias);
+    switch(nodo.hijosCount()){
+      case 1:
+        //sin parametros
+        ejecutar(func.sentencias,new Entorno("FUNCION",entorno),errores);
+        break;
+      case 2:
+        //asignar parametros
+        //ejecutar codigo
+        break; 
+    }
+    return null;
   }
 }
