@@ -639,7 +639,7 @@ var getValor = function getValor(nodo, entorno, errores) {
     var id = getID(nodo.getListaNodos()[0]);
     console.log(entorno.listaFunciones);
     var func = entorno.getFuncion(id);
-    console.log(func.sentencias);
+    console.log(func);
 
     switch (nodo.hijosCount()) {
       case 1:
@@ -649,10 +649,83 @@ var getValor = function getValor(nodo, entorno, errores) {
 
       case 2:
         //asignar parametros
+        var ent = new Entorno("FUNCION", entorno);
+        decpar(func.parametros, ent, errores); //asig parametros
         //ejecutar codigo
+
+        var arrvar = asigpar(nodo.getListaNodos()[1], ent, errores); //console.log(arrvar);
+        // console.log(ent.tablaSimbolos.getTabla());
+
+        var ts = ent.tablaSimbolos.getTabla();
+
+        for (var index = 0; index < ts.length; index++) {
+          var sim = ts[index];
+          sim.valor = arrvar[index];
+          ent.updateSimbolo(sim);
+        }
+
+        ejecutar(func.sentencias, ent, errores);
         break;
     }
 
     return null;
   }
+};
+
+var decpar = function decpar(nodo, entorno, errores) {
+  //3||2 hijos
+  switch (nodo.hijosCount()) {
+    case 3:
+      decpar(nodo.getListaNodos()[0], entorno, errores);
+      var id = getID(nodo.getListaNodos()[1]);
+      var tipo = getType(nodo.getListaNodos()[2]);
+      var sim = new Simbolo(1, id, tipo, null, entorno, nodo.getFila(), nodo.getColumna());
+      var result = entorno.addSimbolo(sim); // console.log(result)
+
+      if (!result) {
+        console.error("Error Semantico");
+        var err = new Error("Semantico", "La variable " + id + " ya se habia declarado", nodo.getFila(), nodo.getColumna());
+        errores.push(err);
+      }
+
+      break;
+
+    case 2:
+      var id = getID(nodo.getListaNodos()[0]);
+      var tipo = getType(nodo.getListaNodos()[1]);
+      var sim = new Simbolo(1, id, tipo, null, entorno, nodo.getFila(), nodo.getColumna());
+      var result = entorno.addSimbolo(sim); // console.log(result)
+
+      if (!result) {
+        console.error("Error Semantico");
+        var err = new Error("Semantico", "La variable " + id + " ya se habia declarado", nodo.getFila(), nodo.getColumna());
+        errores.push(err);
+      }
+
+      break;
+  }
+};
+
+var asigpar = function asigpar(nodo, entorno, errores) {
+  //2 hijos
+  var h1 = nodo.getListaNodos()[0];
+  var h2 = nodo.getListaNodos()[1];
+  var vars = new Array();
+
+  if (h1.getTipo() === "LPAR") {
+    var tmp = asigpar(h1, entorno, errores);
+
+    if (Array.isArray(tmp)) {
+      tmp.forEach(function (element) {
+        vars.push(element);
+      });
+    }
+
+    vars.push(getValor(h2, entorno, errores));
+  } else {
+    vars.push(getValor(h1, entorno, errores));
+    vars.push(getValor(h2, entorno, errores));
+  }
+
+  return vars;
 };
