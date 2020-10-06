@@ -679,7 +679,7 @@ var decpar = function decpar(nodo, entorno, errores) {
       decpar(nodo.getListaNodos()[0], entorno, errores);
       var id = getID(nodo.getListaNodos()[1]);
       var tipo = getType(nodo.getListaNodos()[2]);
-      var sim = new Simbolo(1, id, tipo, null, entorno, nodo.getFila(), nodo.getColumna());
+      var sim = new Simbolo(1, id, tipo, null, entorno.nombre, nodo.getFila(), nodo.getColumna());
       var result = entorno.addSimbolo(sim); // console.log(result)
 
       if (!result) {
@@ -693,7 +693,7 @@ var decpar = function decpar(nodo, entorno, errores) {
     case 2:
       var id = getID(nodo.getListaNodos()[0]);
       var tipo = getType(nodo.getListaNodos()[1]);
-      var sim = new Simbolo(1, id, tipo, null, entorno, nodo.getFila(), nodo.getColumna());
+      var sim = new Simbolo(1, id, tipo, null, entorno.nombre, nodo.getFila(), nodo.getColumna());
       var result = entorno.addSimbolo(sim); // console.log(result)
 
       if (!result) {
