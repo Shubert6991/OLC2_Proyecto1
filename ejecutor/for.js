@@ -21,7 +21,8 @@ const ejecutarFor = (nodo,entorno,errores) => {
     }
     var cond = getValor(nodo.getListaNodos()[1],entorno,errores);
     while(cond){
-        ejecutar(nodo.getListaNodos()[3],entorno,errores);
+        var r = ejecutar(nodo.getListaNodos()[3],entorno,errores);
+        if(r == "BREAK") break;
         ejecutar(nodo.getListaNodos()[2],entorno,errores);
         cond = getValor(nodo.getListaNodos()[1],entorno,errores);
     }
@@ -75,7 +76,8 @@ const ejecutarForIn = (nodo,entorno,errores) => {
           sim.valor = key;
           sim.tipo = sim2.tipo;
           entorno.updateSimbolo(sim);
-          ejecutar(h3,entorno,errores);
+          var r = ejecutar(h3,entorno,errores);
+          if(r == "BREAK") break;
         }
         return;
     }
@@ -135,7 +137,8 @@ const ejecutarForOf = (nodo,entorno,errores) => {
             sim.valor = i;
             sim.tipo = sim2.tipo;
             entorno.updateSimbolo(sim);
-            ejecutar(h3,entorno,errores);
+            var r = ejecutar(h3,entorno,errores);
+            if(r == "BREAK") break;
         }
         return;
     }
