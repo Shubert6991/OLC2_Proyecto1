@@ -7,7 +7,10 @@ const ejecutar = (ast,entorno,errores) => {
       case "S":
         return ejecutar(ast.getListaNodos()[0],entorno,errores);
       case "I":
-        return Math.max(ejecutar(ast.getListaNodos()[0],entorno,errores),ejecutar(ast.getListaNodos()[1],entorno,errores));
+        var e1 = ejecutar(ast.getListaNodos()[0],entorno,errores);
+        var e2 = ejecutar(ast.getListaNodos()[1],entorno,errores);
+        if(e1) return e1
+        else return e2;
       case "DECLARACION":
         //ejecutar declaracion;
         declaracion(ast,entorno,errores);
@@ -91,13 +94,31 @@ const ejecutar = (ast,entorno,errores) => {
         ejecutarElse(ast,entorno,errores);
         break;
       case "SENTENCIAS":
-        return Math.max(ejecutar(ast.getListaNodos()[0],entorno,errores),ejecutar(ast.getListaNodos()[1],entorno,errores));
+        var e1 = ejecutar(ast.getListaNodos()[0],entorno,errores);
+        var e2 = ejecutar(ast.getListaNodos()[1],entorno,errores);
+        if(e1) return e1;
+        else return e2;
       case "SWITCH":
         ejecutarSwitch(ast,new Entorno("SWITCH",entorno),errores);
         break;
       case "BREAK":
         if(entorno.nombre === "SWITCH"){
-          return 1;
+          return "BREAK";
+        } 
+        if(entorno.nombre === "WHILE"){
+          return "BREAK";
+        }
+        if(entorno.nombre === "DOWHILE"){
+          return "BREAK";
+        }
+        if(entorno.nombre === "FOR"){
+          return "BREAK";
+        }
+        if(entorno.nombre === "FOROF"){
+          return "BREAK";
+        }
+        if(entorno.nombre === "FORIN"){
+          return "BREAK";
         }
         console.error("Error Semantico");
         var err = new Error("Semantico","La sentencia break solo se puede utilzar en switch",ast.getFila(),ast.getColumna());
@@ -129,5 +150,5 @@ const ejecutar = (ast,entorno,errores) => {
         break;
     }
   }
-  return 0;
+  return null;
 }
