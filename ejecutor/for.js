@@ -48,7 +48,7 @@ const ejecutarForIn = (nodo,entorno,errores) => {
             sim = entorno.getSimbolo(id1);
             if(sim === false){
                 console.error("Error Semantico");
-                var err = new Error("Semantico","la variable: "+id1+" no esta declarada",nodo.getFila(),nodo.getColumna());
+                var err = new Error("Semantico","la variable: "+id1+" no esta declarada",nodo.getFila(),nodo.getColumna(),entorno.nombre);
                 errores.push(err);
                 return;
             }
@@ -59,7 +59,7 @@ const ejecutarForIn = (nodo,entorno,errores) => {
             sim = entorno.getSimbolo(id1);
             if(sim === false){
                 console.error("Error Semantico");
-                var err = new Error("Semantico","La variable: "+id1+" no esta declarada",nodo.getFila(),nodo.getColumna());
+                var err = new Error("Semantico","La variable: "+id1+" no esta declarada",nodo.getFila(),nodo.getColumna(),entorno.nombre);
                 errores.push(err);
                 return;
             }
@@ -88,7 +88,7 @@ const ejecutarForIn = (nodo,entorno,errores) => {
         return;
     }
     console.error("Error Semantico");
-    var err = new Error("Semantico","la variable: "+id2+" no es un arreglo",nodo.getFila(),nodo.getColumna());
+    var err = new Error("Semantico","la variable: "+id2+" no es un arreglo",nodo.getFila(),nodo.getColumna(),entorno.nombre);
     errores.push(err);
     return;
 
@@ -112,7 +112,7 @@ const ejecutarForOf = (nodo,entorno,errores) => {
             sim = entorno.getSimbolo(id1);
             if(sim === false){
                 console.error("Error Semantico");
-                var err = new Error("Semantico","la variable: "+id1+" no esta declarada",nodo.getFila(),nodo.getColumna());
+                var err = new Error("Semantico","la variable: "+id1+" no esta declarada",nodo.getFila(),nodo.getColumna(),entorno.nombre);
                 errores.push(err);
                 return;
             }
@@ -124,7 +124,7 @@ const ejecutarForOf = (nodo,entorno,errores) => {
             sim = entorno.getSimbolo(id1);
             if(sim === false){
                 console.error("Error Semantico");
-                var err = new Error("Semantico","La variable: "+id1+" no esta declarada",nodo.getFila(),nodo.getColumna());
+                var err = new Error("Semantico","La variable: "+id1+" no esta declarada",nodo.getFila(),nodo.getColumna(),entorno.nombre);
                 errores.push(err);
                 return;
             }
@@ -152,7 +152,7 @@ const ejecutarForOf = (nodo,entorno,errores) => {
         return;
     }
     console.error("Error Semantico");
-    var err = new Error("Semantico","la variable: "+id2+" no es un arreglo",nodo.getFila(),nodo.getColumna());
+    var err = new Error("Semantico","la variable: "+id2+" no es un arreglo",nodo.getFila(),nodo.getColumna(),entorno.nombre);
     errores.push(err);
     return;
 }

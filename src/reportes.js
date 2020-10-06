@@ -16,6 +16,8 @@ const reportErrores = (lista) => {
   cel.outerHTML = "<th>Linea</th>";
   cel = row.insertCell();
   cel.outerHTML = "<th>Columna</th>";
+  cel = row.insertCell();
+  cel.outerHTML = "<th>Entorno</th>";
   //tbody
   var body = tablaErr.createTBody()
   lista.forEach(element => {
@@ -29,6 +31,8 @@ const reportErrores = (lista) => {
     cel.innerHTML = element.getLinea();
     cel = row.insertCell();
     cel.innerHTML = element.getColumna();
+    cel = row.insertCell();
+    cel.innerHTML = element.getAmbito();
   });
   
   div.appendChild(h3);

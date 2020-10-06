@@ -23,7 +23,7 @@ const ejecutar = (ast,entorno,errores) => {
         // console.log(tid)
         if(tid === false){
           //error semantico
-          var err = new Error("Semantico","No se puede incrementar ->"+id+" no esta declarado",ast.getFila(),ast.getColumna());
+          var err = new Error("Semantico","No se puede incrementar ->"+id+" no esta declarado",ast.getFila(),ast.getColumna(),entorno.nombre);
           errores.push(err);
           break;
         } else {
@@ -31,7 +31,7 @@ const ejecutar = (ast,entorno,errores) => {
             tid.tipo = "NUMBER";
           }
           if (tid.getTipo() !== "NUMBER") {
-            var err = new Error("Semantico","No se puede incrementar ->"+id+" no es tipo numero",ast.getFila(),ast.getColumna());
+            var err = new Error("Semantico","No se puede incrementar ->"+id+" no es tipo numero",ast.getFila(),ast.getColumna(),entorno.nombre);
             errores.push(err);
             break;
           }
@@ -51,7 +51,7 @@ const ejecutar = (ast,entorno,errores) => {
         // console.log(tid)
         if(tid === false){
           //error semantico
-          var err = new Error("Semantico","No se puede incrementar ->"+id+" no esta declarado",nodo.getFila(),nodo.getColumna());
+          var err = new Error("Semantico","No se puede incrementar ->"+id+" no esta declarado",nodo.getFila(),nodo.getColumna(),entorno.nombre);
           errores.push(err);
           break;
         } else {
@@ -59,7 +59,7 @@ const ejecutar = (ast,entorno,errores) => {
             tid.tipo = "NUMBER";
           }
           if (tid.getTipo() !== "NUMBER") {
-            var err = new Error("Semantico","No se puede incrementar ->"+id+" no es tipo numero",nodo.getFila(),nodo.getColumna());
+            var err = new Error("Semantico","No se puede incrementar ->"+id+" no es tipo numero",nodo.getFila(),nodo.getColumna(),entorno.nombre);
             errores.push(err);
             break;
           }

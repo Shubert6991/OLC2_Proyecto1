@@ -1,9 +1,11 @@
 class Error{
-  constructor(tipo,descripcion,linea,columna) {
+  constructor(tipo,descripcion,linea,columna,ambito) {
     this.tipo = tipo;
     this.descripcion = descripcion;
     this.linea = linea;
     this.columna = columna;
+    if(ambito == null) this.ambito = "ANALISIS"
+    else this.ambito = ambito;
   }
   getTipo(){
     return this.tipo;
@@ -16,5 +18,8 @@ class Error{
   }
   getColumna(){
     return this.columna;
+  }
+  getAmbito(){
+    return this.ambito;
   }
 }

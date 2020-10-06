@@ -13,7 +13,7 @@ var declararFuncion = function declararFuncion(nodo, entorno, errores) {
 
     if (!result) {
       console.error("Error Semantico");
-      var err = new Error("Semantico", "La funcion " + id + " ya se habia declarado", nodo.getFila(), nodo.getColumna());
+      var err = new Error("Semantico", "La funcion " + id + " ya se habia declarado", nodo.getFila(), nodo.getColumna(), entorno.nombre);
       errores.push(err);
     }
   }
@@ -30,7 +30,7 @@ var declararFuncion = function declararFuncion(nodo, entorno, errores) {
 
     if (!result) {
       console.error("Error Semantico");
-      var err = new Error("Semantico", "La funcion " + id + " ya se habia declarado", nodo.getFila(), nodo.getColumna());
+      var err = new Error("Semantico", "La funcion " + id + " ya se habia declarado", nodo.getFila(), nodo.getColumna(), entorno.nombre);
       errores.push(err);
     }
   }

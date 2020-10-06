@@ -7,7 +7,7 @@ const asignacion = (nodo,entorno,errores) => {
     //verificar si no es constante
     if(sim.getTipoDec() === 0){
       console.error("Error Semantico");
-      var err = new Error("Semantico","No se puede cambiar la constante -> "+id,nodo.getFila(),nodo.getColumna());
+      var err = new Error("Semantico","No se puede cambiar la constante -> "+id,nodo.getFila(),nodo.getColumna(),entorno.nombre);
       errores.push(err);
       return;
     }
@@ -49,7 +49,7 @@ const asignacion = (nodo,entorno,errores) => {
         if(tval != "string"){
           //errror
           console.error("Error Semantico");
-          var err = new Error("Semantico","La variable "+id+" es de tipo string no se puede asignar el nuevo valor",nodo.getFila(),nodo.getColumna());
+          var err = new Error("Semantico","La variable "+id+" es de tipo string no se puede asignar el nuevo valor",nodo.getFila(),nodo.getColumna(),entorno.nombre);
           errores.push(err);
           return;
         }
@@ -59,7 +59,7 @@ const asignacion = (nodo,entorno,errores) => {
         if(tval != "boolean"){
           //errror
           console.error("Error Semantico");
-          var err = new Error("Semantico","La variable "+id+" es de tipo boolean no se puede asignar el nuevo valor",nodo.getFila(),nodo.getColumna());
+          var err = new Error("Semantico","La variable "+id+" es de tipo boolean no se puede asignar el nuevo valor",nodo.getFila(),nodo.getColumna(),entorno.nombre);
           errores.push(err);
           return;
         }
@@ -69,7 +69,7 @@ const asignacion = (nodo,entorno,errores) => {
         if(tval != "number"){
           //errror
           console.error("Error Semantico");
-          var err = new Error("Semantico","La variable "+id+" es de tipo boolean no se puede asignar el nuevo valor",nodo.getFila(),nodo.getColumna());
+          var err = new Error("Semantico","La variable "+id+" es de tipo boolean no se puede asignar el nuevo valor",nodo.getFila(),nodo.getColumna(),entorno.nombre);
           errores.push(err);
           return;
         }

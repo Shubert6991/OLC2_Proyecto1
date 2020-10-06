@@ -43,7 +43,7 @@ var declaracion = function declaracion(nodo, entorno, errores) {
           if (typeof valor != "string") {
             //error
             console.error("Error Semantico");
-            var err = new Error("Semantico", "El valor de la variable no es tipo string", nodo.getFila(), nodo.getColumna());
+            var err = new Error("Semantico", "El valor de la variable no es tipo string", nodo.getFila(), nodo.getColumna(), entorno.nombre);
             errores.push(err);
             return;
           }
@@ -54,7 +54,7 @@ var declaracion = function declaracion(nodo, entorno, errores) {
           if (typeof valor != "number") {
             //error
             console.error("Error Semantico");
-            var err = new Error("Semantico", "El valor de la variable no es tipo number", nodo.getFila(), nodo.getColumna());
+            var err = new Error("Semantico", "El valor de la variable no es tipo number", nodo.getFila(), nodo.getColumna(), entorno.nombre);
             errores.push(err);
             return;
           }
@@ -65,7 +65,7 @@ var declaracion = function declaracion(nodo, entorno, errores) {
           if (typeof valor != "boolean") {
             //error
             console.error("Error Semantico");
-            var err = new Error("Semantico", "El valor de la variable no es tipo boolean", nodo.getFila(), nodo.getColumna());
+            var err = new Error("Semantico", "El valor de la variable no es tipo boolean", nodo.getFila(), nodo.getColumna(), entorno.nombre);
             errores.push(err);
             return;
           }
@@ -76,7 +76,7 @@ var declaracion = function declaracion(nodo, entorno, errores) {
           if (type.includes("ARRAY")) {
             if (_typeof(valor) != object) {
               console.error("Error Semantico");
-              var err = new Error("Semantico", "El valor de la variable no es tipo array", nodo.getFila(), nodo.getColumna());
+              var err = new Error("Semantico", "El valor de la variable no es tipo array", nodo.getFila(), nodo.getColumna(), entorno.nombre);
               errores.push(err);
               return;
             }
@@ -90,7 +90,7 @@ var declaracion = function declaracion(nodo, entorno, errores) {
 
       if (!result) {
         console.error("Error Semantico");
-        var err = new Error("Semantico", "La variable " + id + " ya se habia declarado", nodo.getFila(), nodo.getColumna());
+        var err = new Error("Semantico", "La variable " + id + " ya se habia declarado", nodo.getFila(), nodo.getColumna(), entorno.nombre);
         errores.push(err);
       }
 
@@ -179,7 +179,7 @@ var declaracion = function declaracion(nodo, entorno, errores) {
 
       if (!result) {
         console.error("Error Semantico");
-        var err = new Error("Semantico", "La variable " + id + " ya se habia declarado", nodo.getFila(), nodo.getColumna());
+        var err = new Error("Semantico", "La variable " + id + " ya se habia declarado", nodo.getFila(), nodo.getColumna(), entorno.nombre);
         errores.push(err);
       }
 
@@ -241,7 +241,7 @@ var getValor = function getValor(nodo, entorno, errores) {
       var res = val1 - val2;
 
       if (isNaN(res)) {
-        var err = new Error("Semantico", "No se pueden restar valores no numericos", nodo.getFila(), nodo.getColumna());
+        var err = new Error("Semantico", "No se pueden restar valores no numericos", nodo.getFila(), nodo.getColumna(), entorno.nombre);
         errores.push(err);
         return 0;
       }
@@ -255,7 +255,7 @@ var getValor = function getValor(nodo, entorno, errores) {
       var res = val1 * val2;
 
       if (isNaN(res)) {
-        var err = new Error("Semantico", "No se pueden multiplicar valores no numericos", nodo.getFila(), nodo.getColumna());
+        var err = new Error("Semantico", "No se pueden multiplicar valores no numericos", nodo.getFila(), nodo.getColumna(), entorno.nombre);
         errores.push(err);
         return 0;
       }
@@ -269,13 +269,13 @@ var getValor = function getValor(nodo, entorno, errores) {
       var res = val1 / val2;
 
       if (isNaN(res)) {
-        var err = new Error("Semantico", "No se pueden dividir valores no numericos", nodo.getFila(), nodo.getColumna());
+        var err = new Error("Semantico", "No se pueden dividir valores no numericos", nodo.getFila(), nodo.getColumna(), entorno.nombre);
         errores.push(err);
         return 0;
       }
 
       if (val2 === 0) {
-        var err = new Error("Semantico", "No se pueden dividir entre 0", nodo.getFila(), nodo.getColumna());
+        var err = new Error("Semantico", "No se pueden dividir entre 0", nodo.getFila(), nodo.getColumna(), entorno.nombre);
         errores.push(err);
         return 0;
       }
@@ -289,7 +289,7 @@ var getValor = function getValor(nodo, entorno, errores) {
       var res = Math.pow(val1, val2);
 
       if (isNaN(res)) {
-        var err = new Error("Semantico", "No se pueden elevar valores no numericos", nodo.getFila(), nodo.getColumna());
+        var err = new Error("Semantico", "No se pueden elevar valores no numericos", nodo.getFila(), nodo.getColumna(), entorno.nombre);
         errores.push(err);
         return 0;
       }
@@ -303,7 +303,7 @@ var getValor = function getValor(nodo, entorno, errores) {
       var res = val1 % val2;
 
       if (isNaN(res)) {
-        var err = new Error("Semantico", "No se pueden encontrar mod de valores no numericos", nodo.getFila(), nodo.getColumna());
+        var err = new Error("Semantico", "No se pueden encontrar mod de valores no numericos", nodo.getFila(), nodo.getColumna(), entorno.nombre);
         errores.push(err);
         return 0;
       }
@@ -318,7 +318,7 @@ var getValor = function getValor(nodo, entorno, errores) {
       var val2 = getValor(nodo.getListaNodos()[1], entorno, errores);
 
       if (isNaN(+val1) || isNaN(+val2)) {
-        var err = new Error("Semantico", "No se puede realizar la operacion > con valores que no sean numericos", nodo.getFila(), nodo.getColumna());
+        var err = new Error("Semantico", "No se puede realizar la operacion > con valores que no sean numericos", nodo.getFila(), nodo.getColumna(), entorno.nombre);
         errores.push(err);
         return false;
       }
@@ -331,7 +331,7 @@ var getValor = function getValor(nodo, entorno, errores) {
       var val2 = getValor(nodo.getListaNodos()[1], entorno, errores);
 
       if (isNaN(+val1) || isNaN(+val2)) {
-        var err = new Error("Semantico", "No se puede realizar la operacion < con valores que no sean numericos", nodo.getFila(), nodo.getColumna());
+        var err = new Error("Semantico", "No se puede realizar la operacion < con valores que no sean numericos", nodo.getFila(), nodo.getColumna(), entorno.nombre);
         errores.push(err);
         return false;
       }
@@ -344,7 +344,7 @@ var getValor = function getValor(nodo, entorno, errores) {
       var val2 = getValor(nodo.getListaNodos()[1], entorno, errores);
 
       if (isNaN(+val1) || isNaN(+val2)) {
-        var err = new Error("Semantico", "No se puede realizar la operacion >= con valores que no sean numericos", nodo.getFila(), nodo.getColumna());
+        var err = new Error("Semantico", "No se puede realizar la operacion >= con valores que no sean numericos", nodo.getFila(), nodo.getColumna(), entorno.nombre);
         errores.push(err);
         return false;
       }
@@ -357,7 +357,7 @@ var getValor = function getValor(nodo, entorno, errores) {
       var val2 = getValor(nodo.getListaNodos()[1], entorno, errores);
 
       if (isNaN(+val1) || isNaN(+val2)) {
-        var err = new Error("Semantico", "No se puede realizar la operacion <= con valores que no sean numericos", nodo.getFila(), nodo.getColumna());
+        var err = new Error("Semantico", "No se puede realizar la operacion <= con valores que no sean numericos", nodo.getFila(), nodo.getColumna(), entorno.nombre);
         errores.push(err);
         return false;
       }
@@ -448,12 +448,12 @@ var getValor = function getValor(nodo, entorno, errores) {
 
     if (tid === false) {
       //error semantico
-      var err = new Error("Semantico", "No se puede decrementar ->" + id + " no esta declarado", nodo.getFila(), nodo.getColumna());
+      var err = new Error("Semantico", "No se puede decrementar ->" + id + " no esta declarado", nodo.getFila(), nodo.getColumna(), entorno.nombre);
       errores.push(err);
       return 0;
     } else {
       if (tid.getTipo() !== "NUMBER") {
-        var err = new Error("Semantico", "No se puede decrementar ->" + id + " no es tipo numero", nodo.getFila(), nodo.getColumna());
+        var err = new Error("Semantico", "No se puede decrementar ->" + id + " no es tipo numero", nodo.getFila(), nodo.getColumna(), entorno.nombre);
         errores.push(err);
         return 0;
       }
@@ -469,7 +469,7 @@ var getValor = function getValor(nodo, entorno, errores) {
     var res = +val * -1;
 
     if (isNaN(res)) {
-      var err = new Error("Semantico", "Solo se puede volver negativo un valor numerico", nodo.getFila(), nodo.getColumna());
+      var err = new Error("Semantico", "Solo se puede volver negativo un valor numerico", nodo.getFila(), nodo.getColumna(), entorno.nombre);
       errores.push(err);
       return 0;
     }
@@ -495,7 +495,7 @@ var getValor = function getValor(nodo, entorno, errores) {
     var tid = entorno.getSimbolo(id);
 
     if (!tid) {
-      var err = new Error("Semantico", "La variable ->" + id + " no ha sido declarada", nodo.getFila(), nodo.getColumna());
+      var err = new Error("Semantico", "La variable ->" + id + " no ha sido declarada", nodo.getFila(), nodo.getColumna(), entorno.nombre);
       errores.push(err);
       return 0;
     }
@@ -515,7 +515,7 @@ var getValor = function getValor(nodo, entorno, errores) {
       return sim.getValor()[pos];
     } else {
       //error
-      var err = new Error("Semantico", "La variable ->" + id + " no es un array", nodo.getFila(), nodo.getColumna());
+      var err = new Error("Semantico", "La variable ->" + id + " no es un array", nodo.getFila(), nodo.getColumna(), entorno.nombre);
       errores.push(err);
       return 0;
     }
@@ -566,7 +566,7 @@ var getValor = function getValor(nodo, entorno, errores) {
       return sim.getValor().length;
     } else {
       console.error("Error Semantico");
-      var err = new Error("Semantico", "La variable " + id + " no es un array, no se puede utilizar esta funcion", nodo.getFila(), nodo.getColumna());
+      var err = new Error("Semantico", "La variable " + id + " no es un array, no se puede utilizar esta funcion", nodo.getFila(), nodo.getColumna(), entorno.nombre);
       errores.push(err);
     }
   }
@@ -622,7 +622,7 @@ var getValor = function getValor(nodo, entorno, errores) {
       return obj[p];
     } else {
       console.error("Error Semantico");
-      var err = new Error("Semantico", "La variable " + id + " no es un type, no se puede obtener una propiedad", nodo.getFila(), nodo.getColumna());
+      var err = new Error("Semantico", "La variable " + id + " no es un type, no se puede obtener una propiedad", nodo.getFila(), nodo.getColumna(), entorno.nombre);
       errores.push(err);
     }
   }
@@ -644,11 +644,11 @@ var getValor = function getValor(nodo, entorno, errores) {
     switch (nodo.hijosCount()) {
       case 1:
         //sin parametros
-        return ejecutar(func.sentencias, new Entorno("FUNCION", entorno), errores);
+        return ejecutar(func.sentencias, new Entorno("FUNCION_" + func.id, entorno), errores);
 
       case 2:
         //asignar parametros
-        var ent = new Entorno("FUNCION", entorno);
+        var ent = new Entorno("FUNCION_" + func.id, entorno);
         decpar(func.parametros, ent, errores); //asig parametros
         //ejecutar codigo
 
@@ -682,7 +682,7 @@ var decpar = function decpar(nodo, entorno, errores) {
 
       if (!result) {
         console.error("Error Semantico");
-        var err = new Error("Semantico", "La variable " + id + " ya se habia declarado", nodo.getFila(), nodo.getColumna());
+        var err = new Error("Semantico", "La variable " + id + " ya se habia declarado", nodo.getFila(), nodo.getColumna(), entorno.nombre);
         errores.push(err);
       }
 
@@ -696,7 +696,7 @@ var decpar = function decpar(nodo, entorno, errores) {
 
       if (!result) {
         console.error("Error Semantico");
-        var err = new Error("Semantico", "La variable " + id + " ya se habia declarado", nodo.getFila(), nodo.getColumna());
+        var err = new Error("Semantico", "La variable " + id + " ya se habia declarado", nodo.getFila(), nodo.getColumna(), entorno.nombre);
         errores.push(err);
       }
 

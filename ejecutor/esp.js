@@ -17,7 +17,7 @@ const arrPush = (nodo,entorno,errores) => {
     sim.getValor().push(val);
   } else{
     console.error("Error Semantico");
-    var err = new Error("Semantico","La variable "+id+" no es un array, no se puede utilizar esta funcion",nodo.getFila(),nodo.getColumna());
+    var err = new Error("Semantico","La variable "+id+" no es un array, no se puede utilizar esta funcion",nodo.getFila(),nodo.getColumna(),entorno.nombre);
     errores.push(err);
   }
 }
@@ -29,7 +29,7 @@ const arrPop = (nodo,entorno,errores) => {
     sim.getValor().pop();
   } else{
     console.error("Error Semantico");
-    var err = new Error("Semantico","La variable "+id+" no es un array, no se puede utilizar esta funcion",nodo.getFila(),nodo.getColumna());
+    var err = new Error("Semantico","La variable "+id+" no es un array, no se puede utilizar esta funcion",nodo.getFila(),nodo.getColumna(),entorno.nombre);
     errores.push(err);
   }
 }

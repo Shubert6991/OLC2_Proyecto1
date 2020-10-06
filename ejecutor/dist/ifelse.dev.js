@@ -9,7 +9,7 @@ var ejecutarIF = function ejecutarIF(nodo, entorno, errores) {
 
     if (typeof cond != "boolean") {
       console.error("Error Semantico");
-      var err = new Error("Semantico", "La condicion del if debe ser una expresion logica", nodo.getFila(), nodo.getColumna());
+      var err = new Error("Semantico", "La condicion del if debe ser una expresion logica", nodo.getFila(), nodo.getColumna(), entorno.nombre);
       errores.push(err);
       return;
     }
@@ -26,7 +26,7 @@ var ejecutarIF = function ejecutarIF(nodo, entorno, errores) {
 
     if (typeof cond != "boolean") {
       console.error("Error Semantico");
-      var err = new Error("Semantico", "La condicion del if debe ser una expresion logica", nodo.getFila(), nodo.getColumna());
+      var err = new Error("Semantico", "La condicion del if debe ser una expresion logica", nodo.getFila(), nodo.getColumna(), entorno.nombre);
       errores.push(err);
       return;
     }

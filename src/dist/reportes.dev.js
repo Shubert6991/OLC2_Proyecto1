@@ -17,7 +17,9 @@ var reportErrores = function reportErrores(lista) {
   cel = row.insertCell();
   cel.outerHTML = "<th>Linea</th>";
   cel = row.insertCell();
-  cel.outerHTML = "<th>Columna</th>"; //tbody
+  cel.outerHTML = "<th>Columna</th>";
+  cel = row.insertCell();
+  cel.outerHTML = "<th>Entorno</th>"; //tbody
 
   var body = tablaErr.createTBody();
   lista.forEach(function (element) {
@@ -31,6 +33,8 @@ var reportErrores = function reportErrores(lista) {
     cel.innerHTML = element.getLinea();
     cel = row.insertCell();
     cel.innerHTML = element.getColumna();
+    cel = row.insertCell();
+    cel.innerHTML = element.getAmbito();
   });
   div.appendChild(h3);
   div.appendChild(tablaErr);

@@ -6,7 +6,7 @@ const ejecutarIF = (nodo,entorno,errores) =>{
     var cond = getValor(nodo.getListaNodos()[0],entorno,errores);
     if(typeof cond != "boolean"){
       console.error("Error Semantico");
-      var err = new Error("Semantico","La condicion del if debe ser una expresion logica",nodo.getFila(),nodo.getColumna());
+      var err = new Error("Semantico","La condicion del if debe ser una expresion logica",nodo.getFila(),nodo.getColumna(),entorno.nombre);
       errores.push(err);
       return;
     }
@@ -20,7 +20,7 @@ const ejecutarIF = (nodo,entorno,errores) =>{
     var cond = getValor(nodo.getListaNodos()[0],entorno,errores);
     if(typeof cond != "boolean"){
       console.error("Error Semantico");
-      var err = new Error("Semantico","La condicion del if debe ser una expresion logica",nodo.getFila(),nodo.getColumna());
+      var err = new Error("Semantico","La condicion del if debe ser una expresion logica",nodo.getFila(),nodo.getColumna(),entorno.nombre);
       errores.push(err);
       return;
     }

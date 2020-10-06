@@ -155,7 +155,7 @@
 
 .           										%{  
                                     console.error("Error Lexico:"+yytext); 
-                                    var error = new Error("Lexico",yytext,+yylineno+1,yylloc.last_column)
+                                    var error = new Error("Lexico",yytext,+yylineno+1,yylloc.last_column,"ANALISIS")
                                     errores.addError(error);
                                 %}
 

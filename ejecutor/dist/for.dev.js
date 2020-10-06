@@ -57,7 +57,7 @@ var ejecutarForIn = function ejecutarForIn(nodo, entorno, errores) {
 
       if (sim === false) {
         console.error("Error Semantico");
-        var err = new Error("Semantico", "la variable: " + id1 + " no esta declarada", nodo.getFila(), nodo.getColumna());
+        var err = new Error("Semantico", "la variable: " + id1 + " no esta declarada", nodo.getFila(), nodo.getColumna(), entorno.nombre);
         errores.push(err);
         return;
       }
@@ -71,7 +71,7 @@ var ejecutarForIn = function ejecutarForIn(nodo, entorno, errores) {
 
       if (sim === false) {
         console.error("Error Semantico");
-        var err = new Error("Semantico", "La variable: " + id1 + " no esta declarada", nodo.getFila(), nodo.getColumna());
+        var err = new Error("Semantico", "La variable: " + id1 + " no esta declarada", nodo.getFila(), nodo.getColumna(), entorno.nombre);
         errores.push(err);
         return;
       }
@@ -105,7 +105,7 @@ var ejecutarForIn = function ejecutarForIn(nodo, entorno, errores) {
   }
 
   console.error("Error Semantico");
-  var err = new Error("Semantico", "la variable: " + id2 + " no es un arreglo", nodo.getFila(), nodo.getColumna());
+  var err = new Error("Semantico", "la variable: " + id2 + " no es un arreglo", nodo.getFila(), nodo.getColumna(), entorno.nombre);
   errores.push(err);
   return;
 };
@@ -130,7 +130,7 @@ var ejecutarForOf = function ejecutarForOf(nodo, entorno, errores) {
 
       if (sim === false) {
         console.error("Error Semantico");
-        var err = new Error("Semantico", "la variable: " + id1 + " no esta declarada", nodo.getFila(), nodo.getColumna());
+        var err = new Error("Semantico", "la variable: " + id1 + " no esta declarada", nodo.getFila(), nodo.getColumna(), entorno.nombre);
         errores.push(err);
         return;
       }
@@ -145,7 +145,7 @@ var ejecutarForOf = function ejecutarForOf(nodo, entorno, errores) {
 
       if (sim === false) {
         console.error("Error Semantico");
-        var err = new Error("Semantico", "La variable: " + id1 + " no esta declarada", nodo.getFila(), nodo.getColumna());
+        var err = new Error("Semantico", "La variable: " + id1 + " no esta declarada", nodo.getFila(), nodo.getColumna(), entorno.nombre);
         errores.push(err);
         return;
       }
@@ -198,7 +198,7 @@ var ejecutarForOf = function ejecutarForOf(nodo, entorno, errores) {
   }
 
   console.error("Error Semantico");
-  var err = new Error("Semantico", "la variable: " + id2 + " no es un arreglo", nodo.getFila(), nodo.getColumna());
+  var err = new Error("Semantico", "la variable: " + id2 + " no es un arreglo", nodo.getFila(), nodo.getColumna(), entorno.nombre);
   errores.push(err);
   return;
 };
