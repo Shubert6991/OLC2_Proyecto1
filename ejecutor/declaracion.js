@@ -393,7 +393,20 @@ const getValor = (nodo,entorno,errores) =>{
     return +val*-1;
   }
   if(nodo.getTipo() === "STRING"){
-    return nodo.getNombre();
+    let s = nodo.getNombre();
+    if(s.includes("${")){
+      const regex = /\${([a-zA-ZñÑáéíóúÁÉÍÓÚ]["_"0-9a-zA-ZñÑáéíóúÁÉÍÓÚ]*|["_"]+[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ]["_"0-9a-zA-ZñÑáéíóúÁÉÍÓÚ]*)}/g;
+      var tmp = s.match(regex);
+      for (let index = 0; index < tmp.length; index++) {
+        var ant = tmp[index];
+        tmp[index] = tmp[index].replace("${","").replace("}","");   
+        var sim = entorno.getSimbolo(tmp[index]);
+        console.log(sim.valor);
+        s = s.replace(ant,sim.valor);    
+      }
+      console.log(tmp);
+    }
+    return s;
   }
   if(nodo.getTipo() === "ENTERO"){
     return +nodo.getNombre();

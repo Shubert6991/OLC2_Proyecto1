@@ -478,7 +478,24 @@ var getValor = function getValor(nodo, entorno, errores) {
   }
 
   if (nodo.getTipo() === "STRING") {
-    return nodo.getNombre();
+    var s = nodo.getNombre();
+
+    if (s.includes("${")) {
+      var regex = /\${([a-zA-ZñÑáéíóúÁÉÍÓÚ]["_"0-9a-zA-ZñÑáéíóúÁÉÍÓÚ]*|["_"]+[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ]["_"0-9a-zA-ZñÑáéíóúÁÉÍÓÚ]*)}/g;
+      var tmp = s.match(regex);
+
+      for (var index = 0; index < tmp.length; index++) {
+        var ant = tmp[index];
+        tmp[index] = tmp[index].replace("${", "").replace("}", "");
+        var sim = entorno.getSimbolo(tmp[index]);
+        console.log(sim.valor);
+        s = s.replace(ant, sim.valor);
+      }
+
+      console.log(tmp);
+    }
+
+    return s;
   }
 
   if (nodo.getTipo() === "ENTERO") {
@@ -657,9 +674,9 @@ var getValor = function getValor(nodo, entorno, errores) {
 
         var ts = ent.tablaSimbolos.getTabla();
 
-        for (var index = 0; index < ts.length; index++) {
-          var sim = ts[index];
-          sim.valor = arrvar[index];
+        for (var _index = 0; _index < ts.length; _index++) {
+          var sim = ts[_index];
+          sim.valor = arrvar[_index];
           ent.updateSimbolo(sim);
         }
 
