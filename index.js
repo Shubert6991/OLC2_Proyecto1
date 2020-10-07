@@ -1,6 +1,45 @@
 console.log("index.js");
+var editor = document.getElementById("textInput")
+var mirrorEditor = CodeMirror.fromTextArea(editor, {
+  lineNumbers: true,
+  matchBrackets: true,
+  styleActiveLine: true,
+  theme: "dracula",
+  mode: "text/javascript",
+  smartIndent: true,
+  lineWrapping: false
+});
+mirrorEditor.setSize("100%","500");
+var res = document.getElementById("area_result")
+var resEditor = CodeMirror.fromTextArea(res, {
+  lineNumbers: true,
+  matchBrackets: true,
+  styleActiveLine: true,
+  theme: "dracula",
+  mode: "text/javascript",
+  smartIndent: true,
+  lineWrapping: false,
+  readOnly: true
+});
+resEditor.setSize("100%","500");
+var cons = document.getElementById("consola")
+var consMirror = CodeMirror.fromTextArea(cons, {
+  lineNumbers: true,
+  matchBrackets: true,
+  styleActiveLine: true,
+  theme: "dracula",
+  mode: "text",
+  smartIndent: true,
+  lineWrapping: false,
+  readOnly: true
+});
+consMirror.setSize("100%","300");
+
+
+
 const analizarTexto = () => {
   //analizar y ejecutar
+  editor.value = mirrorEditor.getValue();
   let texto = document.getElementById("textInput").value
   try {
     let result = analizador.parse(texto);
@@ -21,6 +60,7 @@ const analizarTexto = () => {
 //funcion para escribir traduccion
 const escribirTraduccion = (texto) => {
   let area = document.getElementById("area_result");
+  resEditor.setValue(texto);
   area.value = texto;
 }
 

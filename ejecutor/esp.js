@@ -2,6 +2,7 @@ const print = (nodo,entorno,errores) => {
   var consola = document.getElementById("consola");
   var valor = getValor(nodo.getListaNodos()[0],entorno,errores);
   consola.value += valor+"\n";
+  consMirror.setValue(consola.value);
 }
 
 const graphts = (entorno) => {

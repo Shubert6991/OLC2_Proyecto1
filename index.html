@@ -7,6 +7,10 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='libraries/Bootstrap/css/bootstrap.min.css'>
   <link rel='stylesheet' type='text/css' media='screen' href='index.css'>
+  <script src='libraries/codemirror/lib/codemirror.js'></script>
+  <script src='libraries/codemirror/mode/javascript/javascript.js'></script>
+  <link rel='stylesheet' type='text/css' href='libraries/codemirror/lib/codemirror.css'>
+  <link rel='stylesheet' type='text/css' href='libraries/codemirror/theme/dracula.css'>
 </head>
 <body>
   <nav class="navbar navbar-dark bg-dark">
@@ -25,7 +29,7 @@
             <h2 class="float-left">Input</h2>
             <button type="button" class="btn btn-success float-right" id="analizarBtn">Ejecutar</button>
           </div>
-          <div class="card-body">
+          <div class="card-body" id="textInputDiv">
             <textarea class="border border-primary" rows="20" style="width: 100%;" id="textInput"></textarea>
           </div>
         </div>
@@ -105,7 +109,7 @@
   <script src='ejecutor/for.js'></script>
   <script src='ejecutor/funcion.js'></script>
   <script src='ejecutor/return.js'></script>
-  
+
   <script src='index.js'></script>
 </body>
 </html>

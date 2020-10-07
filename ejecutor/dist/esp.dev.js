@@ -4,6 +4,7 @@ var print = function print(nodo, entorno, errores) {
   var consola = document.getElementById("consola");
   var valor = getValor(nodo.getListaNodos()[0], entorno, errores);
   consola.value += valor + "\n";
+  consMirror.setValue(consola.value);
 };
 
 var graphts = function graphts(entorno) {
