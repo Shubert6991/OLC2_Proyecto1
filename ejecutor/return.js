@@ -3,7 +3,7 @@ const ejecutarReturn = (nodo,entorno,errores) =>{
   console.log(tipo);
   switch(tipo){
     case "RETURN":
-      return null;
+      return "RETURN";
     case "VALOR":
       return getValor(nodo.getListaNodos()[0],entorno,errores);
     case "ASIGNACION":

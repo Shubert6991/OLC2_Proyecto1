@@ -673,6 +673,7 @@ var getValor = function getValor(nodo, entorno, errores) {
         // console.log(ent.tablaSimbolos.getTabla());
 
         var ts = ent.tablaSimbolos.getTabla();
+        console.log(arrvar);
 
         for (var _index = 0; _index < ts.length; _index++) {
           var sim = ts[_index];
@@ -722,24 +723,33 @@ var decpar = function decpar(nodo, entorno, errores) {
 };
 
 var asigpar = function asigpar(nodo, entorno, errores) {
-  //2 hijos
-  var h1 = nodo.getListaNodos()[0];
-  var h2 = nodo.getListaNodos()[1];
+  //sin hijos
+  console.log(nodo);
   var vars = new Array();
 
-  if (h1.getTipo() === "LPAR") {
-    var tmp = asigpar(h1, entorno, errores);
+  if (nodo.hijosCount() == 0) {
+    vars.push(getValor(nodo, entorno, errores));
+  } //2 hijos
 
-    if (Array.isArray(tmp)) {
-      tmp.forEach(function (element) {
-        vars.push(element);
-      });
+
+  if (nodo.hijosCount() == 2) {
+    var h1 = nodo.getListaNodos()[0];
+    var h2 = nodo.getListaNodos()[1];
+
+    if (h1.getTipo() === "LPAR") {
+      var tmp = asigpar(h1, entorno, errores);
+
+      if (Array.isArray(tmp)) {
+        tmp.forEach(function (element) {
+          vars.push(element);
+        });
+      }
+
+      vars.push(getValor(h2, entorno, errores));
+    } else {
+      vars.push(getValor(h1, entorno, errores));
+      vars.push(getValor(h2, entorno, errores));
     }
-
-    vars.push(getValor(h2, entorno, errores));
-  } else {
-    vars.push(getValor(h1, entorno, errores));
-    vars.push(getValor(h2, entorno, errores));
   }
 
   return vars;

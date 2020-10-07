@@ -6,7 +6,7 @@ var ejecutarReturn = function ejecutarReturn(nodo, entorno, errores) {
 
   switch (tipo) {
     case "RETURN":
-      return null;
+      return "RETURN";
 
     case "VALOR":
       return getValor(nodo.getListaNodos()[0], entorno, errores);

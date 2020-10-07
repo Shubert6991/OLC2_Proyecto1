@@ -12,8 +12,10 @@ var ejecutar = function ejecutar(ast, entorno, errores) {
 
       case "I":
         var e1 = ejecutar(ast.getListaNodos()[0], entorno, errores);
+        if (e1 == "RETURN") return null;
+        if (e1) return e1;
         var e2 = ejecutar(ast.getListaNodos()[1], entorno, errores);
-        if (e1) return e1;else return e2;
+        return e2;
 
       case "DECLARACION":
         //ejecutar declaracion;
@@ -109,8 +111,10 @@ var ejecutar = function ejecutar(ast, entorno, errores) {
 
       case "SENTENCIAS":
         var e1 = ejecutar(ast.getListaNodos()[0], entorno, errores);
+        if (e1 == "RETURN") return null;
+        if (e1) return e1;
         var e2 = ejecutar(ast.getListaNodos()[1], entorno, errores);
-        if (e1) return e1;else return e2;
+        return e2;
 
       case "SWITCH":
         return ejecutarSwitch(ast, new Entorno("SWITCH", entorno), errores);

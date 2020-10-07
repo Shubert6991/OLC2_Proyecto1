@@ -8,9 +8,10 @@ const ejecutar = (ast,entorno,errores) => {
         return ejecutar(ast.getListaNodos()[0],entorno,errores);
       case "I":
         var e1 = ejecutar(ast.getListaNodos()[0],entorno,errores);
-        var e2 = ejecutar(ast.getListaNodos()[1],entorno,errores);
+        if(e1 == "RETURN") return null;
         if(e1) return e1
-        else return e2;
+        var e2 = ejecutar(ast.getListaNodos()[1],entorno,errores);
+        return e2;
       case "DECLARACION":
         //ejecutar declaracion;
         declaracion(ast,entorno,errores);
@@ -93,9 +94,10 @@ const ejecutar = (ast,entorno,errores) => {
         return ejecutarElse(ast,entorno,errores);
       case "SENTENCIAS":
         var e1 = ejecutar(ast.getListaNodos()[0],entorno,errores);
-        var e2 = ejecutar(ast.getListaNodos()[1],entorno,errores);
+        if(e1 == "RETURN") return null;
         if(e1) return e1;
-        else return e2;
+        var e2 = ejecutar(ast.getListaNodos()[1],entorno,errores);
+        return e2;
       case "SWITCH":
         return ejecutarSwitch(ast,new Entorno("SWITCH",entorno),errores);
       case "BREAK":
